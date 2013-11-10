@@ -6,70 +6,79 @@ To be update....
 Table:
 
 1. User -
-	a.username
-	b.email
-	c.password 		(up to the authentication mechnism)
-	d.description
-	e.site 			(hash {facebook, www.facebook.com/32234234},{twitter,xxxxx},{blog,xxxx}...)
-	f.channel 		(which channel you followed: xx,xx,xx,xx,)
-	g.avatar 			(small and normal?)		// no need cuz we have channel table?
-	h.city 			(where you are)
-	i.likes_number	(total number your items been liked）
+
+username
+
+email
+
+password 		(up to the authentication mechnism)
+
+description
+
+site 			(hash {facebook, www.facebook.com/32234234},{twitter,xxxxx},{blog,xxxx}...)
+
+channel 		(which channel you followed: xx,xx,xx,xx,)
+
+avatar 			(small and normal?)		// no need cuz we have channel table?
+
+city 			(where you are)
+
+likes_number	(total number your items been liked）
 		
 
 2. Item -
-		description<br>
-		image<br>
-		links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})<br>
-		d.tags 			( xx,xx,xx,xx)<br>
-		channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?<br>
-		likes_number	numbers of this single item<br>
+		description
+		image
+		links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
+		d.tags 			( xx,xx,xx,xx)
+		channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
+		likes_number	numbers of this single item
 
 
 
 3. Follow -
-		follow_from 	(user_id)<br>
-		follow_to		(user_id)<br>
+		follow_from 	(user_id)
+		follow_to		(user_id)
 
 4. Like -
-		user_id			(user_id)<br>
-		item_id			(item_id)<br>
+		user_id			(user_id)
+		item_id			(item_id)
 
 5  Channel -
-		channel_name	(channel_name)<br>
-		item 			(item_id)<br>
+		channel_name	(channel_name)
+		item 			(item_id)
 
 6. Comment -
-		user_id			(which user)<br>
-		item_id			(which item)<br>
-		content<br>			
+		user_id			(which user)
+		item_id			(which item)
+		content
 
 7. Message -
-		user_id_from<br>
-		user_id_to<br>
-		content<br>
+		user_id_from
+		user_id_to
+		content
 
 
 Relationship:
 
-1. user can has many items , each item belongs to one user (1 to many)<br>
+1. user can has many items , each item belongs to one user (1 to many)
 
-2. user can has many follow_from / follow_to through relationship (1 to many)<br>
+2. user can has many follow_from / follow_to through relationship (1 to many)
 
-3. user can like many items (1 to many)<br>
+3. user can like many items (1 to many)
 
-4. user can has many channel ( many(user to many(item) through channel))<br>
+4. user can has many channel ( many(user to many(item) through channel))
 
-5. user can has many items to comment<br>
+5. user can has many items to comment
 
-6. user can has many message<br>
+6. user can has many message
 
 Resource:
 
-1. user<br>
-2. item<br>
-3. comment<br>
-4. message<br>
+1. user
+2. item
+3. comment
+4. message
 
 
 
