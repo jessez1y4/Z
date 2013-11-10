@@ -54,7 +54,7 @@ user_id			(user_id)
 
 item_id			(item_id)
 
-5。 Channel -
+5. Channel -
 
 channel_name	(channel_name)
 
