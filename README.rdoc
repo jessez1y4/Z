@@ -6,48 +6,48 @@ To be update....
 Table:
 
 1. User -
-		username
-		email
-		password 		(up to the authentication mechnism)
-		description
-		site 			(hash {facebook, www.facebook.com/32234234},{twitter,xxxxx},{blog,xxxx}...)
-		channel 		(which channel you followed: xx,xx,xx,xx,)
-		avatar 			(small and normal?)		// no need cuz we have channel table?
-		city 			(where you are)
-		likes_number	(total number your items been liked）
+	a.username
+	b.email
+	c.password 		(up to the authentication mechnism)
+	d.description
+	e.site 			(hash {facebook, www.facebook.com/32234234},{twitter,xxxxx},{blog,xxxx}...)
+	f.channel 		(which channel you followed: xx,xx,xx,xx,)
+	g.avatar 			(small and normal?)		// no need cuz we have channel table?
+	h.city 			(where you are)
+	i.likes_number	(total number your items been liked）
 		
 
 2. Item -
-		description
-		image
-		links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
-		tags 			( xx,xx,xx,xx)
-		channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
-		likes_number	numbers of this single item
+		a.description
+		b.image
+		c.links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
+		d.tags 			( xx,xx,xx,xx)
+		e.channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
+		f.likes_number	numbers of this single item
 
 
 
 3. Follow -
-		follow_from 	(user_id)
-		follow_to		(user_id)
+		a.follow_from 	(user_id)
+		b.follow_to		(user_id)
 
 4. Like -
-		user_id			(user_id)
-		item_id			(item_id)
+		a.user_id			(user_id)
+		b.item_id			(item_id)
 
 5  Channel -
-		channel_name	(channel_name)
-		item 			(item_id)
+		a.channel_name	(channel_name)
+		b.item 			(item_id)
 
 6. Comment -
-		user_id			(which user)
-		item_id			(which item)
-		content			
+		a.user_id			(which user)
+		b.item_id			(which item)
+		c.content			
 
 7. Message -
-		user_id_from
-		user_id_to	
-		content
+		a.user_id_from
+		b.user_id_to	
+		c.content
 
 
 Relationship:
