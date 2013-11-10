@@ -14,3 +14,19 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+public/system
+.idea
+
+# Ignore vim temp files
+*.swp
+
+# Ignore Mac GUI settings
+.DS_Store
+
+.rbenv-vars
+config/database.yml
+tags
+
+# Ignore emacs backups
+*~
