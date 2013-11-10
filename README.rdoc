@@ -18,58 +18,58 @@ Table:
 		
 
 2. Item -
-		a.description
-		b.image
-		c.links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
-		d.tags 			( xx,xx,xx,xx)
-		e.channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
-		f.likes_number	numbers of this single item
+		description<br>
+		image<br>
+		links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})<br>
+		d.tags 			( xx,xx,xx,xx)<br>
+		channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?<br>
+		likes_number	numbers of this single item<br>
 
 
 
 3. Follow -
-		a.follow_from 	(user_id)
-		b.follow_to		(user_id)
+		follow_from 	(user_id)<br>
+		follow_to		(user_id)<br>
 
 4. Like -
-		a.user_id			(user_id)
-		b.item_id			(item_id)
+		user_id			(user_id)<br>
+		item_id			(item_id)<br>
 
 5  Channel -
-		a.channel_name	(channel_name)
-		b.item 			(item_id)
+		channel_name	(channel_name)<br>
+		item 			(item_id)<br>
 
 6. Comment -
-		a.user_id			(which user)
-		b.item_id			(which item)
-		c.content			
+		user_id			(which user)<br>
+		item_id			(which item)<br>
+		content<br>			
 
 7. Message -
-		a.user_id_from
-		b.user_id_to	
-		c.content
+		user_id_from<br>
+		user_id_to<br>
+		content<br>
 
 
 Relationship:
 
-1. user can has many items , each item belongs to one user (1 to many)
+1. user can has many items , each item belongs to one user (1 to many)<br>
 
-2. user can has many follow_from / follow_to through relationship (1 to many)
+2. user can has many follow_from / follow_to through relationship (1 to many)<br>
 
-3. user can like many items (1 to many)
+3. user can like many items (1 to many)<br>
 
-4. user can has many channel ( many(user to many(item) through channel))
+4. user can has many channel ( many(user to many(item) through channel))<br>
 
-5. user can has many items to comment
+5. user can has many items to comment<br>
 
-6. user can has many message
+6. user can has many message<br>
 
 Resource:
 
-1. user 
-2. item
-3. comment
-4. message
+1. user<br>
+2. item<br>
+3. comment<br>
+4. message<br>
 
 
 
