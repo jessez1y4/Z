@@ -27,36 +27,54 @@ likes_number	(total number your items been liked）
 		
 
 2. Item -
-		description
-		image
-		links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
-		d.tags 			( xx,xx,xx,xx)
-		channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
-		likes_number	numbers of this single item
+
+description
+
+image
+
+links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
+
+d.tags 			( xx,xx,xx,xx)
+
+channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
+
+likes_number	numbers of this single item
 
 
 
 3. Follow -
-		follow_from 	(user_id)
-		follow_to		(user_id)
+
+follow_from 	(user_id)
+
+follow_to		(user_id)
 
 4. Like -
-		user_id			(user_id)
-		item_id			(item_id)
+
+user_id			(user_id)
+
+item_id			(item_id)
 
 5  Channel -
-		channel_name	(channel_name)
-		item 			(item_id)
+
+channel_name	(channel_name)
+
+item 			(item_id)
 
 6. Comment -
-		user_id			(which user)
-		item_id			(which item)
-		content
+
+user_id			(which user)
+
+item_id			(which item)
+		
+content
 
 7. Message -
-		user_id_from
-		user_id_to
-		content
+
+user_id_from
+
+user_id_to
+
+content
 
 
 Relationship:
