@@ -34,9 +34,9 @@ image
 
 links 			(hash {www.taobao.com/123123123, $100,xxxxxxx,xxxx})
 
-d.tags 			( xx,xx,xx,xx)
+d.tags 			( xx,xx,xx,xx)				/ no need cuz we have channel table?
 
-channel 		(which channel to be published:  UMN, Syracuse University, xxx)		/ no need cuz we have channel table?
+channel 		(which channel to be published:  UMN, Syracuse University, xxx)		
 
 likes_number	numbers of this single item
 
