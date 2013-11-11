@@ -58,5 +58,6 @@ class AddEverything < ActiveRecord::Migration
     create_table :channels_users, id: false do |t|
       t.integer :channel_id
       t.integer :user_id
+    end
   end
 end
