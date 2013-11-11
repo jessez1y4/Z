@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :liked_posts,
                           class_name: 'Post',
                           join_table: 'likes'
+  has_and_belongs_to_many :channels
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -29,11 +30,11 @@ class User < ActiveRecord::Base
   end
 
   def like_post(post)
-    post.likes << self unless liked_post(post)
+    post.likes << self unless liked_post?(post)
   end
 
   def unlike_post(post)
-    post.likes.destroy self
+    post.likes.destroy self if liked_post?(post)
   end
 
   # count of likes
@@ -41,5 +42,18 @@ class User < ActiveRecord::Base
     @likes |= self.posts.inject(0) do |sum, post|
       sum + post.likes
     end
+  end
+
+  # channel methods
+  def joined_channel?(channel)
+    channel.users.include? self
+  end
+
+  def join_channel(channel)
+    channel.users << self unless joined_channel?(channel)
+  end
+
+  def leave_channel(channel)
+    channel.users.destroy self if joined_channel?(channel)
   end
 end
