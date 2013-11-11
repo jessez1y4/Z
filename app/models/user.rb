@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :items, through: :posts
   has_many :sites
+  has_many :comments, as: :commentable
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
