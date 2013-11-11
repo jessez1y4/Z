@@ -50,3 +50,8 @@ gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'devise', '~> 3.2.0'
 
 gem 'thin', '~> 1.6.1'
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
+end
