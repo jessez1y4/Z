@@ -4,9 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
-
   attr_accessor :login
+
+  has_many :posts
+  has_many :items, through: :posts
+  has_many :sites
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
