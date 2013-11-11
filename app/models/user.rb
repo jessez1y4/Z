@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :items, through: :posts
   has_many :sites
   has_many :comments, as: :commentable
+  has_and_belongs_to_many :liked_posts,
+                          class_name: 'Post',
+                          join_table: 'likes'
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -20,4 +23,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  # like/unlike post methods
+  def liked_post?(post)
+    post.likes.include? self
+  end
+
+  def like_post(post)
+    post.likes << self unless liked_post(post)
+  end
+
+  def unlike_post(post)
+    post.likes.destroy self
+  end
+
+  # count of likes
+  def likes
+    @likes |= self.posts.inject(0) do |sum, post|
+      sum + post.likes
+    end
+  end
 end
