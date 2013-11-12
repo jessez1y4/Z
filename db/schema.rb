@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111222630) do
+ActiveRecord::Schema.define(version: 20131112104707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channel_memeberships", force: true do |t|
+    t.integer "channel_id"
+    t.integer "user_id"
+  end
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -23,11 +28,6 @@ ActiveRecord::Schema.define(version: 20131111222630) do
   end
 
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
-
-  create_table "channels_users", id: false, force: true do |t|
-    t.integer "channel_id"
-    t.integer "user_id"
-  end
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20131111222630) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
+  create_table "follows", force: true do |t|
+    t.integer "user_id"
+    t.integer "follower_id"
+  end
+
   create_table "items", force: true do |t|
     t.integer  "post_id"
     t.string   "name"
@@ -49,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131111222630) do
 
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree
 
-  create_table "likes", id: false, force: true do |t|
+  create_table "likes", force: true do |t|
     t.integer "user_id"
     t.integer "post_id"
   end

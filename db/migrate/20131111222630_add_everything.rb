@@ -49,13 +49,13 @@ class AddEverything < ActiveRecord::Migration
     add_index :sites, :user_id
 
     # join table for likes
-    create_table :likes, id: false do |t|
+    create_table :likes do |t|
       t.integer :user_id
       t.integer :post_id
     end
 
     # join table for channels and users
-    create_table :channels_users, id: false do |t|
+    create_table :channel_memeberships do |t|
       t.integer :channel_id
       t.integer :user_id
     end

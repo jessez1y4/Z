@@ -14,8 +14,14 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :liked_posts, class_name: 'Post', through: :likes
 
-  has_many :channels_users
-  has_many :channels, through: :channels_users
+  has_many :channel_memeberships
+  has_many :channels, through: :channel_memeberships
+
+  has_many :follows
+  has_many :followers, through: :follows
+
+  has_many :inverse_follows, class_name: 'Follow', foreign_key: 'follower_id'
+  has_many :followings, through: :inverse_follows, source: :user
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
