@@ -10,10 +10,12 @@ class User < ActiveRecord::Base
   has_many :items, through: :posts
   has_many :sites
   has_many :comments, as: :commentable
-  has_and_belongs_to_many :liked_posts,
-                          class_name: 'Post',
-                          join_table: 'likes'
-  has_and_belongs_to_many :channels
+
+  has_many :likes
+  has_many :liked_posts, class_name: 'Post', through: :likes
+
+  has_many :channels_users
+  has_many :channels, through: :channels_users
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

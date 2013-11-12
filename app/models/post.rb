@@ -4,9 +4,9 @@ class Post < ActiveRecord::Base
   has_many :items
   #has_one :image
   has_many :comments, as: :commentable
-  has_and_belongs_to_many :likers,
-                          class_name: 'User',
-                          join_table: 'likes'
+
+  has_many :likes
+  has_many :likers, class_name: 'User', through: :likes
 
   def likes
     likers.count
