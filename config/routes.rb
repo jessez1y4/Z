@@ -1,5 +1,5 @@
 StyleMe::Application.routes.draw do
-  root to: 'posts#index'
+  root 'posts#index'
 
   devise_for :users
 end
