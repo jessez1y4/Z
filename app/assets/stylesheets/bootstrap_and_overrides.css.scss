@@ -3,7 +3,16 @@ body {
   padding-top: 70px;
   background: #ebeced;
 }
+
+// button with padding
 .btn-lg-pad {
   padding-left: 30px;
   padding-right: 30px;
+}
+
+// jQuery validation error msg style
+label.error {
+  font-size: 13px;
+  font-weight: normal;
+  color: #d9534f;
 }

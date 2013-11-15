@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :login
-
   has_many :posts
   has_many :items, through: :posts
   has_many :sites
@@ -22,6 +20,10 @@ class User < ActiveRecord::Base
 
   has_many :inverse_follows, class_name: 'Follow', foreign_key: 'follower_id'
   has_many :followings, through: :inverse_follows, source: :user
+
+  attr_accessor :login
+
+  validates :username, presence:true
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
