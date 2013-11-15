@@ -1,2 +1,9 @@
 @import "bootstrap";
-body { padding-top: 70px; }
+body {
+  padding-top: 70px;
+  background: #ebeced;
+}
+.btn-lg-pad {
+  padding-left: 30px;
+  padding-right: 30px;
+}

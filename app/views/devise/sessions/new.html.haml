@@ -1,0 +1,28 @@
+.container
+  .col-xs-10.col-xs-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+    .panel.panel-default
+      .panel-body
+        .col-xs-10.col-xs-offset-1
+          %h3.text-center
+            Sign In
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+            .form-group
+              %label Email or Username
+              = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control'
+
+            .form-group
+              %label
+                Password&nbsp;
+                %small.forgot-password
+                  = link_to 'Forgot?', new_password_path('user')
+              = f.password_field :password, class: 'form-control'
+
+            .form-group
+              = f.submit 'Sign In', class: 'btn btn-primary btn-lg btn-lg-pad'
+              #sns-signin.pull-right
+                Sign in with:&nbsp;&nbsp;
+                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), root_path
+                &nbsp;&nbsp;
+                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), root_path
+                &nbsp;&nbsp;
+                = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path
