@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  validates :username, presence:true
+  validates :username, presence: true
+  validates :username, length: { minimum: 4, maximum: 15 }
+  validates :username, format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore' }
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
