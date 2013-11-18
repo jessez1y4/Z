@@ -16,5 +16,6 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap
+//= require cloudinary
 //= require turbolinks
 //= require_tree .
