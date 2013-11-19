@@ -15,4 +15,11 @@ label.error {
   font-size: 13px;
   font-weight: normal;
   color: #d9534f;
+  margin-bottom: 0;
+}
+
+// ensure menu icons are of same width
+.menu-icon {
+  float: left;
+  width: 25px;
 }

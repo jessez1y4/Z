@@ -14,7 +14,7 @@
         %li.active
           %a{href: "#"} Link
         %li
-          %a{href: "#"} Link
+          = link_to fa_icon('plus', text: 'Style'), new_registration_path('user')
       %form.navbar-form.navbar-left{role: "search"}
         .form-group
           %input.form-control{placeholder: "Search", type: "text"}/
