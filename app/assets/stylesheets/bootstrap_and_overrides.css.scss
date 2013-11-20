@@ -23,3 +23,19 @@ label.error {
   float: left;
   width: 25px;
 }
+
+// pull modal down a little
+.modal-dialog-center {
+  margin-top: 10%;
+}
+
+// make modal less wide
+.modal-dialog-narrow {
+  max-width: 500px;
+}
+
+// custom colors
+.darkgray {
+  color: #555;
+}
+
