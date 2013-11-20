@@ -32,16 +32,17 @@
           &times;
         %h4.modal-title
           = fa_icon('chain', text: 'Enter image link')
-      .modal-body.text-center
-        = form_tag from_web_posts_path do |f|
+      .modal-body
+        = form_tag from_web_posts_path, id: 'from-web-post-form' do |f|
           .row
             .col-xs-9
-              = text_field_tag :web_link, nil, placeholder: 'The web link to your photo..', class: 'form-control'
+              = text_field_tag :web_link, nil, placeholder: 'http://...', autofocus: true, class: 'form-control'
             .col-xs-3
               = submit_tag 'Fetch image', class: 'btn btn-primary'
         %hr
-        Photo must be larger than
-        %strong 640x640
-        px.
-        %br
-        Accepts .xx, .xx and .xx
+        .text-center
+          Photo must be larger than
+          %strong 640x640
+          px.
+          %br
+          Accepts .xx, .xx and .xx
