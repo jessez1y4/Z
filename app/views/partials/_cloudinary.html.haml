@@ -14,7 +14,7 @@
       .modal-body.text-center
         %button#choose-post-photo-btn.btn.btn-primary.btn-lg.btn-block
           Choose a photo
-        %h5
+        %p
           Or drag & drop it anywhere on our page
         %hr
         %p
@@ -23,3 +23,25 @@
           px.
           %br
           Accepts .xx, .xx and .xx
+
+#from-web-post-modal.modal.fade
+  .modal-dialog.modal-dialog-center
+    .modal-content
+      .modal-header
+        %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h4.modal-title
+          = fa_icon('chain', text: 'Enter image link')
+      .modal-body.text-center
+        = form_tag from_web_posts_path do |f|
+          .row
+            .col-xs-9
+              = text_field_tag :web_link, nil, placeholder: 'The web link to your photo..', class: 'form-control'
+            .col-xs-3
+              = submit_tag 'Fetch image', class: 'btn btn-primary'
+        %hr
+        Photo must be larger than
+        %strong 640x640
+        px.
+        %br
+        Accepts .xx, .xx and .xx

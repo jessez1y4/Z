@@ -9,4 +9,4 @@
   %body{ class: "#{controller_name}-#{action_name}" }
     = render conditional_header
     = yield
-    = render 'partials/cloudinary'
+    = render 'partials/cloudinary' if user_signed_in?
