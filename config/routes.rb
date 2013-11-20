@@ -9,8 +9,8 @@ StyleMe::Application.routes.draw do
   end
 
   resource :posts do
-    new do
-      get 'upload'
+    collection do
+      post 'from_web'
     end
   end
 end

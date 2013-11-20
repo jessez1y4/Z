@@ -11,16 +11,19 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li.active
+        %li
           %a{href: "#"} Link
-        %li.dropdown
+        %li#uploading-hint.hide
+          %a#upload-spin
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        %li#add-post-dropdown.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             = fa_icon('plus', text: 'Style')
           %ul.dropdown-menu
             %li
-              = link_to root_path do
+              %a#upload-post-btn{href: '#'}
                 %span.menu-icon
-                  = fa_icon('cloud-upload')
+                  = fa_icon('fire')
                 Upload
             %li.divider
             %li
@@ -49,4 +52,8 @@
             %li.divider
             %li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
-    / /.navbar-collapse
+
+.hide
+  = form_for :post, url: posts_path do |f|
+    = f.cl_image_upload :cloudinary_data
+    = f.submit id: 'upload-post-submit'

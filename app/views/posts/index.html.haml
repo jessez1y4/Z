@@ -13,3 +13,5 @@
         %a{href: "#"} Channel 2
       %li
         %a{href: "#"} Channel 3
+  - @posts.each do |post|
+    = cl_image_tag(post.cloudinary_id, crop: 'fill', width: 200, height: 200)

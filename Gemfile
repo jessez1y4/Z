@@ -55,6 +55,8 @@ gem 'thin', '~> 1.6.1'
 
 gem 'cloudinary', '~> 1.0.66'
 
+gem "spinjs-rails", "~> 1.3"
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
