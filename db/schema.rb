@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20131119224729) do
   enable_extension "plpgsql"
 
   create_table "channel_memeberships", force: true do |t|
-    t.integer "channel_id"
-    t.integer "user_id"
+    t.integer "channel_id", null: false
+    t.integer "user_id",    null: false
   end
 
   create_table "channels", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20131119224729) do
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.string   "content"
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.string   "content",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 20131119224729) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
   create_table "follows", force: true do |t|
-    t.integer "user_id"
-    t.integer "follower_id"
+    t.integer "user_id",     null: false
+    t.integer "follower_id", null: false
   end
 
   create_table "items", force: true do |t|
-    t.integer  "post_id"
-    t.string   "name"
+    t.integer  "post_id",    null: false
+    t.string   "name",       null: false
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,12 +55,12 @@ ActiveRecord::Schema.define(version: 20131119224729) do
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree
 
   create_table "likes", force: true do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",       null: false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,27 +70,27 @@ ActiveRecord::Schema.define(version: 20131119224729) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "sites", force: true do |t|
-    t.integer "user_id"
-    t.string  "name"
-    t.string  "link"
+    t.integer "user_id", null: false
+    t.string  "name",    null: false
+    t.string  "link",    null: false
   end
 
   add_index "sites", ["user_id"], name: "index_sites_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                              null: false
+    t.string   "encrypted_password",                 null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
+    t.string   "username",                           null: false
     t.string   "description"
   end
 

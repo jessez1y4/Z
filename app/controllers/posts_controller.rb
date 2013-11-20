@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def create
     preloaded = Cloudinary::PreloadedFile.new(params[:post][:cloudinary_data])
     raise "Invalid upload signature" if !preloaded.valid?
-    @post = Post.new(cloudinary_id: preloaded.identifier)
+    @post = current_user.posts.build(cloudinary_id: preloaded.identifier)
     unless @post.save
       #TODO
     end
