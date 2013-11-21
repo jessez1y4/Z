@@ -8,13 +8,13 @@ $ ->
   $('.cloudinary-fileupload').bind 'cloudinarydone', (e,data) ->
     # sometimes the hidden field is not added in Safari
     if !$('#post_cloudinary_data').length
-      value = 'image/upload/' + data.result.path + '#' + data.result.signature
-      $('#upload-post-submit').before('<input id="post_cloudinary_data" name="post[cloudinary_data]" type="hidden" value="' + value + '" />')
+      value = "image/upload/#{data.result.path}##{data.result.signature}"
+      $('#upload-post-submit').before("<input id='post_cloudinary_data' name='post[cloudinary_data]'' type='hidden' value='#{value}' />")
 
     $('#upload-post-submit').click()
 
 
-  from_web_validator = $('#from-web-post-form').validate
+  window.from_web_post_validator = $('#from-web-post-form').validate
     rules:
       'web_link':
         required: true
@@ -28,7 +28,3 @@ $ ->
     submitHandler: (form) ->
       $('input:submit', form).val('Fetching...').prop('disabled', true)
       form.submit()
-
-  $('#from-web-post-modal').on 'hidden.bs.modal', ->
-    $('input:text', this).val('')
-    from_web_validator.resetForm()
