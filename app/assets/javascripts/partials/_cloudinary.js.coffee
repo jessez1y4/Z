@@ -18,12 +18,16 @@ $ ->
     rules:
       'web_link':
         required: true
-        regex: /^[^ ]+\.[^ ]+$/
+        url: true
 
     messages:
       'web_link':
         required: "It's empty :("
-        regex: 'The link looks invalid..'
+        url: 'The link looks invalid..'
+
+    submitHandler: (form) ->
+      $('input:submit', form).val('Fetching...').prop('disabled', true)
+      form.submit()
 
   $('#from-web-post-modal').on 'hidden.bs.modal', ->
     $('input:text', this).val('')

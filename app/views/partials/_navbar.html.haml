@@ -18,13 +18,13 @@
             = fa_icon('plus', text: 'Style')
           %ul.dropdown-menu
             %li
-              %a#upload-post-btn{href: '#'}
+              %a.modal-trigger{ href: '#', 'data-modal-name' => 'upload-post' }
                 %span.menu-icon
                   = fa_icon('fire')
                 Upload
             %li.divider
             %li
-              %a#from-web-post-btn{href: '#'}
+              %a.modal-trigger{href: '#', 'data-modal-name' => 'from-web-post' }
                 %span.menu-icon
                   = fa_icon('chain')
                 From web
