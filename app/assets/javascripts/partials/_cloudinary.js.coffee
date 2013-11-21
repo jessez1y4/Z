@@ -18,7 +18,9 @@ $ ->
     rules:
       'web_link':
         required: true
+        regex: /^[^ ]+\.[^ ]+$/
 
     messages:
       'web_link':
         required: "It's empty :("
+        regex: 'The link looks invalid..'

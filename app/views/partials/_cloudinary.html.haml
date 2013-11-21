@@ -36,7 +36,7 @@
         = form_tag from_web_posts_path, id: 'from-web-post-form' do |f|
           .row
             .col-xs-9
-              = text_field_tag :web_link, nil, placeholder: 'http://...', autofocus: true, class: 'form-control'
+              = text_field_tag :web_link, nil, placeholder: 'http://...', class: 'form-control'
             .col-xs-3
               = submit_tag 'Fetch image', class: 'btn btn-primary'
         %hr
