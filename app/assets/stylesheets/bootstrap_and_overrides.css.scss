@@ -18,7 +18,13 @@ label.error {
 // ensure menu icons are of same width
 .menu-icon {
   float: left;
-  width: 25px;
+  width: 32px;
+}
+
+// bigger menu button
+.tall-menu-item {
+  font-size: 16px;
+  line-height: 40px !important;
 }
 
 // pull modal down a little
