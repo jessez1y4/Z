@@ -4,6 +4,11 @@ StyleMe::Application.routes.draw do
   devise_for :users
 
   controller :users do
+    # /users/1/following and /users/1/followers
+    member do
+      get :following, :followers
+    end
+
     get 'users/email_check' => :check_email_uniqueness
     get 'users/username_check' => :check_username_uniqueness
   end
