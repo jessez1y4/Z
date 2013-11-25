@@ -39,10 +39,16 @@ ActiveRecord::Schema.define(version: 20131119224729) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "follows", force: true do |t|
-    t.integer "user_id",     null: false
-    t.integer "follower_id", null: false
+  create_table "follow_relationships", force: true do |t|
+    t.integer  "follower_id", null: false
+    t.integer  "followed_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "follow_relationships", ["followed_id"], name: "index_follow_relationships_on_followed_id", using: :btree
+  add_index "follow_relationships", ["follower_id", "followed_id"], name: "index_follow_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "follow_relationships", ["follower_id"], name: "index_follow_relationships_on_follower_id", using: :btree
 
   create_table "items", force: true do |t|
     t.integer  "post_id",    null: false
@@ -54,10 +60,16 @@ ActiveRecord::Schema.define(version: 20131119224729) do
 
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree
 
-  create_table "likes", force: true do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+  create_table "like_relationships", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "post_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "like_relationships", ["post_id"], name: "index_like_relationships_on_post_id", using: :btree
+  add_index "like_relationships", ["user_id", "post_id"], name: "index_like_relationships_on_user_id_and_post_id", unique: true, using: :btree
+  add_index "like_relationships", ["user_id"], name: "index_like_relationships_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "user_id",       null: false
