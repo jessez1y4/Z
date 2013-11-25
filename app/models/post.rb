@@ -4,8 +4,8 @@ class Post < ActiveRecord::Base
   has_many :items
   has_many :comments, as: :commentable
 
-  has_many :likes
-  has_many :likers, class_name: 'User', through: :likes
+  has_many :like_relationships
+  has_many :likers, class_name: 'User', through: :like_relationships
 
   def likes
     likers.count

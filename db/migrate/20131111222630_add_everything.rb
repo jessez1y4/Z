@@ -49,10 +49,16 @@ class AddEverything < ActiveRecord::Migration
     add_index :sites, :user_id
 
     # join table for likes
-    create_table :likes do |t|
+    create_table :like_relationships do |t|
       t.integer :user_id, null: false
       t.integer :post_id, null: false
+
+      t.timestamps
     end
+    add_index :like_relationships, :user_id
+    add_index :like_relationships, :post_id
+    # composite index - to make sure follower_id/followed_id is unique
+    add_index :like_relationships, [:user_id, :post_id], unique: true
 
     # join table for channels and users
     create_table :channel_memeberships do |t|

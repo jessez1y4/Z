@@ -9,17 +9,17 @@ class User < ActiveRecord::Base
   has_many :sites
   has_many :comments, as: :commentable
 
-  has_many :likes
-  has_many :liked_posts, class_name: 'Post', through: :likes
+  has_many :like_relationships
+  has_many :liked_posts, class_name: 'Post', through: :like_relationships
 
   has_many :channel_memeberships
   has_many :channels, through: :channel_memeberships
 
-  # follower_id    ---->   followed_id 
+  # follower_id    ---->   followed_id
   has_many :follow_relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :follow_relationships, source: :followed
-  
-  # followed_id    ---->   follower_id 
+
+  # followed_id    ---->   follower_id
   has_many :reverse_follow_relationships, foreign_key: "followed_id", class_name: "FollowRelationship", dependent: :destroy
   has_many :followers, through: :reverse_follow_relationships, source: :follower
 
