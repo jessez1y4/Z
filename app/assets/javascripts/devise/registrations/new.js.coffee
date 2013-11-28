@@ -1,6 +1,6 @@
 $ ->
   if $('body.registrations-new').length
-    $('#new_user').validate
+    $('#sign-up-form').validate
       onkeyup: false
       onfocusout: (element) ->
         if $.trim($(element).val()).length # skip validation if field is empty
@@ -23,7 +23,7 @@ $ ->
           maxlength: 128
         'user[password_confirmation]':
           required: true
-          equalTo: '#user_password'
+          equalTo: '#sign-up-form #user_password'
 
       messages:
         'user[email]':
