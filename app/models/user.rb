@@ -67,8 +67,13 @@ class User < ActiveRecord::Base
 
   # count of likes
   def likes
-    @likes |= self.posts.inject(0) do |sum, post|
-      sum + post.likes
+    @likes unless @likes.nil?
+    if posts.empty?
+      @likes = 0
+    else
+      @likes = self.posts.inject(0) do |sum, post|
+        sum + post.likes
+      end
     end
   end
 

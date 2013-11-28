@@ -17,6 +17,8 @@ $ ->
           minlength: 4
           maxlength: 15
           remote: 'username_check'
+        'user[full_name]':
+          required: true
         'user[password]':
           required: true
           minlength: 8

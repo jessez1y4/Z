@@ -2,4 +2,7 @@
   .col-xs-8
     pics go here
   .col-xs-4
-    user info go here
+    = current_user.full_name
+    .row
+      = fa_icon 'heart'
+      = current_user.likes
