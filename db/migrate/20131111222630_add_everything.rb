@@ -6,7 +6,7 @@ class AddEverything < ActiveRecord::Migration
     # post
     create_table :posts do |t|
       t.belongs_to :user, null: false
-      t.string :name # null: true allows 2 step creation of a post
+      t.string :title # null: true allows 2 step creation of a post
 
       t.timestamps
     end

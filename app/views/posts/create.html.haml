@@ -1,2 +1,8 @@
 .container
-  = cl_image_tag(@post.cloudinary_id, crop: 'fill', width: 200, height: 200)
+  .col-xs-6
+    = cl_image_tag(@post.cloudinary_id, crop: 'fill', width: 200, height: 200)
+  .col-xs-6
+    = form_for @post do |f|
+      = f.text_field :title
+      = f.text_area :description
+      = f.submit
