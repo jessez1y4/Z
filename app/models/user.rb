@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :like_relationships
-  has_many :liked_posts, class_name: 'Post', through: :like_relationships
+  has_many :liked_posts, source: :post, through: :like_relationships
 
   has_many :channel_memeberships
   has_many :channels, through: :channel_memeberships

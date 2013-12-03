@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :like_relationships
-  has_many :likers, class_name: 'User', through: :like_relationships
+  has_many :likers, source: :user, through: :like_relationships
 
   def likes
     likers.count
