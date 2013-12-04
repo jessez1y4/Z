@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  validates :username, presence: true
+  validates :username, :full_name, presence: true
   validates :username, length: { minimum: 4, maximum: 15 }
   validates :username, format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore' }
 
