@@ -9,8 +9,8 @@ $ ->
       rules:
         'user[email]':
           required: true
-          #email: true
-          #remote: 'email_check'
+          email: true
+          remote: 'email_check'
         'user[username]':
           required: true
           regex:  /^\w*$/
