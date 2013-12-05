@@ -6,3 +6,9 @@
     .row
       = fa_icon 'heart'
       = current_user.likes
+    .row
+      followed by
+      = current_user.followers.count
+    .row
+      following
+      = current_user.followed_users.count
