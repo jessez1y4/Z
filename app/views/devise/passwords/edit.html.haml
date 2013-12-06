@@ -1,0 +1,19 @@
+.container
+  .col-xs-10.col-xs-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+    .panel.panel-default
+      .panel-body
+        .col-xs-10.col-xs-offset-1
+          %h3.text-center
+            Change your password
+          %br
+          = form_for(:user, as: @user, url: password_path('user'), html: { method: :put, class: 'form-horizontal', id: 'change-password-form' }) do |f|
+            = f.hidden_field :reset_password_token
+            .form-group
+              %label New password
+              = f.password_field :password, autofocus: true, class: 'form-control', 'data-error' => field_err(@user, :password)
+            .form-group
+              %label Confirm new password
+              = f.password_field :password_confirmation, class: 'form-control', 'data-error' => field_err(@user, :password_confirmation)
+            .form-group
+              = f.submit 'Change my password', class: 'btn btn-primary btn-lg btn-block'
+
