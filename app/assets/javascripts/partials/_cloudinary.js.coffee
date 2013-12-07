@@ -8,7 +8,7 @@ $ ->
   $('.cloudinary-fileupload').bind 'cloudinarydone', (e,data) ->
     # check image size
     if data.result.width < 640 or data.result.height < 640
-      # TODO: show error msg
+      showNotification 'Your photo is too small :('
       $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
     else
       # sometimes the hidden field is not added in Safari
