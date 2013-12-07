@@ -3,15 +3,20 @@ $ ->
     $('.cloudinary-fileupload').click()
 
   $('.cloudinary-fileupload').bind 'fileuploadstart', ->
-    $('#upload-post-modal .modal-body').html "<h4 class='uploading-text'>Uploading to cloud..</h4>"
+    $('#choose-post-photo-btn').text('Uploading...').prop('disabled', true)
 
   $('.cloudinary-fileupload').bind 'cloudinarydone', (e,data) ->
-    # sometimes the hidden field is not added in Safari
-    if !$('#post_cloudinary_data').length
-      value = "image/upload/#{data.result.path}##{data.result.signature}"
-      $('#upload-post-submit').before("<input id='post_cloudinary_data' name='post[cloudinary_data]'' type='hidden' value='#{value}' />")
+    # check image size
+    if data.result.width < 640 or data.result.height < 640
+      # TODO: show error msg
+      $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
+    else
+      # sometimes the hidden field is not added in Safari
+      if !$('#post_cloudinary_data').length
+        value = "image/upload/#{data.result.path}##{data.result.signature}"
+        $('#upload-post-submit').before("<input id='post_cloudinary_data' name='post[cloudinary_data]'' type='hidden' value='#{value}' />")
 
-    $('#upload-post-submit').click()
+      $('#upload-post-submit').click()
 
 
   window.from_web_post_validator = $('#from-web-post-form').validate
