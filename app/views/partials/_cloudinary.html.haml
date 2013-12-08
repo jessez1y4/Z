@@ -33,10 +33,10 @@
         %h4.modal-title
           = fa_icon('chain', text: 'Enter image link')
       .modal-body
-        = form_tag from_web_posts_path, id: 'from-web-post-form' do |f|
+        = form_tag root_path, id: 'from-web-post-form' do |f|
           .row
             .col-xs-9
-              = text_field_tag :web_link, nil, placeholder: 'http://...', class: 'form-control'
+              = text_field_tag :web_link, nil, placeholder: 'http://...', class: 'form-control', id: 'web-link'
             .col-xs-3
               = submit_tag 'Fetch image', class: 'btn btn-primary'
         %hr

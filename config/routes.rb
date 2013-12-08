@@ -14,9 +14,5 @@ StyleMe::Application.routes.draw do
     end
   end
 
-  resources :posts do
-    collection do
-      post 'from_web'
-    end
-  end
+  resources :posts
 end

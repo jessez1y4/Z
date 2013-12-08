@@ -10,6 +10,7 @@ $ ->
     if data.result.width < 640 or data.result.height < 640
       showNotification 'Your photo is too small :('
       $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
+      $('#from-web-post-form input:submit').val('Fetch image').prop('disabled', false)
     else
       # sometimes the hidden field is not added in Safari
       if !$('#post_cloudinary_data').length
@@ -32,4 +33,4 @@ $ ->
 
     submitHandler: (form) ->
       $('input:submit', form).val('Fetching...').prop('disabled', true)
-      form.submit()
+      $('.cloudinary-fileupload').cloudinary_upload_url($('#web-link').val())
