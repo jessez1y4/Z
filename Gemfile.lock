@@ -25,12 +25,17 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
+    aws_cf_signer (0.1.2)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.2.0)
       sass (~> 3.2)
     builder (3.1.4)
+    cloudinary (1.0.66)
+      aws_cf_signer
+      rest-client
     coderay (1.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -77,6 +82,10 @@ GEM
     jquery-validation-rails (1.11.1)
       thor (~> 0.14)
     json (1.8.1)
+    launchy (2.3.0)
+      addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -112,6 +121,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -121,6 +132,8 @@ GEM
       json (>= 1.1.3)
       rdoc (~> 3.10)
     slop (3.4.6)
+    spinjs-rails (1.3)
+      rails (>= 3.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -155,6 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.0.2.0)
+  cloudinary (~> 1.0.66)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.0)
   factory_girl_rails
@@ -164,11 +178,13 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-validation-rails (~> 1.11.1)
+  letter_opener (~> 1.1.2)
   pg
   pry-rails
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
+  spinjs-rails (~> 1.3)
   thin (~> 1.6.1)
   turbolinks
   uglifier (>= 1.3.0)

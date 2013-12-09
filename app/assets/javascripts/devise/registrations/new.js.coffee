@@ -1,6 +1,6 @@
 $ ->
-  if $('body.registrations-new').length
-    $('#new_user').validate
+  if $('#sign-up-form').length
+    sign_up_validator = $('#sign-up-form').validate
       onkeyup: false
       onfocusout: (element) ->
         if $.trim($(element).val()).length # skip validation if field is empty
@@ -17,17 +17,26 @@ $ ->
           minlength: 4
           maxlength: 15
           remote: 'username_check'
+        'user[full_name]':
+          required: true
         'user[password]':
           required: true
           minlength: 8
           maxlength: 128
         'user[password_confirmation]':
           required: true
-          equalTo: '#user_password'
+          equalTo: '#sign-up-form #user_password'
 
       messages:
         'user[email]':
-          remote: "This email address has been registered :("
+          remote: "has already been registered :("
         'user[username]':
-          regex: 'Username only accepts letters, numbers, and underscore.'
-          remote: "This username has already been taken :("
+          regex: 'only accepts letters, numbers, and underscore.'
+          remote: "has already been taken :("
+
+    errors = {}
+    $('#sign-up-form input').each (i, e) ->
+      if $(e).data('error')
+        errors[$(e).attr('name')] = $(e).data('error')
+
+    sign_up_validator.showErrors errors

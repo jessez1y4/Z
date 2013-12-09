@@ -1,13 +1,9 @@
-@import "bootstrap";
+$font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+@import 'bootstrap-custom';
 body {
   padding-top: 70px;
   background: #ebeced;
-}
-
-// button with padding
-.btn-lg-pad {
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 // jQuery validation error msg style
@@ -15,4 +11,28 @@ label.error {
   font-size: 13px;
   font-weight: normal;
   color: #d9534f;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+// ensure menu icons are of same width
+.menu-icon {
+  float: left;
+  width: 32px;
+}
+
+// bigger menu button
+.tall-menu-item {
+  font-size: 16px;
+  line-height: 40px !important;
+}
+
+// pull modal down a little
+.modal-dialog-center {
+  margin-top: 10%;
+}
+
+// make modal less wide
+.modal-dialog-narrow {
+  max-width: 500px;
 }

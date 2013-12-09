@@ -1,0 +1,48 @@
+.hide
+  = form_tag new_post_path, method: :get do
+    = cl_image_upload_tag :cloudinary_data
+    = submit_tag 'submit', id: 'upload-post-submit'
+
+#upload-post-modal.modal.fade
+  .modal-dialog.modal-dialog-center.modal-dialog-narrow
+    .modal-content
+      .modal-header
+        %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h4.modal-title
+          = fa_icon('fire', text: 'Upload from local')
+      .modal-body.text-center
+        %button#choose-post-photo-btn.btn.btn-primary.btn-lg.btn-block
+          Choose a photo
+        %p
+          Or drag & drop it anywhere on our page
+        %hr
+        %p
+          Photo must be larger than
+          %strong 640x640
+          pixels.
+          %br
+          Accepts .xx, .xx and .xx
+
+#from-web-post-modal.modal.fade
+  .modal-dialog.modal-dialog-center
+    .modal-content
+      .modal-header
+        %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h4.modal-title
+          = fa_icon('chain', text: 'Enter image link')
+      .modal-body
+        = form_tag root_path, id: 'from-web-post-form' do |f|
+          .row
+            .col-xs-9
+              = text_field_tag :web_link, nil, placeholder: 'http://...', class: 'form-control', id: 'web-link'
+            .col-xs-3
+              = submit_tag 'Fetch image', class: 'btn btn-primary'
+        %hr
+        .text-center
+          Photo must be larger than
+          %strong 640x640
+          pixels.
+          %br
+          Accepts .xx, .xx and .xx

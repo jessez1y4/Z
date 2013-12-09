@@ -5,8 +5,8 @@ class AddEverything < ActiveRecord::Migration
 
     # post
     create_table :posts do |t|
-      t.belongs_to :user
-      t.string :name
+      t.belongs_to :user, null: false
+      t.string :title # null: true allows 2 step creation of a post
 
       t.timestamps
     end
@@ -14,8 +14,8 @@ class AddEverything < ActiveRecord::Migration
 
     # item
     create_table :items do |t|
-      t.belongs_to :post
-      t.string :name
+      t.belongs_to :post, null: false
+      t.string :name, null: false
       t.string :link
 
       t.timestamps
@@ -24,7 +24,7 @@ class AddEverything < ActiveRecord::Migration
 
     # channel
     create_table :channels do |t|
-      t.string :name
+      t.string :name, null: false
 
       t.timestamps
     end
@@ -32,9 +32,9 @@ class AddEverything < ActiveRecord::Migration
 
     # comment
     create_table :comments do |t|
-      t.integer :commentable_id
-      t.string :commentable_type
-      t.string :content
+      t.integer :commentable_id, null: false
+      t.string :commentable_type, null: false
+      t.string :content, null: false
 
       t.timestamps
     end
@@ -42,22 +42,28 @@ class AddEverything < ActiveRecord::Migration
 
     # user links (fb, twitter, etc.)
     create_table :sites do |t|
-      t.belongs_to :user
-      t.string :name
-      t.string :link
+      t.belongs_to :user, null: false
+      t.string :name, null: false
+      t.string :link, null: false
     end
     add_index :sites, :user_id
 
     # join table for likes
-    create_table :likes do |t|
-      t.integer :user_id
-      t.integer :post_id
+    create_table :like_relationships do |t|
+      t.integer :user_id, null: false
+      t.integer :post_id, null: false
+
+      t.timestamps
     end
+    add_index :like_relationships, :user_id
+    add_index :like_relationships, :post_id
+    # composite index - to make sure follower_id/followed_id is unique
+    add_index :like_relationships, [:user_id, :post_id], unique: true
 
     # join table for channels and users
     create_table :channel_memeberships do |t|
-      t.integer :channel_id
-      t.integer :user_id
+      t.integer :channel_id, null: false
+      t.integer :user_id, null: false
     end
   end
 end

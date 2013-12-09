@@ -53,6 +53,14 @@ gem 'devise', '~> 3.2.0'
 
 gem 'thin', '~> 1.6.1'
 
+gem 'cloudinary', '~> 1.0.66'
+
+gem 'spinjs-rails', '~> 1.3'
+
+group :development do
+  gem 'letter_opener', '~> 1.1.2'
+end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'

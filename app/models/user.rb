@@ -9,21 +9,24 @@ class User < ActiveRecord::Base
   has_many :sites
   has_many :comments, as: :commentable
 
-  has_many :likes
-  has_many :liked_posts, class_name: 'Post', through: :likes
+  has_many :like_relationships
+  has_many :liked_posts, source: :post, through: :like_relationships
 
   has_many :channel_memeberships
   has_many :channels, through: :channel_memeberships
 
-  has_many :follows
-  has_many :followers, through: :follows
+  # follower_id    ---->   followed_id
+  has_many :follow_relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :follow_relationships, source: :followed
 
-  has_many :inverse_follows, class_name: 'Follow', foreign_key: 'follower_id'
-  has_many :followings, through: :inverse_follows, source: :user
+  # followed_id    ---->   follower_id
+  has_many :reverse_follow_relationships, foreign_key: "followed_id", class_name: "FollowRelationship", dependent: :destroy
+  has_many :followers, through: :reverse_follow_relationships, source: :follower
+
 
   attr_accessor :login
 
-  validates :username, presence: true
+  validates :username, :full_name, presence: true
   validates :username, length: { minimum: 4, maximum: 15 }
   validates :username, format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore' }
 
@@ -34,6 +37,19 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  # follow/unfollow methods
+  def following?(other_user)
+    follow_relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    follow_relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    follow_relationships.find_by(followed_id: other_user.id).destroy
   end
 
   # like/unlike post methods
@@ -51,8 +67,13 @@ class User < ActiveRecord::Base
 
   # count of likes
   def likes
-    @likes |= self.posts.inject(0) do |sum, post|
-      sum + post.likes
+    @likes unless @likes.nil?
+    if posts.empty?
+      @likes = 0
+    else
+      @likes = self.posts.inject(0) do |sum, post|
+        sum + post.likes
+      end
     end
   end
 

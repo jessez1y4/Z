@@ -1,0 +1,9 @@
+.container
+  .col-xs-6
+    = cl_image_tag(@cloudinary_id, crop: 'fill', width: 200, height: 200)
+  .col-xs-6
+    = form_for @post do |f|
+      = f.hidden_field :cloudinary_id, value: @cloudinary_id
+      = f.text_field :title
+      = f.text_area :description
+      = f.submit

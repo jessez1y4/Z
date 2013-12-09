@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+  end
+
   def check_email_uniqueness
     @user = User.where("email ILIKE ?", params[:user][:email]).first
 

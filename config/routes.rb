@@ -7,4 +7,12 @@ StyleMe::Application.routes.draw do
     get 'users/email_check' => :check_email_uniqueness
     get 'users/username_check' => :check_username_uniqueness
   end
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :posts
 end
