@@ -1,9 +1,15 @@
 $ ->
+  $('.cloudinary-fileupload').attr('accept', 'image/*')
   $('#choose-post-photo-btn').click ->
     $('.cloudinary-fileupload').click()
 
   $('.cloudinary-fileupload').bind 'fileuploadstart', ->
     $('#choose-post-photo-btn').text('Uploading...').prop('disabled', true)
+
+  $('.cloudinary-fileupload').bind 'fileuploadfail', ->
+    showNotification 'Something went wrong. Try again.'
+    $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
+    $('#from-web-post-form input:submit').val('Fetch image').prop('disabled', false)
 
   $('.cloudinary-fileupload').bind 'cloudinarydone', (e,data) ->
     # check image size
