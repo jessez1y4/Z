@@ -2,13 +2,16 @@
   .col-xs-8
     pics go here
   .col-xs-4
-    = current_user.full_name
+    .row
+      = @user.full_name
+    #follow-btn.row
+      = follow_button(@user)
     .row
       = fa_icon 'heart'
-      = current_user.likes
-    .row
+      = @user.likes
+    #followers.row
       followed by
-      = current_user.followers.count
+      = @user.followers.count
     .row
       following
-      = current_user.followed_users.count
+      = @user.followed_users.count
