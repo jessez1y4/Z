@@ -13,5 +13,20 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to post_url(@post)
+    else
+      #TODO
+    end
+  end
+
+  def show
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:cloudinary_id, :name, :description, items_attributes: [:name, :number, :x, :y, :_destroy])
   end
 end

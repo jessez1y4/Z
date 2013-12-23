@@ -15,8 +15,3 @@
         %a{href: "#"} Channel 3
   - @posts.each do |post|
     = cl_image_tag(post.cloudinary_id, crop: 'fill', width: 200, height: 200)
-
-  / test back to top button
-  - 100.times do
-    %hr
-

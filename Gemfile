@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-validation-rails', '~> 1.11.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -56,6 +57,8 @@ gem 'thin', '~> 1.6.1'
 gem 'cloudinary', '~> 1.0.66'
 
 gem 'spinjs-rails', '~> 1.3'
+
+gem 'cocoon', '~> 1.2.5'
 
 group :development do
   gem 'letter_opener', '~> 1.1.2'
