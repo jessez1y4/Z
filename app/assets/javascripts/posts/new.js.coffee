@@ -35,8 +35,8 @@ $ ->
         event.preventDefault()
         count++
         add_item_label count,
-                       event.pageX - container.offset().left - 12,
-                       event.pageY - container.offset().top - 12
+                       event.pageX - container.offset().left - 10,
+                       event.pageY - container.offset().top - 10
 
         $('#add-item-btn').click()
 

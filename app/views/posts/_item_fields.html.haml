@@ -6,10 +6,9 @@
       = link_to_remove_association "remove", f
 
     .panel-body
+      = f.hidden_field :number, class: 'item-num'
+      = f.hidden_field :x, class: 'item-x'
+      = f.hidden_field :y, class: 'item-y'
       .form-group
-        %label.col-xs-2.control-label name
-        = f.hidden_field :number, class: 'item-num'
-        = f.hidden_field :x, class: 'item-x'
-        = f.hidden_field :y, class: 'item-y'
-        .col-xs-10
-          = f.text_field :name, class: 'form-control item-name', required: true
+        %label name
+        = f.text_field :name, class: 'form-control item-name', required: true

@@ -1,9 +1,18 @@
 $font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$grid-float-breakpoint: 0;
+$font-size-base: 13px;
+$navbar-height: 40px;
+//$navbar-inverse-bg: #3f454f;
 
 @import 'bootstrap-custom';
 body {
-  padding-top: 70px;
+  padding-top: 8px;
   background: #ebeced;
+}
+
+.container {
+  max-width: none !important;
+  width: 960px;
 }
 
 // jQuery validation error msg style
@@ -23,8 +32,8 @@ label.error {
 
 // bigger menu button
 .tall-menu-item {
-  font-size: 16px;
-  line-height: 40px !important;
+  font-size: 13px;
+  line-height: 30px !important;
 }
 
 // pull modal down a little

@@ -1,10 +1,24 @@
 .container
-  .col-xs-6
+  .col-xs-7
     #show-post-img-container
-      = cl_image_tag(@post.cloudinary_id, crop: 'fill', width: 480, height: 480)
-  .col-xs-3
+      = cl_image_tag @post.cloudinary_id, crop: 'fill', width: 480
+
+  .col-xs-5
+
+    - if @post.user == current_user
+      = link_to 'EDIT', edit_post_url(@post), class: 'btn btn-default btn-lg'
+      = link_to 'DELETE', post_url(@post), method: :delete, class: 'btn btn-link btn-lg'
     %h3
       = @post.title.titleize
+
+    %p
+      By
+      = succeed ',' do
+        = link_to @post.user.full_name, user_path(@post.user)
+      = time_ago_in_words @post.created_at
+      ago
+
+    %br
 
     - @post.items.each do |item|
       .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
@@ -12,10 +26,11 @@
           = item.number
           = item.name
 
+    %br
+
     - if @post.description.present?
       %p
         = fa_icon 'quote-left'
         = @post.description
         = fa_icon 'quote-right'
-  .col-xs-3
-    = render 'partials/user_sidebar', user: @post.user
+
