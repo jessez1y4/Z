@@ -1,0 +1,23 @@
+.container
+  .col-xs-6
+    #show-post-img-container
+      = cl_image_tag(@post.cloudinary_id, crop: 'fill', width: 480, height: 480)
+  .col-xs-3
+    .row
+      %h3
+        = @post.title.titleize
+
+    - @post.items.each do |item|
+      .row
+        .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+          %p
+            = item.number
+            = item.name
+
+    - if @post.description.present?
+      .row
+        %p
+          = fa_icon 'quote-left'
+          = @post.description
+          = fa_icon 'quote-right'
+  .col-xs-3
