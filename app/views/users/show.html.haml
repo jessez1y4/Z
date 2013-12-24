@@ -2,16 +2,4 @@
   .col-xs-8
     pics go here
   .col-xs-4
-    .row
-      = @user.full_name
-    #follow-btn.row
-      = follow_button(@user)
-    .row
-      = fa_icon 'heart'
-      = @user.likes
-    #followers.row
-      followed by
-      = @user.followers.count
-    .row
-      following
-      = @user.followed_users.count
+    = render 'partials/user_sidebar', user: @user
