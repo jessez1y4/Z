@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
-  has_many :items
+  has_many :items, order: 'number ASC'
   has_many :comments, as: :commentable
 
   has_many :like_relationships
