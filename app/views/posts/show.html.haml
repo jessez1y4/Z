@@ -1,7 +1,26 @@
 .container
   .col-xs-7
     #show-post-img-container
-      = cl_image_tag @post.cloudinary_id, crop: 'fill', width: 480
+      = cl_image_tag @post.cloudinary_id, crop: 'fill', width: 512
+
+    / comments
+    .page-header
+      %h3
+        COMMENTS
+    - @comments.each do |comment|
+      %p
+        = link_to comment.user.full_name, comment.user
+        = time_ago_in_words comment.created_at
+        ago
+      %p= comment.comment
+
+    / post comment
+    = form_for [@post, @comment] do |f|
+      = f.hidden_field :user_id, value: current_user.id
+      .form-group
+        = f.text_area :comment, rows: 3, class: 'form-control'
+      .form-group
+        = f.submit 'Comment', class: 'btn btn-primary'
 
   .col-xs-5
 
