@@ -1,1 +1,1 @@
-$("#like-btn").html "<%= escape_javascript(render('posts/like', post: @post)) %>"
+$("#like-btn-<%= @post.id %>").html "<%= escape_javascript(render('posts/like', post: @post)) %>"

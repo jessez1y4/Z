@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @posts = Post.all
+    @posts = Post.limit(4)
   end
 
   def new
