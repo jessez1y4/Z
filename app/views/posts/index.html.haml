@@ -1,55 +1,34 @@
 .container
   .col-xs-8
     .row
-      .btn-group
-        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-          Everything
-          %span.caret
-        %ul.dropdown-menu{role: "menu"}
-          %li
-            %a{href: "#"} Everything
-          %li.divider
-          %li
-            %a{href: "#"} Channel 1
-          %li
-            %a{href: "#"} Channel 2
-          %li
-            %a{href: "#"} Channel 3
-    - @posts.each do |post|
-      .row.big-post-frame
-        .col-xs-8
-          = link_to post do
-            = cl_image_tag post.cloudinary_id, width: 382
+      .col-xs-12
+        .btn-group
+          %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+            Everything
+            %span.caret
+          %ul.dropdown-menu{role: "menu"}
+            %li
+              %a{href: "#"} Everything
+            %li.divider
+            %li
+              %a{href: "#"} Channel 1
+            %li
+              %a{href: "#"} Channel 2
+            %li
+              %a{href: "#"} Channel 3
 
-        .col-xs-4
-          / likes
-          - if post.user == current_user
-            %button.btn.btn-default.btn-lg{disabled: 'disabled'}
-              = fa_icon 'heart lg', text: post.likes
-          - else
-            %div{id: "like-btn-#{post.id}"}
-              = like_button(post)
+    #posts
+      = render @posts
 
-          / post info
-          %h4
-            = link_to post, class: 'black-link' do
-              = truncate post.title.titleize, length: 20
+    #paginate-containter
+      = paginate @posts, theme: 'twitter-bootstrap-3'
 
-          %p
-            By
-            = link_to post.user.full_name, user_path(post.user)
+    #blank-area
 
-          %p
-            = time_ago_in_words post.created_at
-            ago
-
-          %br
-
-          - if post.description.present?
-            %p
-              = fa_icon 'quote-left'
-              = truncate post.description, length: 250 do
-                = link_to ' read more', post
-              = fa_icon 'quote-right'
   .col-xs-4
     anouncements and activities go here.
+
+#load-more.btn.btn-default
+  = fa_icon 'repeat lg'
+  %strong
+    &nbsp;Loading more ..

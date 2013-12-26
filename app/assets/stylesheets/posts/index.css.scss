@@ -6,3 +6,15 @@
 .black-link {
   color: #333;
 }
+
+#load-more {
+  position: fixed;
+  left: 46%;
+  bottom: 7%;
+  opacity: 0;
+  font-size: 14px;
+}
+
+#blank-area {
+  height: 55px;
+}

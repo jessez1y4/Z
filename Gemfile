@@ -24,6 +24,9 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails', '~> 1.11.1'
 
+gem 'kaminari', '~> 0.15.0'
+gem 'bootstrap-kaminari-views'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'

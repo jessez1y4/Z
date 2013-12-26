@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @posts = Post.limit(4)
+    sleep(0.5) # temporary code to simulate real internet latency
+    @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
   end
 
   def new

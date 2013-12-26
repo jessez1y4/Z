@@ -16,6 +16,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.ui.draggable
+//= require infinitescrolling
 //= require spin
 //= require bootstrap
 //= require cloudinary
