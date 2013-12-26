@@ -1,9 +1,28 @@
 .container
-  .col-xs-6
-    = cl_image_tag(@cloudinary_id, crop: 'fill', width: 200, height: 200)
-  .col-xs-6
-    = form_for @post do |f|
-      = f.hidden_field :cloudinary_id, value: @cloudinary_id
-      = f.text_field :title
-      = f.text_area :description
-      = f.submit
+  .col-xs-7
+    #post-img-container
+      = cl_image_tag @post.cloudinary_id, width: 512
+
+  .col-xs-5
+    = form_for @post, html: { id: 'new-post-form' } do |f|
+      = f.hidden_field :cloudinary_id, value: @post.cloudinary_id
+
+      .form-group
+        %label Title
+        = f.text_field :title, class: 'form-control', required: true
+
+      .form-group
+        %label Description
+        = f.text_area :description, class: 'form-control'
+
+      .form-group
+        = fa_icon 'hand-o-up'
+        %strong Click on your photo to add item labels!
+
+      #item-forms
+        = f.fields_for :items do |item|
+          = render 'item_fields', f: item
+        = link_to_add_association '', f, :items, id: 'add-item-btn', class: 'hide', 'data-association-insertion-method' => 'append'
+
+      .form-group
+        = f.submit 'Post my style!', class: 'btn btn-primary btn-lg'

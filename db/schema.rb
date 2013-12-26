@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201124037) do
+ActiveRecord::Schema.define(version: 20131226101342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,19 @@ ActiveRecord::Schema.define(version: 20131201124037) do
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
-    t.integer  "commentable_id",   null: false
-    t.string   "commentable_type", null: false
-    t.string   "content",          null: false
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "follow_relationships", force: true do |t|
     t.integer  "follower_id", null: false
@@ -56,6 +61,9 @@ ActiveRecord::Schema.define(version: 20131201124037) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number",     null: false
+    t.integer  "x",          null: false
+    t.integer  "y",          null: false
   end
 
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree
@@ -77,7 +85,7 @@ ActiveRecord::Schema.define(version: 20131201124037) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cloudinary_id", null: false
-    t.string   "description"
+    t.text     "description"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree

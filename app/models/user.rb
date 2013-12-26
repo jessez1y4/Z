@@ -53,16 +53,16 @@ class User < ActiveRecord::Base
   end
 
   # like/unlike post methods
-  def liked_post?(post)
+  def liked?(post)
     post.likes.include? self
   end
 
-  def like_post(post)
-    post.likes << self unless liked_post?(post)
+  def like!(post)
+    like_relationships.create!(post_id: post.id)
   end
 
-  def unlike_post(post)
-    post.likes.destroy self if liked_post?(post)
+  def unlike!(post)
+    like_relationships.find_by(post_id: post.id).destroy
   end
 
   # count of likes

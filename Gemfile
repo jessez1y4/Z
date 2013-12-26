@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4.0.2'
 
 gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '~> 3.0.2.0'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'font-awesome-rails', '~> 4.0.3.0'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -21,7 +21,11 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-validation-rails', '~> 1.11.1'
+
+gem 'kaminari', '~> 0.15.0'
+gem 'bootstrap-kaminari-views'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -56,6 +60,8 @@ gem 'thin', '~> 1.6.1'
 gem 'cloudinary', '~> 1.0.66'
 
 gem 'spinjs-rails', '~> 1.3'
+
+gem 'cocoon', '~> 1.2.5'
 
 group :development do
   gem 'letter_opener', '~> 1.1.2'

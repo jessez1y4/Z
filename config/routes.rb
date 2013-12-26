@@ -14,5 +14,11 @@ StyleMe::Application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :follow_relationships, only: [:create, :destroy]
+
+  resources :like_relationships, only: [:create, :destroy]
+
+  resources :posts do
+    resources :comments
+  end
 end

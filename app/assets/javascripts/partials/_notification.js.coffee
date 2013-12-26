@@ -10,7 +10,9 @@ $ ->
   showNotification msg if msg
 
 
-window.showNotification = (msg) ->
+window.showNotification = (msg, time) ->
+  time = time || 2500
+
   $('#notification').html(msg)
 
   $('#notification')
@@ -25,4 +27,4 @@ window.showNotification = (msg) ->
           top: '2px'
         , ->
           $(this).hide())
-      , 2500
+      , time

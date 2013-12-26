@@ -1,0 +1,13 @@
+%h3
+  = user.full_name
+#follow-btn
+  = follow_button(user)
+#user-likes
+  = fa_icon 'heart'
+  = user.likes
+#followers
+  followed by
+  = user.followers.count
+#followings
+  following
+  = user.followed_users.count
