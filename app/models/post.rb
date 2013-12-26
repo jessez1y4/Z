@@ -1,9 +1,8 @@
 class Post < ActiveRecord::Base
-  acts_as_commentable
-
   belongs_to :user
 
   has_many :items, order: 'number ASC'
+  has_many :comments, as: :commentable
 
   has_many :like_relationships
   has_many :likers, source: :user, through: :like_relationships

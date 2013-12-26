@@ -60,8 +60,6 @@ gem 'spinjs-rails', '~> 1.3'
 
 gem 'cocoon', '~> 1.2.5'
 
-gem 'acts_as_commentable', '~> 4.0.1'
-
 group :development do
   gem 'letter_opener', '~> 1.1.2'
 end

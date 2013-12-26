@@ -4,11 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_commentable
-
   has_many :posts
   has_many :items, through: :posts
   has_many :sites
+  has_many :comments, as: :commentable
 
   has_many :like_relationships
   has_many :liked_posts, source: :post, through: :like_relationships
