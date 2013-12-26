@@ -11,9 +11,3 @@ $ ->
           opacity: 0.9
 
         $.getScript url
-
-  # $('#posts').infinitescroll
-  #   navSelector: '.pagination'
-  #   nextSelector: '.pagination a[rel=next]'
-  #   itemSelector: '#posts .post'
-  #   bufferPx: 100
