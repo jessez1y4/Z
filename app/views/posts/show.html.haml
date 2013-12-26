@@ -27,6 +27,11 @@
     - if @post.user == current_user
       = link_to 'EDIT', edit_post_url(@post), class: 'btn btn-default btn-lg'
       = link_to 'DELETE', post_url(@post), method: :delete, class: 'btn btn-link btn-lg'
+
+    / likes
+    #like-btn
+      = like_button(@post)
+
     %h3
       = @post.title.titleize
 
