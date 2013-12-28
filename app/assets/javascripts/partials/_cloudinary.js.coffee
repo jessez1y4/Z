@@ -19,7 +19,7 @@ $ ->
       $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
       $('#from-web-post-form input:submit').val('Fetch image').prop('disabled', false)
     else
-      $('#upload-post-submit').click()
+      $('#hidden-post-form').submit()
 
 
   window.from_web_post_validator = $('#from-web-post-form').validate
