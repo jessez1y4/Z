@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
     raise "Invalid upload signature" if !preloaded.valid?
     # @cloudinary_id = preloaded.identifier

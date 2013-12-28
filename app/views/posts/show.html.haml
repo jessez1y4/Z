@@ -5,7 +5,6 @@
         - if @user == current_user
           %button.btn.btn-default.btn-lg{disabled: 'disabled'}
             = fa_icon 'heart lg', text: @post.likes
-
         - else
           / likes
           %div{id: "like-btn-#{@post.id}"}
@@ -35,8 +34,11 @@
           %p.small.text-muted
             = "#{@user.likes} likes "
             = "#{@user.followers.count} followers"
-          #follow-btn
-            = follow_button @user
+          - if @user == current_user
+            = link_to 'Edit my profile', edit_user_path(current_user), class: 'btn btn-default'
+          - else
+            #follow-btn
+              = follow_button @user
 
   .row
     .col-xs-7

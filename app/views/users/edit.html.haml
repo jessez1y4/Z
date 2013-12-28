@@ -1,4 +1,4 @@
 .container
-  = form_for @user do |f|
+  = form_for @user, id: 'edit-user-form' do |f|
     = cl_image_upload_tag :cloudinary_data
-    = submit_tag 'submit'
+    = submit_tag 'submit', id: 'edit-user-submit'
