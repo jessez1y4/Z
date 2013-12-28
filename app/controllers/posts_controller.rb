@@ -23,7 +23,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:items).includes(:user).find(params[:id])
+    @post = Post.includes(:items).find(params[:id])
+    @user = @post.user
     @comments = @post.comments.includes(:user)
     @comment = @post.comments.build
   end

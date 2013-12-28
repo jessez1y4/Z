@@ -1,63 +1,81 @@
 .container
-  .col-xs-7
-    #show-post-img-container
-      = cl_image_tag @post.cloudinary_id, width: 512
+  .row
+    .col-xs-7
+      .pull-right
+        - if @user == current_user
+          %button.btn.btn-default.btn-lg{disabled: 'disabled'}
+            = fa_icon 'heart lg', text: @post.likes
 
-    / comments
-    .page-header
-      %h3
-        COMMENTS
-    - @comments.each do |comment|
+        - else
+          / likes
+          .big-like-btn{id: "like-btn-#{@post.id}"}
+            = like_button(@post)
+      %h2
+        = @post.title.titleize
+
       %p
-        = link_to comment.user.full_name, comment.user
-        = time_ago_in_words comment.created_at
+        By
+        = succeed ',' do
+          = link_to @user.full_name, user_path(@user)
+        = time_ago_in_words @post.created_at
         ago
-      %p= comment.comment
 
-    / post comment
-    = form_for [@post, @comment] do |f|
-      = f.hidden_field :user_id, value: current_user.id
-      .form-group
-        = f.text_area :comment, rows: 3, class: 'form-control'
-      .form-group
-        = f.submit 'Comment', class: 'btn btn-primary'
+    .col-xs-5
+      #user-info.row
+        #medium-avatar.col-xs-3
+          = cl_image_tag @post.cloudinary_id, width: 84, height: 84
+        .col-xs-9
+          %p
+            = link_to @user.full_name, user_path(@user)
+          %p.small.text-muted
+            = "#{@user.likes} likes "
+            = "#{@user.followers.count} followers"
+          #follow-btn
+            = follow_button @user
 
-  .col-xs-5
+  .row
+    .col-xs-7
+      #show-post-img-container
+        = cl_image_tag @post.cloudinary_id, width: 530
 
-    - if @post.user == current_user
-      %button.btn.btn-default.btn-lg{disabled: 'disabled'}
-        = fa_icon 'heart lg', text: @post.likes
-      = link_to 'EDIT', edit_post_url(@post), class: 'btn btn-default btn-lg'
-      = link_to 'DELETE', post_url(@post), method: :delete, class: 'btn btn-link btn-lg'
-
-    - else
-      / likes
-      %div{id: "like-btn-#{@post.id}"}
-        = like_button(@post)
-
-    %h3
-      = @post.title.titleize
-
-    %p
-      By
-      = succeed ',' do
-        = link_to @post.user.full_name, user_path(@post.user)
-      = time_ago_in_words @post.created_at
-      ago
-
-    %br
-
-    - @post.items.each do |item|
-      .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+      / comments
+      .page-header
+        %h3
+          COMMENTS
+      - @comments.each do |comment|
         %p
-          = item.number
-          = item.name
+          = link_to comment.user.full_name, comment.user
+          = time_ago_in_words comment.created_at
+          ago
+        %p= comment.comment
 
-    %br
+      / post comment
+      = form_for [@post, @comment] do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        .form-group
+          = f.text_area :comment, rows: 3, class: 'form-control'
+        .form-group
+          = f.submit 'Comment', class: 'btn btn-primary'
 
-    - if @post.description.present?
-      %p
-        = fa_icon 'quote-left'
-        = @post.description
-        = fa_icon 'quote-right'
+    .col-xs-5
+
+      - if @user == current_user
+        = link_to 'EDIT', edit_post_url(@post), class: 'btn btn-default btn-lg'
+        = link_to 'DELETE', post_url(@post), method: :delete, class: 'btn btn-link btn-lg'
+
+      %br
+
+      - @post.items.each do |item|
+        .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+          %p
+            = item.number
+            = item.name
+
+      %br
+
+      - if @post.description.present?
+        %p
+          = fa_icon 'quote-left'
+          = @post.description
+          = fa_icon 'quote-right'
 
