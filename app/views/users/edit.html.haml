@@ -1,0 +1,4 @@
+.container
+  = form_for @user do |f|
+    = cl_image_upload_tag :cloudinary_data
+    = submit_tag 'submit'

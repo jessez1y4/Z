@@ -3,6 +3,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    binding.pry
+    preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
+    raise "Invalid upload signature" if !preloaded.valid?
+    # @cloudinary_id = preloaded.identifier
+    if current_user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
+      redirect_to current_user, notice: 'Settings updated.'
+    else
+      #TODO
+    end
+  end
+
   def check_email_uniqueness
     @user = User.where("email ILIKE ?", params[:user][:email]).first
 

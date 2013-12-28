@@ -38,7 +38,7 @@
           %a{href: "#"} Link
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            Dropdown
+            = current_user.full_name
             %b.caret
           %ul.dropdown-menu
             %li
@@ -46,7 +46,7 @@
             %li
               %a{href: "#"} Another action
             %li
-              %a{href: "#"} Something else here
+              = link_to 'Settings', edit_user_path(current_user)
             %li.divider
             %li
               = link_to 'Sign out', destroy_user_session_path, method: :delete
