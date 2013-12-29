@@ -1,7 +1,7 @@
 .row
   .col-xs-5
     = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face'
-  .col-xs-7
+  #name-n-follow.col-xs-7
     %h3.low-margin
       = user.full_name
     = render 'partials/follow_button'
