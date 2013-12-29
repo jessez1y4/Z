@@ -26,10 +26,10 @@
               Save the change?
             %button#save-avatar-btn.btn.btn-default.btn-lg
               Save
-            = link_to 'Discard', edit_user_path(current_user), class: 'btn btn-danger btn-lg'
+            = link_to 'Discard', edit_user_path, class: 'btn btn-danger btn-lg'
 
           .hide
-            = form_for @user, html: {id: 'edit-avatar-form'} do |f|
+            = form_tag '/user', method: :put, id: 'edit-avatar-form' do
               = cl_image_upload_tag :cloudinary_data
               = submit_tag 'submit'
 
