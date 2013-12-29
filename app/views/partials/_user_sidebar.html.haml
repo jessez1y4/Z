@@ -4,14 +4,27 @@
   #name-n-follow.col-xs-7
     %h3
       = user.full_name
-    = render 'partials/follow_button'
+    = render 'partials/follow_button', user: @user
 
-#user-likes
-  = fa_icon 'heart'
-  = user.likes
-#followers
-  followed by
-  = user.followers.count
-#followings
-  following
-  = user.followed_users.count
+#user-stats.row.text-center
+  .col-xs-3
+    / placeholder
+    999
+    %br
+    .small
+      VIEWS
+  .col-xs-3
+    = user.likes
+    %br
+    .small
+      LIKES
+  .col-xs-3
+    #followers
+      = user.followers.count
+    .small
+      FOLLOWERS
+  .col-xs-3
+    = user.followed_users.count
+    %br
+    .small
+      FOLLOWS

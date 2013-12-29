@@ -2,13 +2,7 @@
   .row
     .col-xs-7
       .pull-right.big-like-btn
-        - if @user == current_user
-          %button.btn.btn-default.btn-lg{disabled: 'disabled'}
-            = fa_icon 'heart lg', text: @post.likes
-        - else
-          / likes
-          %div{id: "like-btn-#{@post.id}"}
-            = like_button(@post)
+        = render 'partials/like_button', post: @post
       %h2
         = @post.title.titleize
 
@@ -34,7 +28,7 @@
           %p.small.text-muted
             = "#{@user.likes} likes "
             = "#{@user.followers.count} followers"
-          = render 'partials/follow_button'
+          = render 'partials/follow_button', user: @user
 
   .row
     .col-xs-7
