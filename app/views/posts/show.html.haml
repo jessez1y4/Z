@@ -38,7 +38,7 @@
       / comments
       .page-header
         %h3
-          COMMENTS
+          = "#{@comments.count} COMMENTS"
       - @comments.each do |comment|
         .row.comment
           .col-xs-2
