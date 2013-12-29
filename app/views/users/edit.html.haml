@@ -1,4 +1,44 @@
 .container
-  = form_for @user, id: 'edit-user-form' do |f|
-    = cl_image_upload_tag :cloudinary_data
-    = submit_tag 'submit', id: 'edit-user-submit'
+  .col-xs-3
+    %ul.nav.nav-pills.nav-stacked
+      %li.active
+        %a{href: '#avatar-edit', 'data-toggle' => 'tab'}AVATAR
+      %li
+        %a{href: '#profile-edit', 'data-toggle' => 'tab'}PROFILE
+      %li
+        %a{href: '#preference-edit', 'data-toggle' => 'tab'}PREFERENCE
+  .col-xs-9.tab-content
+    #avatar-edit.tab-pane.active
+      %h3
+        AVATAR
+      %hr
+      .row
+        .col-xs-2
+          = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face'
+        .col-xs-10
+          #step-1
+            %button#upload-avatar-btn.btn.btn-default.btn-lg
+              Upload from local
+            %p
+              Your avatar should be at least 100 x 100 pixels.
+          #step-2.hide
+            %p
+              Save the change?
+            %button#save-avatar-btn.btn.btn-default.btn-lg
+              Save
+            = link_to 'Discard', edit_user_path(current_user), class: 'btn btn-danger btn-lg'
+
+          .hide
+            = form_for @user, html: {id: 'edit-avatar-form'} do |f|
+              = cl_image_upload_tag :cloudinary_data
+              = submit_tag 'submit'
+
+    #profile-edit.tab-pane
+      %h3 PROFILE
+      %hr
+
+
+    #preference-edit.tab-pane
+      %h3 PREFERENCE
+      %hr
+

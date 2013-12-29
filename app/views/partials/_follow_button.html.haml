@@ -1,0 +1,5 @@
+- if @user == current_user
+  = link_to 'Edit my profile', edit_user_path(current_user), class: 'btn btn-default'
+- else
+  #follow-btn
+    = follow_button @user

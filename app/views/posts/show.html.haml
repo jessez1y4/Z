@@ -34,11 +34,7 @@
           %p.small.text-muted
             = "#{@user.likes} likes "
             = "#{@user.followers.count} followers"
-          - if @user == current_user
-            = link_to 'Edit my profile', edit_user_path(current_user), class: 'btn btn-default'
-          - else
-            #follow-btn
-              = follow_button @user
+          = render 'partials/follow_button'
 
   .row
     .col-xs-7
