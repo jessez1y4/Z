@@ -4,8 +4,8 @@ StyleMe::Application.routes.draw do
   devise_for :users
 
   controller :users do
-    get 'users/email_check' => :check_email_uniqueness
-    get 'users/username_check' => :check_username_uniqueness
+    get 'users/sign_up/email_check' => :check_email_uniqueness
+    get 'users/sign_up/username_check' => :check_username_uniqueness
   end
 
   resources :users, except: [:edit, :update] do

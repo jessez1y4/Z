@@ -10,13 +10,13 @@ $ ->
         'user[email]':
           required: true
           email: true
-          remote: 'email_check'
+          remote: 'sign_up/email_check'
         'user[username]':
           required: true
           regex:  /^\w*$/
           minlength: 4
           maxlength: 15
-          remote: 'username_check'
+          remote: 'sign_up/username_check'
         'user[full_name]':
           required: true
         'user[password]':
