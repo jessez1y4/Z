@@ -35,10 +35,10 @@
           = fa_icon 'search'
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{href: "#"} Link
+          = link_to 'Me', current_user
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            = current_user.full_name
+            = fa_icon 'cog'
             %b.caret
           %ul.dropdown-menu
             %li
