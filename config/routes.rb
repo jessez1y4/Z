@@ -8,11 +8,14 @@ StyleMe::Application.routes.draw do
     get 'users/username_check' => :check_username_uniqueness
   end
 
-  resources :users do
+  resources :users, except: [:edit, :update] do
     member do
       get :following, :followers
     end
   end
+
+  # current_user
+  resource :user
 
   resources :follow_relationships, only: [:create, :destroy]
 
