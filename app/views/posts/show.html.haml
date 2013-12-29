@@ -40,11 +40,17 @@
         %h3
           COMMENTS
       - @comments.each do |comment|
-        %p
-          = link_to comment.user.full_name, comment.user
-          = time_ago_in_words comment.created_at
-          ago
-        %p= comment.comment
+        .row.comment
+          .col-xs-2
+            = cl_image_tag comment.user.avatar_cloudinary_id, width: 50, height: 50, crop: 'fill', gravity: 'face'
+          .col-xs-10
+            %p
+              = link_to comment.user.full_name, comment.user
+              %span.small
+                = time_ago_in_words comment.created_at
+                ago
+            = simple_format comment.comment
+        %hr
 
       / post comment
       = form_for [@post, @comment] do |f|
@@ -67,8 +73,5 @@
       %br
 
       - if @post.description.present?
-        %p
-          = fa_icon 'quote-left'
-          = @post.description
-          = fa_icon 'quote-right'
+        = simple_format @post.description
 

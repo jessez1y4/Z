@@ -23,8 +23,4 @@
     %br
 
     - if post.description.present?
-      %p
-        = fa_icon 'quote-left'
-        = truncate post.description, length: 250 do
-          = link_to ' read more', post
-        = fa_icon 'quote-right'
+      = simple_format truncate(post.description, length: 250)
