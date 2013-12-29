@@ -53,12 +53,18 @@
         %hr
 
       / post comment
-      = form_for [@post, @comment] do |f|
-        = f.hidden_field :user_id, value: current_user.id
-        .form-group
-          = f.text_area :comment, rows: 3, class: 'form-control'
-        .form-group
-          = f.submit 'Comment', class: 'btn btn-primary'
+      - if user_signed_in?
+        = form_for [@post, @comment] do |f|
+          = f.hidden_field :user_id, value: current_user.id
+          .form-group
+            = f.text_area :comment, rows: 3, class: 'form-control'
+          .form-group
+            = f.submit 'Comment', class: 'btn btn-primary'
+      - else
+        .text-center
+          %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+            Log in to comment
+
 
     .col-xs-5
 
