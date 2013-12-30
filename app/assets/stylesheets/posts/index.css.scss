@@ -1,20 +1,17 @@
-.big-post-frame {
-  margin-top: 15px;
-}
+body.posts-index {
+  .big-post-frame {
+    margin-top: 15px;
+  }
 
-// make link black instead of blue
-.black-link {
-  color: #333;
-}
+  // make link black instead of blue
+  .black-link {
+    color: #333;
+  }
 
-#load-more {
-  position: fixed;
-  left: 46%;
-  bottom: 7%;
-  opacity: 0;
-  font-size: 14px;
-}
-
-#blank-area {
-  height: 55px;
+  #load-more {
+    opacity: 0;
+    font-size: 14px;
+    margin-top: 25px;
+    margin-bottom: 45px;
+  }
 }

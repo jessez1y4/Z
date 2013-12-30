@@ -1,5 +1,19 @@
 .container
-  .col-xs-8
-    pics go here
-  .col-xs-4
-    = render 'partials/user_sidebar', user: @user
+  .row
+    .col-xs-8
+      .text-center
+        %h4
+          = "#{@user.full_name}'s styles"
+      %hr
+      #masonry-container
+        = render partial: 'small_post', collection: @posts
+      #paginate-containter
+        = paginate @posts, theme: 'twitter-bootstrap-3'
+
+      .text-center
+        #load-more.btn.btn-default
+          = fa_icon 'repeat'
+          %strong
+            &nbsp;Loading more ..
+    .col-xs-4
+      = render 'partials/user_sidebar', user: @user

@@ -20,5 +20,8 @@
 //= require bootstrap
 //= require cloudinary
 //= require cocoon
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
+//= require masonry/modernizr-transitions
 //= require turbolinks
 //= require_tree .

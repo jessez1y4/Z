@@ -98,6 +98,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    masonry-rails (0.2.1)
+      rails
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
@@ -192,6 +194,7 @@ DEPENDENCIES
   jquery-validation-rails (~> 1.11.1)
   kaminari (~> 0.15.0)
   letter_opener (~> 1.1.2)
+  masonry-rails (~> 0.2.1)
   pg
   pry-rails
   rails (~> 4.0.2)

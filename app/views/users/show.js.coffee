@@ -1,10 +1,11 @@
-new_posts = $.parseHTML "<%= j render(@posts) %>"
+new_posts = $.parseHTML "<%= j render partial: 'small_post', collection: @posts %>"
+
+$('#masonry-container').append new_posts
 
 $(new_posts).css('opacity', '0')
 
-$('#posts').append new_posts
-
-$('#posts').imagesLoaded ->
+$('#masonry-container').imagesLoaded ->
+  $('#masonry-container').masonry 'reload'
   $(new_posts).animate
     opacity: 1
 

@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails', '~> 1.11.1'
+gem 'masonry-rails', '~> 0.2.1'
 
 gem 'kaminari', '~> 0.15.0'
 gem 'bootstrap-kaminari-views'
