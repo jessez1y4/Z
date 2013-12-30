@@ -9,6 +9,8 @@ $('#masonry-container').imagesLoaded ->
   $(new_posts).animate
     opacity: 1
 
+$('.small-post').aToolTip()
+
 <% if @posts.next_page %>
 
 $('.pagination').replaceWith("<%= j paginate(@posts, theme: 'twitter-bootstrap-3')%>")

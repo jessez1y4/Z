@@ -20,7 +20,7 @@ $ ->
         new_src = data.result.url.replace '/upload/', '/upload/c_fill,g_face,h_100,w_100/'
         $('#avatar-edit img').attr 'src', new_src
         $('#step-1').hide()
-        $('#step-2').removeClass 'hide'
+        $('#step-2').removeClass 'hidden'
 
     $('#save-avatar-btn').click ->
       $('#edit-avatar-form').submit()

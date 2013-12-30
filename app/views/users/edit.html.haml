@@ -21,14 +21,14 @@
               Upload from local
             %p
               Your avatar should be at least 100 x 100 pixels.
-          #step-2.hide
+          #step-2.hidden
             %p
               Save the change?
             %button#save-avatar-btn.btn.btn-default.btn-lg
               Save
             = link_to 'Discard', edit_user_path, class: 'btn btn-danger btn-lg'
 
-          .hide
+          .hidden
             = form_tag '/user', method: :put, id: 'edit-avatar-form' do
               = cl_image_upload_tag :cloudinary_data
               = submit_tag 'submit'

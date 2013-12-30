@@ -1,5 +1,7 @@
 $ ->
   if $('body.users-show').length
+    $('.small-post').aToolTip()
+
     masonry_container = $('#masonry-container')
     masonry_container.imagesLoaded ->
       masonry_container.masonry
