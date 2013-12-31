@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   def index
     sleep(0.5) # temporary code to simulate real internet latency
     @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+
+    if params[:view] == 'grid'
+      render 'index_grid'
+    end
   end
 
   def new

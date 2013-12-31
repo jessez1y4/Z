@@ -1,21 +1,52 @@
 .container
   .row
     .col-xs-8
-      .btn-group
-        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-          Everything
-          %span.caret
-        %ul.dropdown-menu{role: "menu"}
-          %li
-            %a{href: "#"} Everything
-          %li.divider
-          %li
-            %a{href: "#"} Channel 1
-          %li
-            %a{href: "#"} Channel 2
-          %li
-            %a{href: "#"} Channel 3
+      .row
+        .col-xs-2
+          .btn-group
+            %button.btn.btn-default.btn-xs.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+              EVERYTHING
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: '#'} EVERYTHING
+              %li.divider
+              %li
+                %a{href: '#'} Channel 1
+              %li
+                %a{href: '#'} Channel 2
+              %li
+                %a{href: '#'} Channel 3
 
+        .col-xs-3.text-center
+          .btn-group
+            .btn.btn-default.btn-xs ALL
+            .btn.btn-default.btn-xs FOLLOWED
+
+        .col-xs-4.text-center
+          .btn-group
+            .btn.btn-default.btn-xs HOT
+            .btn.btn-default.btn-xs NEW
+            .btn.btn-default.btn-xs.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+              THIS WEEK
+              %span.caret
+
+            %ul.dropdown-menu.text-left
+              %li
+                %a{href: '#'} TODAY
+              %li
+                %a{href: '#'} THIS WEEK
+              %li
+                %a{href: '#'} THIS MONTH
+              %li
+                %a{href: '#'} ALL TIME
+        .col-xs-3
+          .btn-group.pull-right
+            .div.btn.btn-default.btn-xs.active
+              LARGE
+            = link_to 'GRID', posts_path(view: 'grid'), class: 'btn btn-default btn-xs'
+
+      %hr
       #posts
         = render @posts
 

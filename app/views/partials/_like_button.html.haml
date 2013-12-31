@@ -2,7 +2,7 @@
   %button.btn.btn-default.btn-lg{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
     = fa_icon 'heart-o', text: post.likes
 - elsif post.user == current_user
-  %button.btn.btn-default.btn-lg{disabled: 'disabled'}
+  .btn.btn-default.btn-lg{disabled: 'disabled'}
     = fa_icon 'heart-o', text: post.likes
 - else
   %div{id: "like-btn-#{post.id}"}
