@@ -2,14 +2,14 @@
   .row
     .col-xs-8
       .row
-        .col-xs-2
-          .btn-group
-            %button.btn.btn-default.btn-xs.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-              EVERYTHING
+        .col-xs-8.text-center
+          .btn-group.pull-left
+            %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+              Everything
               %span.caret
-            %ul.dropdown-menu
+            %ul.dropdown-menu.text-left
               %li
-                %a{href: '#'} EVERYTHING
+                %a{href: '#'} Following
               %li.divider
               %li
                 %a{href: '#'} Channel 1
@@ -18,35 +18,29 @@
               %li
                 %a{href: '#'} Channel 3
 
-        .col-xs-3.text-center
           .btn-group
-            .btn.btn-default.btn-xs ALL
-            .btn.btn-default.btn-xs FOLLOWED
-
-        .col-xs-4.text-center
-          .btn-group
-            .btn.btn-default.btn-xs HOT
-            .btn.btn-default.btn-xs NEW
-            .btn.btn-default.btn-xs.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-              THIS WEEK
+            .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+              Hot this week
               %span.caret
 
             %ul.dropdown-menu.text-left
               %li
-                %a{href: '#'} TODAY
+                %a{href: '#'} Newest
+              %li.divider
               %li
-                %a{href: '#'} THIS WEEK
+                %a{href: '#'} Hot today
               %li
-                %a{href: '#'} THIS MONTH
+                %a{href: '#'} Hot this week
               %li
-                %a{href: '#'} ALL TIME
-        .col-xs-3
-          .btn-group.pull-right
-            .div.btn.btn-default.btn-xs.active
-              LARGE
-            = link_to 'GRID', posts_path(view: 'grid'), class: 'btn btn-default btn-xs'
+                %a{href: '#'} Hot this month
+              %li
+                %a{href: '#'} Hot all time
 
-      %hr
+          .btn-group.pull-right
+            .div.btn.btn-default.btn-sm.active
+              Large
+            = link_to 'Grid', posts_path(view: 'grid'), class: 'btn btn-default btn-sm'
+
       #posts
         = render @posts
 
