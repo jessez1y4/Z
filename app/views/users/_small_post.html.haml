@@ -1,5 +1,5 @@
 / for testing purpose load each image 20 times
 - 20.times do
   .small-post.masonry-brick{title: small_post.title}
-    = link_to small_post do
+    = link_to small_post, target: '_blank' do
       = cl_image_tag small_post.cloudinary_id, width: 190
