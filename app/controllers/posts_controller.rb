@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
-  respond_to :html, :js
-
   def index
     sleep(0.5) # temporary code to simulate real internet latency
-    @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @posts = @user.posts.page(params[:page]).per(1)
+      if request.xhr?
+        render 'index_grid'
+      else
+        render 'index_user'
+      end
+    else
+      @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+    end
 
     if params[:view] == 'grid'
       render 'index_grid'

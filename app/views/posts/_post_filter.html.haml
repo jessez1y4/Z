@@ -1,0 +1,42 @@
+.btn-group.pull-left
+  %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+    Everything
+    %span.caret
+  %ul.dropdown-menu.text-left
+    %li
+      %a{href: '#'} Following
+    %li.divider
+    %li
+      %a{href: '#'} Channel 1
+    %li
+      %a{href: '#'} Channel 2
+    %li
+      %a{href: '#'} Channel 3
+
+.btn-group
+  .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+    Hot this week
+    %span.caret
+
+  %ul.dropdown-menu.text-left
+    %li
+      %a{href: '#'} Newest
+    %li.divider
+    %li
+      %a{href: '#'} Hot today
+    %li
+      %a{href: '#'} Hot this week
+    %li
+      %a{href: '#'} Hot this month
+    %li
+      %a{href: '#'} Hot all time
+
+.btn-group.pull-right
+  - if params[:view] == 'grid'
+    = link_to 'Large', posts_path, class: 'btn btn-default btn-sm'
+    .div.btn.btn-default.btn-sm.active
+      Grid
+  - else
+    .div.btn.btn-default.btn-sm.active
+      Large
+    = link_to 'Grid', posts_path(view: 'grid'), class: 'btn btn-default btn-sm'

@@ -1,5 +1,13 @@
 $ ->
   if $('body.posts-index').length
+    if $('#masonry-container').length
+      $('.small-post').aToolTip()
+      masonry_container = $('#masonry-container')
+      masonry_container.imagesLoaded ->
+        masonry_container.masonry
+          itemSelector: '.masonry-brick'
+          columnWidth: 190
+          gutterWidth: 15
 
     $('#paginate-containter').hide()
 

@@ -1,0 +1,20 @@
+.container
+  .row.text-center
+    .col-xs-6.col-xs-offset-3
+      = render 'post_filter'
+    .col-xs-8.col-xs-offset-2
+      %hr
+  #masonry-container
+    = render partial: 'small_post', collection: @posts
+  #paginate-containter
+    = paginate @posts, theme: 'twitter-bootstrap-3'
+
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..
+
+
+
+

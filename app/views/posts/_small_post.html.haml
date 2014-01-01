@@ -1,0 +1,3 @@
+.small-post.masonry-brick{title: "#{small_post.title} by #{small_post.user.full_name}"}
+  = link_to small_post, target: '_blank' do
+    = cl_image_tag small_post.cloudinary_id, width: 190

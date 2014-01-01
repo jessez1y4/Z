@@ -9,6 +9,7 @@ StyleMe::Application.routes.draw do
   end
 
   resources :users, except: [:edit, :update] do
+    resources :posts
     member do
       get :following, :followers
     end

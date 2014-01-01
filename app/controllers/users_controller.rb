@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-  def show
-    sleep(1) # temporary code to simulate real internet latency
-
-    @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(1) # only load 1 photo at a time for test
-  end
-
   def edit
     @user = current_user
   end
