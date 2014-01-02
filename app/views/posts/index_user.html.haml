@@ -6,7 +6,7 @@
           = "#{@user.full_name}'s styles"
       %hr
       #masonry-container
-        = render partial: 'small_post', collection: @posts
+        = render partial: 'medium_post', collection: @posts
       #paginate-containter
         = paginate @posts, theme: 'twitter-bootstrap-3'
 

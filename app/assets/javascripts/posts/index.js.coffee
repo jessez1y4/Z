@@ -1,12 +1,26 @@
 $ ->
   if $('body.posts-index').length
+
+    window.bind_hover = ->
+      $('.masonry-brick').hover ->
+        $('.hidden-info', this).removeClass 'hidden'
+        $(this).addClass 'post-frame'
+      , ->
+        $(this).removeClass 'post-frame'
+        $('.hidden-info', this).addClass 'hidden'
+
+    bind_hover()
+
     if $('#masonry-container').length
-      $('.small-post').aToolTip()
       masonry_container = $('#masonry-container')
+      if $('.small-post').length
+        column = 170
+      else
+        column = 190
       masonry_container.imagesLoaded ->
         masonry_container.masonry
           itemSelector: '.masonry-brick'
-          columnWidth: 190
+          columnWidth: column
           gutterWidth: 15
 
     $('#paginate-containter').hide()

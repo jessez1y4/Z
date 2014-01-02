@@ -1,3 +1,14 @@
-.small-post.masonry-brick{title: "#{small_post.title} by #{small_post.user.full_name}"}
-  = link_to small_post, target: '_blank' do
-    = cl_image_tag small_post.cloudinary_id, width: 190
+= link_to small_post, target: '_blank' do
+  .small-post.masonry-brick
+    = cl_image_tag small_post.cloudinary_id, width: 170
+    .hidden.hidden-info
+      .text-center
+        %h4= truncate small_post.title.titleize, length: 20
+      .pull-left
+        = fa_icon 'heart'
+        %span.small
+          = small_post.likes
+      .pull-right
+        %span.small
+          BY&nbsp;
+        = small_post.user.full_name.titleize

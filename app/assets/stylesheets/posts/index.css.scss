@@ -14,4 +14,23 @@ body.posts-index {
     margin-top: 25px;
     margin-bottom: 45px;
   }
+
+  .hidden-info {
+  }
+
+  .post-frame {
+    h4 {
+      color: white;
+      font-size: 16px;
+    }
+    .pull-left {
+      color: #ff4444;
+    }
+    padding: 15px;
+    margin-left: -15px;
+    margin-top: -15px;
+    background-color: #222222;
+    color: #c4c4c4;
+    z-index: 100;
+  }
 }
