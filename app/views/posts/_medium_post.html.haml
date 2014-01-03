@@ -1,13 +1,14 @@
-= link_to medium_post, target: '_blank' do
-  .medium-post.masonry-brick
-    = cl_image_tag medium_post.cloudinary_id, width: 190
-    .hidden.hidden-info
-      .text-center
-        %h4= truncate medium_post.title.titleize, length: 22
-      .pull-left
-        = fa_icon 'heart'
-        %span.small
-          = medium_post.likes
-      .pull-right
-        = time_ago_in_words medium_post.created_at
-        ago
+.medium-post
+  = link_to medium_post, target: '_blank' do
+    .masonry-brick
+      = cl_image_tag medium_post.cloudinary_id, width: 190
+      .hidden.hidden-info
+        .text-center
+          %h4= truncate medium_post.title.titleize, length: 24
+        .pull-left
+          = fa_icon 'heart'
+          %span.small
+            = medium_post.likes
+        .pull-right
+          = time_ago_in_words medium_post.created_at
+          ago

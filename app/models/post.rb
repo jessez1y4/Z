@@ -12,4 +12,12 @@ class Post < ActiveRecord::Base
   def likes
     likers.count
   end
+
+  def self.scope(params, current_user)
+    if params[:channel] == 'Following'
+      posts = Post.where(user_id: current_user.followed_users).references(:users)
+    else
+      posts = Post.all
+    end
+  end
 end

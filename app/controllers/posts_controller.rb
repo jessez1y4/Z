@@ -10,7 +10,7 @@ class PostsController < ApplicationController
         render 'index_user'
       end
     else
-      @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+      @posts = Post.scope(params, current_user).page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
     end
 
     if params[:view] == 'grid'

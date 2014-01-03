@@ -4,7 +4,7 @@
     %span.caret
   %ul.dropdown-menu.text-left
     %li
-      %a{href: '#'} Following
+      = link_to 'Following', posts_path(params.merge(channel: 'Following'))
     %li.divider
     %li
       %a{href: '#'} Channel 1
@@ -33,10 +33,10 @@
 
 .btn-group.pull-right
   - if params[:view] == 'grid'
-    = link_to 'Large', posts_path, class: 'btn btn-default btn-sm'
+    = link_to 'Large', posts_path(params.merge(view: nil)), class: 'btn btn-default btn-sm'
     .div.btn.btn-default.btn-sm.active
       Grid
   - else
     .div.btn.btn-default.btn-sm.active
       Large
-    = link_to 'Grid', posts_path(view: 'grid'), class: 'btn btn-default btn-sm'
+    = link_to 'Grid', posts_path(params.merge(view: 'grid')), class: 'btn btn-default btn-sm'
