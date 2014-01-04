@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104000703) do
+ActiveRecord::Schema.define(version: 20140104055728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,13 +80,14 @@ ActiveRecord::Schema.define(version: 20140104000703) do
   add_index "like_relationships", ["user_id"], name: "index_like_relationships_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id",                      null: false
+    t.integer  "user_id",                              null: false
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cloudinary_id",                null: false
+    t.string   "cloudinary_id",                        null: false
     t.text     "description"
-    t.integer  "post_likes_count", default: 0
+    t.integer  "like_relationships_count", default: 0
+    t.integer  "comments_count",           default: 0
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -116,6 +117,9 @@ ActiveRecord::Schema.define(version: 20140104000703) do
     t.string   "description"
     t.string   "full_name",                          null: false
     t.string   "avatar_cloudinary_id"
+    t.integer  "posts_count",            default: 0
+    t.integer  "followings_count",       default: 0
+    t.integer  "followers_count",        default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

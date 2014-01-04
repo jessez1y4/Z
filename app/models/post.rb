@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   has_many :items, -> { order('number ASC') }
   has_many :comments, as: :commentable
@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 
 
   def likes
-    likers.size
+    like_relationships.size
   end
 
   def self.scope(params, current_user)
@@ -29,13 +29,13 @@ class Post < ActiveRecord::Base
     when 'Newest'
       posts = posts.order('created_at DESC')
     when 'Hot today'
-      posts = posts.where('created_at >= ?', Time.now - 1.day).order('post_likes_count DESC')
+      posts = posts.where('created_at >= ?', Time.now - 1.day).order('like_relationships_count DESC')
     when 'Hot this week', nil
-      posts = posts.where('created_at >= ?', Time.now - 1.week).order('post_likes_count DESC')
+      posts = posts.where('created_at >= ?', Time.now - 1.week).order('like_relationships_count DESC')
     when 'Hot this month'
-      posts = posts.where('created_at >= ?', Time.now - 1.month).order('post_likes_count DESC')
+      posts = posts.where('created_at >= ?', Time.now - 1.month).order('like_relationships_count DESC')
     when 'Hot all time'
-      posts = posts.order('post_likes_count DESC')
+      posts = posts.order('like_relationships_count DESC')
     end
 
     posts
