@@ -35,7 +35,7 @@
           = fa_icon 'search'
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to 'Me', current_user
+          = link_to 'Me', user_posts_path(current_user)
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             = fa_icon 'cog'

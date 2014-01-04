@@ -27,7 +27,7 @@
             = link_to @user.full_name, user_posts_path(@user)
           %p.small.text-muted
             = "#{@user.likes} likes "
-            = "#{@user.followers.size} followers"
+            = "#{@user.followers_count} followers"
           = render 'partials/follow_button', user: @user
 
   .row
@@ -38,7 +38,7 @@
       / comments
       .page-header
         %h3
-          = "#{@comments.size} COMMENTS"
+          = "#{@post.comments_count} COMMENTS"
       - @comments.each do |comment|
         .row.comment
           .col-xs-2

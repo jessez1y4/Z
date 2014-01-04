@@ -9,9 +9,16 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
+  scope :page_with_counter_cache, lambda {|page_number, total_count_value|
+    page(page_number).extending {
+      # open scope to smuggle total_count
+      define_method(:total_count) { total_count_value }
+    }
+  }
+
 
   def likes
-    like_relationships.size
+    like_relationships_count
   end
 
   def self.scope(params, current_user)

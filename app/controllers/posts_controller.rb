@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     sleep(0.5) # temporary code to simulate real internet latency
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = @user.posts.page(params[:page]).per(1)
+      @posts = @user.posts.page_with_counter_cache(params[:page], @user.posts_count).per(1)
       if request.xhr?
         render 'index_grid'
       else
