@@ -20,11 +20,11 @@
       LIKES
   .col-xs-3
     #followers
-      = user.followers.count
+      = user.followers.size
     .small
       FOLLOWERS
   .col-xs-3
-    = user.followed_users.count
+    = user.followed_users.size
     %br
     .small
       FOLLOWS

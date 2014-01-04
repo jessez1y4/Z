@@ -1,8 +1,11 @@
 .btn-group.pull-left
   %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-    Everything
+    = params[:channel] || 'Everything'
     %span.caret
   %ul.dropdown-menu.text-left
+    %li
+      = link_to 'Everything', posts_path
+    %li.divider
     %li
       = link_to 'Following', posts_path(params.merge(channel: 'Following'))
     %li.divider
@@ -15,21 +18,21 @@
 
 .btn-group
   .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-    Hot this week
+    = params[:sort] || 'Hot this week'
     %span.caret
 
   %ul.dropdown-menu.text-left
     %li
-      %a{href: '#'} Newest
+      = link_to 'Newest', posts_path(params.merge(sort: 'Newest'))
     %li.divider
     %li
-      %a{href: '#'} Hot today
+      = link_to 'Hot today', posts_path(params.merge(sort: 'Hot today'))
     %li
-      %a{href: '#'} Hot this week
+      = link_to 'Hot this week', posts_path(params.merge(sort: 'Hot this week'))
     %li
-      %a{href: '#'} Hot this month
+      = link_to 'Hot this month', posts_path(params.merge(sort: 'Hot this month'))
     %li
-      %a{href: '#'} Hot all time
+      = link_to 'Hot all time', posts_path(params.merge(sort: 'Hot all time'))
 
 .btn-group.pull-right
   - if params[:view] == 'grid'
