@@ -5,7 +5,8 @@
 
   .col-xs-4
     / likes
-    = render 'partials/like_button', post: post
+    .like-btn
+      = render 'partials/like_button', post: post
 
     / post info
     %h4

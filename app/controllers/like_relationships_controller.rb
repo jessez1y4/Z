@@ -7,7 +7,7 @@ class LikeRelationshipsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @post }
-      format.js
+      format.js { @post.reload }
     end
   end
 
@@ -17,7 +17,7 @@ class LikeRelationshipsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @post }
-      format.js
+      format.js { @post.reload }
     end
   end
 end

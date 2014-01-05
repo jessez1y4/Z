@@ -43,3 +43,10 @@ label.error {
 .modal-dialog-narrow {
   max-width: 500px;
 }
+
+.like-btn button {
+  color: #666;
+  i {
+    color: #d9534f;
+  }
+}

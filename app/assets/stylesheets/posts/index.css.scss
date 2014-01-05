@@ -21,7 +21,9 @@ body.posts-index {
       font-size: 15px;
     }
     .pull-left {
-      color: #ff4444;
+      i {
+        color: #ff4444;
+      }
     }
     padding: 15px;
     margin-left: -15px;
