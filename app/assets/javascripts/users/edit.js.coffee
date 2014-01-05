@@ -1,5 +1,9 @@
 $ ->
-  if $('body.users-edit').length
+  if $('body.users-edit, body.users-update').length
+    active_tab = $('.tab-content').data('tab') || '#avatar-edit'
+    $("#{active_tab}").addClass 'active'
+    $("#{active_tab}-tab").addClass 'active'
+
     edit_user_cl = $('#edit-avatar-form .cloudinary-fileupload')
 
     $('#upload-avatar-btn').click ->
@@ -24,6 +28,22 @@ $ ->
 
     $('#save-avatar-btn').click ->
       $('#edit-avatar-form').submit()
+
+
+    edit_profile_validator = $('#edit-profile-form').validate
+      rules:
+        'user[email]':
+          required: true
+          email: true
+        'user[full_name]':
+          required: true
+
+    errors = {}
+    $('#edit-profile-form input').each (i, e) ->
+      if $(e).data('error')
+        errors[$(e).attr('name')] = $(e).data('error')
+
+    edit_profile_validator.showErrors errors
 
 
 

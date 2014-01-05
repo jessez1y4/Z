@@ -4,13 +4,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
-    raise "Invalid upload signature" if !preloaded.valid?
-    # @cloudinary_id = preloaded.identifier
-    if current_user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
-      redirect_to current_user, notice: 'Settings updated.'
+    if params[:cloudinary_data]
+      preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
+      raise "Invalid upload signature" if !preloaded.valid?
+      # @cloudinary_id = preloaded.identifier
+      if current_user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
+        redirect_to user_posts_url(current_user), notice: 'Avatar updated.'
+      else
+        #TODO
+      end
     else
-      #TODO
+      if current_user.update_attributes(user_params)
+        redirect_to user_posts_url(current_user), notice: 'Profile updated.'
+      else
+        @active_tab = '#profile-edit'
+        @user = current_user
+        render 'edit'
+      end
     end
   end
 
@@ -28,5 +38,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render json: !@user }
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :full_name, :description)
   end
 end

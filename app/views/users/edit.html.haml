@@ -1,14 +1,14 @@
 .container
   .col-xs-3
     %ul.nav.nav-pills.nav-stacked
-      %li.active
+      %li#avatar-edit-tab
         %a{href: '#avatar-edit', 'data-toggle' => 'tab'}AVATAR
-      %li
+      %li#profile-edit-tab
         %a{href: '#profile-edit', 'data-toggle' => 'tab'}PROFILE
-      %li
+      %li#preference-edit-tab
         %a{href: '#preference-edit', 'data-toggle' => 'tab'}PREFERENCE
-  .col-xs-9.tab-content
-    #avatar-edit.tab-pane.active
+  .col-xs-9.tab-content{'data-tab' => @active_tab}
+    #avatar-edit.tab-pane
       %h3
         AVATAR
       %hr
@@ -36,6 +36,28 @@
     #profile-edit.tab-pane
       %h3 PROFILE
       %hr
+
+      = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
+        .form-group
+          %label.col-xs-3.control-label Username
+          .col-xs-7
+            %p.form-control-static
+              = @user.username
+        .form-group
+          %label.col-xs-3.control-label Email
+          .col-xs-7
+            = f.text_field :email, class: 'form-control', 'data-error' => field_err(@user, :email)
+        .form-group
+          %label.col-xs-3.control-label Full Name
+          .col-xs-7
+            = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(@user, :full_name)
+        .form-group
+          %label.col-xs-3.control-label Description
+          .col-xs-7
+            = f.text_area :description, class: 'form-control', 'data-error' => field_err(@user, :description)
+        .form-group
+          .col-xs-7.col-xs-offset-3
+            = f.submit 'Update my profile', class: 'btn btn-primary btn-lg'
 
 
     #preference-edit.tab-pane
