@@ -16,20 +16,35 @@ body.posts-index {
   }
 
   .post-frame {
-    h4 {
+    .info-top {
       color: white;
-      font-size: 15px;
+      font-size: 13px;
+      padding: 6px;
+      text-align: center;
     }
-    .pull-left {
-      i {
-        color: #ff4444;
+    .info-btm {
+      padding-top: 8px;
+      .pull-left {
+        padding-left: 10px;
+        i {
+          color: #ff4444;
+        }
+      }
+      .pull-right {
+        padding-right: 10px;
       }
     }
-    padding: 15px;
-    margin-left: -15px;
-    margin-top: -15px;
+
+    padding: 0px 5px 8px 5px;
+    margin-left: -5px;
+    margin-top: -30px;
     background-color: #222222;
     color: #c4c4c4;
     z-index: 100;
+
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
   }
 }

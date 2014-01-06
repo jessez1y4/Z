@@ -1,14 +1,14 @@
 .medium-post
   = link_to medium_post, target: '_blank' do
     .masonry-brick
+      .hidden.hidden-info.info-top
+        = truncate medium_post.title.titleize, length: 24
       = cl_image_tag medium_post.cloudinary_id, width: 190
-      .hidden.hidden-info
-        .text-center
-          %h4= truncate medium_post.title.titleize, length: 24
+      .hidden.hidden-info.info-btm
         .pull-left
           = fa_icon 'heart'
           %span.small
             = medium_post.likes
-        .pull-right
+        .pull-right.small
           = time_ago_in_words medium_post.created_at
           ago
