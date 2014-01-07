@@ -4,7 +4,7 @@
     %span.caret
   %ul.dropdown-menu.text-left
     %li
-      = link_to 'Everything', posts_path(params.merge(channel: 'Everything'))
+      = link_to 'Everything', posts_path(params.merge(channel: nil))
     %li.divider
     %li
       = link_to 'Following', posts_path(params.merge(channel: 'Following'))

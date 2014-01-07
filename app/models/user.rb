@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
   has_many :sites
   has_many :comments, as: :commentable
 
-  has_many :like_relationships
+  has_many :like_relationships, dependent: :destroy
   has_many :liked_posts, source: :post, through: :like_relationships
 
-  has_many :channel_memeberships
-  has_many :channels, through: :channel_memeberships
+  has_many :channel_memberships, dependent: :destroy
+  has_many :channels, through: :channel_memberships
+
+  has_many :channels, foreign_key: 'creator_id'
 
   # follower_id    ---->   followed_id
   has_many :follow_relationships, foreign_key: "follower_id", dependent: :destroy
@@ -82,11 +84,11 @@ class User < ActiveRecord::Base
     channel.users.include? self
   end
 
-  def join_channel(channel)
-    channel.users << self unless joined_channel?(channel)
+  def join!(channel)
+    channel_memberships.create!(channel_id: channel.id)
   end
 
-  def leave_channel(channel)
-    channel.users.destroy self if joined_channel?(channel)
+  def leave!(channel)
+    channel_memberships.find_by(channel_id: channel.id).destroy
   end
 end

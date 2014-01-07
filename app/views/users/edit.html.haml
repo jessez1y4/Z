@@ -14,7 +14,7 @@
       %hr
       .row
         .col-xs-2
-          = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face'
+          = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face', class: 'img-rounded-s'
         .col-xs-10
           #step-1
             %button#upload-avatar-btn.btn.btn-default.btn-lg
@@ -39,24 +39,24 @@
 
       = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
         .form-group
-          %label.col-xs-3.control-label Username
+          %label.col-xs-2.control-label Username
           .col-xs-7
             %p.form-control-static
               = @user.username
         .form-group
-          %label.col-xs-3.control-label Email
+          %label.col-xs-2.control-label Email
           .col-xs-7
             = f.text_field :email, class: 'form-control', 'data-error' => field_err(@user, :email)
         .form-group
-          %label.col-xs-3.control-label Full Name
+          %label.col-xs-2.control-label Full Name
           .col-xs-7
             = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(@user, :full_name)
         .form-group
-          %label.col-xs-3.control-label Description
+          %label.col-xs-2.control-label Description
           .col-xs-7
             = f.text_area :description, class: 'form-control', 'data-error' => field_err(@user, :description)
         .form-group
-          .col-xs-7.col-xs-offset-3
+          .col-xs-7.col-xs-offset-2
             = f.submit 'Update my profile', class: 'btn btn-primary btn-lg'
 
 

@@ -2,20 +2,26 @@
   %nav.navbar.navbar-inverse{role: "navigation"}
     / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
       = link_to 'StyleMe', root_path, class: 'navbar-brand'
     / Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          %a{href: "#"} Random
+          = link_to 'Style', posts_path
+
+        %li
+          = link_to 'Channel', channels_path
+      %form.navbar-form.navbar-left{role: "search"}
+        .form-group
+          %input.form-control{placeholder: "Search", type: "text"}/
+        %button.btn.btn-default{type: "submit"}
+          = fa_icon 'search'
+      %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            = fa_icon('plus', text: 'Style')
+            = fa_icon 'plus'
+
+
           %ul.dropdown-menu
             %li
               %a.modal-trigger.tall-menu-item{ href: '#', 'data-modal-name' => 'upload-post' }
@@ -28,12 +34,6 @@
                 %span.menu-icon
                   = fa_icon('chain lg')
                 From web
-      %form.navbar-form.navbar-left{role: "search"}
-        .form-group
-          %input.form-control{placeholder: "Search", type: "text"}/
-        %button.btn.btn-default{type: "submit"}
-          = fa_icon 'search'
-      %ul.nav.navbar-nav.navbar-right
         %li
           = link_to 'Me', user_posts_path(current_user)
         %li.dropdown

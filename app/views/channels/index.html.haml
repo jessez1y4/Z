@@ -1,0 +1,6 @@
+.container
+  .clearfix
+    .pull-right
+      = link_to 'Create New Channel', new_channel_path, class: 'btn btn-primary'
+  - @channels.each do |channel|
+    = link_to channel.name.titleize, channel_posts_url(channel)

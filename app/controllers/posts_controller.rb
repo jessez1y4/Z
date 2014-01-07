@@ -1,16 +1,27 @@
 class PostsController < ApplicationController
   def index
+    posts = Post.scope(params, current_user).page(params[:page])
     sleep(0.5) # temporary code to simulate real internet latency
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = @user.posts.page_with_counter_cache(params[:page], @user.posts_count).per(1)
+      @posts = posts.per(2)
+
       if request.xhr?
         render 'index_grid'
       else
         render 'index_user'
       end
+    elsif params[:channel_id]
+      @channel = Channel.find(params[:channel_id])
+      @posts = posts.per(2)
+
+      if request.xhr?
+        render 'index_grid'
+      else
+        render 'index_channel'
+      end
     else
-      @posts = Post.scope(params, current_user).page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+      @posts = posts.per(2)
     end
 
     if params[:view] == 'grid'

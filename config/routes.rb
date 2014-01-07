@@ -25,4 +25,8 @@ StyleMe::Application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  resources :channels do
+    resources :posts
+  end
 end

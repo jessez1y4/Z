@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104055728) do
+ActiveRecord::Schema.define(version: 20140107165357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "channel_memeberships", force: true do |t|
+  create_table "channel_memberships", force: true do |t|
     t.integer "channel_id", null: false
     t.integer "user_id",    null: false
   end
 
   create_table "channels", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "users_count", default: 0
+    t.string   "description"
+    t.integer  "creator_id"
   end
 
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
@@ -120,6 +123,8 @@ ActiveRecord::Schema.define(version: 20140104055728) do
     t.integer  "posts_count",            default: 0
     t.integer  "followings_count",       default: 0
     t.integer  "followers_count",        default: 0
+    t.integer  "channels_count",         default: 0
+    t.integer  "channel_allowance",      default: 1, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

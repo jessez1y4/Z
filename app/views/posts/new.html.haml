@@ -1,7 +1,7 @@
 .container
   .col-xs-7
     #post-img-container
-      = cl_image_tag @post.cloudinary_id, width: 512
+      = cl_image_tag @post.cloudinary_id, width: 512, class: 'img-rounded'
 
   .col-xs-5
     = form_for @post, html: { id: 'new-post-form' } do |f|
