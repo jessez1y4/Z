@@ -29,4 +29,6 @@ StyleMe::Application.routes.draw do
   resources :channels do
     resources :posts
   end
+
+  resources :channel_memberships
 end

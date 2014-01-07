@@ -14,11 +14,11 @@
       %form.navbar-form.navbar-left{role: "search"}
         .form-group
           %input.form-control{placeholder: "Search", type: "text"}/
-        %button.btn.btn-default{type: "submit"}
+        %button.btn.btn-default.fa-14{type: "submit"}
           = fa_icon 'search'
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
             = fa_icon 'plus'
 
 
@@ -37,7 +37,7 @@
         %li
           = link_to 'Me', user_posts_path(current_user)
         %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
             = fa_icon 'cog'
             %b.caret
           %ul.dropdown-menu

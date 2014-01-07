@@ -6,7 +6,7 @@ class FollowRelationshipsController < ApplicationController
     current_user.follow!(@user)
 
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to user_posts_url(@user) }
       format.js { @user.reload }
     end
   end
@@ -16,7 +16,7 @@ class FollowRelationshipsController < ApplicationController
     current_user.unfollow!(@user)
 
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to user_posts_url(@user) }
       format.js { @user.reload }
     end
   end
