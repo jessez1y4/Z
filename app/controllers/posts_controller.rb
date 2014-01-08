@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     sleep(0.5) # temporary code to simulate real internet latency
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = posts.per(2)
+      @posts = posts.per(10)
 
       if request.xhr?
         render 'index_grid'
@@ -13,19 +13,18 @@ class PostsController < ApplicationController
       end
     elsif params[:channel_id]
       @channel = Channel.find(params[:channel_id])
-      @posts = posts.per(2)
+      @posts = posts.per(10)
 
       if request.xhr?
         render 'index_grid'
       else
         render 'index_channel'
       end
-    else
-      @posts = posts.per(2)
-    end
-
-    if params[:view] == 'grid'
+    elsif params[:view] == 'grid'
+      @posts = posts.per(20)
       render 'index_grid'
+    else
+      @posts = posts.per(10)
     end
   end
 

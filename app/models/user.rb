@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
 
   has_many :channel_memberships, dependent: :destroy
   has_many :channels, through: :channel_memberships
+  has_many :users_from_channels, source: :users, through: :channels
 
-  has_many :channels, foreign_key: 'creator_id'
+  has_many :created_channels, class_name: 'Channel', foreign_key: 'creator_id'
 
   # follower_id    ---->   followed_id
   has_many :follow_relationships, foreign_key: "follower_id", dependent: :destroy

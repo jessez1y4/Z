@@ -33,9 +33,17 @@ class Post < ActiveRecord::Base
       params[:channel] ||= 'Everything'
       params[:sort] ||= 'Hot this week'
 
-      case params[:channel]
-      when 'Following'
-        posts = posts.where(user_id: current_user.followed_users).references(:users)
+      if params[:channel]
+        case params[:channel]
+        when 'Everything'
+        when 'Following'
+          posts = posts.where(user_id: current_user.followed_users).references(:users)
+        when 'My Channels'
+          posts = posts.where(user_id: current_user.users_from_channels)
+        else
+          channel = Channel.find_by_name(params[:channel])
+          posts = posts.where(user_id: channel.users)
+        end
       end
 
       case params[:sort]

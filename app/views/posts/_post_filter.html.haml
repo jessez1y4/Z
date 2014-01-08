@@ -1,6 +1,6 @@
 .btn-group.pull-left
   %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-    = params[:channel] || 'Everything'
+    = params[:channel].titleize || 'Everything'
     %span.caret
   %ul.dropdown-menu.text-left
     %li
@@ -8,13 +8,16 @@
     %li.divider
     %li
       = link_to 'Following', posts_path(params.merge(channel: 'Following'))
-    %li.divider
-    %li
-      %a{href: '#'} Channel 1
-    %li
-      %a{href: '#'} Channel 2
-    %li
-      %a{href: '#'} Channel 3
+    - if current_user.channels.any?
+      %li.divider
+      %li
+        = link_to 'My Channels', posts_path(params.merge(channel: 'My Channels'))
+      %li.divider
+      %li.dropdown-header
+        My Channels
+      - current_user.channels.each do |channel|
+        %li
+          = link_to channel.name.titleize, posts_path(params.merge(channel: channel.name))
 
 .btn-group
   .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}

@@ -7,12 +7,12 @@ $('#masonry-container').append new_posts
 
 $(new_posts).css('opacity', '0')
 
-bind_hover()
-
 $('#masonry-container').imagesLoaded ->
   $('#masonry-container').masonry 'reload'
   $(new_posts).animate
     opacity: 1
+  bind_hover()
+
 
 <% if @posts.next_page %>
 
