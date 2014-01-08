@@ -26,6 +26,7 @@ class Post < ActiveRecord::Base
 
     if params[:user_id]
       posts = posts.where(user_id: params[:user_id])
+      params[:sort] ||= 'Newest'
     elsif params[:channel_id]
       channel = Channel.find(params[:channel_id])
       posts = posts.where(user_id: channel.users)
