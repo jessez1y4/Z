@@ -69,8 +69,13 @@
 
 
     .col-xs-5
-
       %br
+      %br
+      - @post.tags.each do |tag|
+        = link_to "##{tag.name}", posts_path(tag: tag.name)
+        &nbsp;
+
+      %hr
 
       - @post.items.each do |item|
         .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
@@ -78,8 +83,7 @@
             = item.number
             = item.name
 
-      %br
-
       - if @post.description.present?
-        = simple_format @post.description
+        %hr
+          = simple_format @post.description
 

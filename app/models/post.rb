@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  acts_as_taggable
+
   belongs_to :user, counter_cache: true
 
   has_many :items, -> { order('number ASC') }

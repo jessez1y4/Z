@@ -68,6 +68,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cloudinary_id, :title, :description, items_attributes: [:id, :name, :number, :x, :y, :_destroy])
+    params.require(:post).permit(:cloudinary_id, :title, :description, :tag_list, items_attributes: [:id, :name, :number, :x, :y, :_destroy])
   end
 end

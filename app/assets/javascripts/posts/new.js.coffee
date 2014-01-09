@@ -56,6 +56,10 @@ $ ->
       )
 
     new_post_validator = $('#new-post-form').validate
+      rules:
+        'post[title]':
+          required: true
+
       submitHandler: (form) ->
         $('.nested-fields:visible').each (index) ->
           $('.item-num', this).val(index + 1)

@@ -25,3 +25,7 @@
 
     - if post.description.present?
       = simple_format truncate(post.description, length: 250)
+
+    %br
+    - post.tags.each do |tag|
+      = link_to "##{tag.name}", posts_path(tag: tag.name)
