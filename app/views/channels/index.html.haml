@@ -1,6 +1,10 @@
 .container
   .clearfix
     .pull-right
-      = link_to 'Create New Channel', new_channel_path, class: 'btn btn-primary'
+      - if user_signed_in?
+        = link_to 'Create New Channel', new_channel_path, class: 'btn btn-primary'
+      - else
+        %button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+          Create New Channel
   - @channels.each do |channel|
     = link_to channel.name.titleize, channel_posts_url(channel)
