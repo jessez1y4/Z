@@ -5,19 +5,20 @@
   %ul.dropdown-menu.text-left
     %li
       = link_to 'Everything', posts_path(params.merge(channel: nil))
-    %li.divider
-    %li
-      = link_to 'Following', posts_path(params.merge(channel: 'Following'))
-    - if current_user.channels.any?
+    - if user_signed_in?
       %li.divider
       %li
-        = link_to 'My Channels', posts_path(params.merge(channel: 'My Channels'))
-      %li.divider
-      %li.dropdown-header
-        My Channels
-      - current_user.channels.each do |channel|
+        = link_to 'Following', posts_path(params.merge(channel: 'Following'))
+      - if current_user.channels.any?
+        %li.divider
         %li
-          = link_to channel.name.titleize, posts_path(params.merge(channel: channel.name))
+          = link_to 'My Channels', posts_path(params.merge(channel: 'My Channels'))
+        %li.divider
+        %li.dropdown-header
+          My Channels
+        - current_user.channels.each do |channel|
+          %li
+            = link_to channel.name.titleize, posts_path(params.merge(channel: channel.name))
 
 .btn-group
   .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
