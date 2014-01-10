@@ -41,6 +41,11 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.with_tag(tag_name)
+    tags = Tag.where('name ILIKE ?', tag_name)
+    joins(:taggings).where('taggings.tag_id IN (?)', tags.ids).group('posts.id')
+  end
+
   def self.following(user)
     where(user_id: user.followed_users)
   end
