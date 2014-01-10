@@ -6,7 +6,7 @@ class ChannelMembershipsController < ApplicationController
     current_user.join!(@channel)
 
     respond_to do |format|
-      format.html { redirect_to channel_posts_url(@channel) }
+      format.html { redirect_to @channel }
       format.js { @channel.reload }
     end
   end
@@ -16,7 +16,7 @@ class ChannelMembershipsController < ApplicationController
     current_user.leave!(@channel)
 
     respond_to do |format|
-      format.html { redirect_to channel_posts_url(@channel) }
+      format.html { redirect_to @channel }
       format.js { @channel.reload }
     end
   end

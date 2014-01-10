@@ -9,7 +9,7 @@
       %p.pull-left.text-muted
         By
         = succeed ',' do
-          = link_to @user.full_name, user_posts_path(@user)
+          = link_to @user.full_name, @user
         = time_ago_in_words @post.created_at
         ago
 
@@ -24,7 +24,7 @@
           = cl_image_tag @user.avatar_cloudinary_id, width: 84, height: 84, crop: 'fill', gravity: 'face', class: 'img-rounded-s'
         .col-xs-9
           %p
-            = link_to @user.full_name, user_posts_path(@user)
+            = link_to @user.full_name, @user
           %p.small.text-muted
             = "#{@user.likes} likes "
             %span#followers
@@ -47,7 +47,7 @@
             = cl_image_tag comment.user.avatar_cloudinary_id, width: 50, height: 50, crop: 'fill', gravity: 'face', class: 'img-rounded-s'
           .col-xs-10
             %p
-              = link_to comment.user.full_name, user_posts_path(comment.user)
+              = link_to comment.user.full_name, comment.user
               %span.small
                 = time_ago_in_words comment.created_at
                 ago
@@ -73,7 +73,7 @@
       %br
       - if @post.tags.any?
         - @post.tags.each do |tag|
-          = link_to "##{tag.name}", posts_path(tag: tag.name)
+          = link_to "##{tag.name}", tag
           &nbsp;
         %hr
 

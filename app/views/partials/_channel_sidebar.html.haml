@@ -13,7 +13,7 @@
   %hr
   %p.text-muted.small
     Created by
-    = link_to channel.creator.full_name.titleize, user_posts_path(channel.creator.id)
+    = link_to channel.creator.full_name.titleize, channel.creator
     = time_ago_in_words channel.created_at
     ago
 

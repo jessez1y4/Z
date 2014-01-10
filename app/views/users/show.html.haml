@@ -3,23 +3,23 @@
     .col-xs-8
       .btn-group.pull-right.simple-sort
         .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-          = params[:sort] || 'Hot this week'
+          = params[:sort]
           %span.caret
 
         %ul.dropdown-menu.text-left
           %li
-            = link_to 'Newest', posts_path(params.merge(sort: 'Newest'))
+            = link_to 'Newest', user_path(@user, params.merge(sort: 'Newest'))
           %li.divider
           %li
-            = link_to 'Hot this month', posts_path(params.merge(sort: 'Hot this month'))
+            = link_to 'Hot this month', user_path(@user, params.merge(sort: 'Hot this month'))
           %li
-            = link_to 'Hot all time', posts_path(params.merge(sort: 'Hot all time'))
+            = link_to 'Hot all time', user_path(@user, params.merge(sort: 'Hot all time'))
       %h4
         %small Styles from
         = @user.full_name.titleize
       %hr
       #masonry-container
-        = render partial: 'medium_post', collection: @posts
+        = render partial: 'posts/medium_post', collection: @posts
       #paginate-containter
         = paginate @posts, theme: 'twitter-bootstrap-3'
 

@@ -1,26 +1,11 @@
 class PostsController < ApplicationController
   def index
-    posts = Post.scope(params, current_user).page(params[:page])
-    sleep(0.5) # temporary code to simulate real internet latency
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @posts = posts.per(10)
+    params[:channel] ||= 'Everything'
+    params[:sort] ||= 'Hot this week'
 
-      if request.xhr?
-        render 'index_grid'
-      else
-        render 'index_user'
-      end
-    elsif params[:channel_id]
-      @channel = Channel.find(params[:channel_id])
-      @posts = posts.per(10)
+    posts = Post.channel(params[:channel], current_user).sort(params[:sort]).page(params[:page])
 
-      if request.xhr?
-        render 'index_grid'
-      else
-        render 'index_channel'
-      end
-    elsif params[:view] == 'grid'
+    if params[:view] == 'grid'
       @posts = posts.per(20)
       render 'index_grid'
     else

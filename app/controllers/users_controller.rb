@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  def show
+    params[:sort] ||= 'Newest'
+    @user = User.find(params[:id])
+    @posts = @user.posts.sort(params[:sort]).page(params[:page]).per(1)
+    render 'posts/index_grid' if request.xhr?
+  end
+
   def edit
     @user = current_user
   end
@@ -9,13 +16,13 @@ class UsersController < ApplicationController
       raise "Invalid upload signature" if !preloaded.valid?
       # @cloudinary_id = preloaded.identifier
       if current_user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
-        redirect_to user_posts_url(current_user), notice: 'Avatar updated.'
+        redirect_to current_user, notice: 'Avatar updated.'
       else
         #TODO
       end
     else
       if current_user.update_attributes(user_params)
-        redirect_to user_posts_url(current_user), notice: 'Profile updated.'
+        redirect_to current_user, notice: 'Profile updated.'
       else
         @active_tab = '#profile-edit'
         @user = current_user

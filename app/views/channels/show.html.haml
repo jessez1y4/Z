@@ -8,23 +8,23 @@
 
         %ul.dropdown-menu.text-left
           %li
-            = link_to 'Newest', posts_path(params.merge(sort: 'Newest'))
+            = link_to 'Newest', channel_path(@channel, params.merge(sort: 'Newest'))
           %li.divider
           %li
-            = link_to 'Hot today', posts_path(params.merge(sort: 'Hot today'))
+            = link_to 'Hot today', channel_path(@channel, params.merge(sort: 'Hot today'))
           %li
-            = link_to 'Hot this week', posts_path(params.merge(sort: 'Hot this week'))
+            = link_to 'Hot this week', channel_path(@channel, params.merge(sort: 'Hot this week'))
           %li
-            = link_to 'Hot this month', posts_path(params.merge(sort: 'Hot this month'))
+            = link_to 'Hot this month', channel_path(@channel, params.merge(sort: 'Hot this month'))
           %li
-            = link_to 'Hot all time', posts_path(params.merge(sort: 'Hot all time'))
+            = link_to 'Hot all time', channel_path(@channel, params.merge(sort: 'Hot all time'))
       %h4
         %small Styles from
         = @channel.name.titleize
 
       %hr
       #masonry-container
-        = render partial: 'medium_post', collection: @posts
+        = render partial: 'posts/medium_post', collection: @posts
       #paginate-containter
         = paginate @posts, theme: 'twitter-bootstrap-3'
 

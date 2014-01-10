@@ -12,8 +12,6 @@
         %li
           = link_to 'Channel', channels_path
 
-        %li
-          = link_to 'Tag', tags_path
       %form.navbar-form.navbar-left{role: "search"}
         .form-group
           %input.form-control{placeholder: "Search", type: "text"}/
@@ -38,7 +36,7 @@
                   = fa_icon('chain lg')
                 From web
         %li
-          = link_to 'Me', user_posts_path(current_user)
+          = link_to 'Me', current_user
         %li.dropdown
           %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
             = fa_icon 'cog'

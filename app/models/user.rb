@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow!(other_user)
-    follow_relationships.find_by(followed_id: other_user.id).destroy
+    follow_relationships.find_by(followed_id: other_user.id).destroy!
   end
 
   # like/unlike post methods
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def unlike!(post)
-    like_relationships.find_by(post_id: post.id).destroy
+    like_relationships.find_by(post_id: post.id).destroy!
   end
 
   # count of likes
@@ -90,6 +90,6 @@ class User < ActiveRecord::Base
   end
 
   def leave!(channel)
-    channel_memberships.find_by(channel_id: channel.id).destroy
+    channel_memberships.find_by(channel_id: channel.id).destroy!
   end
 end

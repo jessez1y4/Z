@@ -1,5 +1,7 @@
 $ ->
   if $('#masonry-container').length
+    $('.masonry-brick').css('opacity', '0')
+
     window.bind_hover = ->
       $('.masonry-brick').hover ->
         $('.hidden-info', this).removeClass 'hidden'
@@ -17,6 +19,8 @@ $ ->
         itemSelector: '.masonry-brick'
         columnWidth: column
         gutterWidth: 15
+      $('.masonry-brick').animate
+        opacity: 1
       bind_hover()
 
   if $('body.posts-index').length or $('#masonry-container').length
