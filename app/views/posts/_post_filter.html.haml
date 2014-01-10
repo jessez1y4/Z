@@ -1,6 +1,6 @@
 .btn-group.pull-left
   %button.btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-    = params[:channel].titleize || 'Everything'
+    = params[:channel].titleize
     %span.caret
   %ul.dropdown-menu.text-left
     %li
@@ -22,7 +22,7 @@
 
 .btn-group
   .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-    = params[:sort] || 'Hot this week'
+    = params[:sort]
     %span.caret
 
   %ul.dropdown-menu.text-left
