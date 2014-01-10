@@ -1,6 +1,4 @@
 class Post < ActiveRecord::Base
-  acts_as_taggable
-
   belongs_to :user, counter_cache: true
 
   has_many :items, -> { order('number ASC') }
@@ -8,6 +6,9 @@ class Post < ActiveRecord::Base
 
   has_many :like_relationships, dependent: :destroy
   has_many :likers, source: :user, through: :like_relationships
+
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
@@ -33,6 +34,9 @@ class Post < ActiveRecord::Base
       channel = Channel.find(params[:channel_id])
       posts = posts.where(user_id: channel.users)
       params[:sort] ||= 'Hot this month'
+    elsif params[:tag_id]
+      taggings = Tagging.where(tag_id: params[:tag_id])
+      posts = posts.where(tagging_id: taggings)
     else
       params[:channel] ||= 'Everything'
       params[:sort] ||= 'Hot this week'
@@ -65,5 +69,15 @@ class Post < ActiveRecord::Base
     end
 
     posts
+  end
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
   end
 end

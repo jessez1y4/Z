@@ -1,7 +1,7 @@
 if $('.small-post').length
-  new_posts = $.parseHTML "<%= j render partial: 'small_post', collection: @posts %>"
+  new_posts = $.parseHTML "<%= j render partial: 'posts/small_post', collection: @posts %>"
 else
-  new_posts = $.parseHTML "<%= j render partial: 'medium_post', collection: @posts %>"
+  new_posts = $.parseHTML "<%= j render partial: 'posts/medium_post', collection: @posts %>"
 
 $('#masonry-container').append new_posts
 

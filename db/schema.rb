@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109144847) do
+ActiveRecord::Schema.define(version: 20140110021306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140109144847) do
     t.text     "description"
     t.integer  "like_relationships_count", default: 0
     t.integer  "comments_count",           default: 0
+    t.integer  "tags_count",               default: 0
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -105,21 +106,17 @@ ActiveRecord::Schema.define(version: 20140109144847) do
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
+    t.integer  "post_id"
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
-    t.string "name"
+    t.string  "name",                    null: false
+    t.integer "posts_count", default: 0
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                              null: false

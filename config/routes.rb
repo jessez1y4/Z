@@ -31,4 +31,6 @@ StyleMe::Application.routes.draw do
   end
 
   resources :channel_memberships
+
+  resources :tags
 end

@@ -6,7 +6,7 @@
       %h2
         = @post.title.titleize
 
-      %p.pull-left
+      %p.pull-left.text-muted
         By
         = succeed ',' do
           = link_to @user.full_name, user_posts_path(@user)
@@ -71,19 +71,20 @@
     .col-xs-5
       %br
       %br
-      - @post.tags.each do |tag|
-        = link_to "##{tag.name}", posts_path(tag: tag.name)
-        &nbsp;
+      - if @post.tags.any?
+        - @post.tags.each do |tag|
+          = link_to "##{tag.name}", posts_path(tag: tag.name)
+          &nbsp;
+        %hr
 
-      %hr
-
-      - @post.items.each do |item|
-        .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-          %p
-            = item.number
-            = item.name
+      - if @post.items.any?
+        - @post.items.each do |item|
+          .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+            %p
+              = item.number
+              = item.name
+        %hr
 
       - if @post.description.present?
-        %hr
-          = simple_format @post.description
+        = simple_format @post.description
 

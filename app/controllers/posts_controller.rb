@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_url(@post)
     else
-      #TODO
+      render 'new'
     end
   end
 
