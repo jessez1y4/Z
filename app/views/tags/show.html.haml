@@ -1,0 +1,33 @@
+.container
+  .btn-group.pull-right
+    .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+      = params[:sort]
+      %span.caret
+
+    %ul.dropdown-menu.text-left
+      %li
+        = link_to 'Newest', tag_path(@tag, params.merge(sort: 'Newest'))
+      %li.divider
+      %li
+        = link_to 'Hot today', tag_path(@tag, params.merge(sort: 'Hot today'))
+      %li
+        = link_to 'Hot this week', tag_path(@tag, params.merge(sort: 'Hot this week'))
+      %li
+        = link_to 'Hot this month', tag_path(@tag, params.merge(sort: 'Hot this month'))
+      %li
+        = link_to 'Hot all time', tag_path(@tag, params.merge(sort: 'Hot all time'))
+  %h4
+    %small Styles with tag
+    = "##{@tag.name}"
+
+  %hr
+  #masonry-container
+    = render partial: 'posts/small_post', collection: @posts
+  #paginate-containter
+    = paginate @posts, theme: 'twitter-bootstrap-3'
+
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..

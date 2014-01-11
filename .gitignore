@@ -26,7 +26,6 @@ public/system
 
 .rbenv-vars
 config/database.yml
-tags
 
 # Ignore emacs backups
 *~
