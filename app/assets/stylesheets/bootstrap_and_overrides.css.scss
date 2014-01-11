@@ -4,6 +4,11 @@ $font-size-base: 13px;
 $navbar-height: 40px;
 //$navbar-inverse-bg: #3f454f;
 
+// everything square
+$border-radius-base: 0px;
+$border-radius-small: 0px;
+$border-radius-large: 0px;
+
 @import 'bootstrap-custom';
 body {
   padding-top: 8px;
@@ -49,20 +54,6 @@ label.error {
   i {
     color: #d9534f;
   }
-}
-
-.img-rounded-m {
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
-}
-
-.img-rounded-s {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -khtml-border-radius: 2px;
-  border-radius: 2px;
 }
 
 .fa-14 {

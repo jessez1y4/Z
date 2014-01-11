@@ -3,7 +3,7 @@
     .masonry-brick
       .hidden.hidden-info.info-top
         = truncate small_post.title.titleize, length: 22
-      = cl_image_tag small_post.cloudinary_id, width: 170, class: 'img-rounded-s'
+      = cl_image_tag small_post.cloudinary_id, width: 170
       .hidden.hidden-info.info-btm
         .pull-left
           = fa_icon 'heart'
