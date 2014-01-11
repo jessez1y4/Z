@@ -9,15 +9,17 @@
       = render 'partials/like_button', post: post
 
     / post info
+    %hr
     %h4
       = link_to post, class: 'black-link' do
         = truncate post.title.titleize, length: 20
 
-    %p
-      By
-      = link_to post.user.full_name, post.user
+    %p.text-muted
+      by
+      = link_to post.user.full_name.titleize, post.user
 
-    %p
+    %p.text-muted.small
+      Posted
       = time_ago_in_words post.created_at
       ago
 
