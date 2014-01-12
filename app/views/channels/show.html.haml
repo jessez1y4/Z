@@ -8,9 +8,9 @@
 
         %ul.dropdown-menu.text-left
           %li
-            = link_to 'New', user_path(@user, params.merge(sort: 'New'))
+            = link_to 'New', channel_path(@channel, params.merge(sort: 'New'))
           %li
-            = link_to 'Hot', user_path(@user, params.merge(sort: 'Hot'))
+            = link_to 'Hot', channel_path(@channel, params.merge(sort: 'Hot'))
       %h4
         %small Styles from
         = @channel.name.titleize
