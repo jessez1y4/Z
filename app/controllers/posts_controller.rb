@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     params[:channel] ||= 'Everything'
-    params[:sort] ||= 'Hot this week'
+    params[:sort] ||= 'Hot'
 
     posts = Post.channel(params[:channel], current_user).sort(params[:sort]).page(params[:page])
 

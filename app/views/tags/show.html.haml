@@ -6,16 +6,9 @@
 
     %ul.dropdown-menu.text-left
       %li
-        = link_to 'Newest', tag_path(@tag, params.merge(sort: 'Newest'))
-      %li.divider
+        = link_to 'New', tag_path(@tag, params.merge(sort: 'New'))
       %li
-        = link_to 'Hot today', tag_path(@tag, params.merge(sort: 'Hot today'))
-      %li
-        = link_to 'Hot this week', tag_path(@tag, params.merge(sort: 'Hot this week'))
-      %li
-        = link_to 'Hot this month', tag_path(@tag, params.merge(sort: 'Hot this month'))
-      %li
-        = link_to 'Hot all time', tag_path(@tag, params.merge(sort: 'Hot all time'))
+        = link_to 'Hot', tag_path(@tag, params.merge(sort: 'Hot'))
   %h4
     %small Styles with tag
     = "##{@tag.name}"

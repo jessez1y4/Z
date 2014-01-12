@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   def show
-    params[:sort] ||= 'Hot this month'
+    params[:sort] ||= 'Hot'
     @channel = Channel.find(params[:id])
     @posts = @channel.posts.sort(params[:sort]).page(params[:page]).per(1)
     render 'posts/index_grid' if request.xhr?

@@ -17,9 +17,9 @@
 
       .form-group
         %label Tags (separate by comma)
-        = f.text_field :tag_list, class: 'form-control', placeholder: 'tag1, tag2, ...'
+        = f.text_field :tag_list, class: 'form-control', placeholder: 'tag1, tag2, ...', autocomplete: :off, id: 'tag-list-input'
 
-      .form-group
+      .form-group.fa-14
         = fa_icon 'hand-o-up'
         %strong Click on your photo to add item labels!
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    params[:sort] ||= 'Newest'
+    params[:sort] ||= 'New'
     @user = User.find(params[:id])
     @posts = @user.posts.sort(params[:sort]).page(params[:page]).per(1)
     render 'posts/index_grid' if request.xhr?

@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
 
   def self.sort(sort)
     case sort
-    when 'Newest'
+    when 'New'
       newest
     when 'Hot today'
       recent(1.day).hottest
@@ -36,14 +36,9 @@ class Post < ActiveRecord::Base
       recent(1.day).hottest
     when 'Hot this month'
       recent(1.week).hottest
-    when 'Hot all time'
+    when 'Hot'
       hottest
     end
-  end
-
-  def self.with_tag(tag_name)
-    tags = Tag.where('name ILIKE ?', tag_name)
-    joins(:taggings).where('taggings.tag_id IN (?)', tags.ids).group('posts.id')
   end
 
   def self.following(user)
@@ -81,8 +76,8 @@ class Post < ActiveRecord::Base
   end
 
   def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
+    self.tags = names.upcase.split(",").reject{|s| s.blank?}.collect(&:strip).uniq.map do |n|
+      Tag.where(name: n).first_or_create!
     end
   end
 end
