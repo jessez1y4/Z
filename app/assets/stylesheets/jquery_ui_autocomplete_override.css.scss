@@ -6,6 +6,7 @@
   float: left;
   display: none;
   min-width: 160px;
+  max-width: 357px;
   _width: 160px;
   padding: 4px 0;
   margin: 2px 0 0 0;
@@ -14,7 +15,7 @@
   border-color: #dddddd;
   border-style: solid;
   border-width: 1px;
-  border-top-color: white;
+  border-top-width: 0;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
   -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
