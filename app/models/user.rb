@@ -114,6 +114,10 @@ class User < ActiveRecord::Base
     channel_memberships.find_by(channel_id: channel.id).destroy!
   end
 
+  # google log in
+  def self.find_for_google_oauth(auth)
+  end
+
   # facebook log in
   def self.find_for_facebook_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

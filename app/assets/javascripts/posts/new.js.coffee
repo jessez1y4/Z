@@ -69,6 +69,14 @@ $ ->
 
         form.submit()
 
+    errors = {}
+    $('#new-post-form input').each (i, e) ->
+      if $(e).data('error')
+        errors[$(e).attr('name')] = $(e).data('error')
+
+    new_post_validator.showErrors errors
+
+
     # tag autocomplete
     $('#tag-list-input').autocomplete
       source: (request, response) ->

@@ -9,7 +9,7 @@
 
       .form-group
         %label Title
-        = f.text_field :title, class: 'form-control', placeholder: 'Name your style...'
+        = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
 
       .form-group
         %label Description

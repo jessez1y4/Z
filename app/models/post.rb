@@ -12,6 +12,8 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
+  validates :title, presence: true
+
   # scope :page_with_counter_cache, lambda {|page_number, total_count_value|
   #   page(page_number).extending {
   #     # open scope to smuggle total_count
