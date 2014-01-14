@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :posts
   has_many :items, through: :posts
@@ -114,12 +114,8 @@ class User < ActiveRecord::Base
     channel_memberships.find_by(channel_id: channel.id).destroy!
   end
 
-  # google log in
-  def self.find_for_google_oauth(auth)
-  end
-
-  # facebook log in
-  def self.find_for_facebook_oauth(auth)
+  # google/facebook log in
+  def self.find_for_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -132,8 +128,9 @@ class User < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+      if data = session['devise.omniauth_data'] && session['devise.omniauth_data']['extra']['raw_info']
+        user.email = data['email'] if user.email.blank?
+        user.full_name = data['name'] if user.full_name.blank?
       end
     end
   end
