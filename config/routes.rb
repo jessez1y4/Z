@@ -1,12 +1,12 @@
 StyleMe::Application.routes.draw do
   root 'posts#index'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
-  controller :users do
-    get 'users/sign_up/email_check' => :check_email_uniqueness
-    get 'users/sign_up/username_check' => :check_username_uniqueness
-  end
+  # controller :users do
+  #   get 'users/sign_up/email_check' => :check_email_uniqueness
+  #   get 'users/sign_up/username_check' => :check_username_uniqueness
+  # end
 
   resources :users, except: [:edit, :update] do
     resources :posts

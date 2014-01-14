@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110021306) do
+ActiveRecord::Schema.define(version: 20140113223917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140110021306) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",                           null: false
+    t.string   "username"
     t.string   "description"
     t.string   "full_name",                          null: false
     t.string   "avatar_cloudinary_id"
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 20140110021306) do
     t.integer  "followers_count",        default: 0
     t.integer  "channels_count",         default: 0
     t.integer  "channel_allowance",      default: 1, null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

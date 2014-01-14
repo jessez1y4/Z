@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :posts
   has_many :items, through: :posts
@@ -10,28 +15,44 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :like_relationships, dependent: :destroy
-  has_many :liked_posts, source: :post, through: :like_relationships
+  has_many :liked_posts,
+           source: :post,
+           through: :like_relationships
 
   has_many :channel_memberships, dependent: :destroy
   has_many :channels, through: :channel_memberships
-  has_many :users_from_channels, source: :users, through: :channels
+  has_many :users_from_channels,
+           source: :users,
+           through: :channels
 
-  has_many :created_channels, class_name: 'Channel', foreign_key: 'creator_id'
+  has_many :created_channels,
+           class_name: 'Channel',
+           foreign_key: 'creator_id'
 
   # follower_id    ---->   followed_id
-  has_many :follow_relationships, foreign_key: "follower_id", dependent: :destroy
-  has_many :followed_users, through: :follow_relationships, source: :followed
+  has_many :follow_relationships,
+           foreign_key: "follower_id",
+           dependent: :destroy
+  has_many :followed_users,
+           through: :follow_relationships,
+           source: :followed
 
   # followed_id    ---->   follower_id
-  has_many :reverse_follow_relationships, foreign_key: "followed_id", class_name: "FollowRelationship", dependent: :destroy
-  has_many :followers, through: :reverse_follow_relationships, source: :follower
+  has_many :reverse_follow_relationships,
+           foreign_key: "followed_id",
+           class_name: "FollowRelationship",
+           dependent: :destroy
+  has_many :followers,
+           through: :reverse_follow_relationships,
+           source: :follower
 
 
   attr_accessor :login
 
-  validates :username, :full_name, presence: true
-  validates :username, length: { minimum: 4, maximum: 15 }
-  validates :username, format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore' }
+  validates :full_name, presence: true
+  validates :username,
+            length: { minimum: 4, maximum: 15, allow_nil: true },
+            format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -91,5 +112,37 @@ class User < ActiveRecord::Base
 
   def leave!(channel)
     channel_memberships.find_by(channel_id: channel.id).destroy!
+  end
+
+  # facebook log in
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.full_name = auth.info.name   # assuming the user model has a name
+      user.save!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
+  def password_required
+    super && provider.blank?
   end
 end

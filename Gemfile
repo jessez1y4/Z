@@ -55,6 +55,7 @@ end
 gem 'haml-rails', '~> 0.4'
 
 gem 'devise', '~> 3.2.0'
+gem 'omniauth-facebook', '~> 1.6.0'
 
 gem 'thin', '~> 1.6.1'
 

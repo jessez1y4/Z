@@ -39,10 +39,13 @@
 
       = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
         .form-group
+          .col-xs-7.col-xs-offset-2
+            - if provider = @user.provider
+              = "You are signed in through #{provider.titleize}."
+        .form-group
           %label.col-xs-2.control-label Username
           .col-xs-7
-            %p.form-control-static
-              = @user.username
+            = f.text_field :username, class: 'form-control', 'data-error' => field_err(@user, :username)
         .form-group
           %label.col-xs-2.control-label Email
           .col-xs-7
