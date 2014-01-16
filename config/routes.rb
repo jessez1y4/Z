@@ -1,7 +1,10 @@
 StyleMe::Application.routes.draw do
   root 'posts#index'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks',
+    passwords: 'passwords'
+  }
 
   # controller :users do
   #   get 'users/sign_up/email_check' => :check_email_uniqueness
@@ -17,6 +20,8 @@ StyleMe::Application.routes.draw do
 
   # current_user
   resource :user
+
+  resources :sign_in_authentications, only: [:destroy]
 
   resources :follow_relationships, only: [:create, :destroy]
 

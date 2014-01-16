@@ -46,11 +46,15 @@ class User < ActiveRecord::Base
            through: :reverse_follow_relationships,
            source: :follower
 
+  has_many :sign_in_authentications, dependent: :destroy
 
   attr_accessor :login
 
+  accepts_nested_attributes_for :sign_in_authentications, allow_destroy: true
+
   validates :full_name, presence: true
   validates :username,
+            uniqueness: { allow_nil: true },
             length: { minimum: 4, maximum: 15, allow_nil: true },
             format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
 
@@ -115,14 +119,15 @@ class User < ActiveRecord::Base
   end
 
   # google/facebook log in
-  def self.find_for_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
+  def self.create_from_omniauth(auth)
+    create! do |user|
+      sign_in_auth = user.sign_in_authentications.new
+      sign_in_auth.provider = auth.provider
+      sign_in_auth.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.full_name = auth.info.name   # assuming the user model has a name
-      user.save!
+      user.random_password = true
+      user.full_name = auth.info.name.titleize
     end
   end
 

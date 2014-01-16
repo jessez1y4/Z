@@ -1,70 +1,94 @@
 .container
   .row
-    .col-xs-3
-      %ul.nav.nav-pills.nav-stacked
-        %li#avatar-edit-tab
-          %a{href: '#avatar-edit', 'data-toggle' => 'tab'}AVATAR
-        %li#profile-edit-tab
-          %a{href: '#profile-edit', 'data-toggle' => 'tab'}PROFILE
-        %li#preference-edit-tab
-          %a{href: '#preference-edit', 'data-toggle' => 'tab'}PREFERENCE
-    .col-xs-9.tab-content{'data-tab' => @active_tab}
-      #avatar-edit.tab-pane
-        %h3
-          AVATAR
-        %hr
-        .row
-          .col-xs-2
-            = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face'
-          .col-xs-10
-            #step-1
-              %button#upload-avatar-btn.btn.btn-default.btn-lg
-                Upload from local
-              %p
-                Your avatar should be at least 100 x 100 pixels.
-            #step-2.hidden
-              %p
-                Save the change?
-              %button#save-avatar-btn.btn.btn-default.btn-lg
-                Save
-              = link_to 'Discard', edit_user_path, class: 'btn btn-danger btn-lg'
+    .col-xs-7
+      /   %ul.nav.nav-pills.nav-stacked
+      /     %li#avatar-edit-tab
+      /       %a{href: '#avatar-edit', 'data-toggle' => 'tab'}AVATAR
+      /     %li#profile-edit-tab
+      /       %a{href: '#profile-edit', 'data-toggle' => 'tab'}PROFILE
+      /     %li#preference-edit-tab
+      /       %a{href: '#preference-edit', 'data-toggle' => 'tab'}PREFERENCE
+      / .col-xs-9.tab-content{'data-tab' => @active_tab}
+      /   #avatar-edit.tab-pane
+      %h4
+        AVATAR
+      %hr
+      %br
+      #avatar-edit.row
+        .col-xs-3.col-xs-offset-1
+          = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face', id: 'avatar-preview'
+        .col-xs-8
+          #step-1
+            %button#upload-avatar-btn.btn.btn-default.btn-lg
+              Upload from local
+            %p
+              Your avatar should be at least 100 x 100 pixels.
+          #step-2.hidden
+            %p
+              Save the change?
+            %button#save-avatar-btn.btn.btn-default.btn-lg
+              Save
+            = link_to 'Discard', edit_user_path, class: 'btn btn-danger btn-lg'
 
-            .hidden
-              = form_tag '/user', method: :put, id: 'edit-avatar-form' do
-                = cl_image_upload_tag :cloudinary_data
-                = submit_tag 'submit'
+          .hidden
+            = form_tag '/user', method: :put, id: 'edit-avatar-form' do
+              = cl_image_upload_tag :cloudinary_data
+              = submit_tag 'submit'
+    .col-xs-5
+      %h4 SIGN IN
+      %hr
+      - if current_user.random_password?
+        %p.small
+          = fa_icon 'warning'
+          Set a password before removing all your authentications above, so that you can still sign in with username/email and password.
+        %br
+      .row
+        #sign-in-edit.col-xs-8.col-xs-offset-1.fa-14
+          = render 'sign_in_authentications/index'
 
-      #profile-edit.tab-pane
-        %h3 PROFILE
-        %hr
+  %br
+  %br
+  .row
+    .col-xs-7
+      %h4 PROFILE
+      %hr
 
-        = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
+      = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
+        .form-group
+          %label.col-xs-3.control-label Username
+          .col-xs-8
+            = f.text_field :username, class: 'form-control', 'data-error' => field_err(@user, :username)
+        .form-group
+          %label.col-xs-3.control-label Email address
+          .col-xs-8
+            = f.text_field :email, class: 'form-control', 'data-error' => field_err(@user, :email)
+        .form-group
+          %label.col-xs-3.control-label Full name
+          .col-xs-8
+            = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(@user, :full_name), placeholder: 'What is your name?'
+        .form-group
+          %label.col-xs-3.control-label Description
+          .col-xs-8
+            = f.text_area :description, class: 'form-control', 'data-error' => field_err(@user, :description), placeholder: 'Tell us about yourself...'
+        - if @user.random_password?
           .form-group
-            .col-xs-7.col-xs-offset-2
-              - if provider = @user.provider
-                = "You are signed in through #{provider.titleize}."
-          .form-group
-            %label.col-xs-2.control-label Username
-            .col-xs-7
-              = f.text_field :username, class: 'form-control', 'data-error' => field_err(@user, :username)
-          .form-group
-            %label.col-xs-2.control-label Email
-            .col-xs-7
-              = f.text_field :email, class: 'form-control', 'data-error' => field_err(@user, :email)
-          .form-group
-            %label.col-xs-2.control-label Full Name
-            .col-xs-7
-              = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(@user, :full_name)
-          .form-group
-            %label.col-xs-2.control-label Description
-            .col-xs-7
-              = f.text_area :description, class: 'form-control', 'data-error' => field_err(@user, :description)
-          .form-group
-            .col-xs-7.col-xs-offset-2
-              = f.submit 'Update my profile', class: 'btn btn-primary btn-lg'
+            .col-xs-8.col-xs-offset-3.small
+              = fa_icon 'warning'
+              Set your password for the first time.
+        .form-group
+          %label.col-xs-3.control-label New password
+          .col-xs-8
+            = f.password_field :password, class: 'form-control', 'data-error' => field_err(@user, :password), placeholder: 'Change your password here...'
+
+        .form-group
+          .col-xs-8.col-xs-offset-3
+            = f.submit 'Update my profile', class: 'btn btn-primary btn-lg'
+
+    .col-xs-5
+      %h4 Preference
+      %hr
 
 
-      #preference-edit.tab-pane
-        %h3 PREFERENCE
-        %hr
+
+
 

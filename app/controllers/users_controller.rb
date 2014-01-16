@@ -21,10 +21,16 @@ class UsersController < ApplicationController
         #TODO
       end
     else
+      params[:user].delete(:username) if params[:user][:username].blank?
+      if params[:user][:password].present?
+        params[:user][:random_password] = false
+      else
+        params[:user].delete(:password)
+      end
       if current_user.update_attributes(user_params)
+        sign_in current_user, bypass: true
         redirect_to current_user, notice: 'Profile updated.'
       else
-        @active_tab = '#profile-edit'
         @user = current_user
         render 'edit'
       end
@@ -50,6 +56,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :full_name, :description)
+    params.require(:user).permit(:username, :email, :full_name, :description, :password, :random_password)
   end
 end

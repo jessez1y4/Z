@@ -22,8 +22,8 @@
               = f.submit 'Sign In', class: 'btn btn-primary btn-lg'
               #sns-signin.pull-right
                 Sign in with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), root_path
+                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
                 &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), root_path
+                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google_oauth2)
                 &nbsp;&nbsp;
                 = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path
