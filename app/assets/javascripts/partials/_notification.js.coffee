@@ -13,18 +13,18 @@ $ ->
 window.showNotification = (msg, time) ->
   time = time || 2500
 
-  $('#notification').html(msg)
+  $('#notification .wrapper').html(msg)
 
   $('#notification')
     .show()
     .animate
       opacity: 1
-      top: '16px'
+      top: '20px'
     , 'slow', ->
       setTimeout ->
         $('#notification').animate(
           opacity: 0
-          top: '2px'
+          top: '0'
         , ->
           $(this).hide())
       , time

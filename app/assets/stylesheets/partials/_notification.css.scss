@@ -1,11 +1,22 @@
 #notification{
   position: fixed;
-  top: 2px;
-  right: 30px;
-  padding: 18px 22px 18px 22px;
-  background-color: #5cb85c;
+  top: 0;
+  left: 50%;
   opacity: 0;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
+  z-index: 40000;
+
+  .wrapper {
+    position: relative;
+    left: -50%;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4c4c4c;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
+    border: 1px solid #dddddd;
+  }
 }
