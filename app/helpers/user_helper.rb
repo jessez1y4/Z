@@ -8,12 +8,4 @@ module UserHelper
       end
     end
   end
-
-  def nicer_name(provider)
-    if provider == 'google_oauth2'
-      'Google'
-    else
-      provider.titleize
-    end
-  end
 end

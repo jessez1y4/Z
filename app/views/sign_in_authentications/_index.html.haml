@@ -12,7 +12,7 @@
               title: 'Click to add' do
       = fa_icon 'lemon-o fw', text: 'Sign in with Facebook'
 %p
-  - if gg_auth = current_user.sign_in_authentications.find_by(provider: 'google_oauth2')
+  - if gg_auth = current_user.sign_in_authentications.find_by(provider: 'google')
     = link_to gg_auth,
               method: :delete,
               remote: true,
@@ -21,7 +21,7 @@
       = fa_icon 'check fw', text: 'Sign in with Google'
       &nbsp;&nbsp;&nbsp;
   - else
-    = link_to user_omniauth_authorize_path(:google_oauth2),
+    = link_to user_omniauth_authorize_path(:google),
               class: 'btn btn-default btn-block',
               title: 'Click to add' do
       = fa_icon 'lemon-o fw', text: 'Sign in with Google'
