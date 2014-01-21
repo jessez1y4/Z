@@ -5,20 +5,18 @@ $ ->
     window.bind_hover = ->
       $('.masonry-brick').hover ->
         $('.hidden-info', this).removeClass 'hidden'
-        $(this).addClass 'post-frame'
+        # $(this).addClass 'post-frame'
       , ->
-        $(this).removeClass 'post-frame'
+        # $(this).removeClass 'post-frame'
         $('.hidden-info', this).addClass 'hidden'
+
     masonry_container = $('#masonry-container')
-    if $('.small-post').length
-      column = 170
-    else
-      column = 190
+
     masonry_container.imagesLoaded ->
       masonry_container.masonry
         itemSelector: '.masonry-brick'
-        columnWidth: column
-        gutterWidth: 15
+        columnWidth: 220
+        gutterWidth: 16
       $('.masonry-brick').animate
         opacity: 1
       bind_hover()

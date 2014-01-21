@@ -1,21 +1,11 @@
 .container
-  .btn-group.pull-right
-    .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
-      = params[:sort]
-      %span.caret
-
-    %ul.dropdown-menu.text-left
-      %li
-        = link_to 'New', tag_path(@tag, params.merge(sort: 'New'))
-      %li
-        = link_to 'Hot', tag_path(@tag, params.merge(sort: 'Hot'))
   %h4
     %small Styles with tag
     = "##{@tag.name}"
 
   %hr
   #masonry-container
-    = render partial: 'posts/small_post', collection: @posts
+    = render @posts
   #paginate-containter
     = paginate @posts, theme: 'twitter-bootstrap-3'
 

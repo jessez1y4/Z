@@ -1,16 +1,12 @@
 class PostsController < ApplicationController
   def index
-    params[:channel] ||= 'Everything'
+    params[:scope] ||= 'Everything'
     params[:sort] ||= 'Hot'
 
-    posts = Post.channel(params[:channel], current_user).sort(params[:sort]).page(params[:page])
-
-    if params[:view] == 'grid'
-      @posts = posts.per(20)
-      render 'index_grid'
-    else
-      @posts = posts.per(10)
-    end
+    @posts = Post.scope(params[:scope], current_user)
+                 .sort(params[:sort])
+                 .page(params[:page])
+                 .per(20)
   end
 
   def new

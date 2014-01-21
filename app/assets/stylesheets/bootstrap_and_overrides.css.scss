@@ -6,9 +6,9 @@ $navbar-default-bg: white;
 $navbar-default-border: #e7e7e7;
 
 // everything square
-$border-radius-base: 0px;
+$border-radius-base: 3px;
 $border-radius-small: 0px;
-$border-radius-large: 0px;
+$border-radius-large: 4px;
 
 @import 'bootstrap-custom';
 body {
@@ -20,6 +20,10 @@ body {
 .container {
   max-width: none !important;
   width: 960px;
+}
+
+hr {
+  border-color: #eaeaea;
 }
 
 // jQuery validation error msg style

@@ -1,24 +1,11 @@
 .container
-  .row
-    .col-xs-8
-      .row
-        .col-xs-8.text-center
-          = render 'post_filter'
+  #masonry-container
+    = render @posts
+  #paginate-containter
+    = paginate @posts, theme: 'twitter-bootstrap-3'
 
-      #posts
-        = render @posts
-
-      #paginate-containter
-        = paginate @posts, theme: 'twitter-bootstrap-3'
-
-      .row
-        .col-xs-8.text-center
-          #load-more.btn.btn-default
-            = fa_icon 'repeat'
-            %strong
-              &nbsp;Loading more ..
-
-    .col-xs-4
-      anouncements and activities go here.
-
-
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..

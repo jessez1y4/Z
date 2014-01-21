@@ -55,16 +55,14 @@ class Post < ActiveRecord::Base
     where(user_id: channel.users)
   end
 
-  def self.channel(channel_name, user)
-    case channel_name
+  def self.scope(scope_name, user)
+    case scope_name
     when 'Everything'
       scoped
     when 'Following'
       following(user)
-    when 'My Channels'
-      from_my_channels(user)
     else
-      channel = Channel.find_by_name(channel_name)
+      channel = Channel.find_by_name(scope_name)
       from_channel(channel)
     end
   end

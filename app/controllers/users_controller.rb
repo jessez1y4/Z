@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   def show
     params[:sort] ||= 'New'
     @user = User.find(params[:id])
-    @posts = @user.posts.sort(params[:sort]).page(params[:page]).per(10)
-    render 'posts/index_grid' if request.xhr?
+    @posts = @user.posts
+                  .sort(params[:sort])
+                  .page(params[:page])
+                  .per(20)
+    render 'posts/index' if request.xhr?
   end
 
   def edit

@@ -1,12 +1,15 @@
-new_posts = $.parseHTML "<%= j render(@posts) %>"
+new_posts = $.parseHTML "<%= j render @posts %>"
+
+$('#masonry-container').append new_posts
 
 $(new_posts).css('opacity', '0')
 
-$('#posts').append new_posts
-
-$('#posts').imagesLoaded ->
+$('#masonry-container').imagesLoaded ->
+  $('#masonry-container').masonry 'reload'
   $(new_posts).animate
     opacity: 1
+  bind_hover()
+
 
 <% if @posts.next_page %>
 
@@ -33,7 +36,6 @@ $('#load-more').animate
         , ->
           $(window).on 'scroll', endHint
     else
-      console.log $('#load-more').css('opacity')
       if $('#load-more').css('opacity') != '0'
         $(window).off 'scroll', endHint
         $('#load-more').animate

@@ -1,3 +1,17 @@
+#navbar-logo {
+  z-index: 30000;
+  display: inline-block;
+  margin-left: 58px;
+  font-size: 16px;
+  color: #4c4c4c;
+  top: 0px;
+  padding: 8px;
+}
+
+.nav-left-part {
+  width: 185px;
+}
+
 .forgot-password {
   font-weight: normal;
 }
@@ -11,5 +25,21 @@
   }
   .twitter-color {
     color: #00A0D1;
+  }
+}
+
+.navbar-fixed-top .container {
+  padding-left: 0px;
+}
+
+.nav-search {
+  padding-left: 10px;
+  form {
+    padding-left: 0px;
+  }
+  width: 200px;
+  i {
+    color: #777777;
+    font-size: 14px;
   }
 }

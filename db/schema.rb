@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116053010) do
+ActiveRecord::Schema.define(version: 20140121223436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,12 +127,12 @@ ActiveRecord::Schema.define(version: 20140116053010) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                                  null: false
-    t.string   "encrypted_password",                     null: false
+    t.string   "email",                                                                                        null: false
+    t.string   "encrypted_password",                                                                           null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,                                                           null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -141,14 +141,14 @@ ActiveRecord::Schema.define(version: 20140116053010) do
     t.datetime "updated_at"
     t.string   "username"
     t.string   "description"
-    t.string   "full_name",                              null: false
-    t.string   "avatar_cloudinary_id"
+    t.string   "full_name",                                                                                    null: false
+    t.string   "avatar_cloudinary_id",   default: "v1390343618/default_profile_4_reasonably_small_nt1wg6.png"
     t.integer  "posts_count",            default: 0
     t.integer  "followings_count",       default: 0
     t.integer  "followers_count",        default: 0
     t.integer  "channels_count",         default: 0
-    t.integer  "channel_allowance",      default: 1,     null: false
-    t.boolean  "random_password",        default: false, null: false
+    t.integer  "channel_allowance",      default: 1,                                                           null: false
+    t.boolean  "random_password",        default: false,                                                       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
