@@ -12,10 +12,6 @@
               = f.email_field :email, autofocus: true, class: 'form-control', 'data-error' => field_err(resource, :email)
 
             .form-group
-              %label Username
-              = f.text_field :username, class: 'form-control', 'data-error' => field_err(resource, :username)
-
-            .form-group
               %label Full Name
               = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(resource, :full_name)
 
@@ -24,15 +20,11 @@
               = f.password_field :password, class: 'form-control', 'data-error' => field_err(resource, :password)
 
             .form-group
-              %label Password Confirmation
-              = f.password_field :password_confirmation, class: 'form-control', 'data-error' => field_err(resource, :password_confirmation)
-
-            .form-group
-              = f.submit 'Sign Up', class: 'btn btn-primary btn-lg btn-lg-pad'
+              = f.submit 'Sign Up', class: 'btn btn-primary btn-lg'
               #sns-signin.pull-right
                 Sign up with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), root_path
+                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
                 &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), root_path
+                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google)
                 &nbsp;&nbsp;
                 = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path

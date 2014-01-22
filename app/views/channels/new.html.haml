@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-xs-6.col-xs-offset-3
+      .page-header
+        %h3.text-center Create a New Channel
+
+      .text-center
+        %p.text-muted
+          Have you searched for the channel you want to create?
+          %br
+          It might already exist.
+        %p.text-muted
+          Some other tips.. TODO
+
+      %hr
+
+      = form_for @channel, html: {class: 'form-horizontal', id: 'new-channel-form'} do |f|
+        = f.hidden_field :creator_id
+        .form-group
+          %label.col-xs-3.control-label Name
+          .col-xs-8
+            = f.text_field :name, class: 'form-control', 'data-error' => field_err(@channel, :name)
+        .form-group
+          %label.col-xs-3.control-label Description
+          .col-xs-8
+            = f.text_area :description, rows: 3, class: 'form-control', 'data-error' => field_err(@channel, :description)
+        .form-group
+          .col-xs-8.col-xs-offset-3
+            = f.submit 'Create Channel', class: 'btn btn-primary btn-lg'

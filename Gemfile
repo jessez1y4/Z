@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails', '~> 1.11.1'
+gem 'masonry-rails', '~> 0.2.1'
 
 gem 'kaminari', '~> 0.15.0'
 gem 'bootstrap-kaminari-views'
@@ -54,6 +55,8 @@ end
 gem 'haml-rails', '~> 0.4'
 
 gem 'devise', '~> 3.2.0'
+gem 'omniauth-facebook', '~> 1.6.0'
+gem 'omniauth-google-oauth2', '~> 0.2.2'
 
 gem 'thin', '~> 1.6.1'
 

@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-xs-8
+      .btn-group.pull-right.simple-sort
+        .btn.btn-default.btn-sm.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+          = params[:sort]
+          %span.caret
+
+        %ul.dropdown-menu.text-left
+          %li
+            = link_to 'New', channel_path(@channel, params.merge(sort: 'New'))
+          %li
+            = link_to 'Hot', channel_path(@channel, params.merge(sort: 'Hot'))
+      %h4
+        %small Styles from
+        = @channel.name.titleize
+
+      %hr
+      #masonry-container
+        = render partial: 'posts/medium_post', collection: @posts
+      #paginate-containter
+        = paginate @posts, theme: 'twitter-bootstrap-3'
+
+      .text-center
+        #load-more.btn.btn-default
+          = fa_icon 'repeat'
+          %strong
+            &nbsp;Loading more ..
+    .col-xs-4
+      = render 'partials/channel_sidebar', channel: @channel

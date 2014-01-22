@@ -1,5 +1,25 @@
 .container
-  .col-xs-8
-    pics go here
-  .col-xs-4
-    = render 'partials/user_sidebar', user: @user
+  #user-bar.row
+    .col-xs-1
+      = cl_image_tag @user.avatar_cloudinary_id, width: 60, height: 60, crop: 'fill', gravity: 'face'
+
+    .col-xs-11
+      %div
+        .pull-right
+          = render 'partials/follow_button', user: @user
+        %h4
+          %small
+            = @user.posts_count
+            styles from
+          = @user.full_name.titleize
+      %hr
+  #masonry-container
+    = render @posts
+  #paginate-containter
+    = paginate @posts, theme: 'twitter-bootstrap-3'
+
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..

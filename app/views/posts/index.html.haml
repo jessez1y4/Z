@@ -1,34 +1,11 @@
 .container
-  .col-xs-8
-    .row
-      .col-xs-12
-        .btn-group
-          %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-            Everything
-            %span.caret
-          %ul.dropdown-menu{role: "menu"}
-            %li
-              %a{href: "#"} Everything
-            %li.divider
-            %li
-              %a{href: "#"} Channel 1
-            %li
-              %a{href: "#"} Channel 2
-            %li
-              %a{href: "#"} Channel 3
+  #masonry-container
+    = render @posts
+  #paginate-containter
+    = paginate @posts, theme: 'twitter-bootstrap-3'
 
-    #posts
-      = render @posts
-
-    #paginate-containter
-      = paginate @posts, theme: 'twitter-bootstrap-3'
-
-    #blank-area
-
-  .col-xs-4
-    anouncements and activities go here.
-
-#load-more.btn.btn-default
-  = fa_icon 'repeat'
-  %strong
-    &nbsp;Loading more ..
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..

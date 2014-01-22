@@ -5,15 +5,21 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  after_filter :store_location
+
+  def store_location
+    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users\/(sign_|password|auth\/)/
+  end
+
   def after_sign_in_path_for(resource)
-    user_path(current_user)
+    session[:previous_url] || root_path
   end
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:username, :email, :full_name, :password, :password_confirmation)
+      u.permit(:email, :full_name, :password)
     end
   end
 end

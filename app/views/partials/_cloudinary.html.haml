@@ -1,7 +1,7 @@
-.hide
-  = form_tag new_post_path, method: :get do
+.hidden
+  = form_tag new_post_path, id: 'hidden-post-form', method: :get do
     = cl_image_upload_tag :cloudinary_data
-    = submit_tag 'submit', id: 'upload-post-submit'
+    = submit_tag 'submit'
 
 #upload-post-modal.modal.fade
   .modal-dialog.modal-dialog-center.modal-dialog-narrow

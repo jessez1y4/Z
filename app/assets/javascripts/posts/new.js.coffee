@@ -56,6 +56,10 @@ $ ->
       )
 
     new_post_validator = $('#new-post-form').validate
+      rules:
+        'post[title]':
+          required: true
+
       submitHandler: (form) ->
         $('.nested-fields:visible').each (index) ->
           $('.item-num', this).val(index + 1)
@@ -64,3 +68,33 @@ $ ->
           $('.item-y', this).val $(label).css('top').replace('px', '')
 
         form.submit()
+
+    errors = {}
+    $('#new-post-form input').each (i, e) ->
+      if $(e).data('error')
+        errors[$(e).attr('name')] = $(e).data('error')
+
+    new_post_validator.showErrors errors
+
+
+    # tag autocomplete
+    $('#tag-list-input').autocomplete
+      source: (request, response) ->
+        term = $.trim request.term.substring(request.term.lastIndexOf(',') + 1)
+        if term == '' or term.length < 2
+          response []
+        else
+          $.getJSON '/tag_suggestions', { term: term }, response
+      delay: 250
+      messages:
+        noResults: ''
+        results: ->
+      select: (event, ui) ->
+        event.preventDefault()
+        tags = $('#tag-list-input').val()
+        index = tags.lastIndexOf(',')
+        if index == -1
+          new_tags = "#{ui.item.value}, "
+        else
+          new_tags = "#{tags.substring(0, index)}, #{ui.item.value}, "
+        $('#tag-list-input').val new_tags

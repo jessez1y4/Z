@@ -16,9 +16,12 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.ui.draggable
+//= require jquery.ui.autocomplete
 //= require spin
 //= require bootstrap
 //= require cloudinary
 //= require cocoon
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
 //= require turbolinks
 //= require_tree .

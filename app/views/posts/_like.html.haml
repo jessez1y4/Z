@@ -1,4 +1,4 @@
 = form_for LikeRelationship.new(post_id: post.id), remote: true do |f|
   = f.hidden_field :post_id
   %button.btn.btn-default.btn-lg{type: 'submit'}
-    = fa_icon('heart-o lg', text: post.likes)
+    = fa_icon('heart-o', text: post.likes)

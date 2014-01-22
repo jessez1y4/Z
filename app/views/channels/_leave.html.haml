@@ -1,0 +1,2 @@
+= form_for current_user.channel_memberships.find_by(channel_id: channel.id), html: { method: :delete }, remote: true do |f|
+  = f.submit 'Joined', class: 'btn btn-default', id: 'leave-btn'

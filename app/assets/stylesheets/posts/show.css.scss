@@ -1,3 +1,28 @@
-#show-post-img-container {
-  position: relative;
+body.posts-show {
+  #show-post-img-container {
+    position: relative;
+  }
+
+  #post-like-btn {
+    margin-top: 25px;
+  }
+
+  .big-like-btn button{
+    font-size: 24px;
+    margin-top: 18px;
+  }
+
+  .comment {
+    .col-xs-10 {
+      margin-left: -20px;
+    }
+  }
+
+  #post-edit-btns {
+    margin: -2px 0px 2px 10px;
+    float: left;
+    a {
+      width: 52px;
+    }
+  }
 }

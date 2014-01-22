@@ -1,35 +1,14 @@
-.row.post.big-post-frame
-  .col-xs-8
-    = link_to post do
-      = cl_image_tag post.cloudinary_id, width: 382
-
-  .col-xs-4
-    / likes
-    - if post.user == current_user
-      %button.btn.btn-default.btn-lg{disabled: 'disabled'}
-        = fa_icon 'heart lg', text: post.likes
-    - else
-      %div{id: "like-btn-#{post.id}"}
-        = like_button(post)
-
-    / post info
-    %h4
-      = link_to post, class: 'black-link' do
-        = truncate post.title.titleize, length: 20
-
-    %p
-      By
-      = link_to post.user.full_name, user_path(post.user)
-
-    %p
+.masonry-brick
+  = link_to post, target: '_blank' do
+    = cl_image_tag post.cloudinary_id, width: 220
+  .masonry-title
+    %strong= truncate post.title.titleize, length: 22
+    .pull-right.small.text-muted
+      = fa_icon 'eye', text: '999'
+      = fa_icon 'heart-o', text: post.like_relationships_count
+  .masonry-author.small.text-muted
+    by
+    = link_to post.user.full_name.titleize, post.user
+    .pull-right
       = time_ago_in_words post.created_at
       ago
-
-    %br
-
-    - if post.description.present?
-      %p
-        = fa_icon 'quote-left'
-        = truncate post.description, length: 250 do
-          = link_to ' read more', post
-        = fa_icon 'quote-right'

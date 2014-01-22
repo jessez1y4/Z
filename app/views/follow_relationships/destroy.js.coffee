@@ -1,2 +1,2 @@
-$("#follow-btn").html "<%= escape_javascript(render('users/follow')) %>"
-$("#followers").html 'followed by <%= @user.followers.count %>'
+$("#follow-btn").html "<%= escape_javascript(render('users/follow', user: @user)) %>"
+$("#followers").html '<%= @user.followers_count %>'

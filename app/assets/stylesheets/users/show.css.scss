@@ -1,0 +1,23 @@
+body.users-show {
+  #load-more {
+    opacity: 0;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+
+#user-bar {
+  img {
+    position: relative;
+    bottom: 6px;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+  .pull-right {
+    position: relative;
+    bottom: 6px;
+  }
+}

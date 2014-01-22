@@ -1,32 +1,41 @@
-.container
-  %nav.navbar.navbar-inverse{role: "navigation"}
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to 'StyleMe', root_path, class: 'navbar-brand'
-    / Collect the nav links, forms, and other content for toggling
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li.active
-          %a{href: "#"} Link
-        %li
-          = link_to fa_icon('plus', text: 'Style'), new_registration_path('user')
-      %form.navbar-form.navbar-left{role: "search"}
-        .form-group
-          %input.form-control{placeholder: "Search", type: "text"}/
-        %button.btn.btn-default{type: "submit"}
-          = fa_icon 'search'
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a.modal-trigger{href: '#', 'data-modal-name' => 'sign-in'} Already a member?
-        %li
-          = link_to 'Sign up', new_registration_path('user')
+%nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+  .container
+    = link_to root_path do
+      #navbar-logo
+        StyleMe
+    %ul.nav.navbar-nav.nav-left-part
+      %li.disabled
+        %a{href: "#"}
+          Everything
+          %b.caret
 
-#sign-in-modal.modal.fade
+      - if params[:sort]
+        %li
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = params[:sort].titleize
+            %b.caret
+          %ul.dropdown-menu.text-left
+            %li
+              = link_to 'Hot', params.merge(sort: 'Hot')
+            %li.divider
+            %li
+              = link_to 'New', params.merge(sort: 'New')
+
+    .col-xs-3.nav-search
+      %form.navbar-form.navbar-left{role: "search"}
+        .input-group
+          %input.form-control{placeholder: "Search", type: "text"}/
+          %span.input-group-btn
+            = link_to root_path, class: 'btn btn-default' do
+              = fa_icon 'search'
+
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        %a.modal-trigger{href: '#', 'data-modal-name' => 'sign-in'} Already a member?
+      %li
+        = link_to 'Sign up', new_registration_path('user')
+
+#sign-in-modal.modal
   .modal-dialog.modal-dialog-center
     .modal-content
       .modal-header
@@ -54,8 +63,8 @@
             .col-xs-6.col-xs-offset-1
               #sns-signin.pull-right
                 Sign in with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), root_path
+                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
                 &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), root_path
+                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google)
                 &nbsp;&nbsp;
                 = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path

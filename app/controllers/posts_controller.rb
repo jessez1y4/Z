@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
-  respond_to :html, :js
-
   def index
-    sleep(0.5) # temporary code to simulate real internet latency
-    @posts = Post.page(params[:page]).per(2) # only 2 posts a page to test infinite scroll
+    params[:scope] ||= 'Everything'
+    params[:sort] ||= 'Hot'
+
+    @posts = Post.scope(params[:scope], current_user)
+                 .sort(params[:sort])
+                 .page(params[:page])
+                 .per(20)
   end
 
   def new
-    preloaded = Cloudinary::PreloadedFile.new(params[:post][:cloudinary_data])
+    preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
     raise "Invalid upload signature" if !preloaded.valid?
     # @cloudinary_id = preloaded.identifier
     @post = Post.new(cloudinary_id: preloaded.identifier)
@@ -18,12 +21,13 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_url(@post)
     else
-      #TODO
+      render 'new'
     end
   end
 
   def show
-    @post = Post.includes(:items).includes(:user).find(params[:id])
+    @post = Post.includes(:items).find(params[:id])
+    @user = @post.user
     @comments = @post.comments.includes(:user)
     @comment = @post.comments.build
   end
@@ -45,6 +49,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cloudinary_id, :title, :description, items_attributes: [:id, :name, :number, :x, :y, :_destroy])
+    params.require(:post).permit(:cloudinary_id, :title, :description, :tag_list, items_attributes: [:id, :name, :number, :x, :y, :_destroy])
   end
 end

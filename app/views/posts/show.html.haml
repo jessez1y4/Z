@@ -1,63 +1,90 @@
 .container
-  .col-xs-7
-    #show-post-img-container
-      = cl_image_tag @post.cloudinary_id, width: 512
+  .row
+    .col-xs-7
+      .pull-right.big-like-btn.like-btn
+        = render 'partials/like_button', post: @post
+      %h2
+        = @post.title.titleize
 
-    / comments
-    .page-header
-      %h3
-        COMMENTS
-    - @comments.each do |comment|
-      %p
-        = link_to comment.user.full_name, comment.user
-        = time_ago_in_words comment.created_at
+      %p.pull-left.text-muted
+        By
+        = succeed ',' do
+          = link_to @user.full_name, @user
+        = time_ago_in_words @post.created_at
         ago
-      %p= comment.comment
 
-    / post comment
-    = form_for [@post, @comment] do |f|
-      = f.hidden_field :user_id, value: current_user.id
-      .form-group
-        = f.text_area :comment, rows: 3, class: 'form-control'
-      .form-group
-        = f.submit 'Comment', class: 'btn btn-primary'
+      - if @user == current_user
+        #post-edit-btns.btn-group
+          = link_to 'Edit', edit_post_url(@post), class: 'btn btn-xs btn-default'
+          = link_to 'Delete', post_url(@post), method: :delete, class: 'btn btn-xs btn-danger'
 
-  .col-xs-5
+    .col-xs-5
+      #user-info.row
+        #medium-avatar.col-xs-3
+          = cl_image_tag @user.avatar_cloudinary_id, width: 84, height: 84, crop: 'fill', gravity: 'face'
+        .col-xs-9
+          %p
+            = link_to @user.full_name, @user
+          %p.small.text-muted
+            = "#{@user.likes} likes "
+            %span#followers
+              = @user.followers_count
+            followers
+          = render 'partials/follow_button', user: @user
 
-    - if @post.user == current_user
-      %button.btn.btn-default.btn-lg{disabled: 'disabled'}
-        = fa_icon 'heart lg', text: @post.likes
-      = link_to 'EDIT', edit_post_url(@post), class: 'btn btn-default btn-lg'
-      = link_to 'DELETE', post_url(@post), method: :delete, class: 'btn btn-link btn-lg'
+  .row
+    .col-xs-7
+      #show-post-img-container
+        = cl_image_tag @post.cloudinary_id, width: 530
 
-    - else
-      / likes
-      %div{id: "like-btn-#{@post.id}"}
-        = like_button(@post)
+      / comments
+      .page-header
+        %h3
+          = "#{@post.comments_count} COMMENTS"
+      - @comments.each do |comment|
+        .row.comment
+          .col-xs-2
+            = cl_image_tag comment.user.avatar_cloudinary_id, width: 50, height: 50, crop: 'fill', gravity: 'face'
+          .col-xs-10
+            %p
+              = link_to comment.user.full_name, comment.user
+              %span.small
+                = time_ago_in_words comment.created_at
+                ago
+            = simple_format comment.comment
+        %hr
 
-    %h3
-      = @post.title.titleize
+      / post comment
+      - if user_signed_in?
+        = form_for [@post, @comment] do |f|
+          = f.hidden_field :user_id, value: current_user.id
+          .form-group
+            = f.text_area :comment, rows: 3, class: 'form-control'
+          .form-group
+            = f.submit 'Comment', class: 'btn btn-primary'
+      - else
+        .text-center
+          %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+            Log in to comment
 
-    %p
-      By
-      = succeed ',' do
-        = link_to @post.user.full_name, user_path(@post.user)
-      = time_ago_in_words @post.created_at
-      ago
 
-    %br
+    .col-xs-5
+      %br
+      %br
+      - if @post.tags.any?
+        - @post.tags.each do |tag|
+          = link_to "##{tag.name}", tag
+          &nbsp;
+        %hr
 
-    - @post.items.each do |item|
-      .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-        %p
-          = item.number
-          = item.name
+      - if @post.items.any?
+        - @post.items.each do |item|
+          .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+            %p
+              = item.number
+              = item.name
+        %hr
 
-    %br
-
-    - if @post.description.present?
-      %p
-        = fa_icon 'quote-left'
-        = @post.description
-        = fa_icon 'quote-right'
+      - if @post.description.present?
+        = simple_format @post.description
 

@@ -9,13 +9,17 @@
 
       .form-group
         %label Title
-        = f.text_field :title, class: 'form-control', required: true
+        = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
 
       .form-group
         %label Description
-        = f.text_area :description, class: 'form-control'
+        = f.text_area :description, class: 'form-control', placeholder: 'Describe your photo...'
 
       .form-group
+        %label Tags (separate by comma)
+        = f.text_field :tag_list, class: 'form-control', placeholder: 'tag1, tag2, ...', autocomplete: :off, id: 'tag-list-input'
+
+      .form-group.fa-14
         = fa_icon 'hand-o-up'
         %strong Click on your photo to add item labels!
 

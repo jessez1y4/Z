@@ -1,0 +1,43 @@
+.text-center
+  %h3
+    = channel.name.titleize
+    %small
+      Channel
+  #join-btn
+    - if !user_signed_in?
+      %button.btn.btn-default.fa-14{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+        = fa_icon 'bookmark'
+        &nbsp;Join
+    - else
+      = join_button channel
+  %hr
+  %p.text-muted.small
+    Created by
+    = link_to channel.creator.full_name.titleize, channel.creator
+    = time_ago_in_words channel.created_at
+    ago
+
+#user-stats.row.text-center
+  .col-xs-3
+    = channel.users_count
+    %br
+    .small
+      MEMBERS
+  .col-xs-3
+    = channel.posts.size
+    %br
+    .small
+      STYLES
+  .col-xs-3
+    = channel.like_relationships.size
+    %br
+    .small
+      LIKES
+  .col-xs-3
+    999
+    %br
+    .small
+      VIEWS
+
+
+

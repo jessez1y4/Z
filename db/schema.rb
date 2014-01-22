@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226101342) do
+ActiveRecord::Schema.define(version: 20140121223436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "channel_memeberships", force: true do |t|
+  create_table "channel_memberships", force: true do |t|
     t.integer "channel_id", null: false
     t.integer "user_id",    null: false
   end
 
   create_table "channels", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "users_count", default: 0
+    t.string   "description"
+    t.integer  "creator_id"
   end
 
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
@@ -80,15 +83,26 @@ ActiveRecord::Schema.define(version: 20131226101342) do
   add_index "like_relationships", ["user_id"], name: "index_like_relationships_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "title"
+    t.integer  "user_id",                              null: false
+    t.string   "title",                                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cloudinary_id", null: false
+    t.string   "cloudinary_id",                        null: false
     t.text     "description"
+    t.integer  "like_relationships_count", default: 0
+    t.integer  "comments_count",           default: 0
+    t.integer  "tags_count",               default: 0
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "sign_in_authentications", force: true do |t|
+    t.integer "user_id",  null: false
+    t.string  "provider", null: false
+    t.string  "uid",      null: false
+  end
+
+  add_index "sign_in_authentications", ["user_id"], name: "index_sign_in_authentications_on_user_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.integer "user_id", null: false
@@ -98,23 +112,43 @@ ActiveRecord::Schema.define(version: 20131226101342) do
 
   add_index "sites", ["user_id"], name: "index_sites_on_user_id", using: :btree
 
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name",                    null: false
+    t.integer "posts_count", default: 0
+  end
+
   create_table "users", force: true do |t|
-    t.string   "email",                              null: false
-    t.string   "encrypted_password",                 null: false
+    t.string   "email",                                                                                        null: false
+    t.string   "encrypted_password",                                                                           null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,                                                           null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",                           null: false
+    t.string   "username"
     t.string   "description"
-    t.string   "full_name",                          null: false
-    t.string   "avatar_cloudinary_id"
+    t.string   "full_name",                                                                                    null: false
+    t.string   "avatar_cloudinary_id",   default: "v1390343618/default_profile_4_reasonably_small_nt1wg6.png"
+    t.integer  "posts_count",            default: 0
+    t.integer  "followings_count",       default: 0
+    t.integer  "followers_count",        default: 0
+    t.integer  "channels_count",         default: 0
+    t.integer  "channel_allowance",      default: 1,                                                           null: false
+    t.boolean  "random_password",        default: false,                                                       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
