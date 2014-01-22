@@ -2,6 +2,10 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :posts, through: :taggings
 
+  has_many :bookmarkings, dependent: :destroy
+
+  has_many :default_taggings, dependent: :destroy
+
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
   def self.suggestions_for(prefix)

@@ -48,6 +48,12 @@ class User < ActiveRecord::Base
 
   has_many :sign_in_authentications, dependent: :destroy
 
+  has_many :bookmarkings, dependent: :destroy
+  has_many :bookmarks, source: :tag, through: :bookmarkings
+
+  has_many :default_taggings, dependent: :destroy
+  has_many :default_tags, source: :tag, through: :default_taggings
+
   attr_accessor :login
 
   accepts_nested_attributes_for :sign_in_authentications, allow_destroy: true
@@ -103,6 +109,14 @@ class User < ActiveRecord::Base
         sum + post.likes
       end
     end
+  end
+
+  def bookmark!(tag)
+    bookmarkings.create!(tag_id: tag.id)
+  end
+
+  def unbookmark!(tag)
+    bookmarkings.find_by(tag_id: tag.id).destroy!
   end
 
   # channel methods

@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122022358) do
+ActiveRecord::Schema.define(version: 20140122044720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarkings", force: true do |t|
+    t.integer "tag_id"
+    t.integer "user_id"
+  end
 
   create_table "channel_memberships", force: true do |t|
     t.integer "channel_id", null: false
@@ -46,6 +51,11 @@ ActiveRecord::Schema.define(version: 20140122022358) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "default_taggings", force: true do |t|
+    t.integer "tag_id"
+    t.integer "user_id"
+  end
 
   create_table "follow_relationships", force: true do |t|
     t.integer  "follower_id", null: false

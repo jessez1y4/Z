@@ -14,16 +14,13 @@
           %li.divider
           %li
             = link_to 'Following', posts_path(params.merge(scope: 'Following'))
-          - if current_user.channels.any?
-            %li.divider
-            %li
-              = link_to 'My Channels', posts_path(params.merge(scope: 'My Channels'))
+          - if current_user.bookmarks.any?
             %li.divider
             %li.dropdown-header
-              My Channels
-            - current_user.channels.each do |channel|
+              Bookmarks
+            - current_user.bookmarks.each do |tag|
               %li
-                = link_to channel.name.titleize, posts_path(params.merge(scope: channel.name))
+                = link_to "##{tag.name}", tag_path(tag.id)
 
       - if params[:sort]
         %li

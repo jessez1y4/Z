@@ -38,4 +38,6 @@ StyleMe::Application.routes.draw do
   resources :channel_memberships
 
   resources :tags
+
+  resources :bookmarkings
 end
