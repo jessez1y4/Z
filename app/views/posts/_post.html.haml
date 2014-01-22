@@ -7,8 +7,13 @@
       = fa_icon 'eye', text: post.views_count
       = fa_icon 'heart-o', text: post.like_relationships_count
   .masonry-author.small.text-muted
-    by
-    = link_to post.user.full_name.titleize, post.user
-    .pull-right
-      = time_ago_in_words post.created_at
-      ago
+    - if controller_name == 'users'
+      .text-center
+        = time_ago_in_words post.created_at
+        ago
+    - else
+      by
+      = link_to post.user.full_name.titleize, post.user
+      .pull-right
+        = time_ago_in_words post.created_at
+        ago
