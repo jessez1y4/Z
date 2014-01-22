@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
+
   def index
     params[:scope] ||= 'Everything'
     params[:sort] ||= 'Hot'

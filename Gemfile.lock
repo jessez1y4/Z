@@ -77,7 +77,11 @@ GEM
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
+    httpclient (2.3.4.1)
     i18n (0.6.9)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -108,9 +112,12 @@ GEM
       rails
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
     multipart-post (1.2.0)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -211,6 +218,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails (~> 4.0.3.0)
   haml-rails (~> 0.4)
+  impressionist (~> 1.5.1)
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks

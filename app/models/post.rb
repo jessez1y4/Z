@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  is_impressionable counter_cache: true,
+                    column_name: :views_count,
+                    unique: :session_hash
+
   belongs_to :user, counter_cache: true
 
   has_many :items, -> { order('number ASC') }

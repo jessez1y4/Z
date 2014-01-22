@@ -4,7 +4,7 @@
   .masonry-title
     %strong= truncate post.title.titleize, length: 22
     .pull-right.small.text-muted
-      = fa_icon 'eye', text: '999'
+      = fa_icon 'eye', text: post.views_count
       = fa_icon 'heart-o', text: post.like_relationships_count
   .masonry-author.small.text-muted
     by
