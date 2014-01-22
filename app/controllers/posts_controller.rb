@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     raise "Invalid upload signature" if !preloaded.valid?
     # @cloudinary_id = preloaded.identifier
     @post = Post.new(cloudinary_id: preloaded.identifier)
+    @post.tag_list = current_user.default_tag_list
   end
 
   def create

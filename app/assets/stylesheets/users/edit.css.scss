@@ -1,9 +1,26 @@
 body.users-edit, body.users-update {
+  img {
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+
+  #avatar-edit {
+    .col-xs-8 {
+      margin-left: -20px;
+    }
+  }
+
   #upload-avatar-btn, #step-2 p {
     margin-top: 15px;
     margin-bottom: 10px;
   }
   #step-2 button {
     width: 100px;
+  }
+
+  .tall-h4 {
+    margin-top: 60px;
   }
 }

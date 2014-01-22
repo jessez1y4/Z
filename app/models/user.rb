@@ -165,4 +165,14 @@ class User < ActiveRecord::Base
   def password_required
     super && provider.blank?
   end
+
+  def default_tag_list
+    default_tags.map(&:name).join(", ")
+  end
+
+  def default_tag_list=(names)
+    self.default_tags = names.upcase.split(",").reject{|s| s.blank?}.collect(&:strip).uniq.map do |n|
+      Tag.where(name: n).first_or_create!
+    end
+  end
 end
