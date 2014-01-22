@@ -1,4 +1,7 @@
 = form_for Bookmarking.new(tag_id: tag.id), remote: true do |f|
   = f.hidden_field :tag_id
+  %span.fa-14{title: 'A bookmark will be added to your navigation menu (leftmost button on top bar).'}
+    = fa_icon 'question-circle'
   %button.btn.btn-default.fa-14{type: 'submit'}
     = fa_icon 'bookmark-o fw', text: 'Bookmark'
+
