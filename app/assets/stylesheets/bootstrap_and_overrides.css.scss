@@ -22,8 +22,8 @@ body {
   width: 960px;
 }
 
-hr {
-  border-color: #eaeaea;
+hr.hr-dark {
+  border-color: #ebebeb;
 }
 
 // jQuery validation error msg style
@@ -81,5 +81,5 @@ label.error {
 }
 
 .btn-lg {
-  font-size: 15px;
+  font-size: 16px;
 }

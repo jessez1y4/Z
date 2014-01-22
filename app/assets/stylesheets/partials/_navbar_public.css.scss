@@ -1,15 +1,49 @@
-#navbar-logo {
-  z-index: 30000;
-  display: inline-block;
-  margin-left: 58px;
-  font-size: 16px;
-  color: #4c4c4c;
-  top: 0px;
-  padding: 8px;
-}
+.navbar-fixed-top {
+  #navbar-left {
+    display: inline-block;
+    width: 420px;
+    float: left;
+  }
 
-.nav-left-part {
-  width: 185px;
+  #navbar-logo {
+    font-size: 16px;
+    color: #4c4c4c;
+    margin-top: 8px;
+  }
+
+  #nav-btn-single {
+    color: #428bca;
+    width: 55px;
+  }
+  #nav-btn {
+    color: #428bca;
+    width: 54px;
+    border-right: 0;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  #sort-buttons {
+    .btn:first-child {
+      -moz-border-radius-topleft:0px;
+      -moz-border-radius-bottomleft:0px;
+      -webkit-border-bottom-left-radius: 0px;
+      -webkit-border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+    .btn {
+      width: 55px;
+      height: 32px;
+      padding: 6px 13px;
+    }
+    .btn:hover {
+      background-color: #ebebeb;
+    }
+  }
 }
 
 .forgot-password {
@@ -28,15 +62,7 @@
   }
 }
 
-.navbar-fixed-top .container {
-  padding-left: 0px;
-}
-
 .nav-search {
-  padding-left: 10px;
-  form {
-    padding-left: 0px;
-  }
   width: 200px;
   i {
     color: #777777;

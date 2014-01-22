@@ -1,5 +1,5 @@
 $("#bookmark-btn").html "<%=j render('tags/bookmark', tag: @tag) %>"
-$('#header').html "<%=j render conditional_header %>"
+$('#nav-menu').html "<%=j render 'partials/nav_menu' %>"
 
 $('#bookmark-btn span').aToolTip
   xOffset: -300

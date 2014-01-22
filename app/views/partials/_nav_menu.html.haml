@@ -1,0 +1,17 @@
+%li
+  = link_to 'Everything', posts_path(params.merge(scope: nil))
+%li.divider
+- if user_signed_in?
+  %li
+    = link_to 'Following', posts_path(params.merge(scope: 'Following'))
+  - if current_user.bookmarks.any?
+    %li.divider
+    %li.dropdown-header
+      Bookmarks
+    - current_user.bookmarks.each do |tag|
+      %li
+        = link_to "##{tag.name}", tag_path(tag.id)
+- else
+  %li
+    %a{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
+      %strong Sign in for more options

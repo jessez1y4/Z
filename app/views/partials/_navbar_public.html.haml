@@ -1,33 +1,6 @@
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
   .container
-    = link_to root_path do
-      #navbar-logo
-        StyleMe
-    %ul.nav.navbar-nav.nav-left-part
-      %li.disabled
-        %a{href: "#"}
-          Everything
-          %b.caret
-
-      - if params[:sort]
-        %li
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            = params[:sort].titleize
-            %b.caret
-          %ul.dropdown-menu.text-left
-            %li
-              = link_to 'Hot', params.merge(sort: 'Hot')
-            %li.divider
-            %li
-              = link_to 'New', params.merge(sort: 'New')
-
-    .col-xs-3.nav-search
-      %form.navbar-form.navbar-left{role: "search"}
-        .input-group
-          %input.form-control{placeholder: "Search", type: "text"}/
-          %span.input-group-btn
-            = link_to root_path, class: 'btn btn-default' do
-              = fa_icon 'search'
+    = render 'partials/navbar_left'
 
     %ul.nav.navbar-nav.navbar-right
       %li

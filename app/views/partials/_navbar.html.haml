@@ -1,46 +1,7 @@
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
   .container
-    = link_to root_path do
-      #navbar-logo
-        StyleMe
-    %ul.nav.navbar-nav.nav-left-part
-      %li
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          = params[:scope].try(:titleize) || 'Everything'
-          %b.caret
-        %ul.dropdown-menu.text-left
-          %li
-            = link_to 'Everything', posts_path(params.merge(scope: nil))
-          %li.divider
-          %li
-            = link_to 'Following', posts_path(params.merge(scope: 'Following'))
-          - if current_user.bookmarks.any?
-            %li.divider
-            %li.dropdown-header
-              Bookmarks
-            - current_user.bookmarks.each do |tag|
-              %li
-                = link_to "##{tag.name}", tag_path(tag.id)
+    = render 'partials/navbar_left'
 
-      - if params[:sort]
-        %li
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            = params[:sort].titleize
-            %b.caret
-          %ul.dropdown-menu.text-left
-            %li
-              = link_to 'Hot', params.merge(sort: 'Hot')
-            %li.divider
-            %li
-              = link_to 'New', params.merge(sort: 'New')
-
-    .col-xs-3.nav-search
-      %form.navbar-form.navbar-left{role: "search"}
-        .input-group
-          %input.form-control{placeholder: "Search", type: "text"}/
-          %span.input-group-btn
-            = link_to root_path, class: 'btn btn-default' do
-              = fa_icon 'search'
     %ul.nav.navbar-nav.navbar-right
       %li.dropdown
         %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
@@ -75,3 +36,4 @@
           %li.divider
           %li
             = link_to 'Sign out', destroy_user_session_path, method: :delete
+
