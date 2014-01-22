@@ -2,11 +2,13 @@
   .container
     = render 'partials/navbar_left'
 
+    = link_to 'SIGN UP', new_registration_path('user'), class: 'btn btn-default navbar-btn navbar-right', id: 'sign-up-btn'
+
     %ul.nav.navbar-nav.navbar-right
       %li
-        %a.modal-trigger{href: '#', 'data-modal-name' => 'sign-in'} Already a member?
-      %li
-        = link_to 'Sign up', new_registration_path('user')
+        %a.modal-trigger{href: '#', 'data-modal-name' => 'sign-in'} Log in
+
+
 
 #sign-in-modal.modal
   .modal-dialog.modal-dialog-center

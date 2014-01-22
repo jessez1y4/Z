@@ -4,9 +4,8 @@
 
     %ul.nav.navbar-nav.navbar-right
       %li.dropdown
-        %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
+        %button#post-style-btn.dropdown-toggle.btn.btn-default.navbar-btn.fa-14{"data-toggle" => "dropdown", href: "#"}
           = fa_icon 'plus'
-
 
         %ul.dropdown-menu
           %li
@@ -20,11 +19,11 @@
               %span.menu-icon
                 = fa_icon('chain lg')
               From web
-      %li
-        = link_to 'Me', current_user
-      %li.dropdown
-        %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
-          = fa_icon 'cog'
+      %li.btn-group
+        = link_to current_user.full_name.titleize, current_user, class: 'btn btn-default navbar-btn', id: 'nav-user-btn'
+
+      %li.btn-group
+        %button#nav-user-menu-btn.dropdown-toggle.btn.btn-default.navbar-btn.fa-14{"data-toggle" => "dropdown", href: "#"}
           %b.caret
         %ul.dropdown-menu
           %li
