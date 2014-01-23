@@ -7,8 +7,11 @@
       %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
         = fa_icon 'bookmark', text: 'Bookmark'
   %h4
-    %small Styles with tag
-    = "##{@tag.name}"
+    %small
+      = @tag.posts_count
+      styles with tag&nbsp;
+    %span.tag
+      = "# #{@tag.name}"
 
   %hr.hr-dark
   #masonry-container

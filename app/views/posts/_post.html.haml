@@ -20,4 +20,4 @@
   - if post.tags.any?
     .masonry-tags.small
       - post.tags.each do |tag|
-        = link_to tag.name, tag_path(tag.id)
+        = link_to tag.name, tag_path(tag.id), class: 'tag'
