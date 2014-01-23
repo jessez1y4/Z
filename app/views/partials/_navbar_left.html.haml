@@ -17,7 +17,7 @@
           = link_to 'New', params.merge(sort: 'New'), class: 'btn btn-default navbar-btn'
     - else
       %li
-        %button#nav-btn-single.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+        %button#nav-btn.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
           = fa_icon 'bars'
         %ul#nav-menu.dropdown-menu
           = render 'partials/nav_menu'

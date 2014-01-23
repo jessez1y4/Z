@@ -1,15 +1,17 @@
 .navbar-fixed-top {
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
   .btn {
     height: 32px;
     padding-top: 6px;
-    color: #777;
   }
   .btn:hover {
     background-color: #ebebeb !important;
-    color: #333333;
   }
 
   #post-style-btn {
@@ -26,19 +28,15 @@
 
   #navbar-logo {
     font-size: 16px;
-    color: #4c4c4c;
+    color: #333;
     margin-top: 8px;
   }
 
-  #nav-btn-single {
-    color: #569fde;
-    width: 55px;
-  }
   #nav-btn {
     color: #569fde;
     width: 54px;
   }
-  #nav-btn {
+  .btn-group #nav-btn {
     margin-right: -1px;
     -moz-border-radius-topright:0px;
     -moz-border-radius-bottomright:0px;
@@ -49,6 +47,7 @@
   }
   #nav-user-menu-btn {
     margin-right: 15px;
+    color: #333;
   }
   #sort-buttons {
     .btn:first-child {
@@ -61,6 +60,7 @@
     }
     .btn {
       width: 55px;
+      color: #333;
     }
   }
 }
@@ -84,11 +84,16 @@
 .nav-search {
   width: 200px;
   i {
-    color: #777777;
+    color: #777;
     font-size: 14px;
   }
 }
-
+#log-in-btn {
+  color: #333;
+}
+#log-in-btn:hover {
+  text-decoration: underline;
+}
 #sign-up-btn {
   margin-left: 20px;
   color: #569fde;
