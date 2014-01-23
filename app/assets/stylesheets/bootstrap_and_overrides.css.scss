@@ -10,6 +10,11 @@ $border-radius-base: 3px;
 $border-radius-small: 0px;
 $border-radius-large: 4px;
 
+$btn-default-border: #d2d2d2;
+$input-border: #d2d2d2;
+
+$brand-primary: #569fde;
+
 @import 'bootstrap-custom';
 body {
   padding-top: 70px;

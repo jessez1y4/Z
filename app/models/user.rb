@@ -100,12 +100,11 @@ class User < ActiveRecord::Base
   end
 
   # count of likes
-  def likes
-    @likes unless @likes.nil?
-    if posts.empty?
-      @likes = 0
+  def likes_count
+    @likes_count ||= if posts.empty?
+      0
     else
-      @likes = self.posts.inject(0) do |sum, post|
+      self.posts.inject(0) do |sum, post|
         sum + post.likes
       end
     end
@@ -173,6 +172,16 @@ class User < ActiveRecord::Base
   def default_tag_list=(names)
     self.default_tags = names.upcase.split(",").reject{|s| s.blank?}.collect(&:strip).uniq.map do |n|
       Tag.where(name: n).first_or_create!
+    end
+  end
+
+  def views_count
+    @views_count ||= if posts.empty?
+      0
+    else
+      self.posts.inject(0) do |sum, post|
+        sum + post.views_count
+      end
     end
   end
 end

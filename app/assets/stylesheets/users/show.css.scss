@@ -20,4 +20,14 @@ body.users-show {
     position: relative;
     bottom: 6px;
   }
+  .user-stats {
+    i:last-child {
+      font-size: 12px;
+      border-left: 1px solid #d4d4d4;
+    }
+    i {
+      padding-right: 4px;
+      padding-left: 15px;
+    }
+  }
 }

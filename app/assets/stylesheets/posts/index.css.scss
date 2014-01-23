@@ -3,6 +3,7 @@
   margin-top: 10px;
 
   .masonry-brick {
+    max-width: 220px;
     border: 1px solid #dddddd;
     background: white;
     margin-bottom: 15px;
@@ -27,6 +28,19 @@
 
     .masonry-author {
       padding: 8px 10px;
+    }
+
+    .masonry-tags {
+      padding: 8px 10px;
+      border-top: 1px dashed #e7e7e7;
+      background-color: #f8f8f8;
+      a {
+        color: #f8f8f8;
+        background-color: #569fde;
+        padding: 2px 6px;
+        margin-right: 2px;
+        font-size: 10px;
+      }
     }
   }
 }

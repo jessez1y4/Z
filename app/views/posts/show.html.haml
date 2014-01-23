@@ -26,7 +26,7 @@
           %p
             = link_to @user.full_name, @user
           %p.small.text-muted
-            = "#{@user.likes} likes "
+            = "#{@user.likes_count} likes "
             %span#followers
               = @user.followers_count
             followers

@@ -10,8 +10,12 @@
         %h4
           %small
             = @user.posts_count
-            styles from
+            styles from&nbsp;
           = @user.full_name.titleize
+          %small.user-stats
+            = fa_icon 'eye', text: @user.views_count
+            &nbsp;
+            = fa_icon 'heart-o', text: @user.likes_count
       %hr.hr-dark
   #masonry-container
     = render @posts
