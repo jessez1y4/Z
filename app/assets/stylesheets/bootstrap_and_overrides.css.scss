@@ -93,4 +93,13 @@ label.error {
   color: white;
   background-color: #569fde;
   padding: 2px 6px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  white-space: nowrap;
+}
+a.tag:hover {
+  color: white;
+  background-color: #428bca;
+  text-decoration: none;
 }

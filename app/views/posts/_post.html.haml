@@ -18,6 +18,6 @@
         = time_ago_in_words post.created_at
         ago
   - if post.tags.any?
-    .masonry-tags.small
+    .masonry-tags
       - post.tags.each do |tag|
         = link_to tag.name, tag_path(tag.id), class: 'tag'

@@ -19,17 +19,13 @@
               %span.menu-icon
                 = fa_icon('chain lg')
               From web
-      %li.btn-group
-        = link_to current_user.full_name.titleize, current_user, class: 'btn btn-default navbar-btn', id: 'nav-user-btn'
 
       %li.btn-group
         %button#nav-user-menu-btn.dropdown-toggle.btn.btn-default.navbar-btn.fa-14{"data-toggle" => "dropdown", href: "#"}
-          %b.caret
+          = current_user.full_name.titleize
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Action
-          %li
-            %a{href: "#"} Another action
+            = link_to 'My styles', current_user
           %li
             = link_to 'Settings', edit_user_path
           %li.divider
