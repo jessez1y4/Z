@@ -6,17 +6,29 @@
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
   -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
-  .btn {
-    height: 32px;
-    padding-top: 6px;
+
+  li.dropdown a {
+    color: #569fde;
   }
+
+  .btn {
+    height: 30px;
+    margin-top: 6px;
+    padding-top: 5px;
+  }
+  input {
+    height: 30px;
+    margin-top: 1px;
+    padding-top: 5px;
+  }
+
   .btn:hover {
     background-color: #ebebeb !important;
   }
 
   #post-style-btn {
     width: 41px;
-    margin-right: 20px;
+    margin-right: 15px;
     color: #569fde;
   }
 
@@ -38,16 +50,12 @@
     color: #333;
   }
   #sort-buttons {
-    .btn:first-child {
-      -moz-border-radius-topleft:0px;
-      -moz-border-radius-bottomleft:0px;
-      -webkit-border-bottom-left-radius: 0px;
-      -webkit-border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-top-left-radius: 0px;
-    }
+    margin-left: 10px;
+    margin-right: 5px;
     .btn {
-      width: 55px;
+      font-size: 12px;
+      padding: 5px 6px;
+      width: 50px;
       color: #333;
     }
   }
@@ -70,10 +78,17 @@
 }
 
 .nav-search {
-  width: 200px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 220px;
   i {
     color: #777;
     font-size: 14px;
+  }
+  .btn {
+    margin-top: 1px;
+    width: 35px;
+    padding: 5px 6px;
   }
 }
 #log-in-btn {
