@@ -1,34 +1,30 @@
-%span#navbar-left
-  %ul.nav.navbar-nav
-    - if params[:sort]
-      %li.btn-group
-        %button#nav-btn.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
-          = fa_icon 'bars'
-        %ul#nav-menu.dropdown-menu
-          = render 'partials/nav_menu'
-      %li#sort-buttons.btn-group
-        - if params[:sort] == 'New'
-          = link_to 'Hot', params.merge(sort: 'Hot'), class: 'btn btn-default navbar-btn'
-          .btn.btn-default.navbar-btn.active
-            New
-        - else
-          .btn.btn-default.navbar-btn.active
-            Hot
-          = link_to 'New', params.merge(sort: 'New'), class: 'btn btn-default navbar-btn'
-    - else
-      %li
-        %button#nav-btn.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
-          = fa_icon 'bars'
-        %ul#nav-menu.dropdown-menu
-          = render 'partials/nav_menu'
-  .col-xs-3.nav-search
-    %form.navbar-form.navbar-left{role: "search"}
-      #nav-search-group
-        %input#nav-search-box.form-control{placeholder: "Search", type: "text"}/
-        %span#nav-search-btn.input-group-btn.hidden
-          = link_to root_path, class: 'btn btn-default' do
-            = fa_icon 'search'
-
-= link_to root_path do
-  %p#navbar-logo.navbar-text
-    StyleMe
+%ul.nav.navbar-nav
+  = link_to 'StyleMe', root_path, class: 'navbar-brand'
+  - if params[:sort]
+    %li.btn-group
+      %button#nav-btn.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+        = fa_icon 'bars'
+      %ul#nav-menu.dropdown-menu
+        = render 'partials/nav_menu'
+    %li#sort-buttons.btn-group
+      - if params[:sort] == 'New'
+        = link_to 'Hot', params.merge(sort: 'Hot'), class: 'btn btn-default navbar-btn'
+        .btn.btn-default.navbar-btn.active
+          New
+      - else
+        .btn.btn-default.navbar-btn.active
+          Hot
+        = link_to 'New', params.merge(sort: 'New'), class: 'btn btn-default navbar-btn'
+  - else
+    %li
+      %button#nav-btn.btn.btn-default.navbar-btn.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+        = fa_icon 'bars'
+      %ul#nav-menu.dropdown-menu
+        = render 'partials/nav_menu'
+.col-xs-3.nav-search
+  %form.navbar-form.navbar-left{role: "search"}
+    #nav-search-group
+      %input#nav-search-box.form-control{placeholder: "Search", type: "text"}/
+      %span#nav-search-btn.input-group-btn.hidden
+        = link_to root_path, class: 'btn btn-default' do
+          = fa_icon 'search'
