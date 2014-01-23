@@ -1,4 +1,7 @@
 .navbar-fixed-top {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   .btn {
     height: 32px;
     padding-top: 6px;
