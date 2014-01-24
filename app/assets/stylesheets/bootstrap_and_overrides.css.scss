@@ -14,13 +14,16 @@ $border-radius-large: 4px;
 $btn-default-border: #d2d2d2;
 $input-border: #d2d2d2;
 
-$brand-primary: #569fde;
+$brand-primary: darken(#569fde, 3%);
+
+$modal-title-padding: 10px;
 
 @import 'bootstrap-custom';
 body {
   padding-top: 70px;
   // background: #ebeced;
   background-image: image-url('background.png');
+  background-repeat: repeat;
 }
 
 .container {
@@ -61,6 +64,14 @@ label.error {
   max-width: 500px;
 }
 
+.modal-header {
+  padding-left: 15px;
+  padding-right: 15px;
+  .close {
+    margin-top: 1px;
+  }
+}
+
 .like-btn button {
   color: #555;
   i {
@@ -86,6 +97,14 @@ label.error {
   font-style: italic;
 }
 
+.btn-primary, .tag {
+  -webkit-font-smoothing: antialiased;
+}
+
+.wf-fix {
+  -webkit-font-smoothing: antialiased;
+}
+
 .btn-lg {
   font-size: 16px;
 }
@@ -103,4 +122,13 @@ a.tag:hover {
   color: white;
   background-color: darken(#569fde, 15%);
   text-decoration: none;
+}
+
+.dropdown-menu {
+  min-width: 160px;
+}
+
+hr.hr-close {
+  margin-top: 8px;
+  border-color: #ebebeb;
 }

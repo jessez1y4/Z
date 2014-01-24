@@ -163,6 +163,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    respond-rails (1.0.1)
+      railties (>= 3.1.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sass (3.2.12)
@@ -232,6 +234,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails (~> 4.0.2)
+  respond-rails (~> 1.0)
   sass-rails (~> 4.0.0)
   sdoc
   spinjs-rails (~> 1.3)

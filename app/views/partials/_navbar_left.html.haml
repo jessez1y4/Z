@@ -7,15 +7,18 @@
       %ul#nav-menu.dropdown-menu
         = render 'partials/nav_menu'
 
-    %li#sort-buttons.btn-group
-      - if params[:sort] == 'New'
-        = link_to 'Hot', params.merge(sort: 'Hot'), class: 'btn btn-default navbar-btn'
-        .btn.btn-default.navbar-btn.active
-          New
-      - else
-        .btn.btn-default.navbar-btn.active
-          Hot
-        = link_to 'New', params.merge(sort: 'New'), class: 'btn btn-default navbar-btn'
+    %li.dropdown
+      %a.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+        %strong= params[:sort].titleize
+        = fa_icon 'sort'
+      %ul.dropdown-menu
+        %li.dropdown-header
+          Sort by
+        %li
+          = link_to 'Hot', params.merge(sort: 'Hot')
+        %li
+          = link_to 'New', params.merge(sort: 'New')
+
   - else
     %li.dropdown
       %a.fa-14.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}

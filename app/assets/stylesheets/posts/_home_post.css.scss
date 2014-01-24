@@ -1,0 +1,28 @@
+body.posts-home {
+  .post-row {
+    height: 320px;
+  }
+  .masonry-brick {
+    position: absolute;
+    max-width: 210px;
+  }
+  .col-xs-9 {
+    width: 700px;
+    margin-right: 20px;
+    .col-xs-4 {
+      width: 230px;
+    }
+  }
+
+  #top-tags {
+    .tag {
+      line-height: 25px;
+      margin-right: 5px;
+      font-size: 12px;
+      background-color: lighten(#569fde, 4%);
+    }
+    .tag:hover {
+      background-color: darken(#569fde, 10%);
+    }
+  }
+}

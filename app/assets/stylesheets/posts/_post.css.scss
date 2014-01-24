@@ -1,0 +1,86 @@
+.masonry-brick {
+  max-width: 220px;
+  border: 1px solid #dadada;
+  background: white;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  overflow: hidden;
+
+  .masonry-img a {
+    cursor: zoom-in;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+  }
+
+  .masonry-btn {
+    height: 26px;
+    width: 32px;
+    opacity: 0.88;
+    font-size: 14px;
+    border: 0;
+    padding: 1px;
+    background-color: white;
+    outline: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.55);
+  }
+
+  .masonry-share-btn {
+    @extend .masonry-btn;
+    color: #666;
+    left: 6px;
+    z-index: 4;
+    position: absolute;
+    top: 6px;
+  }
+
+  .masonry-like-btn {
+    z-index: 4;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    button {
+      @extend .masonry-btn;
+      color: #ED4337;
+    }
+  }
+
+  .masonry-like-btn button:hover, .masonry-share-btn:hover {
+    opacity: 1;
+  }
+
+  .masonry-title {
+    padding: 7px 10px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px dashed #e7e7e7;
+
+    i:last-child {
+      font-size: 10px;
+    }
+  }
+
+  .masonry-author {
+    padding: 8px 10px;
+  }
+
+  .masonry-tags {
+    padding: 6px 10px;
+    border-top: 1px dashed #e7e7e7;
+    background-color: #f8f8f8;
+    .tag {
+      margin-right: 2px;
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+}

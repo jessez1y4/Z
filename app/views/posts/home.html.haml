@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-xs-9
+      %strong
+        Hot
+      %span.text-muted
+        |
+      %span
+        = link_to 'More', posts_path(params.merge(sort: 'Hot'))
+      %hr.hr-close
+      .row.post-row
+        - @hot_posts.each do |post|
+          .col-xs-4
+            = render 'home_post', post: post
+
+      %strong
+        New
+      %span.text-muted
+        |
+      %span
+        = link_to 'More', posts_path(params.merge(sort: 'New'))
+      %hr.hr-close
+      .row.post-row
+        - @new_posts.each do |post|
+          .col-xs-4
+            = render 'home_post', post: post
+    .col-xs-3.streched
+      #top-tags
+        %strong
+          Top tags
+        %hr.hr-close
+          .text-center
+            - @top_tags.each do |tag|
+              = link_to tag.name, tag, class: 'tag'

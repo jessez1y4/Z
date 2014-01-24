@@ -1,1 +1,6 @@
-$("#like-btn-<%= @post.id %>").html "<%= escape_javascript(render('posts/like', post: @post)) %>"
+if $('.masonry-brick').length
+  $("#like-btn-<%= @post.id %>").html "<%=j render('posts/masonry_like', post: @post) %>"
+  $("#masonry-title-likes-<%= @post.id %>").html "<%=j fa_icon 'heart-o', text: @post.like_relationships_count %>"
+
+else
+  $("#like-btn-<%= @post.id %>").html "<%=j render('posts/like', post: @post) %>"

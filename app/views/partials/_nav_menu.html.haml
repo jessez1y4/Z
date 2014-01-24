@@ -1,5 +1,8 @@
 %li
   = link_to 'Everything', posts_path(params.merge(scope: nil))
+%li
+  = link_to 'Random stuff', root_path
+
 %li.divider
 - if user_signed_in?
   %li
@@ -10,7 +13,7 @@
       Bookmarks
     - current_user.bookmarks.each do |tag|
       %li
-        = link_to "##{tag.name}", tag_path(tag.id)
+        = link_to "##{tag.name}", tag
 - else
   %li
     %a{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}

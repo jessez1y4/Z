@@ -7,11 +7,15 @@
   -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
 
+  .navbar-brand {
+    color: #333;
+  }
+
   li.dropdown .dropdown-toggle {
-    color: #569fde;
+    color: darken(#569fde, 3%);
   }
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
-    color: darken(#569fde, 15%);
+    color: darken(#569fde, 10%);
   }
 
   .btn {
@@ -52,31 +56,32 @@
     margin-right: 15px;
     color: #333;
   }
-  #sort-buttons {
-    margin-left: 10px;
-    margin-right: 5px;
-    .btn {
-      font-size: 12px;
-      padding: 5px 6px;
-      width: 50px;
-      color: #333;
-    }
-  }
 }
 
 .forgot-password {
   font-weight: normal;
 }
-#sns-signin {
-  padding-top: 12px;
-  .facebook-color {
-    color: #3B5998;
+#sns-login {
+  .fb-login-btn {
+    padding-left: 0px;
+    a {
+      i {
+        padding-right: 4px;
+      }
+      background-color: lighten(#4c6993, 5%);
+      color: white;
+      border: 1px solid #4c6993;
+      font-size: 14px;
+    }
   }
-  .google-color {
-    color: #C63D2D;
-  }
-  .twitter-color {
-    color: #00A0D1;
+  .gg-login-btn {
+    padding-right: 0px;
+    a {
+      background-color: lighten(#da573b, 5%);
+      color: white;
+      border: 1px solid #da573b;
+      font-size: 14px;
+    }
   }
 }
 
@@ -102,5 +107,19 @@
 }
 #sign-up-btn {
   margin-left: 20px;
-  color: #569fde;
+  color: darken(#569fde, 3%);
+  font-weight: bold;
+}
+
+#sign-in-modal {
+  margin-top: 4%;
+
+  .modal-dialog {
+    width: 500px;
+  }
+
+  hr {
+    margin-top: 22px;
+    width: 406px;
+  }
 }

@@ -3,6 +3,7 @@
   %head
     %title StyleMe
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = respond_include_tags
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = cloudinary_js_config

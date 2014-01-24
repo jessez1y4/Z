@@ -1,0 +1,3 @@
+= form_for post.like_relationships.find_by(user_id: current_user.id), html: { method: :delete }, remote: true do |f|
+  %button{type: 'submit'}
+    = fa_icon 'heart'

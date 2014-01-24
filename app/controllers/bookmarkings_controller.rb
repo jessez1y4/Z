@@ -6,7 +6,7 @@ class BookmarkingsController < ApplicationController
     current_user.bookmark!(@tag)
 
     respond_to do |format|
-      format.html { redirect_to tag_path(@tag.id) }
+      format.html { redirect_to @tag }
       format.js
     end
   end
@@ -16,7 +16,7 @@ class BookmarkingsController < ApplicationController
     current_user.unbookmark!(@tag)
 
     respond_to do |format|
-      format.html { redirect_to tag_path(@tag.id) }
+      format.html { redirect_to @tag }
       format.js
     end
   end

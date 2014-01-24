@@ -1,14 +1,14 @@
+window.bind_hover = ->
+  $('.masonry-brick').hover ->
+    $('.hidden-info', this).removeClass 'hidden'
+    # $(this).addClass 'post-frame'
+  , ->
+    # $(this).removeClass 'post-frame'
+    $('.hidden-info', this).addClass 'hidden'
+
 $ ->
   if $('#masonry-container').length
     $('.masonry-brick').css('opacity', '0')
-
-    window.bind_hover = ->
-      $('.masonry-brick').hover ->
-        $('.hidden-info', this).removeClass 'hidden'
-        # $(this).addClass 'post-frame'
-      , ->
-        # $(this).removeClass 'post-frame'
-        $('.hidden-info', this).addClass 'hidden'
 
     masonry_container = $('#masonry-container')
 

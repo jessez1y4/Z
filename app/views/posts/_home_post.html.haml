@@ -1,11 +1,11 @@
 .masonry-brick
-  .masonry-like-btn.hidden-btn.hidden
+  .masonry-like-btn.hidden-info.hidden
     = render 'partials/masonry_like_button', post: post
-  %button.masonry-share-btn.hidden-btn.hidden
+  %button.masonry-share-btn.hidden-info.hidden
     = fa_icon 'share'
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag post.cloudinary_id, width: 220
+      = cl_image_tag post.cloudinary_id, width: 210, height: 210, crop: :fill, gravity: :north, quality: 95
   .masonry-title
     %strong= truncate post.title.titleize, length: 22
     .pull-right.small.text-muted
@@ -24,6 +24,6 @@
         = time_ago_in_words post.created_at
         ago
   - if post.tags.any?
-    .masonry-tags
+    .masonry-tags.hidden-info.hidden
       - post.tags.each do |tag|
         = link_to tag.name, tag, class: 'tag'

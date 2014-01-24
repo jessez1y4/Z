@@ -1,5 +1,5 @@
 StyleMe::Application.routes.draw do
-  root 'posts#index'
+  root 'posts#home'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',

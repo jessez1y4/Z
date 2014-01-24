@@ -1,0 +1,6 @@
+- if !user_signed_in?
+  %button.btn.btn-default.btn-lg{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+    = fa_icon 'heart-o'
+- elsif post.user != current_user
+  %div{id: "like-btn-#{post.id}"}
+    = masonry_like_button(post)

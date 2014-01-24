@@ -27,3 +27,6 @@ en:
         # The defaults are "about 1 hour" and "about %{count} hours"
         one: "1 hour"
         other: "%{count} hours"
+      less_than_x_minutes:
+        one:   "just now"
+        other: "%{count} minutes"
