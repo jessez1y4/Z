@@ -12,6 +12,7 @@ StyleMe::Application.routes.draw do
   # end
 
   resources :users, except: [:edit, :update] do
+    resources :liked_posts, only: [:index]
     resources :posts
     member do
       get :following, :followers

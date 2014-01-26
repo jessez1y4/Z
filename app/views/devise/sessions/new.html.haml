@@ -1,29 +1,34 @@
 .container
-  .col-xs-8.col-xs-offset-2
-    .panel.panel-default
-      .panel-body
-        .col-xs-10.col-xs-offset-1
-          %h3.text-center
-            Sign in to XXX
-          %br
-          = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
-            .form-group
-              %label Email or Username
-              = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
+  .panel.panel-default.sign-up-panel
+    .panel-body
+      %h3.text-center
+        Log in
+      %br
+      %br
+      .row#sns-login
+        .col-xs-6.fb-login-btn
+          = link_to user_omniauth_authorize_path(:facebook),
+                    class: 'btn btn-default btn-block wf-fix' do
+            = fa_icon 'facebook lg', text: 'Log in with Facebook'
+        .col-xs-6.gg-login-btn
+          = link_to user_omniauth_authorize_path(:google),
+                    class: 'btn btn-default btn-block wf-fix' do
+            = fa_icon 'google-plus lg fw', text: 'Log in with Google'
+      %hr
+      = form_for(:user, as: @user, url: session_path('user'), html: { class: 'form-horizontal', id: 'sign-in-form' }) do |f|
+        .form-group.text-muted
+          Log in with email or username
 
+        .form-group
+          %label Email or Username
+          = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
+        .form-group
+          %label
+            Password&nbsp;
+            %small.forgot-password
+              = link_to 'Forgot?', new_password_path('user')
+          = f.password_field :password, class: 'form-control', tabindex: 2
+        .row
+          .col-xs-4
             .form-group
-              %label
-                Password&nbsp;
-                %small.forgot-password
-                  = link_to 'Forgot?', new_password_path('user')
-              = f.password_field :password, class: 'form-control', tabindex: 2
-
-            .form-group
-              = f.submit 'Sign In', class: 'btn btn-primary btn-lg'
-              #sns-signin.pull-right
-                Sign in with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
-                &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google)
-                &nbsp;&nbsp;
-                = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path
+              = f.submit 'Sign In', class: 'btn btn-primary btn-lg btn-block'

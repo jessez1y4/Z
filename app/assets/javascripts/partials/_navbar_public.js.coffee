@@ -15,4 +15,3 @@ $ ->
     else
       $('#nav-search-btn').removeClass 'hidden'
       $('#nav-search-group').addClass 'input-group'
-

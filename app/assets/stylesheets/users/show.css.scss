@@ -1,3 +1,5 @@
+@import 'colors';
+
 body.users-show {
   #load-more {
     opacity: 0;
@@ -7,27 +9,35 @@ body.users-show {
   }
 }
 
-#user-bar {
-  img {
-    position: relative;
-    bottom: 6px;
-    border: 1px solid #eaeaea;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-  }
-  .pull-right {
-    position: relative;
-    bottom: 6px;
-  }
-  .user-stats {
-    i:last-child {
-      font-size: 12px;
-      border-left: 1px solid #d4d4d4;
+#user-tabs {
+  padding-left: 1px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  div {
+    text-align: center;
+    display: inline-block;
+    padding: 20px 15px 5px 15px;
+    border-bottom: 2px solid #ddd;
+    a {
+      color: #aaa;
     }
-    i {
-      padding-right: 4px;
-      padding-left: 15px;
+
+    a:hover {
+      color: #555;
+      text-decoration: none;
     }
+
+    .tab-count {
+      font-size: 18px;
+    }
+  }
+
+  .active-tab {
+    border-bottom: 2px solid $brand-blue;
+  }
+
+  #user-rest-tab {
+    font-size: 18px;
+    min-width: 668px;
   }
 }

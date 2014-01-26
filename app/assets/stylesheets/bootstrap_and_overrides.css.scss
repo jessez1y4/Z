@@ -1,3 +1,5 @@
+@import 'colors';
+
 $font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $grid-float-breakpoint: 0;
 $font-size-base: 13px;
@@ -7,20 +9,21 @@ $navbar-default-color: #333;
 $navbar-default-bg: white;
 
 // everything square
-$border-radius-base: 3px;
+$border-radius-base: 2px;
 $border-radius-small: 0px;
 $border-radius-large: 4px;
 
-$btn-default-border: #d2d2d2;
-$input-border: #d2d2d2;
+// $btn-default-border: #d2d2d2;
+// $input-border: #d2d2d2;
+$input-color: #333;
 
-$brand-primary: darken(#569fde, 3%);
+$brand-primary: $brand-blue;
 
 $modal-title-padding: 10px;
 
 @import 'bootstrap-custom';
 body {
-  padding-top: 70px;
+  padding-top: 75px;
   // background: #ebeced;
   background-image: image-url('background.png');
   background-repeat: repeat;
@@ -31,8 +34,12 @@ body {
   width: 960px;
 }
 
+.text-black {
+  color: #333;
+}
+
 hr.hr-dark {
-  border-color: #ebebeb;
+  border-color: #e6e6e6;
 }
 
 // jQuery validation error msg style
@@ -49,9 +56,8 @@ label.error {
   width: 32px;
 }
 
-// bigger menu button
-.tall-menu-item {
-  line-height: 30px !important;
+.dropdown-menu li a {
+  line-height: 24px;
 }
 
 // pull modal down a little
@@ -111,7 +117,7 @@ label.error {
 
 .tag {
   color: white;
-  background-color: #569fde;
+  background-color: lighten($brand-blue, 20%);
   padding: 2px 6px;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -120,7 +126,7 @@ label.error {
 }
 a.tag:hover {
   color: white;
-  background-color: darken(#569fde, 15%);
+  background-color: $brand-blue;
   text-decoration: none;
 }
 
@@ -130,5 +136,34 @@ a.tag:hover {
 
 hr.hr-close {
   margin-top: 8px;
-  border-color: #ebebeb;
+  border-color: #e6e6e6;
+}
+
+
+
+
+.btn-facebook {
+  -webkit-font-smoothing: antialiased;
+  background-color: $facebook;
+  color: white;
+  border: 1px solid darken($facebook, 5%);
+}
+
+.btn-facebook:hover {
+  background-color: darken($facebook, 5%);
+  color: white;
+  border-color: darken($facebook, 12%);
+}
+
+.btn-google {
+  -webkit-font-smoothing: antialiased;
+  background-color: $google;
+  color: white;
+  border: 1px solid darken($google, 5%);
+}
+
+.btn-google:hover {
+  color: white;
+  background-color: darken($google, 5%);
+  border-color: darken($google, 12%);
 }

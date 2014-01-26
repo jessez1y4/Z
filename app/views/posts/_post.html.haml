@@ -1,17 +1,19 @@
 .masonry-brick
-  .masonry-like-btn.hidden-btn.hidden
+  .masonry-like-btn.hidden-info.hidden
     = render 'partials/masonry_like_button', post: post
-  %button.masonry-share-btn.hidden-btn.hidden
-    = fa_icon 'share'
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag post.cloudinary_id, width: 220
+      = cl_image_tag post.cloudinary_id, width: 220, height: 280, gravity: :north, crop: :fill
   .masonry-title
     %strong= truncate post.title.titleize, length: 22
-    .pull-right.small.text-muted
-      = fa_icon 'eye', text: post.views_count
-      %span{id: "masonry-title-likes-#{post.id}"}
-        = fa_icon 'heart-o', text: post.like_relationships_count
+    .pull-right
+      %span.masonry-views
+        %span.glyphicon.glyphicon-eye-open
+        = post.views_count
+
+      %span.glyphicon.glyphicon-heart
+      %span{class: "masonry-title-likes-#{post.id}"}
+        = post.like_relationships_count
   .masonry-author.small.text-muted
     - if controller_name == 'users'
       .text-center

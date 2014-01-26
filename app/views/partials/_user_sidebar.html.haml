@@ -1,30 +1,32 @@
 .row
-  .col-xs-5
-    = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face'
-  #name-n-follow.col-xs-7
+  #user-bar.col-xs-8
+    .pull-left
+      = cl_image_tag @user.avatar_cloudinary_id, width: 90, height: 90, crop: 'fill', gravity: 'face'
+
     %h3
-      = user.full_name
+      = @user.full_name.titleize
+    %br
     = render 'partials/follow_button', user: @user
 
-#user-stats.row.text-center
-  .col-xs-3
-    / placeholder
-    999
-    %br
-    .small
-      VIEWS
-  .col-xs-3
-    = user.likes
-    %br
-    .small
-      LIKES
-  .col-xs-3
-    #followers
-      = user.followers_count
-    .small
-      FOLLOWERS
-  .col-xs-3
-    = user.followings_count
-    %br
-    .small
-      FOLLOWS
+  #user-stats.col-xs-4
+    .row.text-center
+      .col-xs-3
+        .stat-count
+          = @user.likes_count
+        .stat-name
+          Likes
+      .col-xs-3
+        .stat-count
+          = @user.views_count
+        .stat-name
+          Views
+      .col-xs-3
+        .stat-count.followers-count
+          = @user.followers_count
+        .stat-name
+          Followers
+      .col-xs-3
+        .stat-count
+          = @user.followings_count
+        .stat-name
+          Following

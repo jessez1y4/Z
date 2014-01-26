@@ -1,34 +1,44 @@
 .container
-  .row
-    .col-xs-9
-      %strong
-        Hot
-      %span.text-muted
-        |
-      %span
+  #hot-carousel.carousel.slide{'data-ride' => 'carousel'}
+    .post-row-header
+      Hot
+      %span.more
         = link_to 'More', posts_path(params.merge(sort: 'Hot'))
-      %hr.hr-close
-      .row.post-row
-        - @hot_posts.each do |post|
-          .col-xs-4
-            = render 'home_post', post: post
+      %ol.carousel-indicators
+        %li.active{'data-target' => '#hot-carousel', 'data-slide-to' => '0'}
+        %li{'data-target' => '#hot-carousel', 'data-slide-to' => '1'}
 
-      %strong
-        New
-      %span.text-muted
-        |
-      %span
+    %hr.hr-close
+
+    .carousel-inner
+      - @hot_posts.each_slice(4) do |posts|
+        .item
+          - posts.each do |post|
+            .col-xs-3
+              = render 'home_post', post: post
+
+  #new-carousel.carousel.slide{'data-ride' => 'carousel'}
+    .post-row-header
+      New
+      %span.more
         = link_to 'More', posts_path(params.merge(sort: 'New'))
-      %hr.hr-close
-      .row.post-row
-        - @new_posts.each do |post|
-          .col-xs-4
-            = render 'home_post', post: post
-    .col-xs-3.streched
-      #top-tags
-        %strong
-          Top tags
-        %hr.hr-close
-          .text-center
-            - @top_tags.each do |tag|
-              = link_to tag.name, tag, class: 'tag'
+      %ol.carousel-indicators
+        %li.active{'data-target' => '#new-carousel', 'data-slide-to' => '0'}
+        %li{'data-target' => '#new-carousel', 'data-slide-to' => '1'}
+    %hr.hr-close
+
+    .carousel-inner
+      - @new_posts.each_slice(4) do |posts|
+        .item
+          - posts.each do |post|
+            .col-xs-3
+              = render 'home_post', post: post
+
+    / .col-xs-3.streched
+    /   #top-tags
+    /     %strong
+    /       Top tags
+    /     %hr.hr-close
+    /       .text-center
+    /         - @top_tags.each do |tag|
+    /           = link_to tag.name.downcase, tag, class: 'tag'

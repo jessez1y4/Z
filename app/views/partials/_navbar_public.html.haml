@@ -2,14 +2,12 @@
   .container
     = render 'partials/navbar_left'
 
-    = link_to 'Sign up', new_registration_path('user'), class: 'btn btn-default navbar-btn navbar-right', id: 'sign-up-btn'
+    = link_to 'Sign up', new_registration_path('user'), class: 'btn btn-primary navbar-btn navbar-right', id: 'sign-up-btn'
 
     %ul.nav.navbar-nav.navbar-right
       %li
         %a#log-in-btn{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
           Log in
-
-
 
 #sign-in-modal.modal
   .modal-dialog
@@ -35,6 +33,9 @@
             .col-xs-10.col-xs-offset-1
               .form-group.text-muted
                 Log in with email or username
+                .pull-right
+                  = link_to 'Need an account?', new_registration_path('user')
+
               .form-group
                 %label Email or Username
                 = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1

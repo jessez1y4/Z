@@ -4,8 +4,8 @@
       #bookmark-btn
         = bookmark_button @tag
     - else
-      %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-        = fa_icon 'bookmark', text: 'Bookmark'
+      %button.btn.btn-primary.fa-14{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+        = fa_icon 'bookmark fw', text: 'Bookmark'
   %h4
     %small
       = @tag.posts_count

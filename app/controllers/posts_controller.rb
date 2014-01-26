@@ -3,8 +3,8 @@ class PostsController < ApplicationController
                 unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   def home
-    @hot_posts = Post.sort('Hot').limit(3)
-    @new_posts = Post.sort('New').limit(3)
+    @hot_posts = Post.sort('Hot').limit(8)
+    @new_posts = Post.sort('New').limit(8)
     @top_tags = Tag.top(10)
   end
 

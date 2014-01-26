@@ -1,23 +1,23 @@
 body.users-edit, body.users-update {
   img {
-    border: 1px solid #eaeaea;
+    border: 1px solid #ddd;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
+    margin-left: 12px;
   }
 
-  #avatar-edit {
-    .col-xs-8 {
-      margin-left: -20px;
-    }
-  }
-
-  #upload-avatar-btn, #step-2 p {
+  #upload-avatar-btn {
     margin-top: 15px;
     margin-bottom: 10px;
   }
-  #step-2 button {
-    width: 100px;
+
+  #step-2 {
+    margin-top: 15px;
+
+    button {
+      margin-right: 15px;
+    }
   }
 
   .tall-h4 {

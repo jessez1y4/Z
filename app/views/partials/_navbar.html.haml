@@ -9,23 +9,21 @@
 
         %ul.dropdown-menu
           %li
-            %a.modal-trigger.tall-menu-item{ href: '#', 'data-modal-name' => 'upload-post' }
-              %span.menu-icon
-                = fa_icon('fire lg')
+            %a{'data-toggle' => 'modal', 'data-target' => '#upload-post-modal', href: '#'}
               Upload
           %li.divider
           %li
-            %a.modal-trigger.tall-menu-item{href: '#', 'data-modal-name' => 'from-web-post' }
-              %span.menu-icon
-                = fa_icon('chain lg')
+            %a{'data-toggle' => 'modal', 'data-target' => '#from-web-post-modal', href: '#'}
               From web
 
       %li.btn-group
-        %button#nav-user-menu-btn.dropdown-toggle.btn.btn-default.navbar-btn.fa-14{"data-toggle" => "dropdown", href: "#"}
-          = current_user.full_name.titleize
+        %button#nav-user-menu-btn.dropdown-toggle.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#"}
+          %strong= current_user.full_name.titleize
         %ul.dropdown-menu
           %li
             = link_to 'My styles', current_user
+          %li
+            = link_to 'My likes', user_liked_posts_path(current_user)
           %li
             = link_to 'Settings', edit_user_path
           %li.divider

@@ -1,3 +1,5 @@
+@import 'colors';
+
 .navbar-fixed-top {
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
   -moz-background-clip: padding;
@@ -10,12 +12,16 @@
   .navbar-brand {
     color: #333;
   }
+  .navbar-brand:hover {
+    color: #333;
+  }
 
   li.dropdown .dropdown-toggle {
-    color: darken(#569fde, 3%);
+    color: #999;
   }
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
-    color: darken(#569fde, 10%);
+    color: $brand-blue;
+    background-color: #eee;
   }
 
   .btn {
@@ -29,32 +35,12 @@
     padding-top: 5px;
   }
 
-  .btn:hover {
-    background-color: #ebebeb !important;
-  }
-
   #post-style-btn {
-    width: 41px;
-    margin-right: 15px;
-    color: #569fde;
+    margin-right: 10px;
   }
 
-  #nav-btn {
-    color: #569fde;
-    width: 54px;
-  }
-  .btn-group #nav-btn {
-    margin-right: -1px;
-    -moz-border-radius-topright:0px;
-    -moz-border-radius-bottomright:0px;
-    -webkit-border-bottom-right-radius: 0px;
-    -webkit-border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-  }
   #nav-user-menu-btn {
     margin-right: 15px;
-    color: #333;
   }
 }
 
@@ -62,25 +48,40 @@
   font-weight: normal;
 }
 #sns-login {
+  margin-bottom: 23px;
+
   .fb-login-btn {
     padding-left: 0px;
+
     a {
       i {
         padding-right: 4px;
       }
-      background-color: lighten(#4c6993, 5%);
+      background-color: $facebook;
       color: white;
-      border: 1px solid #4c6993;
+      border: 1px solid darken($facebook, 5%);
       font-size: 14px;
     }
+
+    a:hover {
+      background-color: darken($facebook, 5%);
+      border-color: darken($facebook, 12%);
+    }
   }
+
   .gg-login-btn {
     padding-right: 0px;
+
     a {
-      background-color: lighten(#da573b, 5%);
+      background-color: $google;
       color: white;
-      border: 1px solid #da573b;
+      border: 1px solid darken($google, 5%);
       font-size: 14px;
+    }
+
+    a:hover {
+      background-color: darken($google, 5%);
+      border-color: darken($google, 12%);
     }
   }
 }
@@ -105,9 +106,10 @@
 #log-in-btn:hover {
   text-decoration: underline;
 }
+
 #sign-up-btn {
   margin-left: 20px;
-  color: darken(#569fde, 3%);
+  padding-top: 4px;
   font-weight: bold;
 }
 
@@ -119,7 +121,6 @@
   }
 
   hr {
-    margin-top: 22px;
     width: 406px;
   }
 }

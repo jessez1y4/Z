@@ -1,30 +1,36 @@
 .container
-  .col-xs-8.col-xs-offset-2
-    .panel.panel-default
-      .panel-body
-        .col-xs-10.col-xs-offset-1
-          %h3.text-center
-            Join XXX Today!
-          %br
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'sign-up-form' }) do |f|
-            .form-group
-              %label Email
-              = f.email_field :email, autofocus: true, class: 'form-control', 'data-error' => field_err(resource, :email)
+  .panel.panel-default.sign-up-panel
+    .panel-body
+      %h3.text-center
+        Join XXX Today!
+      %br
+      %br
+      .row#sns-login
+        .col-xs-6.fb-login-btn
+          = link_to user_omniauth_authorize_path(:facebook),
+                    class: 'btn btn-default btn-block wf-fix' do
+            = fa_icon 'facebook lg', text: 'Log in with Facebook'
+        .col-xs-6.gg-login-btn
+          = link_to user_omniauth_authorize_path(:google),
+                    class: 'btn btn-default btn-block wf-fix' do
+            = fa_icon 'google-plus lg fw', text: 'Log in with Google'
+      %hr.hr-dark
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'sign-up-form' }) do |f|
+        .form-group.help-block
+          Or sign up with email
+        .form-group
+          %label Email Address
+          = f.email_field :email, autofocus: true, class: 'form-control', 'data-error' => field_err(resource, :email)
 
-            .form-group
-              %label Full Name
-              = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(resource, :full_name)
+        .form-group
+          %label Full Name
+          = f.text_field :full_name, class: 'form-control', 'data-error' => field_err(resource, :full_name)
 
-            .form-group
-              %label Password
-              = f.password_field :password, class: 'form-control', 'data-error' => field_err(resource, :password)
+        .form-group
+          %label Password
+          = f.password_field :password, class: 'form-control', 'data-error' => field_err(resource, :password)
 
-            .form-group
-              = f.submit 'Sign Up', class: 'btn btn-primary btn-lg'
-              #sns-signin.pull-right
-                Sign up with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
-                &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google)
-                &nbsp;&nbsp;
-                = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path
+        .form-group
+          .row
+            .col-xs-4
+              = f.submit 'Sign Up', class: 'btn btn-primary btn-lg btn-block'

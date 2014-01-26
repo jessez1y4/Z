@@ -1,17 +1,17 @@
 .container
   = render 'partials/user_sidebar'
   #user-tabs
-    #user-style-tab.active-tab
-      Posted
-      %span.tab-count
-        = @user.posts_count
-      styles
-    #user-liked-tab
-      = link_to user_liked_posts_path(@user) do
-        Likes
+    #user-style-tab
+      = link_to @user do
+        Posted
         %span.tab-count
-          = @user.liked_posts_count
+          = @user.posts_count
         styles
+    #user-liked-tab.active-tab
+      Likes
+      %span.tab-count
+        = @user.liked_posts_count
+      styles
     #user-rest-tab
       &nbsp;
   #masonry-container

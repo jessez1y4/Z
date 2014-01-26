@@ -1,6 +1,6 @@
 .masonry-brick {
   max-width: 220px;
-  border: 1px solid #dadada;
+  border: 1px solid #d9d9d9;
   background: white;
   margin-bottom: 15px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -18,54 +18,56 @@
     cursor: -moz-zoom-in;
   }
 
-  .masonry-btn {
-    height: 26px;
-    width: 32px;
-    opacity: 0.88;
-    font-size: 14px;
-    border: 0;
-    padding: 1px;
-    background-color: white;
-    outline: none;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.55);
-  }
-
-  .masonry-share-btn {
-    @extend .masonry-btn;
-    color: #666;
-    left: 6px;
-    z-index: 4;
-    position: absolute;
-    top: 6px;
-  }
-
   .masonry-like-btn {
     z-index: 4;
     position: absolute;
-    right: 6px;
-    top: 6px;
-    button {
-      @extend .masonry-btn;
-      color: #ED4337;
+    right: 5px;
+    top: 4px;
+
+    button, .fake-btn {
+      min-width: 42px;
+      opacity: 0.8;
+      font-size: 12px;
+      font-weight: bold;
+      border: none;
+      outline: none;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+      padding: 3px 8px;
+      color: #eee;
+      background-color: black;
+      -webkit-font-smoothing: antialiased;
+
+      span {
+        font-size: 14px;
+        position: relative;
+        top: 2px;
+      }
+    }
+
+    .glyphicon-heart-red {
+      color: #f11;
     }
   }
 
-  .masonry-like-btn button:hover, .masonry-share-btn:hover {
-    opacity: 1;
+  .masonry-like-btn button:hover {
+    opacity: 0.85;
   }
 
   .masonry-title {
     padding: 7px 10px;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px dashed #e7e7e7;
-
-    i:last-child {
-      font-size: 10px;
+    .pull-right {
+      color: #999;
+      font-size: 12px;
+      .masonry-views {
+        margin-right: 5px;
+      }
     }
   }
 

@@ -1,15 +1,36 @@
-#name-n-follow {
-  margin-left: -10px;
+#user-bar {
+  img {
+    margin-right: 20px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+
   h3 {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 0px;
+    padding-top: 9px;
+    margin-bottom: -1px;
   }
 }
 
 #user-stats {
-  margin-top: 15px;
+  padding-top: 22px;
+  margin-left: -10px;
+
   .col-xs-3 {
-    padding-left: 0;
-    padding-right: 0;
+    border-right: 1px solid #ddd;
+
+    .stat-count {
+      font-size: 20px;
+    }
+
+    .stat-name {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+
+  .col-xs-3:last-child {
+    border-right: none;
   }
 }
