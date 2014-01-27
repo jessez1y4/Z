@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125192521) do
+ActiveRecord::Schema.define(version: 20140127025219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20140125192521) do
     t.integer  "comments_count",           default: 0
     t.integer  "tags_count",               default: 0
     t.integer  "views_count",              default: 0, null: false
+    t.string   "crop_str"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree

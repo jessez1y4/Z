@@ -54,7 +54,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'haml-rails', '~> 0.4'
+gem 'haml-rails', '~> 0.5.3'
 
 gem 'devise', '~> 3.2.0'
 gem 'omniauth-facebook', '~> 1.6.0'

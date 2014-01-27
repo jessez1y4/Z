@@ -2,12 +2,12 @@
   .row
     .col-xs-6
       #post-img-container
-        = cl_image_tag @post.cloudinary_id, width: 390
+        = cl_image_tag_with_crop @post, width: 390, crop: :fill
 
     .col-xs-6
       = form_for @post, html: { id: 'new-post-form' } do |f|
-        = f.hidden_field :cloudinary_id, value: @post.cloudinary_id
-
+        = f.hidden_field :cloudinary_id
+        = f.hidden_field :crop_str
         .form-group
           %label Title
           = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)

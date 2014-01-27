@@ -30,6 +30,10 @@ StyleMe::Application.routes.draw do
 
   resources :posts do
     resources :comments
+
+    new do
+      get :crop
+    end
   end
 
   resources :channels do

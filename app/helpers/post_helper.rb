@@ -14,4 +14,9 @@ module PostHelper
       render 'posts/masonry_unlike', post: post
     end
   end
+
+  def cl_image_tag_with_crop post, options = {}
+    html = cl_image_tag post.cloudinary_id, options
+    raw html.sub('/upload/', "/upload/#{post.crop_str}")
+  end
 end

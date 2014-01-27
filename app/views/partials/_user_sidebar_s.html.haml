@@ -1,18 +1,17 @@
-#user-bar.row
-  #user-main.col-xs-7
+#user-bar-s.row
+  #user-main.col-xs-5
     .pull-left
-      = cl_image_tag @user.avatar_cloudinary_id, width: 90, height: 90, crop: 'fill', gravity: 'face'
+      = cl_image_tag @user.avatar_cloudinary_id, width: 60, height: 60, crop: 'fill', gravity: 'face'
 
-    %p
-      %h3
+    = link_to @user do
+      %h4
         = @user.full_name.titleize
     %p
       %span.glyphicon.glyphicon-map-marker
       Someplace, Somestate
 
-    = render 'partials/follow_button', user: @user
 
-  #user-stats.col-xs-5
+  #user-stats.col-xs-4
     .row.text-center
       .col-xs-3
         .stat-count
@@ -34,3 +33,6 @@
           = @user.followings_count
         .stat-name
           Following
+  #user-follow-btn.pull-right
+    = render 'partials/follow_button', user: @user
+%hr.hr-darker

@@ -3,7 +3,7 @@
     = render 'partials/masonry_like_button', post: post
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag post.cloudinary_id, width: 220, height: 280, gravity: :north, crop: :fill
+      = cl_image_tag_with_crop post, width: 220, gravity: :north, crop: :fill
   .masonry-title
     %strong= truncate post.title.titleize, length: 22
     .pull-right

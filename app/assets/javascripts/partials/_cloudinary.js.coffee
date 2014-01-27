@@ -21,6 +21,8 @@ $ ->
       $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
       $('#from-web-post-form input:submit').val('Fetch image').prop('disabled', false)
     else
+      $('#orig_width').val data.result.width
+      $('#orig_height').val data.result.height
       $('#hidden-post-form').submit()
 
 

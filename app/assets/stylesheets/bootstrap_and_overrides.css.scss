@@ -42,6 +42,10 @@ hr.hr-dark {
   border-color: #e6e6e6;
 }
 
+hr.hr-darker {
+  border-color: #e1e1e1;
+}
+
 // jQuery validation error msg style
 label.error {
   font-weight: normal;
@@ -139,7 +143,15 @@ hr.hr-close {
   border-color: #e6e6e6;
 }
 
+.panel {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
 
 
 .btn-facebook {

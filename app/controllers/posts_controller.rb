@@ -18,11 +18,16 @@ class PostsController < ApplicationController
                  .per(20)
   end
 
-  def new
+  def crop
     preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
     raise "Invalid upload signature" if !preloaded.valid?
-    # @cloudinary_id = preloaded.identifier
-    @post = Post.new(cloudinary_id: preloaded.identifier)
+    @cloudinary_id = preloaded.identifier
+  end
+
+  def new
+    crop_str = "x_#{params[:crop_x]},y_#{params[:crop_y]},w_#{params[:crop_w]},h_#{params[:crop_h]},c_crop/"
+    @post = Post.new(cloudinary_id: params[:cloudinary_id],
+                     crop_str: crop_str)
     @post.tag_list = current_user.default_tag_list
   end
 
@@ -56,9 +61,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy!
+    redirect_to current_user, notice: "\<#{@post.title.titleize}\> has been deleted."
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:cloudinary_id, :title, :description, :tag_list, items_attributes: [:id, :name, :number, :x, :y, :_destroy])
+    params.require(:post).permit(:cloudinary_id,
+                                 :crop_str,
+                                 :title,
+                                 :description,
+                                 :tag_list,
+                                 items_attributes: [:id,
+                                                    :name,
+                                                    :number,
+                                                    :x,
+                                                    :y,
+                                                    :_destroy])
   end
 end
