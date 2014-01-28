@@ -28,5 +28,5 @@ en:
         one: "1 hour"
         other: "%{count} hours"
       less_than_x_minutes:
-        one:   "just now"
+        one:   "seconds"
         other: "%{count} minutes"

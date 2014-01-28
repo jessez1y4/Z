@@ -1,4 +1,24 @@
 $brand-blue: #336699;
+$brand-black: #333;
 $gray: #888;
 $facebook: #5575a4;
 $google: #dc5e44;
+
+
+// mixins
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($duration) {
+  -webkit-transition: $duration;
+     -moz-transition: $duration;
+      -ms-transition: $duration;
+       -o-transition: $duration;
+          transition: $duration;
+}

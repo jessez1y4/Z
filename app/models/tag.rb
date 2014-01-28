@@ -15,7 +15,7 @@ class Tag < ActiveRecord::Base
       .pluck(:name)
   end
 
-  def self.top(n = 1)
+  def self.top(n = nil)
     order('posts_count DESC').limit(n)
   end
 end

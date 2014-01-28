@@ -42,7 +42,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:items).find(params[:id])
+    @prev_post = Post.where(["created_at > ?", @post.created_at]).first
+    @next_post = Post.where(["created_at < ?", @post.created_at]).last
+
     @user = @post.user
+
+    @tags = @post.tags.top
+
     @comments = @post.comments.includes(:user)
     @comment = @post.comments.build
   end

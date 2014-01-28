@@ -1,29 +1,45 @@
 .container
-  = render 'partials/user_sidebar_s'
+
   .row
-    .col-xs-7
-      .pull-right.big-like-btn.like-btn
-        = render 'partials/like_button', post: @post
-      %h3
-        = @post.title.titleize
+    .col-xs-5
+      #post-nav.text-center
+        - if @prev_post
+          = link_to @prev_post do
+            .pull-left
+              = fa_icon 'angle-left'
+        - else
+          .pull-left.placeholder
+            &nbsp;
 
-      %p.pull-left.text-muted
-        = time_ago_in_words @post.created_at
-        ago
+        - if @next_post
+          = link_to @next_post do
+            .pull-right
+              = fa_icon 'angle-right'
+        - else
+          .pull-right.placeholder
+            &nbsp;
 
+
+        %p
+          %h3
+            = @post.title.titleize
+        %small.text-muted
+          = time_ago_in_words @post.created_at
+          ago
+
+
+      #show-post-img-container
+        = cl_image_tag_with_crop @post, width: 390, height: 520, crop: :fill
+
+      / edit buttons
       - if @user == current_user
         #post-edit-btns.btn-group
-          = link_to 'Edit', edit_post_url(@post), class: 'btn btn-xs btn-default'
+          = link_to 'Edit', edit_post_url(@post), class: 'btn btn-default'
           = link_to 'Delete',
                     post_url(@post),
                     method: :delete,
                     confirm: 'Do you want to DELETE this Style?',
-                    class: 'btn btn-xs btn-danger'
-
-  .row
-    .col-xs-6
-      #show-post-img-container
-        = cl_image_tag_with_crop @post, width: 390, height: 520, crop: :fill
+                    class: 'btn btn-danger'
 
       / comments
       .page-header
@@ -56,23 +72,75 @@
             Log in to comment
 
 
-    .col-xs-5
-      %br
-      %br
-      - if @post.tags.any?
-        - @post.tags.each do |tag|
-          = link_to "##{tag.name}", tag
-          &nbsp;
-        %hr
+    #post-info.col-xs-3
+
+      / .big-like-btn.like-btn
+      /   = render 'partials/like_button', post: @post
+      = render 'partials/like_button', post: @post
+
+      #post-views.info-entry
+        %span.glyphicon.glyphicon-eye-open
+        %small.text-muted Views
+        .pull-right
+          =@post.views_count
+
+      #post-share.info-entry
+        %span.glyphicon.glyphicon-share
+        %small.text-muted Share
 
       - if @post.items.any?
-        - @post.items.each do |item|
-          .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-            %p
-              = item.number
-              = item.name
-        %hr
+        #post-items.info-list
+          %p.info-header
+            Items
+          - @post.items.each do |item|
+            .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+              %p
+                %span.item-number{id: "item-number-#{item.number}"}
+                  = item.number
+                = item.name
 
-      - if @post.description.present?
-        = simple_format @post.description
+      - if @tags.any?
+        #post-tags.info-list
+          %p.info-header
+            Tags
+          - @tags.each do |tag|
+            %p
+              = link_to tag.name, tag, class: 'tag'
+              %span.pull-right.text-muted
+                = tag.posts_count
+
+    #user-sidebar.col-xs-3
+      .sidebar-header.text-center
+        Posted by
+      #user-info
+        .pull-left
+          = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+        = link_to @user do
+          %strong= @user.full_name.titleize
+        %p.small.text-muted
+          %span.glyphicon.glyphicon-map-marker
+          Someplace, Somestate
+        = render 'partials/follow_button', user: @user
+      %br
+      #user-stats.row.text-center
+        .col-xs-4
+          .stat-count.likes-count
+            = @user.likes_count
+          .stat-name
+            Likes
+        .col-xs-4
+          .stat-count
+            = @user.views_count
+          .stat-name
+            Views
+        .col-xs-4
+          .stat-count.followers-count
+            = @user.followers_count
+          .stat-name
+            Followers
+
+      .sidebar-header.text-center
+        More by
+        %strong= link_to @user.full_name.titleize, @user
+
 

@@ -8,8 +8,6 @@ $('#masonry-container').imagesLoaded ->
   $('#masonry-container').masonry 'reload'
   $(new_posts).animate
     opacity: 1
-  bind_hover()
-
 
 <% if @posts.next_page %>
 

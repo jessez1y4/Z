@@ -1,11 +1,3 @@
-window.bind_hover = ->
-  $('.masonry-brick').hover ->
-    $('.hidden-info', this).removeClass 'hidden'
-    # $(this).addClass 'post-frame'
-  , ->
-    # $(this).removeClass 'post-frame'
-    $('.hidden-info', this).addClass 'hidden'
-
 $ ->
   if $('#masonry-container').length
     $('.masonry-brick').css('opacity', '0')
@@ -19,7 +11,6 @@ $ ->
         gutterWidth: 16
       $('.masonry-brick').animate
         opacity: 1
-      bind_hover()
 
   if $('body.posts-index').length or $('#masonry-container').length
     $('#paginate-containter').hide()

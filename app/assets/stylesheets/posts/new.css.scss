@@ -1,17 +1,40 @@
+@import 'colors';
+
 .item-label{
+  @include transition(0.2s);
+
   width: 20px;
   height: 20px;
   color: #fff;
   background-color: #000;
-  opacity: 0.8;
+  opacity: 0;
   text-align: center;
+  cursor: default;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  -webkit-font-smoothing: antialiased;
   font-weight: bold;
-  cursor: pointer;
+  font-size: 14px;
+}
+
+.item-label:hover {
+  background-color: lighten($brand-blue, 10%);
+  opacity: 0.9;
 }
 
 #post-img-container {
   position: relative;
   cursor: pointer;
+}
+
+#show-post-img-container:hover {
+  .item-label {
+    opacity: 0.8;
+  }
 }
 
 #tag-list-input {

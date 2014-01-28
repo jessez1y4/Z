@@ -4,3 +4,6 @@ if $('.masonry-brick').length
 
 else
   $("#like-btn-<%= @post.id %>").html "<%=j render('posts/like', post: @post) %>"
+  $(".likes-count").html "<%= @post.user.likes_count %>"
+  $('.post-likes-click').click ->
+    $('#hidden-like-form').submit()

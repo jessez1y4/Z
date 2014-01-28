@@ -11,19 +11,33 @@ $ ->
                         .css('left', $(this).data('x') + 'px')
                         .css('top', $(this).data('y') + 'px')
                         .css('position', 'absolute')
-                        .hide()
+
 
       target = $("##{$(this).data('target')}")
       $(this).hover \
-        -> target.fadeIn('fast')
+        ->
+          target.css('opacity', 0.9)
+          $('.item-number', this).addClass('item-number-hovered')
         ,
-        -> target.fadeOut('fast')
+        ->
+          target.css('opacity', 0)
+          $('.item-number', this).removeClass('item-number-hovered')
+
+    if $('#hidden-like-form').length
+      $('.post-likes-click').click ->
+        $('#hidden-like-form').submit()
 
     container.hover \
-      -> $('.item-label').fadeIn('fast')
+      -> $('.item-label').css('opacity', 0.9)
       ,
-      -> $('.item-label').fadeOut('fast')
+      -> $('.item-label').css('opacity', 0)
 
-    $('.item')
-
+    $('.item-label').hover \
+      ->
+        target_id = this.id.replace 'label', 'number'
+        $("##{target_id}").addClass('item-number-hovered')
+      ,
+      ->
+        target_id = this.id.replace 'label', 'number'
+        $("##{target_id}").removeClass('item-number-hovered')
 
