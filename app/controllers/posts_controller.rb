@@ -3,9 +3,13 @@ class PostsController < ApplicationController
                 unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   def home
-    @hot_posts = Post.sort('Hot').limit(8)
-    @most_viewed_posts = Post.sort('Most Viewed').limit(8)
-    @top_tags = Tag.top(10)
+    if user_signed_in?
+      @hot_posts = Post.sort('Hot').limit(8)
+      @most_viewed_posts = Post.sort('Most Viewed').limit(8)
+      @top_tags = Tag.top(10)
+    else
+      redirect_to posts_url
+    end
   end
 
   def index

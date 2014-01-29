@@ -297,6 +297,10 @@ body.posts-show {
       position: relative;
       top: 2px;
       text-decoration: underline;
+
+      &:hover {
+        color: darken($brand-danger, 10%);
+      }
     }
   }
 }

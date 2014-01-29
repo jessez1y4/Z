@@ -20,7 +20,6 @@ $ ->
 
       if url && $(window).scrollTop() > $(document).height() - $(window).height() - 500
         $('.pagination').text("Fetching more products...")
-        $('#load-more').animate
-          opacity: 1
+        $('#load-more').css('opacity', 1)
 
         $.getScript url
