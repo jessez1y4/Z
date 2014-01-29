@@ -8,16 +8,16 @@
             .pull-left
               = fa_icon 'angle-left'
         - else
-          .pull-left.placeholder
-            &nbsp;
+          .pull-left.invisible
+            = fa_icon 'angle-left'
 
         - if @next_post
           = link_to @next_post do
             .pull-right
               = fa_icon 'angle-right'
         - else
-          .pull-right.placeholder
-            &nbsp;
+          .pull-right.invisible
+            = fa_icon 'angle-right'
 
 
         %p
@@ -44,8 +44,8 @@
 
       / comments
       #post-comments
-        #post-comments-header
-          = "#{@post.comments_count} COMMENTS"
+        #post-comments-header{class: ('no-border' if (comments_count = @post.comments_count) == 0)}
+          = pluralize comments_count, 'comment'
         #post-comments-main
           = render @comments
         #post-comments-prev.pull-left

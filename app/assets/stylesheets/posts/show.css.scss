@@ -28,11 +28,6 @@ body.posts-show {
         font-size: 18px;
         padding-top: 10px;
       }
-
-      .placeholder {
-        width: 31px;
-        height: 50px;
-      }
     }
   }
 
@@ -44,6 +39,11 @@ body.posts-show {
       border-bottom: 2px solid #ddd;
       padding: 5px 0;
       font-size: 14px;
+      text-transform: uppercase;
+
+      &.no-border {
+        border-bottom: none;
+      }
     }
 
     img {
