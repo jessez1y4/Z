@@ -17,11 +17,21 @@
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   font-size: 14px;
+
+  &:hover {
+    background-color: lighten($brand-primary, 10%);
+    opacity: 0.9;
+  }
 }
 
-.item-label:hover {
-  background-color: lighten($brand-primary, 10%);
+.item-label-no-anim {
+  @include transition(0);
+
   opacity: 0.9;
+
+  &:hover {
+
+  }
 }
 
 #post-img-container {

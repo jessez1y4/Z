@@ -8,6 +8,7 @@ $ ->
     add_item_label = (num, x, y) ->
       container.append $(document.createElement('span'))
                         .addClass('item-label')
+                        .addClass('item-label-no-anim')
                         .text(num)
                         .css('left', x + 'px')
                         .css('top', y + 'px')
