@@ -11,7 +11,7 @@ $('#masonry-container').imagesLoaded ->
 
 <% if @posts.next_page %>
 
-$('.pagination').replaceWith("<%= j paginate(@posts, theme: 'twitter-bootstrap-3')%>")
+$('.pagination').replaceWith("<%= j paginate(@posts)%>")
 $('#load-more').css('opacity', 0)
 
 <% else %>
