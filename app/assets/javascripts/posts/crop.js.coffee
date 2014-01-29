@@ -1,7 +1,7 @@
 $ ->
   if $('body.posts-crop').length
-    target_width = 390
-    target_height = 520
+    target_width = 402
+    target_height = 536
 
     orig_width = $('#crop-container').data('orig-width')
     orig_height = $('#crop-container').data('orig-height')

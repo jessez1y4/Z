@@ -3,9 +3,9 @@
     = render 'partials/masonry_like_button', post: post
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag_with_crop post, width: 220, gravity: :north, crop: :fill
+      = cl_image_tag_with_crop post, width: 219, height: 292, gravity: :north, crop: :fill, quality: 95
   .masonry-title
-    %strong= truncate post.title.titleize, length: 22
+    %strong= truncate post.title.titleize, length: 20
     .pull-right
       %span.masonry-views
         %span.glyphicon.glyphicon-eye-open
@@ -21,11 +21,13 @@
         ago
     - else
       by
-      = link_to post.user.full_name.titleize, post.user
+      %strong= link_to post.user.full_name.titleize, post.user
       .pull-right
         = time_ago_in_words post.created_at
         ago
-  - if post.tags.any?
+
+  - show_tag ||= 1
+  - if show_tag == 1 && post.tags.any?
     .masonry-tags
       - post.tags.each do |tag|
         = link_to tag.name, tag, class: 'tag'

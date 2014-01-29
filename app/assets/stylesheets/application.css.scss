@@ -14,5 +14,10 @@
  *= require jquery.Jcrop
  *= require 'masonry/basic'
  *= require 'masonry/gutters'
- *= require_tree .
  */
+
+@import 'compass/css3/border-radius';
+@import 'compass/css3/background-clip';
+@import '*';
+@import '*/*';
+

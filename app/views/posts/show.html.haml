@@ -1,7 +1,7 @@
 .container
 
   .row
-    .col-xs-5
+    #post-main.col-xs-5
       #post-nav.text-center
         - if @prev_post
           = link_to @prev_post do
@@ -22,60 +22,50 @@
 
         %p
           %h3
-            = @post.title.titleize
+            %strong= @post.title.titleize
         %small.text-muted
           = time_ago_in_words @post.created_at
           ago
 
 
       #show-post-img-container
-        = cl_image_tag_with_crop @post, width: 390, height: 520, crop: :fill
+        = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
 
       / edit buttons
       - if @user == current_user
-        #post-edit-btns.btn-group
-          = link_to 'Edit', edit_post_url(@post), class: 'btn btn-default'
-          = link_to 'Delete',
+        #post-edit-btns.fa-14
+          = link_to edit_post_url(@post), class: 'btn btn-default' do
+            = fa_icon 'pencil fw', text: 'Edit post'
+
+          = link_to 'Delete post',
                     post_url(@post),
                     method: :delete,
-                    confirm: 'Do you want to DELETE this Style?',
-                    class: 'btn btn-danger'
+                    confirm: 'Do you want to DELETE this Style?'
 
       / comments
-      .page-header
-        %h3
+      #post-comments
+        #post-comments-header
           = "#{@post.comments_count} COMMENTS"
-      - @comments.each do |comment|
-        .row.comment
-          .col-xs-2
-            = cl_image_tag comment.user.avatar_cloudinary_id, width: 50, height: 50, crop: 'fill', gravity: 'face'
-          .col-xs-10
-            %p
-              = link_to comment.user.full_name, comment.user
-              %span.small
-                = time_ago_in_words comment.created_at
-                ago
-            = simple_format comment.comment
-        %hr
+        #post-comments-main
+          = render @comments
+        #post-comments-prev.pull-left
+          = link_to_previous_page @comments, 'Previous', remote: true, class: 'btn btn-default'
+        #post-comments-next.pull-right
+          = link_to_next_page @comments, 'View More', remote: true, class: 'btn btn-default'
 
-      / post comment
-      - if user_signed_in?
-        = form_for [@post, @comment] do |f|
-          = f.hidden_field :user_id, value: current_user.id
-          .form-group
-            = f.text_area :comment, rows: 3, class: 'form-control'
-          .form-group
-            = f.submit 'Comment', class: 'btn btn-primary'
-      - else
-        .text-center
-          %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-            Log in to comment
+        / post comment
+        - if user_signed_in?
+          = form_for [@post, @comment] do |f|
+            = f.hidden_field :user_id, value: current_user.id
+            .form-group
+              = f.text_area :comment, rows: 3, class: 'form-control', id: 'post-comment-input'
+            .form-group.text-right
+              %button.btn.btn-primary{type: 'submit'}
+                %span.glyphicon.glyphicon-leaf
+                &nbsp;Post Comment
 
 
     #post-info.col-xs-3
-
-      / .big-like-btn.like-btn
-      /   = render 'partials/like_button', post: @post
       = render 'partials/like_button', post: @post
 
       #post-views.info-entry
@@ -111,7 +101,7 @@
 
     #user-sidebar.col-xs-3
       .sidebar-header.text-center
-        Posted by
+        POSTED BY
       #user-info
         .pull-left
           = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
@@ -140,7 +130,7 @@
             Followers
 
       .sidebar-header.text-center
-        More by
-        %strong= link_to @user.full_name.titleize, @user
+        MORE BY
+        = link_to @user.full_name.upcase, @user
 
 

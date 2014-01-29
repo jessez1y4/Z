@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def home
     @hot_posts = Post.sort('Hot').limit(8)
-    @new_posts = Post.sort('New').limit(8)
+    @most_viewed_posts = Post.sort('Most Viewed').limit(8)
     @top_tags = Tag.top(10)
   end
 
@@ -49,7 +49,10 @@ class PostsController < ApplicationController
 
     @tags = @post.tags.top
 
-    @comments = @post.comments.includes(:user)
+    @comments = @post.comments
+                     .includes(:user)
+                     .page(params[:page])
+                     .per(5)
     @comment = @post.comments.build
   end
 

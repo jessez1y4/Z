@@ -1,13 +1,8 @@
-@import 'colors';
-
 .navbar-fixed-top {
+  @include background-clip(padding-box);
+  @include box-shadow(rgba(0, 0, 0, 0.04) 0 2px 3px);
+
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding;
-  background-clip: padding-box;
-  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
-  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
 
   .navbar-brand {
     color: #333;
@@ -45,6 +40,15 @@
 
   #nav-user-menu-btn {
     margin-right: 15px;
+
+    .glyphicon {
+      display: inline-block;
+      margin-right: 2px;
+    }
+
+    & + .dropdown-menu {
+      margin-top: 1px;
+    }
   }
 }
 

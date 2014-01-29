@@ -1,8 +1,6 @@
-@import 'colors';
-
 body.posts-show {
-  .col-xs-5 {
-    width: 420px;
+  #post-main {
+    width: 432px;
 
     #post-nav {
       margin-top: -24px;
@@ -10,6 +8,7 @@ body.posts-show {
 
       .fa {
         @include border-radius(2px);
+        @include transition(0.25s);
 
         font-size: 30px;
         padding: 10px;
@@ -24,9 +23,9 @@ body.posts-show {
       }
 
       h3 {
-        margin-top: 0px;
-        margin-bottom: -5px;
-        font-size: 20px;
+        margin-top: 2px;
+        margin-bottom: -7px;
+        font-size: 18px;
         padding-top: 10px;
       }
 
@@ -37,10 +36,60 @@ body.posts-show {
     }
   }
 
+  #post-comments {
+    margin-top: 20px;
+
+    #post-comments-header {
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+      padding: 5px 0;
+      font-size: 14px;
+    }
+
+    img {
+      @include border-radius(2px);
+      margin-top: 2px;
+    }
+
+    hr {
+      border-color: #ddd;
+      padding: 0;
+      margin: 0;
+    }
+
+    .comment {
+      padding: 10px 0;
+
+      .col-xs-10 {
+        padding-left: 5px;
+
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+
+    #post-comments-prev, #post-comments-next {
+      margin: 8px 0 12px 0;
+
+      a {
+        color: #444;
+        width: 88px;
+        font-size: 12px;
+        height: 28px;
+        padding-top: 4px;
+      }
+    }
+
+    #post-comment-input {
+      margin-top: 20px;
+    }
+  }
+
   #post-info {
-    margin-top: 35px;
-    margin-left: 10px;
-    width: 260px;
+    padding: 0;
+    margin: 35px 15px 0 8px;
+    width: 230px;
 
     .placeholder {
       margin-top: 28px;
@@ -73,15 +122,15 @@ body.posts-show {
       span {
         @include transition(0.25s)
       }
-    }
 
-    .post-likes-click:hover {
-      span {
-        color: #f22 !important;
-      }
+      &:hover {
+        span {
+          color: #f22 !important;
+        }
 
-      small {
-        color: $brand-black;
+        small {
+          color: $brand-black;
+        }
       }
     }
 
@@ -114,22 +163,21 @@ body.posts-show {
       }
 
       .info-header {
-        color: #999;
-        font-size: 14px;
+        color: #777;
+        font-size: 13px;
       }
     }
 
     #post-share {
       cursor: pointer;
-    }
+      &:hover {
+        span {
+          color: $brand-black;
+        }
 
-    #post-share:hover {
-      span {
-        color: $brand-black;
-      }
-
-      small {
-        color: $brand-black;
+        small {
+          color: $brand-black;
+        }
       }
     }
 
@@ -163,7 +211,8 @@ body.posts-show {
   }
 
   #user-sidebar {
-    width: 260px;
+    width: 250px;
+    padding: 0;
     margin-left: 10px;
 
     #time-ago {
@@ -174,10 +223,11 @@ body.posts-show {
       padding-bottom: 5px;
       margin-bottom: 15px;
       margin-top: 30px;
-    }
+      font-weight: bold;
 
-    .sidebar-header:first-child {
-      margin-top: 0;
+      &:first-child {
+        margin-top: 0;
+      }
     }
 
     #user-info {
@@ -235,17 +285,18 @@ body.posts-show {
     margin-top: 18px;
   }
 
-  .comment {
-    .col-xs-10 {
-      margin-left: -20px;
-    }
-  }
-
   #post-edit-btns {
-    margin-top: 10px;
-    margin-left: 115px;
-    a {
-      width: 80px;
+    margin-top: 15px;
+
+    a:first-child {
+      margin-right: 15px;
+    }
+
+    a:last-child {
+      color: $brand-danger;
+      position: relative;
+      top: 2px;
+      text-decoration: underline;
     }
   }
 }

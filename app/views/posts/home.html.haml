@@ -1,44 +1,36 @@
 .container
   #hot-carousel.carousel.slide{'data-ride' => 'carousel'}
     .post-row-header
-      Hot
+      %span.glyphicon.glyphicon-heart
+      MOST LIKED
       %span.more
-        = link_to 'More', posts_path(params.merge(sort: 'Hot'))
+        = link_to 'MORE', posts_path(params.merge(sort: 'Hot'))
       %ol.carousel-indicators
         %li.active{'data-target' => '#hot-carousel', 'data-slide-to' => '0'}
         %li{'data-target' => '#hot-carousel', 'data-slide-to' => '1'}
 
-    %hr.hr-close
 
     .carousel-inner
       - @hot_posts.each_slice(4) do |posts|
         .item
           - posts.each do |post|
             .col-xs-3
-              = render 'home_post', post: post
+              = render 'posts/post', post: post, show_tag: 0
 
   #new-carousel.carousel.slide{'data-ride' => 'carousel'}
     .post-row-header
-      New
+      %span.glyphicon.glyphicon-eye-open
+      MOST VIEWED
       %span.more
-        = link_to 'More', posts_path(params.merge(sort: 'New'))
+        = link_to 'MORE', posts_path(params.merge(sort: 'New'))
       %ol.carousel-indicators
         %li.active{'data-target' => '#new-carousel', 'data-slide-to' => '0'}
         %li{'data-target' => '#new-carousel', 'data-slide-to' => '1'}
-    %hr.hr-close
 
     .carousel-inner
-      - @new_posts.each_slice(4) do |posts|
+      - @most_viewed_posts.each_slice(4) do |posts|
         .item
           - posts.each do |post|
             .col-xs-3
-              = render 'home_post', post: post
+              = render 'posts/post', post: post, show_tag: 0
 
-    / .col-xs-3.streched
-    /   #top-tags
-    /     %strong
-    /       Top tags
-    /     %hr.hr-close
-    /       .text-center
-    /         - @top_tags.each do |tag|
-    /           = link_to tag.name.downcase, tag, class: 'tag'
