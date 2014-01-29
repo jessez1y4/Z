@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
 
   # count of likes
-  def likes_count
+  def likes_count_old
     @likes_count ||= if posts.empty?
       0
     else

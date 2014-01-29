@@ -20,7 +20,6 @@
         = time_ago_in_words post.created_at
         ago
     - else
-      by
       %strong= link_to post.user.full_name.titleize, post.user
       .pull-right
         = time_ago_in_words post.created_at

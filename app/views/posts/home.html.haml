@@ -1,19 +1,34 @@
 .container
-  #following-carousel.carousel.slide{'data-ride' => 'carousel'}
-    .post-row-header
-      = fa_icon 'rss'
-      Following
-      %span.more
-        = link_to 'MORE', posts_path(params.merge(scope: 'Following'))
-      %ol.carousel-indicators
-        %li.active{'data-target' => '#following-carousel', 'data-slide-to' => '0'}
-        %li{'data-target' => '#following-carousel', 'data-slide-to' => '1'}
-    .carousel-inner
-      - @following_posts.each_slice(4) do |posts|
-        .item
-          - posts.each do |post|
-            .col-xs-3
-              = render 'posts/post', post: post, show_tag: 0
+  - if @following_posts.any?
+    #following-carousel.carousel.slide{'data-ride' => 'carousel'}
+      .post-row-header
+        = fa_icon 'rss'
+        Following
+        %span.more
+          = link_to 'MORE', posts_path(params.merge(scope: 'Following'))
+        - if @following_posts.size > 4
+          %ol.carousel-indicators
+            %li.active{'data-target' => '#following-carousel', 'data-slide-to' => '0'}
+            %li{'data-target' => '#following-carousel', 'data-slide-to' => '1'}
+      .carousel-inner
+        - @following_posts.each_slice(4) do |posts|
+          .item
+            - posts.each do |post|
+              .col-xs-3
+                = render 'posts/post', post: post, show_tag: 0
+  - else
+    #follow-msg
+      .post-row-header
+        = fa_icon 'rss'
+        Following
+        %span.more.text-muted
+          MORE
+      .text-center
+        %h3
+          %strong You are not following anyone yet...
+
+        %p.text-muted
+          Look around to discover amazing styles and people.
 
   #hot-carousel.carousel.slide{'data-ride' => 'carousel'}
     .post-row-header

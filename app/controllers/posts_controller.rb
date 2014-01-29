@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       @following_posts = Post.following(current_user).hottest.limit(8)
       @hot_posts = Post.hottest.limit(8)
-      @new_posts = Post.sort('Most Viewed').limit(8)
+      @new_posts = Post.newest.limit(8)
       @top_tags = Tag.top(10)
     else
       redirect_to posts_url

@@ -38,10 +38,18 @@ body.posts-home {
     }
   }
 
-  .masonry-brick {
-    .masonry-like-btn {
-      right: 18px;
+  #follow-msg {
+    .text-center {
+      padding: 5px 0 30px 0;
+
+      p {
+        font-size: 14px;
+      }
     }
+  }
+
+  .masonry-brick {
+    position: relative;
   }
 
   .item {
@@ -59,10 +67,6 @@ body.posts-home {
       &:last-child {
         padding-right: 0px;
         width: 228px;
-
-        .masonry-like-btn {
-          right: 10px;
-        }
       }
     }
   }
