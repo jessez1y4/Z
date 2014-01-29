@@ -1,11 +1,11 @@
 .navbar-fixed-top {
-  @include background-clip(padding-box);
+  @include background-clip-padding-box;
   @include box-shadow(rgba(0, 0, 0, 0.04) 0 2px 3px);
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 
   .navbar-brand {
-    padding: 6px 15px;
+    padding: 7px 15px 5px 15px;
 
     img {
       height: 30px;
