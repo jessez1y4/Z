@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, only: [:edit, :update]
   def show
     params[:sort] ||= 'New'
     @user = User.find(params[:id])

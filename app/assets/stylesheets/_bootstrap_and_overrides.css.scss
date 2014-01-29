@@ -3,7 +3,6 @@ $grid-float-breakpoint: 0;
 $font-size-base: 13px;
 
 $navbar-height: 42px;
-$navbar-default-color: #333;
 $navbar-default-bg: white;
 
 // everything square
@@ -15,7 +14,16 @@ $border-radius-large: 4px;
 // $input-border: #d2d2d2;
 $input-color: #333;
 
-$brand-primary: $brand-blue;
+// colors
+$brand-primary: #336699;
+// $btn-primary-color: #333;
+// $btn-primary-border-color: #999;
+$navbar-color: #999;
+
+$brand-black: #333;
+$gray: #888;
+$facebook: #5575a4;
+$google: #dc5e44;
 
 $modal-title-padding: 10px;
 
@@ -123,13 +131,13 @@ label.error {
   @include border-radius(2px);
 
   color: white;
-  background-color: lighten($brand-blue, 20%);
+  background-color: lighten($brand-primary, 20%);
   padding: 2px 6px;
   white-space: nowrap;
 }
 a.tag:hover {
   color: white;
-  background-color: $brand-blue;
+  background-color: $brand-primary;
   text-decoration: none;
 }
 
@@ -142,7 +150,7 @@ a.tag:hover {
 }
 
 .panel {
-  @include border-radius(2px);
+  @include border-radius(3px);
   @include box-shadow(rgba(0, 0, 0, 0.06) 0 1px 3px);
 }
 

@@ -13,6 +13,9 @@ body.posts-home {
       display: inline-block;
     }
 
+    .glyphicon-heart {
+    }
+
     .more {
       font-size: 12px;
       font-weight: normal;
@@ -63,7 +66,7 @@ body.posts-home {
 
       &.active {
         border: none;
-        background-color: $brand-blue;
+        background-color: $brand-primary;
       }
     }
   }

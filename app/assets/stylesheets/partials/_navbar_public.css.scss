@@ -5,20 +5,20 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 
   .navbar-brand {
-    color: #333;
+    padding: 6px 15px;
 
-    &:hover {
-      color: #333;
+    img {
+      height: 30px;
     }
   }
 
   li.dropdown .dropdown-toggle {
     @include transition(0.25s);
 
-    color: #999;
+    color: $navbar-color;
   }
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
-    color: $brand-blue;
+    color: $brand-primary;
     background-color: #eee;
   }
 
