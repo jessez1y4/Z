@@ -48,9 +48,7 @@
           = pluralize comments_count, 'comment'
         #post-comments-main
           = render @comments
-        #post-comments-prev.pull-left
-          = link_to_previous_page @comments, 'Previous', remote: true, class: 'btn btn-default'
-        #post-comments-next.pull-right
+        #post-comments-next.text-center
           = link_to_next_page @comments, 'View More', remote: true, class: 'btn btn-default'
 
         / post comment

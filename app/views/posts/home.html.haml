@@ -1,15 +1,29 @@
 .container
+  #following-carousel.carousel.slide{'data-ride' => 'carousel'}
+    .post-row-header
+      = fa_icon 'rss'
+      Following
+      %span.more
+        = link_to 'MORE', posts_path(params.merge(scope: 'Following'))
+      %ol.carousel-indicators
+        %li.active{'data-target' => '#following-carousel', 'data-slide-to' => '0'}
+        %li{'data-target' => '#following-carousel', 'data-slide-to' => '1'}
+    .carousel-inner
+      - @following_posts.each_slice(4) do |posts|
+        .item
+          - posts.each do |post|
+            .col-xs-3
+              = render 'posts/post', post: post, show_tag: 0
+
   #hot-carousel.carousel.slide{'data-ride' => 'carousel'}
     .post-row-header
-      %span.glyphicon.glyphicon-heart
-      MOST LIKED
+      %span.glyphicon.glyphicon-fire
+      Hot
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'Hot'))
       %ol.carousel-indicators
         %li.active{'data-target' => '#hot-carousel', 'data-slide-to' => '0'}
         %li{'data-target' => '#hot-carousel', 'data-slide-to' => '1'}
-
-
     .carousel-inner
       - @hot_posts.each_slice(4) do |posts|
         .item
@@ -19,18 +33,25 @@
 
   #new-carousel.carousel.slide{'data-ride' => 'carousel'}
     .post-row-header
-      %span.glyphicon.glyphicon-eye-open
-      MOST VIEWED
+      %span.glyphicon.glyphicon-send
+      New
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'New'))
       %ol.carousel-indicators
         %li.active{'data-target' => '#new-carousel', 'data-slide-to' => '0'}
         %li{'data-target' => '#new-carousel', 'data-slide-to' => '1'}
-
     .carousel-inner
-      - @most_viewed_posts.each_slice(4) do |posts|
+      - @new_posts.each_slice(4) do |posts|
         .item
           - posts.each do |post|
             .col-xs-3
               = render 'posts/post', post: post, show_tag: 0
+
+  #star-carousel.carousel.slide{'data-ride' => 'carousel'}
+    .post-row-header
+      = fa_icon 'star-o'
+      Stars
+      %span.more
+        = link_to 'MORE', posts_path(params.merge(sort: 'New'))
+
 

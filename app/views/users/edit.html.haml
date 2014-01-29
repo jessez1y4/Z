@@ -10,7 +10,7 @@
             %hr
             #avatar-edit.row
               .col-xs-3
-                = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face', id: 'avatar-preview'
+                = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face', quality: 95, id: 'avatar-preview'
               .col-xs-8
                 #step-1
                   %button#upload-avatar-btn.btn.btn-primary.btn-lg

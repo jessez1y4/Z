@@ -69,14 +69,13 @@ body.posts-show {
       }
     }
 
-    #post-comments-prev, #post-comments-next {
+    #post-comments-next {
       margin: 8px 0 12px 0;
 
       a {
         color: #444;
-        width: 88px;
-        font-size: 12px;
         height: 28px;
+        font-size: 12px;
         padding-top: 4px;
       }
     }
@@ -88,8 +87,8 @@ body.posts-show {
 
   #post-info {
     padding: 0;
-    margin: 35px 15px 0 8px;
-    width: 230px;
+    margin: 35px 20px 0 8px;
+    width: 225px;
 
     .placeholder {
       margin-top: 28px;
@@ -211,12 +210,9 @@ body.posts-show {
   }
 
   #user-sidebar {
-    width: 250px;
+    width: 240px;
     padding: 0;
-    margin-left: 10px;
-
-    #time-ago {
-    }
+    margin-left: 20px;
 
     .sidebar-header {
       border-bottom: 2px solid #ddd;

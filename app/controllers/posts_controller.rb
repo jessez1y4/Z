@@ -4,8 +4,9 @@ class PostsController < ApplicationController
 
   def home
     if user_signed_in?
-      @hot_posts = Post.sort('Hot').limit(8)
-      @most_viewed_posts = Post.sort('Most Viewed').limit(8)
+      @following_posts = Post.following(current_user).hottest.limit(8)
+      @hot_posts = Post.hottest.limit(8)
+      @new_posts = Post.sort('Most Viewed').limit(8)
       @top_tags = Tag.top(10)
     else
       redirect_to posts_url
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
                      .includes(:user)
                      .page(params[:page])
-                     .per(5)
+                     .per(8)
     @comment = @post.comments.build
   end
 

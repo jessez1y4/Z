@@ -4,16 +4,29 @@ body.posts-home {
     margin-top: 20px;
     font-size: 14px;
 
-    .glyphicon {
+    .fa, .glyphicon {
+      margin: 0px 3px;
       font-size: 18px;
       position: relative;
-      top: 3px;
-      color: #bfbfbf;
-      margin: 0px 4px;
+      top: 2px;
+      color: #444;
       display: inline-block;
     }
 
-    .glyphicon-heart {
+    .fa-rss {
+      top: 1px;
+    }
+
+    .glyphicon-fire {
+      margin-right: 2px;
+    }
+
+    .glyphicon-send {
+      top: 3px;
+    }
+
+    .fa-star-o {
+      top: 1px;
     }
 
     .more {
