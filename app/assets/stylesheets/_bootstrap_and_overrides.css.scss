@@ -32,7 +32,7 @@ $modal-title-padding: 10px;
 body {
   padding-top: 65px;
   // background: #ebeced;
-  background-image: asset-url("background.png", image);
+  background-image: image-url('background.png');
   background-repeat: repeat;
 }
 
