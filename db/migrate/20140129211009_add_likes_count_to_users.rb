@@ -4,7 +4,11 @@ class AddLikesCountToUsers < ActiveRecord::Migration
 
     User.reset_column_information
     User.find_each do |u|
-      User.update_counters u.id, likes_count: u.likes_count_old
+      likes_count = u.posts.inject(0) do |sum, post|
+        sum + post.likes
+      end
+
+      User.update_counters u.id, likes_count: likes_count
     end
   end
 end
