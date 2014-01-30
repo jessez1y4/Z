@@ -1,6 +1,6 @@
 .container
   - if @following_posts.any?
-    #following-carousel.carousel.slide{'data-ride' => 'carousel'}
+    #following-carousel.carousel.slide
       .post-row-header
         = fa_icon 'rss'
         Following
@@ -30,7 +30,7 @@
         %p.text-muted
           Look around to discover amazing styles and people.
 
-  #hot-carousel.carousel.slide{'data-ride' => 'carousel'}
+  #hot-carousel.carousel.slide
     .post-row-header
       %span.glyphicon.glyphicon-fire
       Hot
@@ -46,7 +46,7 @@
             .col-xs-3
               = render 'posts/post', post: post, show_tag: 0
 
-  #new-carousel.carousel.slide{'data-ride' => 'carousel'}
+  #new-carousel.carousel.slide
     .post-row-header
       %span.glyphicon.glyphicon-send
       New
@@ -62,7 +62,7 @@
             .col-xs-3
               = render 'posts/post', post: post, show_tag: 0
 
-  #star-carousel.carousel.slide{'data-ride' => 'carousel'}
+  #star-carousel.carousel.slide
     .post-row-header
       = fa_icon 'star-o'
       Stars
