@@ -23,37 +23,27 @@
 
   .user-info {
     .pull-left {
-      padding: 8px 10px;
+      padding: 12px 12px;
+      margin-right: 3px;
 
       img {
         @include border-radius(2px);
       }
     }
 
-    .pull-right {
-      padding-top: 15px;
-      padding-right: 13px;
-
-      .btn {
-        font-size: 12px;
-      }
-    }
-
     .user-name {
-      padding-top: 10px;
+      padding-top: 13px;
     }
 
     .user-stats {
       padding-top: 5px;
-      color: #999;
-      font-weight: normal;
+      padding-bottom: 7px;
+      font-size: 12px;
+    }
 
-      small {
-      }
-
-      p {
-        margin-bottom: 5px;
-      }
+    .btn {
+      height: 30px;
+      font-size: 12px;
     }
   }
 }

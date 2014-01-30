@@ -8,7 +8,7 @@
   .user-info
     .pull-left
       = link_to user do
-        = cl_image_tag user.avatar_cloudinary_id, width: 70, height: 70, crop: 'fill', gravity: 'face'
+        = cl_image_tag user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
 
     .user-name
       = link_to user do
@@ -16,16 +16,8 @@
 
     %div
       .pull-right
-        = render 'partials/follow_button', user: user
 
       .user-stats
-        / %span.glyphicon.glyphicon-eye-open
-        / = user.views_count
-        / %span.glyphicon.glyphicon-heart
-        / = user.likes_count
-        %p
-          = user.likes_count
-          %small Likes
-        %p
-          999
-          %small Followers
+        = "#{user.likes_count} Likes · #{user.followers_count} Followers"
+      = render 'partials/follow_button', user: user
+

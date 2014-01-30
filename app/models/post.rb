@@ -66,7 +66,7 @@ class Post < ActiveRecord::Base
   def self.scope(scope_name, user)
     case scope_name
     when 'Everything'
-      scoped
+      all
     when 'Following'
       following(user)
     else
