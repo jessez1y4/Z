@@ -13,7 +13,7 @@
 
     .exhibit-post {
       display: inline-block;
-      margin-right: -4px;
+      margin-right: -3px;
 
       a {
         @include zoom-in-cursor;
@@ -23,8 +23,7 @@
 
   .user-info {
     .pull-left {
-      padding: 12px 12px;
-      margin-right: 3px;
+      padding: 12px 15px;
 
       img {
         @include border-radius(2px);
@@ -37,8 +36,9 @@
 
     .user-stats {
       padding-top: 5px;
-      padding-bottom: 7px;
-      font-size: 12px;
+      padding-bottom: 9px;
+      font-size: 11px;
+      color: #999;
     }
 
     .btn {
