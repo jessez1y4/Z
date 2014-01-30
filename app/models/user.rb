@@ -9,8 +9,13 @@ class User < ActiveRecord::Base
          :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google]
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :items, through: :posts
+
+  has_many :exhibit_posts,
+           -> { exhibit },
+           class_name: 'Post'
+
   has_many :sites
   has_many :comments, as: :commentable
 
@@ -64,6 +69,8 @@ class User < ActiveRecord::Base
             length: { minimum: 4, maximum: 15, allow_nil: true },
             format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
 
+  scope :star, -> { order('likes_count DESC') }
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -97,17 +104,6 @@ class User < ActiveRecord::Base
 
   def unlike!(post)
     like_relationships.find_by(post_id: post.id).destroy!
-  end
-
-  # count of likes
-  def likes_count_old
-    @likes_count ||= if posts.empty?
-      0
-    else
-      self.posts.inject(0) do |sum, post|
-        sum + post.likes
-      end
-    end
   end
 
   def bookmark!(tag)

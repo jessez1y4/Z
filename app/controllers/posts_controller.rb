@@ -7,7 +7,8 @@ class PostsController < ApplicationController
       @following_posts = Post.following(current_user).hottest.limit(8)
       @hot_posts = Post.hottest.limit(8)
       @new_posts = Post.newest.limit(8)
-      @top_tags = Tag.top(10)
+      # @top_tags = Tag.top(10)
+      @star_users = User.star.limit(6)
     else
       redirect_to posts_url
     end

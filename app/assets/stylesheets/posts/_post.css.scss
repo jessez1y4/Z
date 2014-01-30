@@ -2,16 +2,14 @@
   @include box-shadow(rgba(0, 0, 0, 0.06) 0px 1px 2px);
   @include border-radius(4px);
 
-  max-width: 220px;
+  width: 220px;
   border: 1px solid #d6d6d6;
   background: white;
   margin-bottom: 15px;
   overflow: hidden;
 
   .masonry-img a {
-    cursor: zoom-in;
-    cursor: -webkit-zoom-in;
-    cursor: -moz-zoom-in;
+    @include zoom-in-cursor;
   }
 
   .masonry-like-btn {
@@ -56,20 +54,48 @@
   }
 
   .masonry-title {
-    padding: 7px 10px;
+    font-size: 12px;
+    min-height: 30px;
+    padding: 5px 10px;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px dashed #e7e7e7;
-    .pull-right {
-      color: #999;
-      font-size: 12px;
-      .masonry-views {
-        margin-right: 5px;
-      }
+    word-wrap:break-word;
+
+    &.truncate {
+      text-overflow: ellipsis;
+      white-space:nowrap;
+      overflow: hidden;
     }
   }
 
   .masonry-author {
-    padding: 8px 10px;
+    padding: 7px 10px;
+    color: #999;
+
+    .post-stats {
+      @include transition(0.25s);
+
+      font-size: 11px;
+
+      .glyphicon {
+        font-size: 12px;
+        position: relative;
+        top: 2px;
+        display: inline-block;
+      }
+
+      .masonry-views {
+        margin-right: 8px;
+      }
+    }
+
+    .user-name {
+      @include transition(0.25s);
+
+      position: absolute;
+      left: 10px;
+      opacity: 0;
+    }
   }
 
   .masonry-tags {

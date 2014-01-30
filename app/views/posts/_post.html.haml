@@ -1,31 +1,34 @@
+- show_tag ||= 1
+
 .masonry-brick
   .masonry-like-btn
     = render 'partials/masonry_like_button', post: post
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag_with_crop post, width: 219, height: 292, gravity: :north, crop: :fill, quality: 95
-  .masonry-title
-    %strong= truncate post.title.titleize, length: 20
-    .pull-right
+      = cl_image_tag_with_crop post, width: 219, height: 292, crop: :fill, quality: 95
+
+
+  .masonry-title{class: ('truncate' if show_tag == 0)}
+    %strong
+      = post.title.titleize
+
+  .masonry-author.small
+    %span.post-stats
       %span.masonry-views
         %span.glyphicon.glyphicon-eye-open
         = post.views_count
-
       %span.glyphicon.glyphicon-heart
       %span{class: "masonry-title-likes-#{post.id}"}
         = post.like_relationships_count
-  .masonry-author.small.text-muted
-    - if controller_name == 'users'
-      .text-center
-        = time_ago_in_words post.created_at
-        ago
-    - else
-      %strong= link_to post.user.full_name.titleize, post.user
-      .pull-right
-        = time_ago_in_words post.created_at
-        ago
 
-  - show_tag ||= 1
+    -unless controller_name == 'users'
+      %span.user-name
+        %span
+          %strong= link_to post.user.full_name.titleize, post.user
+    .pull-right
+      = time_ago_in_words post.created_at
+      ago
+
   - if show_tag == 1 && post.tags.any?
     .masonry-tags
       - post.tags.each do |tag|

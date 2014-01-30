@@ -68,5 +68,14 @@
       Stars
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'New'))
+      %ol.carousel-indicators
+        %li.active{'data-target' => '#star-carousel', 'data-slide-to' => '0'}
+        %li{'data-target' => '#star-carousel', 'data-slide-to' => '1'}
+    .carousel-inner
+      - @star_users.each_slice(3) do |users|
+        .item
+          - users.each do |user|
+            .col-xs-4
+              = render 'users/user', user: user
 
 

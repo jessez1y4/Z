@@ -7,7 +7,7 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = cloudinary_js_config
-  %body{ class: "#{controller_name}-#{action_name}" }
+  %body{ class: "#{controller_name}-#{action_name}", 'data-controller' => "#{controller_name}" }
     #header= render conditional_header
     = yield
     = render 'partials/cloudinary' if user_signed_in?

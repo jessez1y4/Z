@@ -102,7 +102,8 @@
         POSTED BY
       #user-info
         .pull-left
-          = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+          = link_to @user do
+            = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
         = link_to @user do
           %strong= @user.full_name.titleize
         %p.small.text-muted

@@ -26,3 +26,9 @@
   -o-transition:  $transition-time;
   transition:  $transition-time;
 }
+
+@mixin zoom-in-cursor {
+  cursor: zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+}
