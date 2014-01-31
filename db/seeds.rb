@@ -35,7 +35,7 @@ ItemCategory.create name: 'dress shoes', item_category_type_id: 2
 ItemCategory.create name: 'flats', item_category_type_id: 2
 ItemCategory.create name: 'heels & wedges', item_category_type_id: 2
 ItemCategory.create name: 'sandals', item_category_type_id: 2
-ItemCategory.create name: 'sneakers', item_category_type_id: 3
+ItemCategory.create name: 'sneakers', item_category_type_id: 2
 ItemCategory.create name: 'bag', item_category_type_id: 3
 ItemCategory.create name: 'belt', item_category_type_id: 3
 ItemCategory.create name: 'cufflink', item_category_type_id: 3

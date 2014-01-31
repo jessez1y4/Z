@@ -8,12 +8,13 @@
     = f.text_field :name, class: 'form-control input-sm', required: true
   .form-group
     %label.small Category
-    = f.grouped_collection_select :item_category_id, @item_category_types ||= ItemCategoryType.all, :item_categories, :name, :id, :name, {include_blank: true}, {class: 'form-control input-sm', required: true}
+    = f.grouped_collection_select :item_category_id, @item_category_types ||= ItemCategoryType.all, :item_categories, :name, :id, :name, {include_blank: true}, {class: 'form-control', required: true}
+    = fa_icon 'sort'
   .form-group
     %label.small Web link (optional)
     = f.text_field :url, type: 'cus_url', class: 'form-control input-sm'
   .form-group
     .pull-right
       = link_to_remove_association 'Remove item', f
-    %button.hide-item-form-btn.btn.btn-default.btn-sm{type: 'button'}
+    %button.hide-item-form-btn.btn.btn-primary.btn-sm{type: 'button'}
       Done

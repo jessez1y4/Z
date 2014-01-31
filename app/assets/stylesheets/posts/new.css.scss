@@ -37,11 +37,9 @@
   @include background-clip-padding-box;
 
   position: absolute;
-  top: 240px;
-  left: 0px;
   z-index: 999;
   padding: 10px 15px 5px 15px;
-  width: 250px;
+  width: 220px;
 
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -49,20 +47,43 @@
   .form-group {
     margin-bottom: 10px;
 
-    input, select {
+    input {
       height: 25px;
       padding: 5px 6px;
+    }
+
+    select {
+      @include box-shadow-none;
+
+      appearance: button;
+      -o-appearance: button;
+      -ms-appearance: button;
+      -moz-appearance: button !important;
+      -khtml-appearance: button;
+      -webkit-appearance: button;
+      height: 26px;
+      font-size: 12px;
+      padding: 3px 6px 4px 6px;
+    }
+
+    .fa-sort {
+      position: absolute;
+      left: 186px;
+      top: 95px;
+      font-size: 14px;
+      color: #999;
     }
 
     .hide-item-form-btn {
       height: 25px;
       width: 80px;
       padding: 3px 10px;
+      margin-top: 3px;
     }
 
     .pull-right {
       font-size: 12px;
-      padding-top: 5px;
+      padding-top: 8px;
       padding-right: 1px;
     }
 
