@@ -16,6 +16,7 @@ $ ->
                          .css('left', x + 'px')
                          .css('top', y + 'px')
                          .css('position', 'absolute')
+                         .css('cursor', 'move')
                          .hover ->
                            $('.item-form').addClass 'hidden'
                            form_num = $(this).data('target-num')
@@ -34,7 +35,6 @@ $ ->
     # set form attributes
     set_item_form = (form, num) ->
       label = $("#item-label-#{num}")
-      console.log label.offset().left
 
       $(form).css('left', label.position().left - 480 + 'px')
              .css('top', label.position().top + 25 + 'px')
@@ -80,7 +80,8 @@ $ ->
 
     reorder_forms()
 
-    container.mousedown (event) ->
+    $('body').mousedown (event) ->
+
       if event.target == image
         event.preventDefault()
         if $('.nested-fields.hidden').length == count
@@ -95,6 +96,10 @@ $ ->
           $('#add-item-btn').click()
         else
           $('.item-form').addClass 'hidden'
+      else
+        $('.item-form').addClass 'hidden' if !$(event.target).is('.nested-fields *, .nested-fields')
+
+
 
     $('#item-forms')
       .on('cocoon:after-insert', (e, item) ->

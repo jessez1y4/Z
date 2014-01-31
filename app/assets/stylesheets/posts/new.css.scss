@@ -78,7 +78,10 @@
 
 #post-img-container {
   position: relative;
-  cursor: pointer;
+
+  img {
+    cursor: pointer;
+  }
 }
 
 #show-post-img-container:hover {
