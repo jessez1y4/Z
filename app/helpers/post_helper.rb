@@ -16,7 +16,7 @@ module PostHelper
   end
 
   def cl_image_tag_with_crop post, options = {}
-    html = cl_image_tag post.cloudinary_id, options
+    html = cl_image_tag post.cloudinary_id, options.merge(quality: 95)
     raw html.sub('/upload/', "/upload/#{post.crop_str}")
   end
 end
