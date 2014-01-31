@@ -40,7 +40,7 @@
   z-index: 999;
   padding: 10px 15px 5px 15px;
   width: 220px;
-
+  cursor: move;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.15);
 
@@ -61,7 +61,7 @@
       -moz-appearance: button !important;
       -khtml-appearance: button;
       -webkit-appearance: button;
-      height: 26px;
+      height: 25px;
       font-size: 12px;
       padding: 3px 6px 4px 6px;
     }
@@ -69,12 +69,15 @@
     .fa-sort {
       position: absolute;
       left: 186px;
-      top: 95px;
+      top: 94px;
       font-size: 14px;
       color: #999;
+      cursor: default;
     }
 
     .hide-item-form-btn {
+      @include border-radius(2px);
+
       height: 25px;
       width: 80px;
       padding: 3px 10px;

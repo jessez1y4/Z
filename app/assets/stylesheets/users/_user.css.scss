@@ -9,15 +9,22 @@
   overflow: hidden;
 
   .exhibit-posts {
+    height: 261px;
+    overflow: hidden;
     border-bottom: 1px solid #e7e7e7;
+
+    a {
+      @include zoom-in-cursor;
+    }
+
+    .exhibit-post-lg {
+      float: left;
+      margin-right: 1px;
+    }
 
     .exhibit-post {
       display: inline-block;
-      margin-right: -3px;
-
-      a {
-        @include zoom-in-cursor;
-      }
+      margin-bottom: 1px;
     }
   }
 

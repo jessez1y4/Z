@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
   scope :newest, -> { order('posts.created_at DESC') }
   scope :hottest, -> { order('like_relationships_count DESC') }
   scope :most_viewed, -> { order('views_count DESC') }
-  scope :exhibit, -> { hottest.limit(2) }
+  scope :exhibit, -> { hottest.limit(3) }
 
   def self.recent(time)
     where('posts.created_at > ?', Time.now - time)
