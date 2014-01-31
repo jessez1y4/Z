@@ -1,3 +1,8 @@
-= form_for post.like_relationships.find_by(user_id: current_user.id), html: { method: :delete }, remote: true do |f|
-  %button.btn.btn-default.btn-lg{type: 'submit'}
-    = fa_icon 'heart', text: post.likes
+= form_for post.like_relationships.find_by(user_id: current_user.id), html: { id: 'hidden-like-form', method: :delete }, remote: true do |f|
+  = f.submit '', class: 'hidden'
+
+#post-likes.post-likes-click.info-entry
+  %span.glyphicon.glyphicon-heart
+  %small.text-muted U like it
+  .pull-right
+    =@post.likes

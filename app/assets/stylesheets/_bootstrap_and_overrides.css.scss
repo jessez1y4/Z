@@ -1,0 +1,182 @@
+$font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$grid-float-breakpoint: 0;
+$font-size-base: 13px;
+
+$navbar-height: 42px;
+$navbar-default-bg: white;
+
+// everything square
+$border-radius-base: 2px;
+$border-radius-small: 2px;
+$border-radius-large: 4px;
+
+// $btn-default-border: #d2d2d2;
+// $input-border: #d2d2d2;
+$input-color: #333;
+
+// colors
+$brand-primary: #336699;
+// $btn-primary-color: #333;
+// $btn-primary-border-color: #999;
+$navbar-color: #999;
+
+$brand-black: #333;
+$gray: #888;
+$facebook: #5575a4;
+$google: #dc5e44;
+
+$modal-title-padding: 10px;
+
+@import 'bootstrap-custom';
+
+body {
+  padding-top: 65px;
+  // background: #ebeced;
+  background-image: image-url('background.png');
+  background-repeat: repeat;
+}
+
+.container {
+  max-width: none !important;
+  width: 960px;
+}
+
+.text-black {
+  color: #333;
+}
+
+hr.hr-dark {
+  border-color: #e6e6e6;
+}
+
+hr.hr-darker {
+  border-color: #e1e1e1;
+}
+
+// jQuery validation error msg style
+label.error {
+  font-weight: normal;
+  color: #d9534f;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+// ensure menu icons are of same width
+.menu-icon {
+  float: left;
+  width: 32px;
+}
+
+// pull modal down a little
+.modal-dialog-center {
+  margin-top: 10%;
+}
+
+// make modal less wide
+.modal-dialog-narrow {
+  max-width: 500px;
+}
+
+.modal-header {
+  padding-left: 15px;
+  padding-right: 15px;
+  .close {
+    margin-top: 1px;
+  }
+}
+
+.like-btn button {
+  color: #555;
+  i {
+    color: #d9534f;
+  }
+}
+
+.fa-14 {
+  i {
+    font-size: 14px;
+  }
+}
+
+.fa-19 {
+  i {
+    font-size: 19px;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.btn-primary, .tag {
+  -webkit-font-smoothing: antialiased;
+}
+
+.wf-fix {
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-lg {
+  font-size: 15px;
+}
+
+.btn {
+  @include transition(0.25s);
+}
+
+.tag {
+  @include transition(0.25s);
+  @include border-radius(2px);
+
+  color: white;
+  background-color: lighten($brand-primary, 20%);
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+a.tag:hover {
+  color: white;
+  background-color: $brand-primary;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  min-width: 160px;
+
+  li > a {
+    line-height: 24px;
+  }
+}
+
+.panel {
+  @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.08) 0 1px 4px);
+}
+
+
+.btn-facebook {
+  -webkit-font-smoothing: antialiased;
+  background-color: $facebook;
+  color: white;
+  border: 1px solid darken($facebook, 5%);
+
+  &:hover {
+    background-color: darken($facebook, 5%);
+    color: white;
+    border-color: darken($facebook, 12%);
+  }
+}
+
+.btn-google {
+  -webkit-font-smoothing: antialiased;
+  background-color: $google;
+  color: white;
+  border: 1px solid darken($google, 5%);
+
+  &:hover {
+    color: white;
+    background-color: darken($google, 5%);
+    border-color: darken($google, 12%);
+  }
+}

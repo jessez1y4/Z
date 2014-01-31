@@ -1,17 +1,93 @@
 .item-label{
+  @include transition(0.2s);
+  @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
+  @include border-radius(2px);
+
   width: 20px;
   height: 20px;
   color: #fff;
   background-color: #000;
-  opacity: 0.8;
+  opacity: 0;
   text-align: center;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
   font-weight: bold;
-  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: saturate(lighten($brand-primary, 10%), 5%);
+    opacity: 0.9;
+  }
+}
+
+.item-label-hover {
+  background-color: saturate(lighten($brand-primary, 10%), 5%);
+  opacity: 0.9;
+}
+
+.item-label-no-anim {
+  @include transition(0);
+
+  opacity: 0.9;
+}
+
+.item-form {
+  @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
+  @include background-clip-padding-box;
+
+  position: absolute;
+  top: 240px;
+  left: 0px;
+  z-index: 999;
+  padding: 10px 15px 5px 15px;
+  width: 250px;
+
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  .form-group {
+    margin-bottom: 10px;
+
+    input, select {
+      height: 25px;
+      padding: 5px 6px;
+    }
+
+    .hide-item-form-btn {
+      height: 25px;
+      width: 80px;
+      padding: 3px 10px;
+    }
+
+    .pull-right {
+      font-size: 12px;
+      padding-top: 5px;
+      padding-right: 1px;
+    }
+
+    .error {
+      font-size: 12px;
+    }
+  }
+
+  &.buried {
+    z-index: 0;
+  }
 }
 
 #post-img-container {
   position: relative;
-  cursor: pointer;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+#show-post-img-container:hover {
+  .item-label {
+    opacity: 0.8;
+  }
 }
 
 #tag-list-input {

@@ -21,6 +21,8 @@ $ ->
       $('#choose-post-photo-btn').text('Choose a photo').prop('disabled', false)
       $('#from-web-post-form input:submit').val('Fetch image').prop('disabled', false)
     else
+      $('#orig_width').val data.result.width
+      $('#orig_height').val data.result.height
       $('#hidden-post-form').submit()
 
 
@@ -28,12 +30,12 @@ $ ->
     rules:
       'web_link':
         required: true
-        url: true
+        cus_url: true
 
     messages:
       'web_link':
         required: "It's empty :("
-        url: 'The link looks invalid..'
+        cus_url: 'The link looks invalid..'
 
     submitHandler: (form) ->
       $('input:submit', form).val('Fetching...').prop('disabled', true)

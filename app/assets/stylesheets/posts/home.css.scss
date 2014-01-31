@@ -1,0 +1,109 @@
+body.posts-home {
+  #following-carousel, #follow-msg {
+    margin-top: -10px;
+  }
+
+  .post-row-header {
+    margin-bottom: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+
+    .fa, .glyphicon {
+      margin: 0px 3px;
+      font-size: 18px;
+      position: relative;
+      top: 2px;
+      color: #444;
+      display: inline-block;
+    }
+
+    .fa-rss {
+      top: 1px;
+    }
+
+    .glyphicon-fire {
+      margin-right: 2px;
+    }
+
+    .glyphicon-send {
+      top: 3px;
+    }
+
+    .fa-star-o {
+      top: 1px;
+    }
+
+    .more {
+      font-size: 12px;
+      font-weight: normal;
+      border-left: 1px solid #ccc;
+      padding-left: 10px;
+      margin-left: 4px;
+    }
+  }
+
+  #follow-msg {
+    .text-center {
+      padding: 5px 0 30px 0;
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .masonry-brick {
+    position: relative;
+  }
+
+  .item {
+    margin: 0px 1px;
+    height: 380px;
+    .col-xs-3 {
+      width: 236px;
+      padding: 0px 8px;
+
+      &:first-child {
+        padding-left: 0px;
+        width: 228px;
+      }
+
+      &:last-child {
+        padding-right: 0px;
+        width: 228px;
+      }
+    }
+
+    .col-xs-4 {
+      width: 316;
+      padding: 0px 9px;
+
+      &:first-child {
+        padding-left: 0px;
+        width: 307;
+      }
+
+      &:last-child {
+        padding-right: 0px;
+        width: 307;
+      }
+    }
+  }
+
+  .carousel-indicators {
+    width: 100px;
+    height: 20px;
+    top: 2px;
+    left: 1142px;
+
+    li {
+      border: 1px solid #ccc;
+      background-color: #ccc;
+
+      &.active {
+        border: none;
+        background-color: $brand-primary;
+      }
+    }
+  }
+}

@@ -1,13 +1,23 @@
 .container
+  .pull-right
+    - if user_signed_in?
+      #bookmark-btn
+        = bookmark_button @tag
+    - else
+      %button.btn.btn-primary.fa-14{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+        = fa_icon 'bookmark fw', text: 'Bookmark'
   %h4
-    %small Styles with tag
-    = "##{@tag.name}"
+    %small
+      = @tag.posts_count
+      styles with tag&nbsp;
+    %span.tag
+      = @tag.name
 
-  %hr
+  %hr.hr-dark
   #masonry-container
     = render @posts
   #paginate-containter
-    = paginate @posts, theme: 'twitter-bootstrap-3'
+    = paginate @posts
 
   .text-center
     #load-more.btn.btn-default

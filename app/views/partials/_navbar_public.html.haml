@@ -1,52 +1,41 @@
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
   .container
-    = link_to root_path do
-      #navbar-logo
-        StyleMe
-    %ul.nav.navbar-nav.nav-left-part
-      %li.disabled
-        %a{href: "#"}
-          Everything
-          %b.caret
+    = render 'partials/navbar_left'
 
-      - if params[:sort]
-        %li
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            = params[:sort].titleize
-            %b.caret
-          %ul.dropdown-menu.text-left
-            %li
-              = link_to 'Hot', params.merge(sort: 'Hot')
-            %li.divider
-            %li
-              = link_to 'New', params.merge(sort: 'New')
-
-    .col-xs-3.nav-search
-      %form.navbar-form.navbar-left{role: "search"}
-        .input-group
-          %input.form-control{placeholder: "Search", type: "text"}/
-          %span.input-group-btn
-            = link_to root_path, class: 'btn btn-default' do
-              = fa_icon 'search'
+    = link_to 'Sign up', new_registration_path('user'), class: 'btn btn-primary navbar-btn navbar-right', id: 'sign-up-btn'
 
     %ul.nav.navbar-nav.navbar-right
       %li
-        %a.modal-trigger{href: '#', 'data-modal-name' => 'sign-in'} Already a member?
-      %li
-        = link_to 'Sign up', new_registration_path('user')
+        %a#log-in-btn{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
+          Log in
 
 #sign-in-modal.modal
-  .modal-dialog.modal-dialog-center
+  .modal-dialog
     .modal-content
       .modal-header
         %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
           &times;
         %h4.modal-title
-          Sign in
+          Log in
       .modal-body
+        .row#sns-login
+          .col-xs-5.col-xs-offset-1.fb-login-btn
+            = link_to user_omniauth_authorize_path(:facebook),
+                      class: 'btn btn-default btn-block wf-fix' do
+              = fa_icon 'facebook lg', text: 'Log in with Facebook'
+          .col-xs-5.gg-login-btn
+            = link_to user_omniauth_authorize_path(:google),
+                      class: 'btn btn-default btn-block wf-fix' do
+              = fa_icon 'google-plus lg fw', text: 'Log in with Google'
+        %hr
         = form_for(:user, as: @user, url: session_path('user'), html: { class: 'form-horizontal', id: 'sign-in-form' }) do |f|
           .row
             .col-xs-10.col-xs-offset-1
+              .form-group.text-muted
+                Log in with email or username
+                .pull-right
+                  = link_to 'Need an account?', new_registration_path('user')
+
               .form-group
                 %label Email or Username
                 = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
@@ -60,11 +49,3 @@
             .col-xs-3.col-xs-offset-1
               .form-group
                 = f.submit 'Sign In', class: 'btn btn-primary btn-lg btn-block'
-            .col-xs-6.col-xs-offset-1
-              #sns-signin.pull-right
-                Sign in with:&nbsp;&nbsp;
-                = link_to fa_icon('facebook-square 2x', class: 'facebook-color'), user_omniauth_authorize_path(:facebook)
-                &nbsp;&nbsp;
-                = link_to fa_icon('google-plus-square 2x', class: 'google-color'), user_omniauth_authorize_path(:google)
-                &nbsp;&nbsp;
-                = link_to fa_icon('twitter-square 2x', class: 'twitter-color'), root_path

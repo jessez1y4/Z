@@ -1,0 +1,25 @@
+body.posts-crop {
+  .panel {
+    margin-left: 165px;
+    margin-top: -5px;
+    padding: 8px 20px 20px 20px;
+  }
+
+  #crop-container {
+
+    #crop-img-container {
+      border: 1px solid #999;
+    }
+
+    h4 {
+      padding-bottom: 18px;
+
+      .btn {
+        width: 90px;
+        margin-top: -9px;
+        font-size: 15px;
+        padding-top: 5px;
+      }
+    }
+  }
+}

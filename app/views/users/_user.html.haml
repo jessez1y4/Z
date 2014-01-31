@@ -1,0 +1,23 @@
+.user-brick
+  .exhibit-posts
+    - user.exhibit_posts.each do |post|
+      .exhibit-post
+        = link_to post, target: '_blank' do
+          = cl_image_tag_with_crop post, width: 148, height: 197, crop: :fill
+
+  .user-info
+    .pull-left
+      = link_to user do
+        = cl_image_tag user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+
+    .user-name
+      = link_to user do
+        %strong= user.full_name.titleize
+
+    %div
+      .pull-right
+
+      .user-stats
+        = "#{user.likes_count} Likes · #{user.followers_count} Followers"
+      = render 'partials/follow_button', user: user
+

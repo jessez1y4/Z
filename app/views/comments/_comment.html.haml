@@ -1,0 +1,12 @@
+.row.comment
+  .col-xs-2
+    = cl_image_tag comment.user.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
+  .col-xs-10
+
+    %strong= link_to comment.user.full_name.titleize, comment.user
+
+    = simple_format comment.comment
+    %small.text-muted
+      = time_ago_in_words comment.created_at
+      ago
+%hr

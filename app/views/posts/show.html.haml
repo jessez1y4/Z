@@ -1,90 +1,135 @@
 .container
-  .row
-    .col-xs-7
-      .pull-right.big-like-btn.like-btn
-        = render 'partials/like_button', post: @post
-      %h2
-        = @post.title.titleize
-
-      %p.pull-left.text-muted
-        By
-        = succeed ',' do
-          = link_to @user.full_name, @user
-        = time_ago_in_words @post.created_at
-        ago
-
-      - if @user == current_user
-        #post-edit-btns.btn-group
-          = link_to 'Edit', edit_post_url(@post), class: 'btn btn-xs btn-default'
-          = link_to 'Delete', post_url(@post), method: :delete, class: 'btn btn-xs btn-danger'
-
-    .col-xs-5
-      #user-info.row
-        #medium-avatar.col-xs-3
-          = cl_image_tag @user.avatar_cloudinary_id, width: 84, height: 84, crop: 'fill', gravity: 'face'
-        .col-xs-9
-          %p
-            = link_to @user.full_name, @user
-          %p.small.text-muted
-            = "#{@user.likes} likes "
-            %span#followers
-              = @user.followers_count
-            followers
-          = render 'partials/follow_button', user: @user
 
   .row
-    .col-xs-7
+    #post-main.col-xs-5
+      #post-nav.text-center
+        - if @prev_post
+          = link_to @prev_post do
+            .pull-left
+              = fa_icon 'angle-left'
+        - else
+          .pull-left.invisible
+            = fa_icon 'angle-left'
+
+        - if @next_post
+          = link_to @next_post do
+            .pull-right
+              = fa_icon 'angle-right'
+        - else
+          .pull-right.invisible
+            = fa_icon 'angle-right'
+
+
+        %p
+          %h3{class: ('small' if @post.title.length > 28)}
+            %strong= @post.title.titleize
+        %small.text-muted
+          = time_ago_in_words @post.created_at
+          ago
+
+
       #show-post-img-container
-        = cl_image_tag @post.cloudinary_id, width: 530
+        = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
+
+      / edit buttons
+      - if @user == current_user
+        #post-edit-btns.fa-14
+          = link_to edit_post_url(@post), class: 'btn btn-default' do
+            = fa_icon 'pencil fw', text: 'Edit post'
+
+          = link_to 'Delete post',
+                    post_url(@post),
+                    method: :delete,
+                    confirm: 'Do you want to DELETE this Style?'
 
       / comments
-      .page-header
-        %h3
-          = "#{@post.comments_count} COMMENTS"
-      - @comments.each do |comment|
-        .row.comment
-          .col-xs-2
-            = cl_image_tag comment.user.avatar_cloudinary_id, width: 50, height: 50, crop: 'fill', gravity: 'face'
-          .col-xs-10
-            %p
-              = link_to comment.user.full_name, comment.user
-              %span.small
-                = time_ago_in_words comment.created_at
-                ago
-            = simple_format comment.comment
-        %hr
+      #post-comments
+        #post-comments-header{class: ('no-border' if (comments_count = @post.comments_count) == 0)}
+          = pluralize comments_count, 'comment'
+        #post-comments-main
+          = render @comments
+        #post-comments-next.text-center
+          = link_to_next_page @comments, 'View More', remote: true, class: 'btn btn-default'
 
-      / post comment
-      - if user_signed_in?
-        = form_for [@post, @comment] do |f|
-          = f.hidden_field :user_id, value: current_user.id
-          .form-group
-            = f.text_area :comment, rows: 3, class: 'form-control'
-          .form-group
-            = f.submit 'Comment', class: 'btn btn-primary'
-      - else
-        .text-center
-          %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-            Log in to comment
+        / post comment
+        - if user_signed_in?
+          = form_for [@post, @comment] do |f|
+            = f.hidden_field :user_id, value: current_user.id
+            .form-group
+              = f.text_area :comment, rows: 3, class: 'form-control', id: 'post-comment-input'
+            .form-group.text-right
+              %button.btn.btn-primary{type: 'submit'}
+                %span.glyphicon.glyphicon-leaf
+                &nbsp;Post Comment
 
 
-    .col-xs-5
-      %br
-      %br
-      - if @post.tags.any?
-        - @post.tags.each do |tag|
-          = link_to "##{tag.name}", tag
-          &nbsp;
-        %hr
+    #post-info.col-xs-3
+      = render 'partials/like_button', post: @post
+
+      #post-views.info-entry
+        %span.glyphicon.glyphicon-eye-open
+        %small.text-muted Views
+        .pull-right
+          =@post.views_count
+
+      #post-share.info-entry
+        %span.glyphicon.glyphicon-share
+        %small.text-muted Share
 
       - if @post.items.any?
-        - @post.items.each do |item|
-          .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-            %p
-              = item.number
-              = item.name
-        %hr
+        #post-items.info-list
+          %p.info-header
+            Items
+          - @post.items.each do |item|
+            .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+              %p
+                %span.item-number{id: "item-number-#{item.number}"}
+                  = item.number
+                = item.name
 
-      - if @post.description.present?
-        = simple_format @post.description
+      - if @tags.any?
+        #post-tags.info-list
+          %p.info-header
+            Tags
+          - @tags.each do |tag|
+            %p
+              = link_to tag.name, tag, class: 'tag'
+              %span.pull-right.text-muted
+                = tag.posts_count
+
+    #user-sidebar.col-xs-3
+      .sidebar-header.text-center
+        POSTED BY
+      #user-info
+        .pull-left
+          = link_to @user do
+            = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+        = link_to @user do
+          %strong= @user.full_name.titleize
+        %p.small.text-muted
+          %span.glyphicon.glyphicon-map-marker
+          Someplace, Somestate
+        = render 'partials/follow_button', user: @user
+      %br
+      #user-stats.row.text-center
+        .col-xs-4
+          .stat-count.likes-count
+            = @user.likes_count
+          .stat-name
+            Likes
+        .col-xs-4
+          .stat-count
+            = @user.views_count
+          .stat-name
+            Views
+        .col-xs-4
+          .stat-count.followers-count
+            = @user.followers_count
+          .stat-name
+            Followers
+
+      .sidebar-header.text-center
+        MORE BY
+        = link_to @user.full_name.upcase, @user
+
 

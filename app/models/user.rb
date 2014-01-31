@@ -9,8 +9,13 @@ class User < ActiveRecord::Base
          :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google]
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :items, through: :posts
+
+  has_many :exhibit_posts,
+           -> { exhibit },
+           class_name: 'Post'
+
   has_many :sites
   has_many :comments, as: :commentable
 
@@ -48,6 +53,12 @@ class User < ActiveRecord::Base
 
   has_many :sign_in_authentications, dependent: :destroy
 
+  has_many :bookmarkings, dependent: :destroy
+  has_many :bookmarks, source: :tag, through: :bookmarkings
+
+  has_many :default_taggings, dependent: :destroy
+  has_many :default_tags, source: :tag, through: :default_taggings
+
   attr_accessor :login
 
   accepts_nested_attributes_for :sign_in_authentications, allow_destroy: true
@@ -57,6 +68,8 @@ class User < ActiveRecord::Base
             uniqueness: { allow_nil: true },
             length: { minimum: 4, maximum: 15, allow_nil: true },
             format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
+
+  scope :star, -> { order('likes_count DESC') }
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -93,16 +106,12 @@ class User < ActiveRecord::Base
     like_relationships.find_by(post_id: post.id).destroy!
   end
 
-  # count of likes
-  def likes
-    @likes unless @likes.nil?
-    if posts.empty?
-      @likes = 0
-    else
-      @likes = self.posts.inject(0) do |sum, post|
-        sum + post.likes
-      end
-    end
+  def bookmark!(tag)
+    bookmarkings.create!(tag_id: tag.id)
+  end
+
+  def unbookmark!(tag)
+    bookmarkings.find_by(tag_id: tag.id).destroy!
   end
 
   # channel methods
@@ -150,5 +159,25 @@ class User < ActiveRecord::Base
 
   def password_required
     super && provider.blank?
+  end
+
+  def default_tag_list
+    default_tags.map(&:name).join(", ")
+  end
+
+  def default_tag_list=(names)
+    self.default_tags = names.upcase.split(",").reject{|s| s.blank?}.collect(&:strip).uniq.map do |n|
+      Tag.where(name: n).first_or_create!
+    end
+  end
+
+  def views_count
+    @views_count ||= if posts.empty?
+      0
+    else
+      self.posts.inject(0) do |sum, post|
+        sum + post.views_count
+      end
+    end
   end
 end

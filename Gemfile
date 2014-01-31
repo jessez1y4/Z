@@ -6,15 +6,17 @@ gem 'rails', '~> 4.0.2'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'font-awesome-rails', '~> 4.0.3.0'
+gem 'respond-rails', '~> 1.0'
+gem 'font-awesome-rails', '~> 4.0.3.1'
+gem 'jcrop-rails-v2', '~> 0.9.12.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -26,7 +28,6 @@ gem 'jquery-validation-rails', '~> 1.11.1'
 gem 'masonry-rails', '~> 0.2.1'
 
 gem 'kaminari', '~> 0.15.0'
-gem 'bootstrap-kaminari-views'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,7 +53,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'haml-rails', '~> 0.4'
+gem 'haml-rails', '~> 0.5.3'
 
 gem 'devise', '~> 3.2.0'
 gem 'omniauth-facebook', '~> 1.6.0'
@@ -66,6 +67,8 @@ gem 'spinjs-rails', '~> 1.3'
 
 gem 'cocoon', '~> 1.2.5'
 
+gem 'impressionist', '~> 1.5.1'
+
 group :development do
   gem 'letter_opener', '~> 1.1.2'
 end
@@ -73,4 +76,8 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

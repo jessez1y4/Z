@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121223436) do
+ActiveRecord::Schema.define(version: 20140130233526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarkings", force: true do |t|
+    t.integer "tag_id"
+    t.integer "user_id"
+  end
 
   create_table "channel_memberships", force: true do |t|
     t.integer "channel_id", null: false
@@ -47,6 +52,11 @@ ActiveRecord::Schema.define(version: 20140121223436) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "default_taggings", force: true do |t|
+    t.integer "tag_id"
+    t.integer "user_id"
+  end
+
   create_table "follow_relationships", force: true do |t|
     t.integer  "follower_id", null: false
     t.integer  "followed_id", null: false
@@ -58,15 +68,52 @@ ActiveRecord::Schema.define(version: 20140121223436) do
   add_index "follow_relationships", ["follower_id", "followed_id"], name: "index_follow_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "follow_relationships", ["follower_id"], name: "index_follow_relationships_on_follower_id", using: :btree
 
+  create_table "impressions", force: true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+  create_table "item_categories", force: true do |t|
+    t.string  "name"
+    t.integer "type_cd"
+    t.integer "item_category_type_id"
+  end
+
+  create_table "item_category_types", force: true do |t|
+    t.string "name"
+  end
+
   create_table "items", force: true do |t|
-    t.integer  "post_id",    null: false
-    t.string   "name",       null: false
+    t.integer  "post_id",          null: false
+    t.string   "name",             null: false
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "number",     null: false
-    t.integer  "x",          null: false
-    t.integer  "y",          null: false
+    t.integer  "number",           null: false
+    t.integer  "x",                null: false
+    t.integer  "y",                null: false
+    t.integer  "item_category_id"
+    t.string   "url"
   end
 
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree
@@ -92,6 +139,8 @@ ActiveRecord::Schema.define(version: 20140121223436) do
     t.integer  "like_relationships_count", default: 0
     t.integer  "comments_count",           default: 0
     t.integer  "tags_count",               default: 0
+    t.integer  "views_count",              default: 0, null: false
+    t.string   "crop_str"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -149,6 +198,8 @@ ActiveRecord::Schema.define(version: 20140121223436) do
     t.integer  "channels_count",         default: 0
     t.integer  "channel_allowance",      default: 1,                                                           null: false
     t.boolean  "random_password",        default: false,                                                       null: false
+    t.integer  "liked_posts_count",      default: 0
+    t.integer  "likes_count",            default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

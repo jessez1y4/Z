@@ -1,2 +1,3 @@
 = form_for current_user.follow_relationships.find_by(followed_id: user), html: { method: :delete }, remote: true do |f|
-  = f.submit 'Followed', class: 'btn btn-default', id: 'unfollow-btn'
+  .btn-group
+    = f.submit 'Followed', class: 'btn btn-primary', id: 'unfollow-btn'

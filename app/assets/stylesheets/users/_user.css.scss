@@ -1,0 +1,49 @@
+.user-brick {
+  @include box-shadow(rgba(0, 0, 0, 0.08) 0px 1px 4px);
+  @include border-radius(4px);
+
+  width: 298px;
+  border: 1px solid #ccc;
+  background: white;
+  margin-bottom: 15px;
+  overflow: hidden;
+
+  .exhibit-posts {
+    border-bottom: 1px solid #e7e7e7;
+
+    .exhibit-post {
+      display: inline-block;
+      margin-right: -3px;
+
+      a {
+        @include zoom-in-cursor;
+      }
+    }
+  }
+
+  .user-info {
+    .pull-left {
+      padding: 12px 15px;
+
+      img {
+        @include border-radius(2px);
+      }
+    }
+
+    .user-name {
+      padding-top: 13px;
+    }
+
+    .user-stats {
+      padding-top: 5px;
+      padding-bottom: 9px;
+      font-size: 11px;
+      color: #999;
+    }
+
+    .btn {
+      height: 30px;
+      font-size: 12px;
+    }
+  }
+}

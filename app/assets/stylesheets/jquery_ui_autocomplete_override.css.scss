@@ -1,4 +1,8 @@
 .ui-autocomplete {
+  @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.17) 0 6px 12px);
+  @include background-clip-padding-box;
+
   position: absolute;
   top: 100%;
   left: 0;
@@ -12,19 +16,9 @@
   margin: 2px 0 0 0;
   list-style: none;
   background-color: #ffffff;
-  border-color: #dddddd;
+  border-color: #c2c2c2;
   border-style: solid;
   border-width: 1px;
-  border-top-width: 0;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
-  -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  border-radius: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
   font-family: inherit;
 
   .ui-menu-item > a.ui-corner-all {

@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  is_impressionable counter_cache: true,
+                    column_name: :views_count,
+                    unique: :session_hash
+
   belongs_to :user, counter_cache: true
 
   has_many :items, -> { order('number ASC') }
@@ -23,6 +27,8 @@ class Post < ActiveRecord::Base
 
   scope :newest, -> { order('posts.created_at DESC') }
   scope :hottest, -> { order('like_relationships_count DESC') }
+  scope :most_viewed, -> { order('views_count DESC') }
+  scope :exhibit, -> { hottest.limit(2) }
 
   def self.recent(time)
     where('posts.created_at > ?', Time.now - time)
@@ -40,6 +46,8 @@ class Post < ActiveRecord::Base
       recent(1.week).hottest
     when 'Hot'
       hottest
+    when 'Most Viewed'
+      most_viewed
     end
   end
 
@@ -58,7 +66,7 @@ class Post < ActiveRecord::Base
   def self.scope(scope_name, user)
     case scope_name
     when 'Everything'
-      scoped
+      all
     when 'Following'
       following(user)
     else

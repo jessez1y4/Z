@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, only: [:edit, :update]
   def show
     params[:sort] ||= 'New'
     @user = User.find(params[:id])
@@ -59,6 +60,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :full_name, :description, :password, :random_password)
+    params.require(:user).permit(:username, :email, :full_name, :description, :password, :random_password, :default_tag_list)
   end
 end

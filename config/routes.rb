@@ -1,5 +1,5 @@
 StyleMe::Application.routes.draw do
-  root 'posts#index'
+  root 'posts#home'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
@@ -12,6 +12,7 @@ StyleMe::Application.routes.draw do
   # end
 
   resources :users, except: [:edit, :update] do
+    resources :liked_posts, only: [:index]
     resources :posts
     member do
       get :following, :followers
@@ -29,6 +30,10 @@ StyleMe::Application.routes.draw do
 
   resources :posts do
     resources :comments
+
+    new do
+      get :crop
+    end
   end
 
   resources :channels do
@@ -38,4 +43,6 @@ StyleMe::Application.routes.draw do
   resources :channel_memberships
 
   resources :tags
+
+  resources :bookmarkings
 end

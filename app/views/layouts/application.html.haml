@@ -1,13 +1,14 @@
 !!!
 %html
   %head
-    %title StyleMe
+    %title Phinery
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = respond_include_tags
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = cloudinary_js_config
-  %body{ class: "#{controller_name}-#{action_name}" }
-    = render conditional_header
+  %body{ class: "#{controller_name}-#{action_name}", 'data-controller' => "#{controller_name}" }
+    #header= render conditional_header
     = yield
     = render 'partials/cloudinary' if user_signed_in?
     = render 'partials/footer'

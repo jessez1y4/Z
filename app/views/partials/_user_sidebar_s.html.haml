@@ -1,0 +1,37 @@
+#user-bar-s.row
+  #user-main.col-xs-8
+    .pull-left
+      = cl_image_tag @user.avatar_cloudinary_id, width: 70, height: 70, crop: 'fill', gravity: 'face'
+
+    = link_to @user do
+      = @user.full_name.titleize
+    %p.small.text-muted
+      %span.glyphicon.glyphicon-map-marker
+      Someplace, Somestate
+    = render 'partials/follow_button', user: @user
+
+
+
+  #user-stats.col-xs-4
+    .row.text-center
+      .col-xs-3
+        .stat-count
+          = @user.likes_count
+        .stat-name
+          Likes
+      .col-xs-3
+        .stat-count
+          = @user.views_count
+        .stat-name
+          Views
+      .col-xs-3
+        .stat-count.followers-count
+          = @user.followers_count
+        .stat-name
+          Followers
+      .col-xs-3
+        .stat-count
+          = @user.followings_count
+        .stat-name
+          Following
+%hr.hr-darker
