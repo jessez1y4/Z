@@ -88,13 +88,16 @@ class PostsController < ApplicationController
     params.require(:post).permit(:cloudinary_id,
                                  :crop_str,
                                  :title,
-                                 :description,
                                  :tag_list,
-                                 items_attributes: [:id,
-                                                    :name,
-                                                    :number,
-                                                    :x,
-                                                    :y,
-                                                    :_destroy])
+                                 items_attributes: [
+                                   :id,
+                                   :name,
+                                   :number,
+                                   :x,
+                                   :y,
+                                   :_destroy,
+                                   :item_category_id,
+                                   :url
+                                 ])
   end
 end

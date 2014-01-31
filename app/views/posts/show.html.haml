@@ -21,7 +21,7 @@
 
 
         %p
-          %h3
+          %h3{class: ('small' if @post.title.length > 28)}
             %strong= @post.title.titleize
         %small.text-muted
           = time_ago_in_words @post.created_at

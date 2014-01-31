@@ -1,4 +1,6 @@
 body.posts-show {
+  padding-top: 70px;
+
   #post-main {
     width: 432px;
 
@@ -27,6 +29,10 @@ body.posts-show {
         margin-bottom: -7px;
         font-size: 18px;
         padding-top: 10px;
+      }
+
+      h3.small {
+        font-size: 15px;
       }
     }
   }

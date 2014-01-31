@@ -13,9 +13,9 @@
           %label Title
           = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
 
-        .form-group
-          %label Description
-          = f.text_area :description, class: 'form-control', placeholder: 'Describe your photo...'
+        / .form-group
+        /   %label Description
+        /   = f.text_area :description, class: 'form-control', placeholder: 'Describe your photo...'
 
         .form-group
           %label Tags (separate by comma)
@@ -31,4 +31,4 @@
           = link_to_add_association '', f, :items, id: 'add-item-btn', class: 'hide', 'data-association-insertion-method' => 'append'
 
         .form-group
-          = f.submit 'Post my style!', class: 'btn btn-primary btn-lg'
+          = f.submit 'Post my style!', class: 'btn btn-primary btn-lg', id: 'new-post-form-submit'

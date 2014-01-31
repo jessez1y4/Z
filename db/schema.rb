@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129211009) do
+ActiveRecord::Schema.define(version: 20140130233526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,15 +93,27 @@ ActiveRecord::Schema.define(version: 20140129211009) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
+  create_table "item_categories", force: true do |t|
+    t.string  "name"
+    t.integer "type_cd"
+    t.integer "item_category_type_id"
+  end
+
+  create_table "item_category_types", force: true do |t|
+    t.string "name"
+  end
+
   create_table "items", force: true do |t|
-    t.integer  "post_id",    null: false
-    t.string   "name",       null: false
+    t.integer  "post_id",          null: false
+    t.string   "name",             null: false
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "number",     null: false
-    t.integer  "x",          null: false
-    t.integer  "y",          null: false
+    t.integer  "number",           null: false
+    t.integer  "x",                null: false
+    t.integer  "y",                null: false
+    t.integer  "item_category_id"
+    t.string   "url"
   end
 
   add_index "items", ["post_id"], name: "index_items_on_post_id", using: :btree

@@ -1,5 +1,7 @@
 .item-label{
   @include transition(0.2s);
+  @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
+  @include border-radius(2px);
 
   width: 20px;
   height: 20px;
@@ -8,29 +10,69 @@
   opacity: 0;
   text-align: center;
   cursor: default;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   font-size: 14px;
 
   &:hover {
-    background-color: lighten($brand-primary, 10%);
+    background-color: saturate(lighten($brand-primary, 10%), 5%);
     opacity: 0.9;
   }
+}
+
+.item-label-hover {
+  background-color: saturate(lighten($brand-primary, 10%), 5%);
+  opacity: 0.9;
 }
 
 .item-label-no-anim {
   @include transition(0);
 
   opacity: 0.9;
+}
 
-  &:hover {
+.item-form {
+  @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
+  @include background-clip-padding-box;
 
+  position: absolute;
+  top: 240px;
+  left: 0px;
+  z-index: 999;
+  padding: 10px 15px 5px 15px;
+  width: 250px;
+
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  .form-group {
+    margin-bottom: 10px;
+
+    input, select {
+      height: 25px;
+      padding: 5px 6px;
+    }
+
+    .hide-item-form-btn {
+      height: 25px;
+      width: 80px;
+      padding: 3px 10px;
+    }
+
+    .pull-right {
+      font-size: 12px;
+      padding-top: 5px;
+      padding-right: 1px;
+    }
+
+    .error {
+      font-size: 12px;
+    }
+  }
+
+  &.buried {
+    z-index: 0;
   }
 }
 

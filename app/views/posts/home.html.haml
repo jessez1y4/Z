@@ -3,7 +3,7 @@
     #following-carousel.carousel.slide
       .post-row-header
         = fa_icon 'rss'
-        Following
+        FOLLOWING
         %span.more
           = link_to 'MORE', posts_path(params.merge(scope: 'Following'))
         - if @following_posts.size > 4
@@ -20,7 +20,7 @@
     #follow-msg
       .post-row-header
         = fa_icon 'rss'
-        Following
+        FOLLOWING
         %span.more.text-muted
           MORE
       .text-center
@@ -33,7 +33,7 @@
   #hot-carousel.carousel.slide
     .post-row-header
       %span.glyphicon.glyphicon-fire
-      Hot
+      HOT
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'Hot'))
       %ol.carousel-indicators
@@ -49,7 +49,7 @@
   #new-carousel.carousel.slide
     .post-row-header
       %span.glyphicon.glyphicon-send
-      New
+      NEW
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'New'))
       %ol.carousel-indicators
@@ -65,7 +65,7 @@
   #star-carousel.carousel.slide
     .post-row-header
       = fa_icon 'star-o'
-      Stars
+      STARS
       %span.more
         = link_to 'MORE', posts_path(params.merge(sort: 'New'))
       %ol.carousel-indicators

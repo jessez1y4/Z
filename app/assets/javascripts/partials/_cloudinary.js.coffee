@@ -30,12 +30,12 @@ $ ->
     rules:
       'web_link':
         required: true
-        url: true
+        cus_url: true
 
     messages:
       'web_link':
         required: "It's empty :("
-        url: 'The link looks invalid..'
+        cus_url: 'The link looks invalid..'
 
     submitHandler: (form) ->
       $('input:submit', form).val('Fetching...').prop('disabled', true)
