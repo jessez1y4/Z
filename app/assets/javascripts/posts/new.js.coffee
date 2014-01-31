@@ -110,6 +110,7 @@ $ ->
         $(item).removeClass('nested-fields')
                .addClass('removed-nested-fields')
                .removeAttr 'id'
+        $('input, select', item).addClass 'ignore'
         reorder_labels()
         reorder_forms()
       )
@@ -117,7 +118,7 @@ $ ->
 
     # form validation
     new_post_validator = $('#new-post-form').validate
-      ignore: []
+      ignore: '.ignore'
       rules:
         'post[title]':
           required: true
