@@ -83,9 +83,12 @@
           - @post.items.each do |item|
             .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
               %p
+                %span.pull-right.small
+                  = link_to item.item_category.name.titleize, item.item_category
                 %span.item-number{id: "item-number-#{item.number}"}
                   = item.number
-                = item.name
+                %span.item-name
+                  = link_to_if item.url.present?, item.name.capitalize, item.url
 
       - if @tags.any?
         #post-tags.info-list

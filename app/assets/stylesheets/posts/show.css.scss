@@ -205,6 +205,33 @@ body.posts-show {
       .item-number-hovered {
         background-color: $brand-primary;
       }
+
+      .item-info {
+        .item-name a {
+          border-bottom: 1px dashed #999;
+          color: #333;
+          text-overflow: ellipsis;
+      white-space:nowrap;
+      overflow: hidden;
+
+          &:hover {
+            color: $brand-primary;
+            text-decoration: none;
+            border-bottom: 1px solid $brand-primary;
+          }
+        }
+
+        .small a {
+          position: relative;
+          top: 1px;
+          color: #999;
+          cursor: pointer;
+
+          &:hover {
+            color: $brand-primary;
+          }
+        }
+      }
     }
 
     #post-tags {

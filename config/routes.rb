@@ -45,4 +45,6 @@ StyleMe::Application.routes.draw do
   resources :tags
 
   resources :bookmarkings
+
+  resources :item_categories
 end

@@ -1,0 +1,18 @@
+.container
+  %h4
+    %small
+      = @item_category.posts.count
+      styles with item&nbsp;
+    = @item_category.name.titleize
+
+  %hr.hr-dark
+  #masonry-container
+    = render @posts
+  #paginate-containter
+    = paginate @posts
+
+  .text-center
+    #load-more.btn.btn-default
+      = fa_icon 'repeat'
+      %strong
+        &nbsp;Loading more ..
