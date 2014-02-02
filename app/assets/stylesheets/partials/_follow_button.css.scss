@@ -2,9 +2,20 @@
   input, button {
     width: 84px;
   }
+
+  .icons-rss {
+    background-position: sprite-position($icons, rss, -4px, -2px);
+    padding-left: 17px;
+    height: 18px;
+  }
 }
 
-.btn-primary-w {
-  background: white;
-  color: #333;
+.edit-profile-btn {
+  width: 111px;
+
+  .icons-pencil {
+    background-position: sprite-position($icons, pencil, -4px, -2px);
+    padding-left: 18px;
+    height: 18px;
+  }
 }

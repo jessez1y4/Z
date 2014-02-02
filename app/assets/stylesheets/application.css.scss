@@ -16,6 +16,9 @@
  *= require 'masonry/gutters'
  */
 
+@import 'compass';
 @import '*';
 @import '*/*';
+@import "icons/*.png";
+@include all-icons-sprites(true);
 

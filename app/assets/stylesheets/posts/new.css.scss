@@ -1,5 +1,5 @@
 .item-label{
-  @include transition(0.2s);
+  @include transition(all 0.2s);
   @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
   @include border-radius(2px);
 
@@ -34,7 +34,7 @@
 .item-form {
   @include border-radius(3px);
   @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
-  @include background-clip-padding-box;
+  @include background-clip(padding-box);
 
   position: absolute;
   z-index: 999;
@@ -53,7 +53,7 @@
     }
 
     select {
-      @include box-shadow-none;
+      @include box-shadow(none);
 
       appearance: button;
       -o-appearance: button;

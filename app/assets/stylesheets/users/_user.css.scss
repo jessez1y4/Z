@@ -50,6 +50,15 @@
     .btn {
       height: 30px;
       font-size: 12px;
+
+      .icons-rss {
+        background-position: sprite-position($icons, rss, -4px, -3px);
+        padding-left: 18px;
+      }
+
+      .icons-pencil {
+        background-position: sprite-position($icons, pencil, -4px, -3px);
+      }
     }
   }
 }

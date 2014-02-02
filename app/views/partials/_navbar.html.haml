@@ -3,9 +3,9 @@
     = render 'partials/navbar_left'
 
     %ul.nav.navbar-nav.navbar-right
-      %li.dropdown
-        %a#post-style-btn.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
-          = fa_icon 'plus'
+      %li#post-dropdown.dropdown
+        %a.dropdown-toggle.fa-14{"data-toggle" => "dropdown", href: "#"}
+          .icons-plus
 
         %ul.dropdown-menu
           %li
@@ -18,8 +18,8 @@
 
       %li.btn-group
         %button#nav-user-menu-btn.dropdown-toggle.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#"}
-          %span.glyphicon.glyphicon-user
-          %strong= current_user.full_name.titleize
+          .icons-user
+            %strong= current_user.full_name.titleize
         %ul.dropdown-menu
           %li
             = link_to 'My styles', current_user

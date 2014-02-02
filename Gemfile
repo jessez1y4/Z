@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'respond-rails', '~> 1.0'
 gem 'font-awesome-rails', '~> 4.0.3.1'
-
+gem 'compass-rails', '~> 1.1.3'
 gem 'jcrop-rails-v2', '~> 0.9.12.3'
 
 # Use Uglifier as compressor for JavaScript assets

@@ -13,7 +13,7 @@
   }
 
   .masonry-like-btn {
-    @include transition(0.25s);
+    @include transition(all 0.25s);
 
     z-index: 4;
     position: absolute;
@@ -37,15 +37,19 @@
       background-color: black;
       -webkit-font-smoothing: antialiased;
 
-      span {
-        font-size: 16px;
-        position: relative;
-        top: 2px;
+      .icons-heart {
+        display: inline-block;
+        background-position: sprite-position($icons, heart, 0, -1px);
+        width: auto;
+        padding-left: 23px;
       }
-    }
 
-    .glyphicon-heart-red {
-      color: #f11;
+      .icons-heart_red {
+        display: inline-block;
+        background-position: sprite-position($icons, heart_red, 0, -1px);
+        width: auto;
+        padding-left: 23px;
+      }
     }
   }
 
@@ -69,28 +73,33 @@
   }
 
   .masonry-author {
-    padding: 7px 10px;
+    padding: 7px 10px 7px 10px;
     color: #999;
+    height: 29px;
 
     .post-stats {
-      @include transition(0.25s);
+      @include transition(all 0.25s);
 
       font-size: 11px;
 
-      .glyphicon {
-        font-size: 12px;
-        position: relative;
-        top: 2px;
+      .icons-eye {
         display: inline-block;
+        background-position: sprite-position($icons, eye, -3px, -2px);
+        width: auto;
+        padding-left: 17px;
+        margin-right: 10px;
       }
 
-      .masonry-views {
-        margin-right: 8px;
+      .icons-heart_sm {
+        display: inline-block;
+        background-position: sprite-position($icons, heart_sm, -4px, -2px);
+        width: auto;
+        padding-left: 17px;
       }
     }
 
     .user-name {
-      @include transition(0.25s);
+      @include transition(all 0.25s);
 
       position: absolute;
       left: 10px;

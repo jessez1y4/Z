@@ -1,25 +1,56 @@
 .navbar-fixed-top {
-  @include background-clip-padding-box;
+  @include background-clip(padding-box);
   @include box-shadow(rgba(0, 0, 0, 0.04) 0 2px 3px);
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 
   .navbar-brand {
-    padding: 7px 15px 5px 15px;
-
-    img {
-      height: 30px;
-    }
+    padding: 8px 18px 5px 16px;
   }
 
   li.dropdown .dropdown-toggle {
-    @include transition(0.25s);
+    @include transition(all 0.2s);
 
+    padding: 11px 15px 10px 15px;
     color: $navbar-color;
   }
+
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
     color: $brand-primary;
     background-color: #eee;
+  }
+
+  #scope-dropdown {
+    & > a {
+    }
+
+    & > a:hover, &.open {
+      .icons-tasks {
+        background-position: sprite-position($icons, tasks_blue);
+      }
+    }
+  }
+
+  #sort-dropdown {
+    & > a {
+      strong {
+        position: relative;
+        top: -2px;
+      }
+
+      .icons-sort {
+        display: inline-block;
+        background-position: sprite-position($icons, sort, -5px);
+        width: 11px;
+        height: 17px;
+      }
+    }
+
+    & > a:hover, &.open {
+      .icons-sort {
+        background-position: sprite-position($icons, sort_blue, -5px);
+      }
+    }
   }
 
   .btn {
@@ -34,16 +65,23 @@
     padding-top: 5px;
   }
 
-  #post-style-btn {
-    margin-right: 10px;
+  #post-dropdown {
+    margin-right: 13px;
+
+    a {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
   }
 
   #nav-user-menu-btn {
     margin-right: 15px;
 
-    .glyphicon {
+    .icons-user {
       display: inline-block;
-      margin-right: 2px;
+      background-position: sprite-position($icons, user, -4px, -2px);
+      padding-left: 19px;
+      width: auto;
     }
 
     & + .dropdown-menu {
@@ -98,6 +136,12 @@
   padding-left: 0;
   padding-right: 0;
   width: 220px;
+
+  .icons-search {
+    width: auto;
+    background-position: sprite-position($icons, search, 0, -1px);
+  }
+
   i {
     color: #777;
     font-size: 14px;

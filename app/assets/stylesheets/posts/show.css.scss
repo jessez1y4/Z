@@ -8,19 +8,33 @@ body.posts-show {
       margin-top: -24px;
       margin-bottom: 10px;
 
-      .fa {
+      .pull-left, .pull-right {
         @include border-radius(2px);
-        @include transition(0.25s);
+        @include transition(all 0.25s);
 
-        font-size: 30px;
-        padding: 10px;
+        padding: 15px 5px;
         color: #999;
         cursor: pointer;
         margin-top: 3px;
 
         &:hover {
-          color: $brand-primary;
           background-color: #ddd;
+
+          .icons-left {
+            background-position: sprite-position($icons, left_blue, -1px);
+          }
+
+          .icons-right {
+            background-position: sprite-position($icons, right_blue, 1px);
+          }
+        }
+
+        .icons-left {
+          background-position: sprite-position($icons, left, -1px);
+        }
+
+        .icons-right {
+          background-position: sprite-position($icons, right, 1px);
         }
       }
 
@@ -100,6 +114,12 @@ body.posts-show {
       margin-top: 28px;
     }
 
+    #post-views {
+      .icons-eye_lg {
+        padding-left: 25px;
+      }
+    }
+
     #post-likes {
       button {
         margin: 0;
@@ -116,23 +136,27 @@ body.posts-show {
         margin-left: 1px;
       }
 
-      .glyphicon-heart-black {
-        color: #444;
+      .icons-heart_lg_red, .icons-heart_lg {
+        padding-left: 25px;
+        width: auto;
+
+      }
+
+      &:hover {
+        .icons-heart_lg {
+          background-position: sprite-position($icons, heart_lg_red);
+        }
       }
     }
 
     .post-likes-click {
       cursor: pointer;
 
-      span {
-        @include transition(0.25s)
+      small {
+        @include transition(all 0.25s)
       }
 
       &:hover {
-        span {
-          color: #f22 !important;
-        }
-
         small {
           color: $brand-black;
         }
@@ -141,20 +165,20 @@ body.posts-show {
 
     .info-entry {
       margin: 0px 5px;
-      padding: 13px 15px 7px 5px;
+      padding: 10px 15px 10px 5px;
       border-bottom: 1px solid #ddd;
       font-size: 18px;
-
-      span {
-        font-size: 19px;
-        color: #444;
-      }
 
       small {
         position: relative;
         bottom: 3px;
         left: 5px;
         font-size: 13px;
+      }
+
+      .pull-right {
+        position: relative;
+        top: -2px;
       }
     }
 
@@ -175,11 +199,12 @@ body.posts-show {
 
     #post-share {
       cursor: pointer;
-      &:hover {
-        span {
-          color: $brand-black;
-        }
 
+      .icons-share {
+        padding-left: 25px;
+      }
+
+      &:hover {
         small {
           color: $brand-black;
         }
@@ -189,7 +214,7 @@ body.posts-show {
     #post-items {
       .item-number {
         @include border-radius(2px);
-        @include transition(0.25s);
+        @include transition(all 0.25s);
 
         display: inline-block;
         background-color: #ccc;
@@ -211,8 +236,8 @@ body.posts-show {
           border-bottom: 1px dashed #999;
           color: #333;
           text-overflow: ellipsis;
-      white-space:nowrap;
-      overflow: hidden;
+          white-space:nowrap;
+          overflow: hidden;
 
           &:hover {
             color: $brand-primary;

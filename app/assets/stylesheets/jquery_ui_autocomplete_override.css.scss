@@ -1,7 +1,7 @@
 .ui-autocomplete {
   @include border-radius(3px);
   @include box-shadow(rgba(0, 0, 0, 0.17) 0 6px 12px);
-  @include background-clip-padding-box;
+  @include background-clip(padding-box);
 
   position: absolute;
   top: 100%;

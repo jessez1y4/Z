@@ -1,15 +1,16 @@
 - if !user_signed_in?
   #post-likes.post-likes-click.info-entry{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-    %span.glyphicon.glyphicon-heart
-    %small.text-muted Likes
     .pull-right
-      =@post.likes
+      = @post.likes
+    .icons-heart_lg
+      %small.text-muted Likes
+
 - elsif post.user == current_user
   #post-likes.info-entry
-    %span.glyphicon.glyphicon-heart
-    %small.text-muted Likes
     .pull-right
-      =@post.likes
+      = @post.likes
+    .icons-heart_lg_red
+      %small.text-muted Likes
 - else
   %div{id: "like-btn-#{post.id}"}
     = like_button(post)

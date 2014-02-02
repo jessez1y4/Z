@@ -6,18 +6,19 @@
         - if @prev_post
           = link_to @prev_post do
             .pull-left
-              = fa_icon 'angle-left'
+              .icons-left
+
         - else
           .pull-left.invisible
-            = fa_icon 'angle-left'
+            .icons-left
 
         - if @next_post
           = link_to @next_post do
             .pull-right
-              = fa_icon 'angle-right'
+              .icons-right
         - else
           .pull-right.invisible
-            = fa_icon 'angle-right'
+            .icons-right
 
 
         %p
@@ -59,22 +60,21 @@
               = f.text_area :comment, rows: 3, class: 'form-control', id: 'post-comment-input'
             .form-group.text-right
               %button.btn.btn-primary{type: 'submit'}
-                %span.glyphicon.glyphicon-leaf
-                &nbsp;Post Comment
+                Post comment
 
 
     #post-info.col-xs-3
       = render 'partials/like_button', post: @post
 
       #post-views.info-entry
-        %span.glyphicon.glyphicon-eye-open
-        %small.text-muted Views
         .pull-right
           =@post.views_count
+        .icons-eye_lg
+          %small.text-muted Views
 
       #post-share.info-entry
-        %span.glyphicon.glyphicon-share
-        %small.text-muted Share
+        .icons-share
+          %small.text-muted Share
 
       - if @post.items.any?
         #post-items.info-list

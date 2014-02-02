@@ -9,7 +9,7 @@
 }
 
 #load-more {
-  @include transition(0.3s);
+  @include transition(all 0.3s);
   opacity: 0;
   font-size: 14px;
   margin-top: 25px;

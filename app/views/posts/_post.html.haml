@@ -14,11 +14,9 @@
 
   .masonry-author.small
     %span.post-stats
-      %span.masonry-views
-        %span.glyphicon.glyphicon-eye-open
+      .icons-eye
         = post.views_count
-      %span.glyphicon.glyphicon-heart
-      %span{class: "masonry-title-likes-#{post.id}"}
+      .icons-heart_sm{class: "masonry-title-likes-#{post.id}"}
         = post.like_relationships_count
 
     -unless controller_name == 'users'

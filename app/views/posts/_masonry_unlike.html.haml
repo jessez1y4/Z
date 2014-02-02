@@ -1,4 +1,4 @@
 = form_for post.like_relationships.find_by(user_id: current_user.id), html: { method: :delete }, remote: true do |f|
   %button{type: 'submit'}
-    %span.glyphicon.glyphicon-heart.glyphicon-heart-red
-    = post.likes
+    .icons-heart_red
+      = post.likes
