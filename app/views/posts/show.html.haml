@@ -11,21 +11,28 @@
           = time_ago_in_words @post.created_at
           ago
 
+          / edit buttons
+          - if @user == current_user
+            %span#post-edit-btns
+              = link_to 'Edit', edit_post_url(@post)
+              = link_to 'Delete',
+                        post_url(@post),
+                        method: :delete,
+                        data: {confirm: 'Do you want to DELETE this Style?'}
+
 
       #show-post-img-container
         = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
 
-      / edit buttons
-      - if @user == current_user
-        #post-edit-btns
-          = link_to edit_post_url(@post), class: 'btn btn-default' do
-            .icons-pencil_black
-              Edit post
-
-          = link_to 'Delete post',
-                    post_url(@post),
-                    method: :delete,
-                    data: {confirm: 'Do you want to DELETE this Style?'}
+      #post-nav.clearfix
+        - if @prev_post
+          .pull-left
+            = link_to @prev_post, id: 'prev-post-link' do
+              &larr; Prev Style
+        - if @next_post
+          .pull-right
+            = link_to @next_post, id: 'next-post-link' do
+              Next Style &rarr;
 
       / comments
       #post-comments
@@ -82,30 +89,29 @@
         .icons-share
           %small.text-muted Share
 
-      - if @post.items.any?
-        #post-items.info-list
-          %p.info-header
-            ITEMS
-          - @post.items.each do |item|
-            .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-              %p
-                %span.pull-right.small
-                  = link_to item.item_category.name.titleize, item.item_category
-                %span.item-number{id: "item-number-#{item.number}"}
-                  = item.number
-                %span.item-name
-                  - if item.url.present?
-                    %a{href: "#{item.url}"}
-                      = item.name.capitalize
-                  - else
-                    %span= item.name.capitalize
+      #post-items.info-list
+        %p.info-header
+          = @post.items.any?? 'ITEMS' : 'No items.'
+        - @post.items.each do |item|
+          .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
+            %p
+              %span.pull-right.small
+                = link_to item.item_category.name.titleize, item.item_category
+              %span.item-number{id: "item-number-#{item.number}"}
+                = item.number
+              %span.item-name{title: item.name.capitalize}
+                - if item.url.present?
+                  %a{href: "#{item.url}"}
+                    = item.name.capitalize
+                - else
+                  %span= item.name.capitalize
 
-      - if @tags.any?
-        #post-tags.info-list
-          %p.info-header
-            TAGS
-          - @tags.each do |tag|
-            = link_to tag.name, tag, class: 'tag'
+
+      #post-tags.info-list
+        %p.info-header
+          = @tags.any?? 'TAGS' : 'No tags.'
+        - @tags.each do |tag|
+          = link_to tag.name, tag, class: 'tag'
 
 
     #user-sidebar.col-xs-3
@@ -145,6 +151,6 @@
       #more-posts
         - @more_posts.each do |post|
           = link_to post do
-            = cl_image_tag_with_crop post, width: 112, crop: :fill
+            = cl_image_tag_with_crop post, width: 111, crop: :fill
 
 

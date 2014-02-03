@@ -15,3 +15,7 @@ $ ->
     else
       $('#nav-search-btn').removeClass 'hidden'
       $('#nav-search-group').addClass 'input-group'
+
+  # user menu width
+  $('#nav-user-menu-btn + .dropdown-menu').css \
+    'width', "#{$('#nav-user-menu-btn').outerWidth()}px"

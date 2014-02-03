@@ -1,6 +1,6 @@
 = form_for LikeRelationship.new(post_id: post.id), html: { id: 'hidden-like-form' }, remote: true do |f|
   = f.hidden_field :post_id
-  = f.submit '', class: 'hidden'
+  = f.submit '', class: 'hidden', id: 'like-submit'
 
 #post-likes.post-likes-click.info-entry
   .pull-right

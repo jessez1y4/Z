@@ -50,5 +50,31 @@ $ ->
       width = $(this).width() - $('.small', this).width() - 32
       $('.item-name', this).css 'max-width', "#{width}px"
 
+    # hotkeys
+    $(document.body).keydown (event) ->
+      return if $('#post-comment-input').is(':focus')
+
+      keyCode = event.which || event.keyCode
+
+      switch (keyCode)
+        when 37
+          $('#prev-post-link')[0].click()
+        when 39
+          $('#next-post-link')[0].click()
+        when 76
+          $('#like-submit')[0].click()
+
+    $(document.body).keyup (event) ->
+      return if $('#post-comment-input').is(':focus')
+
+      keyCode = event.which || event.keyCode
+
+      switch (keyCode)
+        when 67
+          $('#post-comment-input').focus()
+
+
+
+
 
 
