@@ -98,7 +98,7 @@
                     %a{href: "#{item.url}"}
                       = item.name.capitalize
                   - else
-                    = item.name.capitalize
+                    %span= item.name.capitalize
 
       - if @tags.any?
         #post-tags.info-list

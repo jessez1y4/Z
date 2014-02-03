@@ -4,7 +4,7 @@
     #user-style-tab.active-tab
       Posted
       %span.tab-count
-        999
+        = @user.posts_count
       styles
     #user-liked-tab
       = link_to user_liked_posts_path(@user) do

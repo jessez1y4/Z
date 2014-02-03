@@ -41,6 +41,14 @@ $ ->
         target_id = this.id.replace 'label', 'number'
         $("##{target_id}").removeClass('item-number-hovered')
 
+    # comment button
     $('#post-comment-input').focus ->
       $('#post-comment-btn').removeClass 'hidden'
+
+    # item name width
+    $('#post-items .item-info > p').each ->
+      width = $(this).width() - $('.small', this).width() - 32
+      $('.item-name', this).css 'max-width', "#{width}px"
+
+
 

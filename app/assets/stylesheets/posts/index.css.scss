@@ -3,11 +3,6 @@
   padding-left: 1px;
 }
 
-// make link black instead of blue
-.black-link {
-  color: #333;
-}
-
 #load-more {
   @include transition(all 0.3s);
 
