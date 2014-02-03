@@ -1,0 +1,7 @@
+body.tags-show {
+  .icons-bookmark {
+    height: 18px;
+    padding-left: 20px;
+    background-position: sprite-position($icons, bookmark, -2px, -1px);
+  }
+}

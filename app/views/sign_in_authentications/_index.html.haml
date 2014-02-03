@@ -5,12 +5,12 @@
               remote: true,
               class: 'btn btn-facebook btn-block',
               title: 'Click to remove' do
-      = fa_icon 'check fw', text: 'Sign in with Facebook'
+      Sign in with Facebook
   - else
     = link_to user_omniauth_authorize_path(:facebook),
               class: 'btn btn-default btn-block',
               title: 'Click to add' do
-      = fa_icon 'lemon-o fw', text: 'Sign in with Facebook'
+      Sign in with Facebook
 %p
   - if gg_auth = current_user.sign_in_authentications.find_by(provider: 'google')
     = link_to gg_auth,
@@ -18,11 +18,11 @@
               remote: true,
               class: 'btn btn-google btn-block',
               title: 'Click to remove' do
-      = fa_icon 'check fw', text: 'Sign in with Google'
+      Sign in with Google
       &nbsp;&nbsp;&nbsp;
   - else
     = link_to user_omniauth_authorize_path(:google),
               class: 'btn btn-default btn-block',
               title: 'Click to add' do
-      = fa_icon 'lemon-o fw', text: 'Sign in with Google'
+      Sign in with Google
       &nbsp;&nbsp;&nbsp;

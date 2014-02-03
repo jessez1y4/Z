@@ -2,18 +2,20 @@
   .panel.panel-default.sign-up-panel
     .panel-body
       %h3.text-center
-        Log in
+        Welcome back
       %br
       %br
       .row#sns-login
         .col-xs-6.fb-login-btn
           = link_to user_omniauth_authorize_path(:facebook),
                     class: 'btn btn-default btn-block wf-fix' do
-            = fa_icon 'facebook lg', text: 'Log in with Facebook'
+            .icons-facebook
+              Log in with Facebook
         .col-xs-6.gg-login-btn
           = link_to user_omniauth_authorize_path(:google),
                     class: 'btn btn-default btn-block wf-fix' do
-            = fa_icon 'google-plus lg fw', text: 'Log in with Google'
+            .icons-google
+              Log in with google
       %hr
       = form_for(:user, as: @user, url: session_path('user'), html: { class: 'form-horizontal', id: 'sign-in-form' }) do |f|
         .form-group.text-muted

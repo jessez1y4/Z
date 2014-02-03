@@ -6,8 +6,8 @@
     %p
       %h3
         = @user.full_name.titleize
-    %p
-      %span.glyphicon.glyphicon-map-marker
+
+    .icons-location
       Someplace, Somestate
 
     = render 'partials/follow_button', user: @user

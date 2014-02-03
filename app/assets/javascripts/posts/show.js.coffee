@@ -41,3 +41,6 @@ $ ->
         target_id = this.id.replace 'label', 'number'
         $("##{target_id}").removeClass('item-number-hovered')
 
+    $('#post-comment-input').focus ->
+      $('#post-comment-btn').removeClass 'hidden'
+

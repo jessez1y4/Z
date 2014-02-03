@@ -36,6 +36,10 @@ body {
   background-repeat: repeat;
 }
 
+.btn:focus {
+  outline: none !important;
+}
+
 .container {
   max-width: none !important;
   width: 960px;
@@ -89,18 +93,6 @@ label.error {
   color: #555;
   i {
     color: #d9534f;
-  }
-}
-
-.fa-14 {
-  i {
-    font-size: 14px;
-  }
-}
-
-.fa-19 {
-  i {
-    font-size: 19px;
   }
 }
 

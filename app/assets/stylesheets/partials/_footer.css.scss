@@ -1,10 +1,14 @@
 #go-top-btn {
+  @include transition(0.2s);
+
   position: fixed;
   bottom: 6%;
   right: 4%;
-  display: none;
+  opacity: 0;
 
-  &:hover {
-  // some effects
+  .icons-back2top {
+    width: auto;
+    padding-left: 19px;
+    background-position: sprite-position($icons, back2top, -4px);
   }
 }

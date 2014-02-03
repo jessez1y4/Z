@@ -1,0 +1,47 @@
+#resolve-login {
+  margin: 7px;
+
+  .fb-login-btn {
+    padding-left: 0px;
+
+    a {
+      .icons-facebook {
+        width: auto;
+        padding-left: 21px;
+        background-position: sprite-position($icons, facebook, -3px, -1px);
+      }
+
+      background-color: $facebook !important;
+      color: white;
+      border: 1px solid darken($facebook, 5%);
+      font-size: 14px;
+    }
+
+    a:hover {
+      background-color: darken($facebook, 5%);
+      border-color: darken($facebook, 12%);
+    }
+  }
+
+  .gg-login-btn {
+    padding-right: 0px;
+
+    a {
+      .icons-google {
+        width: auto;
+        padding-left: 25px;
+        background-position: sprite-position($icons, google, -1px);
+      }
+
+      background-color: $google;
+      color: white;
+      border: 1px solid darken($google, 5%);
+      font-size: 14px;
+    }
+
+    a:hover {
+      background-color: darken($google, 5%);
+      border-color: darken($google, 12%);
+    }
+  }
+}

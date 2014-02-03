@@ -4,10 +4,85 @@ body.posts-show {
   #post-main {
     width: 432px;
 
-    #post-nav {
+    #post-title {
       margin-top: -24px;
       margin-bottom: 10px;
+      width: 600px;
 
+      h3 {
+        margin-top: 2px;
+        margin-bottom: -7px;
+        font-size: 18px;
+        padding-top: 10px;
+        line-height: 20px;
+      }
+
+      h3.small {
+        font-size: 16px;
+      }
+    }
+  }
+
+  #post-comments {
+    margin-top: 20px;
+
+    #post-comments-header {
+      text-align: center;
+      border-bottom: 2px solid #d3d3d3;
+      padding: 5px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+
+      &.no-border {
+        border-bottom: none;
+      }
+    }
+
+    img {
+      @include border-radius(2px);
+      margin-top: 2px;
+    }
+
+    hr {
+      border-color: #e3e3e3;
+      padding: 0;
+      margin: 0;
+    }
+
+    .comment {
+      padding: 10px 0;
+
+      .col-xs-10 {
+        padding-left: 5px;
+
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+
+    #post-comments-next {
+      margin: 8px 0 35px 0;
+
+      a {
+        color: #444;
+        height: 28px;
+        font-size: 12px;
+        padding-top: 4px;
+      }
+    }
+
+    form .col-xs-10 {
+      padding-left: 5px;
+    }
+  }
+
+  #post-info {
+    padding: 0;
+    margin: 45px 20px 0 8px;
+    width: 225px;
+
+    #post-nav {
       .pull-left, .pull-right {
         @include border-radius(2px);
         @include transition(all 0.25s);
@@ -15,7 +90,6 @@ body.posts-show {
         padding: 15px 5px;
         color: #999;
         cursor: pointer;
-        margin-top: 3px;
 
         &:hover {
           background-color: #ddd;
@@ -37,78 +111,7 @@ body.posts-show {
           background-position: sprite-position($icons, right, 1px);
         }
       }
-
-      h3 {
-        margin-top: 2px;
-        margin-bottom: -7px;
-        font-size: 18px;
-        padding-top: 10px;
-      }
-
-      h3.small {
-        font-size: 15px;
-      }
     }
-  }
-
-  #post-comments {
-    margin-top: 20px;
-
-    #post-comments-header {
-      text-align: center;
-      border-bottom: 2px solid #ddd;
-      padding: 5px 0;
-      font-size: 14px;
-      text-transform: uppercase;
-
-      &.no-border {
-        border-bottom: none;
-      }
-    }
-
-    img {
-      @include border-radius(2px);
-      margin-top: 2px;
-    }
-
-    hr {
-      border-color: #ddd;
-      padding: 0;
-      margin: 0;
-    }
-
-    .comment {
-      padding: 10px 0;
-
-      .col-xs-10 {
-        padding-left: 5px;
-
-        p {
-          margin: 5px 0;
-        }
-      }
-    }
-
-    #post-comments-next {
-      margin: 8px 0 12px 0;
-
-      a {
-        color: #444;
-        height: 28px;
-        font-size: 12px;
-        padding-top: 4px;
-      }
-    }
-
-    #post-comment-input {
-      margin-top: 20px;
-    }
-  }
-
-  #post-info {
-    padding: 0;
-    margin: 35px 20px 0 8px;
-    width: 225px;
 
     .placeholder {
       margin-top: 28px;
@@ -121,6 +124,8 @@ body.posts-show {
     }
 
     #post-likes {
+      border-top: 1px solid #e3e3e3;
+
       button {
         margin: 0;
         padding: 0;
@@ -166,7 +171,7 @@ body.posts-show {
     .info-entry {
       margin: 0px 5px;
       padding: 10px 15px 10px 5px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #e3e3e3;
       font-size: 18px;
 
       small {
@@ -184,8 +189,8 @@ body.posts-show {
 
     .info-list {
       margin: 0px 5px;
-      padding: 13px 15px 10px 5px;
-      border-bottom: 1px solid #ddd;
+      padding: 23px 15px 10px 5px;
+      border-bottom: 1px solid #e3e3e3;
       small {
         position: relative;
         bottom: 2px;
@@ -261,8 +266,11 @@ body.posts-show {
 
     #post-tags {
       .tag {
+        display: inline-block;
         font-size: 12px;
         padding: 1px 6px;
+        margin-right: 3px;
+        margin-bottom: 6px;
       }
     }
   }
@@ -273,7 +281,7 @@ body.posts-show {
     margin-left: 20px;
 
     .sidebar-header {
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid #d3d3d3;
       padding-bottom: 5px;
       margin-bottom: 15px;
       margin-top: 30px;
@@ -296,13 +304,16 @@ body.posts-show {
         height: 30px;
       }
 
-      .glyphicon-map-marker {
-        margin-left: -2px;
+      .icons-location_sm {
+        margin-left: 89px;
+        width: auto;
+        padding-left: 19px;
+        background-position: sprite-position($icons, location_sm, 0, -3px);
       }
 
       .small {
         margin-top: 5px;
-        margin-bottom: 11px;
+        margin-bottom: 4px;
       }
     }
 
@@ -324,10 +335,30 @@ body.posts-show {
         border-right: none;
       }
     }
+
+    #more-posts {
+      margin-left: -5px;
+      margin-right: -6px;
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      img {
+        @include border-radius(2px);
+
+        margin-left: 5px;
+        margin-right: 6px;
+        margin-bottom: 15px;
+      }
+    }
   }
 
   #show-post-img-container {
     position: relative;
+    img {
+    @include border-radius(4px);
+  }
   }
 
   #post-like-btn {
@@ -344,6 +375,13 @@ body.posts-show {
 
     a:first-child {
       margin-right: 15px;
+
+      .icons-pencil_black {
+        width: auto;
+        padding-left: 20px;
+        height: 18px;
+        background-position: sprite-position($icons, pencil_black, -3px, -2px);
+      }
     }
 
     a:last-child {

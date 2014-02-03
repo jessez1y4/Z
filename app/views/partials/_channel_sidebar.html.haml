@@ -5,7 +5,7 @@
       Channel
   #join-btn
     - if !user_signed_in?
-      %button.btn.btn-default.fa-14{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+      %button.btn.btn-default{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
         = fa_icon 'bookmark'
         &nbsp;Join
     - else

@@ -8,29 +8,27 @@ body.posts-home {
     margin-top: 20px;
     font-size: 14px;
 
-    .fa, .glyphicon {
-      margin: 0px 3px;
-      font-size: 18px;
-      position: relative;
-      top: 2px;
-      color: #444;
+    .icons-rss_lg, .icons-fire, .icons-send, .icons-star {
+      width: auto;
       display: inline-block;
+      padding-left: 25px;
+      padding-right: 1px;
     }
 
-    .fa-rss {
-      top: 1px;
+    .icons-rss_lg {
+      background-position: sprite-position($icons, rss_lg, 0, -1px)
     }
 
-    .glyphicon-fire {
-      margin-right: 2px;
+    .icons-fire {
+      background-position: sprite-position($icons, fire, 0, -2px)
     }
 
-    .glyphicon-send {
-      top: 3px;
+    .icons-send {
+      padding-left: 26px;
     }
 
-    .fa-star-o {
-      top: 1px;
+    .icons-star {
+      background-position: sprite-position($icons, star, 0, -1px)
     }
 
     .more {

@@ -1,5 +1,6 @@
 = form_for Bookmarking.new(tag_id: tag.id), remote: true do |f|
   = f.hidden_field :tag_id
-  %button.btn.btn-primary.fa-14{type: 'submit'}
-    = fa_icon 'bookmark-o fw', text: 'Bookmark'
+  %button.btn.btn-primary{type: 'submit'}
+    .icons-bookmark
+      Bookmark
 

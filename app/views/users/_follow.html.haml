@@ -1,6 +1,6 @@
 = form_for current_user.follow_relationships.build(followed_id: user.id), remote: true do |f|
   = f.hidden_field :followed_id
   .btn-group
-    %button.btn.btn-primary.fa-14{type: 'submit'}
+    %button.btn.btn-primary{type: 'submit'}
       .icons-rss
         Follow

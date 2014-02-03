@@ -9,11 +9,13 @@
         .col-xs-6.fb-login-btn
           = link_to user_omniauth_authorize_path(:facebook),
                     class: 'btn btn-default btn-block wf-fix' do
-            = fa_icon 'facebook lg', text: 'Log in with Facebook'
+            .icons-facebook
+              Log in with Facebook
         .col-xs-6.gg-login-btn
           = link_to user_omniauth_authorize_path(:google),
                     class: 'btn btn-default btn-block wf-fix' do
-            = fa_icon 'google-plus lg fw', text: 'Log in with Google'
+            .icons-google
+              Log in with Google
       %hr.hr-dark
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'sign-up-form' }) do |f|
         .form-group.help-block

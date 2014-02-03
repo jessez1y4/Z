@@ -52,6 +52,7 @@ class PostsController < ApplicationController
     @next_post = Post.where(["created_at < ?", @post.created_at]).last
 
     @user = @post.user
+    @more_posts = @user.posts.hottest.exclude(@post).limit(4)
 
     @tags = @post.tags.top
 

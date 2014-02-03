@@ -50,7 +50,6 @@
               - if @user.random_password?
                 .form-group
                   .col-xs-8.col-xs-offset-3.small
-                    = fa_icon 'warning'
                     Set your password for the first time.
               .form-group
                 %label.col-xs-3.control-label New password
@@ -65,11 +64,10 @@
             %hr
             - if current_user.random_password?
               %p.small
-                = fa_icon 'warning'
                 Set a password before removing all your authentications above, so that you can still sign in with email (or username) and password.
               %br
             .row
-              #sign-in-edit.col-xs-6.col-xs-offset-3.fa-14
+              #sign-in-edit.col-xs-6.col-xs-offset-3
                 = render 'sign_in_authentications/index'
 
 

@@ -75,6 +75,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.exclude(post)
+    where.not(id: post.id)
+  end
+
   def likes
     like_relationships_count
   end

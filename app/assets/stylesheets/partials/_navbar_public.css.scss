@@ -68,7 +68,7 @@
   #post-dropdown {
     margin-right: 13px;
 
-    a {
+    & > a {
       padding-left: 12px;
       padding-right: 12px;
     }
@@ -100,9 +100,12 @@
     padding-left: 0px;
 
     a {
-      i {
-        padding-right: 4px;
+      .icons-facebook {
+        width: auto;
+        padding-left: 21px;
+        background-position: sprite-position($icons, facebook, 8px, -1px);
       }
+
       background-color: $facebook;
       color: white;
       border: 1px solid darken($facebook, 5%);
@@ -119,6 +122,12 @@
     padding-right: 0px;
 
     a {
+      .icons-google {
+        width: auto;
+        padding-left: 20px;
+        background-position: sprite-position($icons, google, 12px);
+      }
+
       background-color: $google;
       color: white;
       border: 1px solid darken($google, 5%);

@@ -64,15 +64,8 @@
       height: 25px;
       font-size: 12px;
       padding: 3px 6px 4px 6px;
-    }
-
-    .fa-sort {
-      position: absolute;
-      left: 186px;
-      top: 94px;
-      font-size: 14px;
-      color: #999;
-      cursor: default;
+      width: 188px;
+      background-position: sprite-position($icons, sort-light, 165px, 1px)
     }
 
     .hide-item-form-btn {
@@ -93,10 +86,6 @@
     .error {
       font-size: 12px;
     }
-  }
-
-  &.buried {
-    z-index: 0;
   }
 }
 

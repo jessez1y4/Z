@@ -5,6 +5,11 @@
         = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
 
     .col-xs-6
+      %h4
+        %small
+          Step 2&nbsp;
+        Click on photo to add item labels.
+
       = form_for @post, html: { id: 'new-post-form' } do |f|
         = f.hidden_field :cloudinary_id
         = f.hidden_field :crop_str
@@ -21,8 +26,7 @@
           %label Tags (separate by comma)
           = f.text_field :tag_list, class: 'form-control', placeholder: 'tag1, tag2, ...', autocomplete: :off, id: 'tag-list-input'
 
-        .form-group.fa-14
-          = fa_icon 'hand-o-up'
+        .form-group
           %strong Click on your photo to add item labels!
 
         #item-forms

@@ -1,5 +1,4 @@
 = form_for current_user.channel_memberships.build(channel_id: channel.id), remote: true do |f|
   = f.hidden_field :channel_id
-  %button.btn.btn-default.fa-14{type: 'submit'}
-    = fa_icon 'bookmark'
-    &nbsp;Join
+  %button.btn.btn-default{type: 'submit'}
+    Join

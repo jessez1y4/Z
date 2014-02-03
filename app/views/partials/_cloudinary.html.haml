@@ -12,7 +12,7 @@
         %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
           &times;
         %h4.modal-title
-          = fa_icon('fire', text: 'Upload from local')
+          Upload from local
       .modal-body.text-center
         %button#choose-post-photo-btn.btn.btn-primary.btn-lg.btn-block
           Choose a photo
@@ -33,7 +33,7 @@
         %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
           &times;
         %h4.modal-title
-          = fa_icon('chain', text: 'Enter image link')
+          Enter image link
       .modal-body
         = form_tag root_path, id: 'from-web-post-form' do |f|
           .row

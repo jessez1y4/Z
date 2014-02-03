@@ -32,21 +32,26 @@
 
       .row
         .col-xs-8.col-xs-offset-2
-          %hr
-      .text-center
+          %hr.hr-dark
+
+      #resolve-login.text-center
         - if @user.sign_in_authentications.find_by(provider: 'facebook')
-          = link_to user_omniauth_authorize_path(:facebook),
-                    class: 'btn btn-default btn-lg' do
-            = fa_icon 'facebook-square fw', text: 'Sign in with Facebook'
+          .fb-login-btn
+            = link_to user_omniauth_authorize_path(:facebook),
+                      class: 'btn btn-default wf-fix' do
+              .icons-facebook
+                Log in with Facebook
 
         - if @user.sign_in_authentications.find_by(provider: 'google')
-          = link_to user_omniauth_authorize_path(:google),
-                    class: 'btn btn-default btn-lg' do
-            = fa_icon 'google-plus fw', text: 'Sign in with Google'
+          .gg-login-btn
+            = link_to user_omniauth_authorize_path(:google),
+                      class: 'btn btn-default wf-fix' do
+              .icons-google
+                Log in with google
 
       .row
         .col-xs-8.col-xs-offset-2
-          %hr
+          %hr.hr-dark
       %p.text-center
         = "If you wish to be able to sign in with #{@auth_data.provider.titleize} account,"
         %br

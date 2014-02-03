@@ -2,24 +2,7 @@
 
   .row
     #post-main.col-xs-5
-      #post-nav.text-center
-        - if @prev_post
-          = link_to @prev_post do
-            .pull-left
-              .icons-left
-
-        - else
-          .pull-left.invisible
-            .icons-left
-
-        - if @next_post
-          = link_to @next_post do
-            .pull-right
-              .icons-right
-        - else
-          .pull-right.invisible
-            .icons-right
-
+      #post-title
 
         %p
           %h3{class: ('small' if @post.title.length > 28)}
@@ -34,14 +17,15 @@
 
       / edit buttons
       - if @user == current_user
-        #post-edit-btns.fa-14
+        #post-edit-btns
           = link_to edit_post_url(@post), class: 'btn btn-default' do
-            = fa_icon 'pencil fw', text: 'Edit post'
+            .icons-pencil_black
+              Edit post
 
           = link_to 'Delete post',
                     post_url(@post),
                     method: :delete,
-                    confirm: 'Do you want to DELETE this Style?'
+                    data: {confirm: 'Do you want to DELETE this Style?'}
 
       / comments
       #post-comments
@@ -54,16 +38,38 @@
 
         / post comment
         - if user_signed_in?
-          = form_for [@post, @comment] do |f|
+          = form_for [@post, @comment], html: {class: 'form-horizontal'} do |f|
             = f.hidden_field :user_id, value: current_user.id
             .form-group
-              = f.text_area :comment, rows: 3, class: 'form-control', id: 'post-comment-input'
-            .form-group.text-right
-              %button.btn.btn-primary{type: 'submit'}
-                Post comment
+              .col-xs-2
+                = cl_image_tag current_user.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
+              .col-xs-10
+                = f.text_area :comment, rows: 2, class: 'form-control', id: 'post-comment-input'
+            .form-group
+              .col-xs-10.col-xs-offset-2
+                %button#post-comment-btn.btn.btn-primary.hidden{type: 'submit'}
+                  Post comment
 
 
     #post-info.col-xs-3
+      / #post-nav.clearfix
+      /   - if @prev_post
+      /     = link_to @prev_post do
+      /       .pull-left
+      /         .icons-left
+
+      /   - else
+      /     .pull-left.invisible
+      /       .icons-left
+
+      /   - if @next_post
+      /     = link_to @next_post do
+      /       .pull-right
+      /         .icons-right
+      /   - else
+      /     .pull-right.invisible
+      /       .icons-right
+
       = render 'partials/like_button', post: @post
 
       #post-views.info-entry
@@ -79,7 +85,7 @@
       - if @post.items.any?
         #post-items.info-list
           %p.info-header
-            Items
+            ITEMS
           - @post.items.each do |item|
             .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
               %p
@@ -88,17 +94,19 @@
                 %span.item-number{id: "item-number-#{item.number}"}
                   = item.number
                 %span.item-name
-                  = link_to_if item.url.present?, item.name.capitalize, item.url
+                  - if item.url.present?
+                    %a{href: "#{item.url}"}
+                      = item.name.capitalize
+                  - else
+                    = item.name.capitalize
 
       - if @tags.any?
         #post-tags.info-list
           %p.info-header
-            Tags
+            TAGS
           - @tags.each do |tag|
-            %p
-              = link_to tag.name, tag, class: 'tag'
-              %span.pull-right.text-muted
-                = tag.posts_count
+            = link_to tag.name, tag, class: 'tag'
+
 
     #user-sidebar.col-xs-3
       .sidebar-header.text-center
@@ -109,8 +117,7 @@
             = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
         = link_to @user do
           %strong= @user.full_name.titleize
-        %p.small.text-muted
-          %span.glyphicon.glyphicon-map-marker
+        .icons-location_sm.small.text-muted
           Someplace, Somestate
         = render 'partials/follow_button', user: @user
       %br
@@ -134,5 +141,10 @@
       .sidebar-header.text-center
         MORE BY
         = link_to @user.full_name.upcase, @user
+
+      #more-posts
+        - @more_posts.each do |post|
+          = link_to post do
+            = cl_image_tag_with_crop post, width: 112, crop: :fill
 
 

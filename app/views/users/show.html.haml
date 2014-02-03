@@ -4,7 +4,7 @@
     #user-style-tab.active-tab
       Posted
       %span.tab-count
-        = @user.posts_count
+        999
       styles
     #user-liked-tab
       = link_to user_liked_posts_path(@user) do
@@ -19,8 +19,5 @@
   #paginate-containter
     = paginate @posts
 
-  .text-center
-    #load-more.btn.btn-default
-      = fa_icon 'repeat'
-      %strong
-        &nbsp;Loading more ..
+  #load-more
+    Loading more ...

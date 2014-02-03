@@ -5,7 +5,7 @@
     = render 'partials/masonry_like_button', post: post
   .masonry-img
     = link_to post, target: '_blank' do
-      = cl_image_tag_with_crop post, width: 219, height: 292, crop: :fill, quality: 95
+      = cl_image_tag_with_crop post, width: 219, height: 292, crop: :fill
 
 
   .masonry-title{class: ('truncate' if show_tag == 0)}

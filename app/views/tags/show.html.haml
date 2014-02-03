@@ -1,11 +1,11 @@
 .container
-  .pull-right
+  #bookmark-btn.pull-right
     - if user_signed_in?
-      #bookmark-btn
-        = bookmark_button @tag
+      = bookmark_button @tag
     - else
-      %button.btn.btn-primary.fa-14{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-        = fa_icon 'bookmark fw', text: 'Bookmark'
+      %button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
+        .icons-bookmark
+          Bookmark
   %h4
     %small
       = @tag.posts_count
@@ -19,8 +19,5 @@
   #paginate-containter
     = paginate @posts
 
-  .text-center
-    #load-more.btn.btn-default
-      = fa_icon 'repeat'
-      %strong
-        &nbsp;Loading more ..
+  #load-more
+    Loading more ...
