@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :channel_memberships, dependent: :destroy
   has_many :channels, through: :channel_memberships
   has_many :users_from_channels,
+           -> { uniq },
            source: :users,
            through: :channels
 

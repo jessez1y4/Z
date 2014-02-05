@@ -1,7 +1,7 @@
 .row.comment
-  .col-xs-2
+  .col-xs-1
     = cl_image_tag comment.user.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
-  .col-xs-10
+  .col-xs-11
 
     %strong= link_to comment.user.full_name.titleize, comment.user
 

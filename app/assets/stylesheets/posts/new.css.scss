@@ -1,3 +1,11 @@
+.step {
+  font-size: 15px;
+
+  small {
+    font-size: 12px;
+  }
+}
+
 .item-label{
   @include transition(all 0.2s);
   @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
@@ -93,6 +101,8 @@
   position: relative;
 
   img {
+    @include border-radius(4px);
+
     cursor: pointer;
   }
 }

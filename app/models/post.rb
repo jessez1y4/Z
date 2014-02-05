@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :similar_posts, -> { uniq }, source: :posts, through: :tags
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
@@ -75,8 +76,12 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def self.exclude(post)
-    where.not(id: post.id)
+  def self.exclude(posts)
+    where.not(id: posts)
+  end
+
+  def self.exclude_user(users)
+    where.not(user_id: users)
   end
 
   def likes

@@ -38,3 +38,5 @@ $ ->
     $('input[type=text], input[type=password], input[type=email]', this).val('')
     validator = $(this).attr('id').replace(/-/g, '_').replace('modal', 'validator')
     eval("#{validator}.resetForm();")
+
+  $('.atooltip').aToolTip()

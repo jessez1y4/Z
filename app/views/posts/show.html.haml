@@ -24,19 +24,36 @@
       #show-post-img-container
         = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
 
-      #post-nav.clearfix
+      #post-nav.clearfix.text-center
         - if @prev_post
           .pull-left
             = link_to @prev_post, id: 'prev-post-link' do
               &larr; Prev Style
+        - else
+          .pull-left.invisible
+            &larr; Prev Style
         - if @next_post
           .pull-right
             = link_to @next_post, id: 'next-post-link' do
               Next Style &rarr;
+        - else
+          .pull-right.invisible
+            Next Style &rarr;
+
+        %span.atooltip{title: 'Previous : ← Next : → Like : L  Comment : C'}
+          Keyboard Shortcuts
+
+      - if @may_like_posts.any?
+        #similar-posts
+          .post-main-header
+            styles you may like
+          - @may_like_posts.each do |post|
+            = link_to post do
+              = cl_image_tag_with_crop post, width: 111, crop: :fill, title: post.title.capitalize
 
       / comments
       #post-comments
-        #post-comments-header{class: ('no-border' if (comments_count = @post.comments_count) == 0)}
+        .post-main-header{class: ('hidden' if (comments_count = @post.comments_count) == 0)}
           = pluralize comments_count, 'comment'
         #post-comments-main
           = render @comments
@@ -48,15 +65,14 @@
           = form_for [@post, @comment], html: {class: 'form-horizontal'} do |f|
             = f.hidden_field :user_id, value: current_user.id
             .form-group
-              .col-xs-2
+              .col-xs-1
                 = cl_image_tag current_user.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
-              .col-xs-10
-                = f.text_area :comment, rows: 2, class: 'form-control', id: 'post-comment-input'
+              .col-xs-11
+                = f.text_area :comment, placeholder: (comments_count == 0 ? 'Be the first to comment!' : 'Post a comment...'), rows: 2, class: 'form-control', id: 'post-comment-input'
             .form-group
-              .col-xs-10.col-xs-offset-2
+              .col-xs-11.col-xs-offset-1
                 %button#post-comment-btn.btn.btn-primary.hidden{type: 'submit'}
                   Post comment
-
 
     #post-info.col-xs-3
       / #post-nav.clearfix
@@ -91,7 +107,7 @@
 
       #post-items.info-list
         %p.info-header
-          = @post.items.any?? 'ITEMS' : 'No items.'
+          = @post.items.any?? 'Items' : 'No items.'
         - @post.items.each do |item|
           .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
             %p
@@ -109,7 +125,7 @@
 
       #post-tags.info-list
         %p.info-header
-          = @tags.any?? 'TAGS' : 'No tags.'
+          = @tags.any?? 'Tags' : 'No tags.'
         - @tags.each do |tag|
           = link_to tag.name, tag, class: 'tag'
 

@@ -2,7 +2,8 @@
   = form_tag crop_new_post_path, id: 'hidden-post-form', method: :get do
     = hidden_field_tag :orig_width
     = hidden_field_tag :orig_height
-    = cl_image_upload_tag :cloudinary_data
+    #cl_upload_tag
+      = cl_image_upload_tag :cloudinary_data
     = submit_tag 'submit'
 
 #upload-post-modal.modal
