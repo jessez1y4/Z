@@ -28,17 +28,17 @@
         - if @prev_post
           .pull-left
             = link_to @prev_post, id: 'prev-post-link' do
-              &larr; Prev Style
+              &larr; Prev
         - else
           .pull-left.invisible
-            &larr; Prev Style
+            &larr; Prev
         - if @next_post
           .pull-right
             = link_to @next_post, id: 'next-post-link' do
-              Next Style &rarr;
+              Next &rarr;
         - else
           .pull-right.invisible
-            Next Style &rarr;
+            Next &rarr;
 
         %span.atooltip{title: 'Previous : ← Next : → Like : L  Comment : C'}
           Keyboard Shortcuts
