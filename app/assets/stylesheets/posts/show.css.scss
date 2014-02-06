@@ -216,8 +216,9 @@ body.posts-show {
     #post-share {
       small {
         @include transition(0.2s);
+
+        cursor: default;
       }
-      cursor: pointer;
 
       .icons-share {
         padding-left: 25px;
