@@ -53,9 +53,16 @@ class PostsController < ApplicationController
 
     @user = @post.user
     @more_posts = @user.posts.hottest.exclude(@post).limit(4)
-    @may_like_posts = @post.similar_posts.hottest.exclude(@post).exclude(current_user.liked_posts.pluck(:id)).exclude_user(current_user).limit(5)
 
-    @may_like_posts = Post.hottest.exclude_user(current_user).exclude_user(current_user.followed_users.pluck(:id)).exclude(current_user.liked_posts.pluck(:id)).limit(5) if @may_like_posts.empty?
+    if user_signed_in?
+      @may_like_posts = @post.similar_posts.hottest.exclude(@post).exclude(current_user.liked_posts.pluck(:id)).exclude_user(current_user).limit(5)
+
+      @may_like_posts = Post.hottest.exclude_user(current_user).exclude_user(current_user.followed_users.pluck(:id)).exclude(current_user.liked_posts.pluck(:id)).limit(5) if @may_like_posts.empty?
+    else
+      @may_like_posts = @post.similar_posts.hottest.exclude(@post).limit(5)
+
+      @may_like_posts = Post.hottest.limit(5).offset(4) if @may_like_posts.empty?
+    end
 
     @tags = @post.tags.top
 

@@ -65,7 +65,7 @@ $ ->
           $('#like-submit')[0].click()
 
     $(document.body).keyup (event) ->
-      return if $('#post-comment-input').is(':focus')
+      return if $('#post-comment-input, #nav-search-box').is(':focus')
 
       keyCode = event.which || event.keyCode
 
@@ -82,6 +82,53 @@ $ ->
         else
           $('#post-comments')
         next_section.css 'margin-top', "#{diff - 27}px"
+
+    # share buttons
+    $('#share-facebook').sharrre
+      share:
+        facebook: true
+      template: '<div class="icons-share-facebook"></div>'
+      enableHover: false
+      render: (api, options) ->
+        $(api.element).on 'click', '.icons-share-facebook', ->
+          api.openPopup('facebook')
+
+    $('#share-google').sharrre
+      share:
+        googlePlus: true
+      template: '<div class="icons-share-google"></div>'
+      enableHover: false
+      urlCurl: ''
+      click: (api, options) ->
+        api.simulateClick()
+        api.openPopup('googlePlus')
+      buttons:
+        google:
+          annotation: $('#share-google').data('text')
+
+    $('#share-twitter').sharrre
+      share:
+        twitter: true
+      template: '<div class="icons-share-twitter"></div>'
+      enableHover: false
+      urlCurl: ''
+      click: (api, options) ->
+        api.simulateClick()
+        api.openPopup('twitter')
+
+    $('#share-pinterest').sharrre
+      share:
+        pinterest: true
+      template: '<div class="icons-share-pinterest"></div>'
+      enableHover: false
+      click: (api, options) ->
+        api.simulateClick()
+        api.openPopup('pinterest')
+      buttons:
+        pinterest:
+          media: 'http://sharrre.com/img/example1.png'
+          description: $('#share-pinterest').data('text')
+
 
 
 

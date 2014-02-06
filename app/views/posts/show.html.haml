@@ -104,6 +104,11 @@
       #post-share.info-entry
         .icons-share
           %small.text-muted Share
+        .pull-right
+          #share-facebook{'data-url' => post_url(@post), 'data-text' => @post.title.titleize}
+          #share-google{'data-url' => post_url(@post), 'data-text' => @post.title.titleize}
+          #share-twitter{'data-url' => post_url(@post), 'data-text' => "#{@post.title.titleize} #{post_url(@post)}"}
+          #share-pinterest{'data-url' => post_url(@post), 'data-text' => @post.title.titleize}
 
       #post-items.info-list
         %p.info-header
