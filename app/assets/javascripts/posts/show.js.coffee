@@ -126,7 +126,7 @@ $ ->
         api.openPopup('pinterest')
       buttons:
         pinterest:
-          media: 'http://sharrre.com/img/example1.png'
+          media: $('#show-post-img-container img').attr 'href'
           description: $('#share-pinterest').data('text')
 
 
