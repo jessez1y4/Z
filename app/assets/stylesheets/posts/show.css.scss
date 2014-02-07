@@ -412,6 +412,34 @@ body.posts-show {
         margin-right: 0;
       }
     }
+
+    #may-like-ppl {
+      .may-like-user {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e3e3e3;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        img {
+          @include border-radius(3px);
+
+          margin-right: 15px;
+        }
+
+        .btn {
+          padding-top: 5px;
+          height: 30px;
+        }
+
+        .small {
+          margin-top: 5px;
+          margin-bottom: 9px;
+        }
+      }
+    }
   }
 
   #show-post-img-container {
@@ -436,7 +464,5 @@ body.posts-show {
       margin-left: 10px;
       margin-right: 5px;
     }
-
-
   }
 }

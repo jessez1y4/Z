@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.exclude(users)
+    where.not(id: users)
+  end
+
   # follow/unfollow methods
   def following?(other_user)
     follow_relationships.find_by(followed_id: other_user.id)

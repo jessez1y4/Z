@@ -8,8 +8,12 @@
     = csrf_meta_tags
     = cloudinary_js_config
   %body{ class: "#{controller_name}-#{action_name}", 'data-controller' => "#{controller_name}" }
-    #header= render conditional_header
-    = yield
-    = render 'partials/cloudinary' if user_signed_in?
-    = render 'partials/footer'
-    = render 'partials/notification'
+    #main-wrapper
+      #header
+        = render conditional_header
+        = render 'partials/notification'
+      #content
+        = yield
+        = render 'partials/cloudinary' if user_signed_in?
+      #footer
+        = render 'partials/footer'

@@ -174,4 +174,23 @@
           = link_to post do
             = cl_image_tag_with_crop post, width: 111, crop: :fill
 
+      .sidebar-header.text-center
+        PEOPLE YOU MAY LIKE
+
+      #may-like-ppl
+        - @may_like_ppl.each do |user|
+          .may-like-user.clearfix
+            .pull-left
+              = link_to user do
+                = cl_image_tag user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+
+            .user-name
+              = link_to user do
+                %strong= user.full_name.titleize
+
+            .user-stats.small.text-muted
+              = "#{user.likes_count} Likes · #{user.followers_count} Followers"
+            = render 'partials/follow_button', user: user
+
+
 
