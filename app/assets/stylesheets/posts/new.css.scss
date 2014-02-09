@@ -73,7 +73,7 @@
       font-size: 12px;
       padding: 3px 6px 4px 6px;
       width: 188px;
-      background-position: sprite-position($icons, sort-light, 165px, 1px)
+      background-position: sprite-position($icons, sort-light, 165px, -1px)
     }
 
     .hide-item-form-btn {

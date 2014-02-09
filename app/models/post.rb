@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include PgSearch
+
   is_impressionable counter_cache: true,
                     column_name: :views_count,
                     unique: :session_hash
@@ -30,6 +32,20 @@ class Post < ActiveRecord::Base
   scope :hottest, -> { order('like_relationships_count DESC') }
   scope :most_viewed, -> { order('views_count DESC') }
   scope :exhibit, -> { hottest.limit(3) }
+
+  pg_search_scope :search,
+                  against: :title,
+                  associated_against: {
+                    items: [:name, :item_category_name],
+                    user: [:full_name],
+                    tags: [:name]
+                  },
+                  using: {
+                    tsearch: {
+                      prefix: true,
+                      dictionary: 'english'
+                    }
+                  }
 
   def self.recent(time)
     where('posts.created_at > ?', Time.now - time)

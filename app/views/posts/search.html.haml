@@ -1,0 +1,15 @@
+.container
+  %h4
+    %small
+      = @posts.count
+      styles match keywords&nbsp;
+    = "\"#{params[:search]}\""
+
+  %hr.hr-dark
+  #masonry-container
+    = render @posts
+  #paginate-containter
+    = paginate @posts
+
+  #load-more
+    Loading more ...

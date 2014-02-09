@@ -4,6 +4,7 @@ ruby '2.0.0'
 gem 'rails', '~> 4.0.2'
 
 gem 'pg'
+gem 'pg_search', '~> 0.7.3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
@@ -22,8 +23,8 @@ gem 'coffee-rails', '~> 4.0.1'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-ui-rails', '~> 4.1.1'
 gem 'jquery-validation-rails', '~> 1.11.1'
 gem 'masonry-rails', '~> 0.2.1'
 
@@ -31,7 +32,7 @@ gem 'masonry-rails', '~> 0.2.1'
 gem 'kaminari', '~> 0.15.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.2.1'
 gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

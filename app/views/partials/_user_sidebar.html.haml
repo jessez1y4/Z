@@ -8,7 +8,7 @@
         = @user.full_name.titleize
 
     .icons-location
-      Someplace, Somestate
+      = @user.city.titleize
 
     = render 'partials/follow_button', user: @user
 

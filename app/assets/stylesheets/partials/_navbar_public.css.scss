@@ -149,11 +149,14 @@
 .nav-search {
   padding-left: 0;
   padding-right: 0;
-  width: 220px;
+
+  #nav-search-box {
+    width: 175px;
+  }
 
   .icons-search {
     width: auto;
-    background-position: sprite-position($icons, search, 0, -1px);
+    background-position: sprite-position($icons, search, 6px, 2px);
   }
 
   i {

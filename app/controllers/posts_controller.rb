@@ -24,6 +24,11 @@ class PostsController < ApplicationController
                  .per(20)
   end
 
+  def search
+    @posts = Post.search(params[:search]).page(params[:page]).per(20)
+    render 'index' if request.xhr?
+  end
+
   def crop
     preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
     raise "Invalid upload signature" if !preloaded.valid?

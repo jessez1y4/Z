@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :add_college_to_default_tags
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -83,6 +85,10 @@ class User < ActiveRecord::Base
 
   def self.exclude(users)
     where.not(id: users)
+  end
+
+  def city
+    self[:city].present? ? self[:city] : 'classified'
   end
 
   # follow/unfollow methods
@@ -183,6 +189,15 @@ class User < ActiveRecord::Base
       self.posts.inject(0) do |sum, post|
         sum + post.views_count
       end
+    end
+  end
+
+  private
+
+  def add_college_to_default_tags
+    if college.present?
+      tag = Tag.where(name: college.upcase.strip).first_or_create
+      default_taggings.create(user_id: id, tag_id: tag.id)
     end
   end
 end

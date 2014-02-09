@@ -34,6 +34,10 @@ StyleMe::Application.routes.draw do
     new do
       get :crop
     end
+
+    collection do
+      get :search
+    end
   end
 
   resources :channels do

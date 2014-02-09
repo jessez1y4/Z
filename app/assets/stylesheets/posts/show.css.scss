@@ -168,7 +168,8 @@ body.posts-show {
       cursor: pointer;
 
       small {
-        @include transition(all 0.25s)
+        @include transition(all 0.25s);
+        color: #666;
       }
 
       &:hover {
@@ -224,16 +225,6 @@ body.posts-show {
         padding-left: 25px;
       }
 
-      &:hover {
-        .pull-right > div{
-          opacity: 0.76;
-        }
-
-        small {
-          opacity: 0;
-        }
-      }
-
       .pull-right {
         position: relative;
         top: -24px;
@@ -244,9 +235,9 @@ body.posts-show {
 
           display: inline-block;
           overflow: hidden;
-          opacity: 0;
           cursor: pointer;
-          margin-left: 2px;
+          opacity: 0.82;
+          margin-left: -1px;
           height: 26px;
           width: 26px;
 
@@ -258,7 +249,7 @@ body.posts-show {
         }
 
         #share-twitter {
-          margin-left: 3px;
+          margin-left: 0px;
         }
       }
     }

@@ -145,7 +145,7 @@
         = link_to @user do
           %strong= @user.full_name.titleize
         .icons-location_sm.small.text-muted
-          Someplace, Somestate
+          = @user.city.titleize
         = render 'partials/follow_button', user: @user
       %br
       #user-stats.row.text-center
