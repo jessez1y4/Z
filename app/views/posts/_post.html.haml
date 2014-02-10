@@ -22,7 +22,7 @@
     -unless controller_name == 'users'
       %span.user-name
         %span
-          %strong= link_to post.user.full_name.titleize, post.user
+          %strong= link_to post.user.full_name.titleize, show_user_path(post.user)
     .pull-right
       = time_ago_in_words post.created_at
       ago

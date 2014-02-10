@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   include PgSearch
 
+  before_validation :generate_slug
+
   is_impressionable counter_cache: true,
                     column_name: :views_count,
                     unique: :session_hash
@@ -20,6 +22,8 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :items, allow_destroy: true
 
   validates :title, presence: true
+
+  validates :slug, uniqueness: true, presence: true
 
   # scope :page_with_counter_cache, lambda {|page_number, total_count_value|
   #   page(page_number).extending {
@@ -111,6 +115,19 @@ class Post < ActiveRecord::Base
   def tag_list=(names)
     self.tags = names.upcase.split(",").reject{|s| s.blank?}.collect(&:strip).uniq.map do |n|
       Tag.where(name: n).first_or_create!
+    end
+  end
+
+  def to_param
+    slug
+  end
+
+  self
+
+  def generate_slug
+    if slug.nil?
+      self.slug = neat_slug = title.downcase.parameterize
+      self.slug = "#{neat_slug}-#{SecureRandom.urlsafe_base64 3}" while Post.where(slug: slug).exists?
     end
   end
 end

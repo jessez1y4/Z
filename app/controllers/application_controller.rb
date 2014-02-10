@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   def store_location
-    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users\/(sign_|password|auth\/)/
+    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users(\/(sign_|password|auth\/).*)?$/
   end
 
   def after_sign_in_path_for(resource)

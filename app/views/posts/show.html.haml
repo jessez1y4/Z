@@ -140,9 +140,9 @@
         POSTED BY
       #user-info
         .pull-left
-          = link_to @user do
+          = link_to show_user_path(@user) do
             = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
-        = link_to @user do
+        = link_to show_user_path(@user) do
           %strong= @user.full_name.titleize
         .icons-location_sm.small.text-muted
           = @user.city.titleize
@@ -167,7 +167,7 @@
 
       .sidebar-header.text-center
         MORE BY
-        = link_to @user.full_name.upcase, @user
+        = link_to @user.full_name.upcase, show_user_path(@user)
 
       #more-posts
         - @more_posts.each do |post|
@@ -181,11 +181,11 @@
         - @may_like_ppl.each do |user|
           .may-like-user.clearfix
             .pull-left
-              = link_to user do
+              = link_to show_user_path(user) do
                 = cl_image_tag user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
 
             .user-name
-              = link_to user do
+              = link_to show_user_path(user) do
                 %strong= user.full_name.titleize
 
             .user-stats.small.text-muted

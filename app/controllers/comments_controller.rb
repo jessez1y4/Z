@@ -1,7 +1,7 @@
 class CommentsController < ActionController::Base
   def create
     if params[:post_id]
-      @commentable = Post.find(params[:post_id])
+      @commentable = Post.find_by_slug!(params[:post_id])
     elsif params[:user_id]
       @commentable = User.find(params[:user_id])
     end

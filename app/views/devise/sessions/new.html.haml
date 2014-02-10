@@ -19,11 +19,11 @@
       %hr
       = form_for(:user, as: @user, url: session_path('user'), html: { class: 'form-horizontal', id: 'sign-in-form' }) do |f|
         .form-group.text-muted
-          Log in with email or username
+          Log in with email
 
         .form-group
-          %label Email or Username
-          = f.text_field :login, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
+          %label Email
+          = f.text_field :email, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
         .form-group
           %label
             Password&nbsp;

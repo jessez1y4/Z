@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  before_validation :generate_username
+  before_update :changed_password_check
+  before_update :changed_username_check
   after_create :add_college_to_default_tags
 
   # Include default devise modules. Others available are:
@@ -62,26 +65,24 @@ class User < ActiveRecord::Base
   has_many :default_taggings, dependent: :destroy
   has_many :default_tags, source: :tag, through: :default_taggings
 
-  attr_accessor :login
-
   accepts_nested_attributes_for :sign_in_authentications, allow_destroy: true
 
   validates :full_name, presence: true
   validates :username,
-            uniqueness: { allow_nil: true },
-            length: { minimum: 4, maximum: 15, allow_nil: true },
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 4, maximum: 30, allow_nil: true },
             format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
 
   scope :star, -> { order('likes_count DESC') }
 
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    else
-      where(conditions).first
-    end
-  end
+  # def self.find_first_by_auth_conditions(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   if login = conditions.delete(:login)
+  #     where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+  #   else
+  #     where(conditions).first
+  #   end
+  # end
 
   def self.exclude(users)
     where.not(id: users)
@@ -192,6 +193,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_param
+    username
+  end
+
   private
 
   def add_college_to_default_tags
@@ -199,5 +204,22 @@ class User < ActiveRecord::Base
       tag = Tag.where(name: college.upcase.strip).first_or_create
       default_taggings.create(user_id: id, tag_id: tag.id)
     end
+  end
+
+  def generate_username
+    if username.nil?
+      self.username = neat_username = full_name.parameterize(sep = '_')
+      self.username = "#{neat_username}_#{SecureRandom.urlsafe_base64 3}" while User.where('username ILIKE ?', username).exists?
+    end
+  end
+
+  def changed_password_check
+    self.random_password = false if encrypted_password_changed?
+    true
+  end
+
+  def changed_username_check
+    self.changed_username = true if username_changed?
+    true
   end
 end

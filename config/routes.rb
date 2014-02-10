@@ -51,4 +51,6 @@ StyleMe::Application.routes.draw do
   resources :bookmarkings
 
   resources :item_categories
+
+  get ':id' => 'users#show', as: 'show_user'
 end

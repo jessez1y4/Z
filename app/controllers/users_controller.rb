@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update]
   def show
     params[:sort] ||= 'New'
-    @user = User.find(params[:id])
+    @user = User.find_by!("username ILIKE ?", params[:id])
     @posts = @user.posts
                   .sort(params[:sort])
                   .page(params[:page])
@@ -15,27 +15,23 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     if params[:cloudinary_data]
       preloaded = Cloudinary::PreloadedFile.new(params[:cloudinary_data])
       raise "Invalid upload signature" if !preloaded.valid?
       # @cloudinary_id = preloaded.identifier
-      if current_user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
-        redirect_to current_user, notice: 'Avatar updated.'
+      if @user.update_attributes(avatar_cloudinary_id: preloaded.identifier)
+        redirect_to @user, notice: 'Avatar updated.'
       else
         #TODO
       end
     else
-      params[:user].delete(:username) if params[:user][:username].blank?
-      if params[:user][:password].present?
-        params[:user][:random_password] = false
+      params[:user].delete(:password) if params[:user][:password].blank?
+
+      if @user.update_attributes(user_params)
+        sign_in @user, bypass: true
+        redirect_to @user, notice: 'Profile updated.'
       else
-        params[:user].delete(:password)
-      end
-      if current_user.update_attributes(user_params)
-        sign_in current_user, bypass: true
-        redirect_to current_user, notice: 'Profile updated.'
-      else
-        @user = current_user
         render 'edit'
       end
     end

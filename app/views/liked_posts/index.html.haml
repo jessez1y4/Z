@@ -2,7 +2,7 @@
   = render 'partials/user_sidebar'
   #user-tabs
     #user-style-tab
-      = link_to @user do
+      = link_to show_user_path(@user) do
         Posted
         %span.tab-count
           = @user.posts_count

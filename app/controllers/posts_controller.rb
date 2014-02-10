@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:items).find(params[:id])
+    @post = Post.includes(:items).find_by_slug!(params[:id])
     @prev_post = Post.where(["created_at > ?", @post.created_at]).first
     @next_post = Post.where(["created_at < ?", @post.created_at]).last
 
@@ -86,12 +86,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug!(params[:id])
     render 'new'
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug!(params[:id])
     if @post.update_attributes(post_params)
       redirect_to post_url(@post)
     else
@@ -100,7 +100,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug!(params[:id])
     @post.destroy!
     redirect_to current_user, notice: "\<#{@post.title.titleize}\> has been deleted."
   end

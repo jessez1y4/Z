@@ -21,4 +21,15 @@ body.users-edit, body.users-update {
   .tall-h4 {
     margin-top: 60px;
   }
+
+  #personal-url {
+    #url-prefix {
+      font-weight: normal;
+      margin-right: -15px;
+    }
+
+    .col-xs-5 {
+      padding-right: 0px;
+    }
+  }
 }

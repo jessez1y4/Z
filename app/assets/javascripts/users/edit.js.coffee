@@ -33,11 +33,19 @@ $ ->
 
     edit_profile_validator = $('#edit-profile-form').validate
       rules:
+        'user[username]':
+          required: true
+          minlength: 4
+          maxlength: 30
+          regex: /^[a-zA-Z0-9_]+$/
         'user[email]':
           required: true
           email: true
         'user[full_name]':
           required: true
+      messages:
+        'user[username]':
+          regex: 'only accepts letters, numbers and underscore.'
 
     errors = {}
     $('#edit-profile-form input').each (i, e) ->

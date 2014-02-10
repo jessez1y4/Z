@@ -1,25 +1,28 @@
 #go-top-btn {
   @include transition(0.2s);
+  @include border-radius(0px);
+  @include box-shadow(0 0 3px rgba(0, 0, 0, 0.06));
 
   position: fixed;
-  bottom: 6%;
+  bottom: 10%;
   right: 4%;
   opacity: 0;
+  padding: 4px 7px;
+  border-color: #ccc;
+  background-color: white;
 
-  .icons-back2top {
-    width: auto;
-    padding-left: 19px;
-    background-position: sprite-position($icons, back2top, -4px);
+  &:hover {
+    background-color: #ebebeb;
   }
 }
 
 #footer {
-  -webkit-font-smoothing: antialiased;
-  padding-top: 7px;
+  padding-top: 11px;
   width: 100%;
-  height: 32px;
-  background-color: $brand-primary;
-  color: white;
+  height: 40px;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  color: $brand-black;
   font-weight: bold;
   font-size: 12px;
   position:absolute;
@@ -31,10 +34,10 @@
     display: inline;
     margin: 0 12px;
     list-style: none;
-    color: white;
+    color: $brand-black;
 
     &:hover {
-      color: white;
+      color: $brand-black;
       text-decoration: underline;
     }
   }

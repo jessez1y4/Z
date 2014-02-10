@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208014438) do
+ActiveRecord::Schema.define(version: 20140209222814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,8 +142,10 @@ ActiveRecord::Schema.define(version: 20140208014438) do
     t.integer  "tags_count",               default: 0
     t.integer  "views_count",              default: 0, null: false
     t.string   "crop_str"
+    t.string   "slug"
   end
 
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "sign_in_authentications", force: true do |t|
@@ -203,6 +205,7 @@ ActiveRecord::Schema.define(version: 20140208014438) do
     t.integer  "likes_count",            default: 0
     t.string   "city"
     t.string   "college"
+    t.boolean  "changed_username",       default: false,                                                       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
