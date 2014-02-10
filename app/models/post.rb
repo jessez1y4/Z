@@ -127,7 +127,7 @@ class Post < ActiveRecord::Base
   def generate_slug
     if slug.nil?
       self.slug = neat_slug = title.downcase.parameterize
-      self.slug = "#{neat_slug}-#{SecureRandom.urlsafe_base64 3}" while Post.where(slug: slug).exists?
+      self.slug = "#{neat_slug}-#{SecureRandom.urlsafe_base64 3}" while Post.where(slug: slug).exists? || slug.nil?
     end
   end
 end

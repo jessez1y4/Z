@@ -209,7 +209,7 @@ class User < ActiveRecord::Base
   def generate_username
     if username.nil?
       self.username = neat_username = full_name.parameterize(sep = '_')
-      self.username = "#{neat_username}_#{SecureRandom.urlsafe_base64 3}" while User.where('username ILIKE ?', username).exists?
+      self.username = "#{neat_username}_#{SecureRandom.urlsafe_base64 3}" while User.where('username ILIKE ?', username).exists? || username.nil?
     end
   end
 
