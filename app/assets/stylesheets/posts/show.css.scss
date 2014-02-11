@@ -230,7 +230,7 @@ body.posts-show {
         top: -24px;
 
         & > div {
-          @include border-radius(2px);
+          @include border-radius($border-radius-small);
           @include transition(0.2s);
 
           display: inline-block;

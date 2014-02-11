@@ -12,19 +12,20 @@
 
       %hr.hr-dark
 
-      = form_for @post, html: { id: 'new-post-form' } do |f|
+      = form_for @post, html: { class: 'form-horizontal', id: 'new-post-form' } do |f|
         = f.hidden_field :cloudinary_id
         = f.hidden_field :crop_str
 
         %h4.step
           %small
             Step 3&nbsp;
-          Describe your style
+          Name your style
         %br
 
         .form-group
-          %label Title
-          = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
+          %label.col-xs-2.control-label Title
+          .col-xs-10
+            = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
 
         / .form-group
         /   %label Description
@@ -36,9 +37,22 @@
 
         %hr.hr-dark
 
+        / tags
         %h4.step
           %small
             Step 4&nbsp;
+          Tag your style
+        %br
+
+        %strong Senario
+
+
+
+        %hr.hr-dark
+
+        %h4.step
+          %small
+            Step 5&nbsp;
           Share and promote
         %br
 

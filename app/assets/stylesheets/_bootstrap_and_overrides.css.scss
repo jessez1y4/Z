@@ -2,11 +2,11 @@ $font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sa
 $grid-float-breakpoint: 0;
 $font-size-base: 13px;
 
-$navbar-height: 42px;
+$navbar-height: 39px;
 $navbar-default-bg: white;
 
 // everything square
-$border-radius-base: 2px;
+$border-radius-base: 4px;
 $border-radius-small: 2px;
 $border-radius-large: 4px;
 
@@ -30,28 +30,13 @@ $modal-title-padding: 10px;
 
 @import 'bootstrap-custom';
 
-html,
-body {
-  margin:0;
-  padding:0;
-  height:100%;
-}
-
 body {
   padding-top: 65px;
   // background: #ebeced;
   background-image: image-url('background.png');
   background-repeat: repeat;
   color: $brand-black;
-}
-
-#content {
-  padding-bottom: 100px;
-}
-
-#main-wrapper {
-  min-height: 100%;
-  position: relative;
+  padding-bottom: 60px;
 }
 
 .btn:focus {

@@ -1,23 +1,27 @@
 .navbar-fixed-top {
   @include background-clip(padding-box);
-  @include box-shadow(rgba(0, 0, 0, 0.04) 0 2px 3px);
+  @include box-shadow(rgba(0, 0, 0, 0.075) 0 1px 4px);
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 
   .navbar-brand {
-    padding: 8px 18px 5px 16px;
+    padding: 7px 18px 4px 16px;
   }
 
   li.dropdown .dropdown-toggle {
     @include transition(all 0.2s);
 
-    padding: 11px 15px 10px 15px;
-    color: $navbar-color;
+    color: #555;
+    border-left: 1px solid #f0f0f0;
+
+    &.border-right {
+      border-right: 1px solid #f0f0f0;
+    }
   }
 
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
     color: $brand-primary;
-    background-color: #eee;
+    background-color: #f0f0f0;
   }
 
   #scope-dropdown {
@@ -28,44 +32,45 @@
     }
   }
 
-  #sort-dropdown {
-    & > a {
-      strong {
-        position: relative;
-        top: -2px;
-      }
+  // #sort-dropdown {
+  //   & > a {
+  //     strong {
+  //       position: relative;
+  //       top: -2px;
+  //     }
 
-      .icons-sort {
-        display: inline-block;
-        background-position: sprite-position($icons, sort, -5px);
-        width: 11px;
-        height: 17px;
-      }
-    }
+  //     .icons-sort {
+  //       display: inline-block;
+  //       background-position: sprite-position($icons, sort, -5px);
+  //       width: 11px;
+  //       height: 17px;
+  //     }
+  //   }
 
-    & > a:hover, &.open {
-      .icons-sort {
-        background-position: sprite-position($icons, sort_blue, -5px);
-      }
-    }
-  }
+  //   & > a:hover, &.open {
+  //     .icons-sort {
+  //       background-position: sprite-position($icons, sort_blue, -5px);
+  //     }
+  //   }
+  // }
 
   .btn {
     height: 30px;
-    margin-top: 6px;
+    margin-top: 5px;
+    margin-bottom: 3px;
     padding-top: 5px;
   }
 
   input {
     height: 30px;
-    margin-top: 1px;
     padding-top: 5px;
   }
 
   #post-dropdown {
-    margin-right: 13px;
 
     & > a {
+      padding-top: 9px;
+      padding-bottom: 9px;
       padding-left: 12px;
       padding-right: 12px;
     }
@@ -78,18 +83,18 @@
   }
 
   #nav-user-menu-btn {
-    margin-right: 15px;
+    margin-right: 16px;
 
-    .icons-user {
-      display: inline-block;
-      background-position: sprite-position($icons, user, -4px, -2px);
-      padding-left: 19px;
-      width: auto;
-    }
+    // .icons-user {
+    //   display: inline-block;
+    //   background-position: sprite-position($icons, user, -4px, -2px);
+    //   padding-left: 19px;
+    //   width: auto;
+    // }
 
     & + .dropdown-menu {
       margin-top: 1px;
-      margin-right: 15px;
+      margin-right: 16px;
       min-width: 130px;
     }
   }
@@ -149,6 +154,11 @@
 .nav-search {
   padding-left: 0;
   padding-right: 0;
+
+  form {
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
 
   #nav-search-box {
     width: 175px;

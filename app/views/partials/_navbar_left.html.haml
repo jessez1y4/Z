@@ -5,26 +5,27 @@
   - if params[:sort]
     %li#scope-dropdown.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
-        .icons-tasks
+        / .icons-tasks
+        Feed
       %ul#nav-menu.dropdown-menu
         = render 'partials/nav_menu'
 
     %li#sort-dropdown.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
-        %strong= params[:sort].titleize
-        .icons-sort
+      %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: '#'}
+        Sort
       %ul.dropdown-menu
-        %li.dropdown-header
-          Sort by
+        / %li.dropdown-header
+        /   Sort by
         %li
-          = link_to 'Hot', params.merge(sort: 'Hot')
+          = link_to 'Most popular', params.merge(sort: 'Hot')
         %li
-          = link_to 'New', params.merge(sort: 'New')
+          = link_to 'Most recent', params.merge(sort: 'New')
 
   - else
     %li#scope-dropdown.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
-        .icons-tasks
+        / .icons-tasks
+        Feeds
       %ul#nav-menu.dropdown-menu
         = render 'partials/nav_menu'
 .col-xs-3.nav-search

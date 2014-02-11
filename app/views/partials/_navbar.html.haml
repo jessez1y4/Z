@@ -16,10 +16,10 @@
             %a{'data-toggle' => 'modal', 'data-target' => '#from-web-post-modal', href: '#'}
               From web
 
-      %li.btn-group
-        %button#nav-user-menu-btn.dropdown-toggle.btn.btn-primary.navbar-btn{"data-toggle" => "dropdown", href: "#"}
-          .icons-user
-            %strong= current_user.full_name.titleize
+      %li.dropdown
+        %a#nav-user-menu-btn.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
+          / .icons-user
+          %strong= current_user.full_name.titleize
         %ul.dropdown-menu
           %li
             = link_to 'My Styles', show_user_path(current_user)
@@ -30,4 +30,11 @@
           %li.divider
           %li
             = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          %li.divider
+          %li
+            %a{href: '#'}
+              Privacy & Terms
+          %li
+            %a{href: 'mailto:contact@phinery.com'}
+              Contact Us
 
