@@ -61,18 +61,6 @@
   //   }
   // }
 
-  .btn {
-    height: 30px;
-    margin-top: 5px;
-    margin-bottom: 3px;
-    padding-top: 5px;
-  }
-
-  input {
-    height: 30px;
-    padding-top: 5px;
-  }
-
   #post-dropdown {
 
     & > a {
@@ -146,14 +134,16 @@
   padding-right: 0;
 
   form {
-    margin-top: 5px;
-    margin-bottom: 3px;
+    margin-top: 6px;
+    margin-bottom: 2px;
   }
 
   #nav-search-box {
+    height: 28px;
+    padding-top: 5px;
     width: 175px;
-    padding-left: 25px;
-    background-position: sprite-position($icons, search, 3px, 2px);
+    padding-left: 26px;
+    background-position: sprite-position($icons, search, 4px, 1px);
   }
 }
 
