@@ -17,7 +17,7 @@
               From web
 
       %li.dropdown
-        %a#nav-user-menu-btn.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
+        %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
           / .icons-user
           %strong= current_user.full_name.titleize
         %ul.dropdown-menu
@@ -37,4 +37,11 @@
           %li
             %a{href: 'mailto:contact@phinery.com'}
               Contact Us
+
+      .col-xs-3.nav-search
+        = form_tag search_posts_path, method: :get, class: 'navbar-form navbar-left' do
+          #nav-search-group
+            = text_field_tag :search, nil, id: 'nav-search-box', class: 'form-control icons-search'
+            %span#nav-search-btn.input-group-btn.hidden
+              = submit_tag ''
 

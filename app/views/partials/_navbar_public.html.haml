@@ -2,12 +2,18 @@
   .container
     = render 'partials/navbar_left'
 
-    = link_to 'Sign up', new_registration_path('user'), class: 'btn btn-primary navbar-btn navbar-right', id: 'sign-up-btn'
-
     %ul.nav.navbar-nav.navbar-right
-      %li
-        %a#log-in-btn{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
+      %li.dropdown
+        %a.dropdown-toggle{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
           Log in
+      %li.dropdown
+        = link_to 'Sign up', new_registration_path('user'), class: 'dropdown-toggle border-right', id: 'sign-up-btn', "data-toggle" => "dropdown"
+      .col-xs-3.nav-search
+        = form_tag search_posts_path, method: :get, class: 'navbar-form navbar-left' do
+          #nav-search-group
+            = text_field_tag :search, nil, id: 'nav-search-box', class: 'form-control icons-search'
+            %span#nav-search-btn.input-group-btn.hidden
+              = submit_tag ''
 
 #sign-in-modal.modal
   .modal-dialog

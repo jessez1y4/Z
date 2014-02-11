@@ -8,13 +8,13 @@ $ ->
       'user[password]':
         required: true
 
-  $('#nav-search-box').keyup ->
-    if $.trim($(this).val()) == ''
-      $('#nav-search-btn').addClass 'hidden'
-      $('#nav-search-group').removeClass 'input-group'
-    else
-      $('#nav-search-btn').removeClass 'hidden'
-      $('#nav-search-group').addClass 'input-group'
+  # $('#nav-search-box').keyup ->
+  #   if $.trim($(this).val()) == ''
+  #     $('#nav-search-btn').addClass 'hidden'
+  #     $('#nav-search-group').removeClass 'input-group'
+  #   else
+  #     $('#nav-search-btn').removeClass 'hidden'
+  #     $('#nav-search-group').addClass 'input-group'
 
   # user menu width
   $('#nav-user-menu-btn + .dropdown-menu').css \

@@ -28,9 +28,3 @@
         Feeds
       %ul#nav-menu.dropdown-menu
         = render 'partials/nav_menu'
-.col-xs-3.nav-search
-  = form_tag search_posts_path, method: :get, class: 'navbar-form navbar-left' do
-    #nav-search-group
-      = text_field_tag :search, nil, id: 'nav-search-box', class: 'form-control', placeholder: 'Search anything...'
-      %span#nav-search-btn.input-group-btn.hidden
-        = submit_tag '', class: 'icons-search btn btn-default'

@@ -12,16 +12,16 @@
     @include transition(all 0.2s);
 
     color: #555;
-    border-left: 1px solid #f0f0f0;
+    border-left: 1px solid #f1f1f1;
 
     &.border-right {
-      border-right: 1px solid #f0f0f0;
+      border-right: 1px solid #f1f1f1;
     }
   }
 
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
     color: $brand-primary;
-    background-color: #f0f0f0;
+    background-color: #f1f1f1;
   }
 
   #scope-dropdown {
@@ -29,6 +29,13 @@
       .icons-tasks {
         background-position: sprite-position($icons, tasks_blue);
       }
+    }
+  }
+
+  .navbar-right {
+    .dropdown-menu {
+      left: 0;
+      right: auto;
     }
   }
 
@@ -79,22 +86,6 @@
       .icons-plus {
         background-position: sprite-position($icons, plus_blue);
       }
-    }
-  }
-
-  #nav-user-menu-btn {
-    margin-right: 16px;
-
-    // .icons-user {
-    //   display: inline-block;
-    //   background-position: sprite-position($icons, user, -4px, -2px);
-    //   padding-left: 19px;
-    //   width: auto;
-    // }
-
-    & + .dropdown-menu {
-      margin-right: 16px;
-      min-width: 140px;
     }
   }
 }
@@ -161,35 +152,12 @@
 
   #nav-search-box {
     width: 175px;
-  }
-
-  .icons-search {
-    width: auto;
-    background-position: sprite-position($icons, search, 6px, 2px);
-  }
-
-  i {
-    color: #777;
-    font-size: 14px;
-  }
-  .btn {
-    margin-top: 1px;
-    width: 35px;
-    padding: 5px 6px;
-  }
-}
-
-#log-in-btn {
-  color: $brand-black;
-
-  &:hover {
-    text-decoration: underline;
+    padding-left: 25px;
+    background-position: sprite-position($icons, search, 3px, 2px);
   }
 }
 
 #sign-up-btn {
-  margin-left: 20px;
-  padding-top: 4px;
   font-weight: bold;
 }
 
