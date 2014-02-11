@@ -17,19 +17,16 @@
     &.border-right {
       border-right: 1px solid #f1f1f1;
     }
+
+    &.dropdown-fw {
+      width: 60px;
+      text-align: center;
+    }
   }
 
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
     color: $brand-primary;
     background-color: #f1f1f1;
-  }
-
-  #scope-dropdown {
-    & > a:hover, &.open {
-      .icons-tasks {
-        background-position: sprite-position($icons, tasks_blue);
-      }
-    }
   }
 
   .navbar-right {

@@ -3,15 +3,15 @@
     = image_tag 'logo_sm.png'
 
   - if params[:sort]
-    %li#scope-dropdown.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
+    %li.dropdown
+      %a.dropdown-toggle.dropdown-fw{"data-toggle" => "dropdown", href: '#'}
         / .icons-tasks
         Feed
       %ul#nav-menu.dropdown-menu
         = render 'partials/nav_menu'
 
-    %li#sort-dropdown.dropdown
-      %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: '#'}
+    %li.dropdown
+      %a.dropdown-toggle.dropdown-fw.border-right{"data-toggle" => "dropdown", href: '#'}
         Sort
       %ul.dropdown-menu
         / %li.dropdown-header
