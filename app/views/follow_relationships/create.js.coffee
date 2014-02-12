@@ -2,7 +2,7 @@ $("#follow-btn-<%= @user.id %>").html "<%= escape_javascript(render('users/unfol
 
 $(".followers-count").html "<%= @user.followers_count %>"
 
-$('#unfollow-btn').hover ->
-    $(this).val('Unfollow')
-  , ->
-    $(this).val('Followed')
+# $('#unfollow-btn').hover ->
+#     $(this).val('Unfollow')
+#   , ->
+#     $(this).val('Followed')

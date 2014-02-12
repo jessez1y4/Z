@@ -1,3 +1,3 @@
-$ ->
-  $('#bookmark-btn span').aToolTip
-    xOffset: -300
+# $ ->
+#   $('#bookmark-btn span').aToolTip
+#     xOffset: -300

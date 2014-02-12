@@ -1,5 +1,5 @@
-$ ->
-  $('#unbookmark-btn').hover ->
-    $(this).val('Unbookmark')
-  , ->
-    $(this).val('Bookmarked')
+# $ ->
+#   $('#unbookmark-btn').hover ->
+#     $(this).val('Unbookmark')
+#   , ->
+#     $(this).val('Bookmarked')
