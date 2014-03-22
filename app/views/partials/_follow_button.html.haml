@@ -4,9 +4,8 @@
       .icons-rss
         Follow
 - elsif user == current_user
-  = link_to edit_user_path, class: 'btn btn-primary edit-profile-btn' do
-    .icons-pencil
-      Edit profile
+  = link_to edit_user_path, class: 'btn btn-default edit-profile-btn' do
+    Edit profile
 - else
   .follow-btn{id: "follow-btn-#{user.id}"}
     = follow_button user

@@ -19,7 +19,7 @@
       %li.dropdown
         %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
           / .icons-user
-          %strong= current_user.full_name.titleize
+          = current_user.full_name.titleize
         %ul.dropdown-menu
           %li
             = link_to 'My Styles', show_user_path(current_user)

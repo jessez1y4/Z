@@ -1,26 +1,25 @@
-$font-family-sans-serif: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-sans-serif: Georgia, Helvetica, Arial, sans-serif;
 $grid-float-breakpoint: 0;
-$font-size-base: 13px;
+$font-size-base: 14px;
 
-$navbar-height: 39px;
+$navbar-height: 50px;
 $navbar-default-bg: white;
 
 // everything square
-$border-radius-base: 4px;
-$border-radius-small: 2px;
-$border-radius-large: 4px;
+$border-radius-base: 0px;
+$border-radius-small: 0px;
+$border-radius-large: 0px;
 
 // $btn-default-border: #d2d2d2;
 // $input-border: #d2d2d2;
 
-
 // colors
-$brand-primary: #336699;
+$brand-primary: #000;
 // $btn-primary-color: #333;
 // $btn-primary-border-color: #999;
 $navbar-color: #999;
 
-$brand-black: #444;
+$brand-black: #000;
 $input-color: $brand-black;
 $gray: #888;
 $facebook: #5575a4;
@@ -32,11 +31,16 @@ $modal-title-padding: 10px;
 
 body {
   padding-top: 65px;
-  // background: #ebeced;
-  background-image: image-url('background.png');
-  background-repeat: repeat;
+  background: #fff;
+  // background-image: image-url('background.png');
+  // background-repeat: repeat;
   color: $brand-black;
+  // letter-spacing: 0.015em;
   padding-bottom: 60px;
+}
+
+h3 {
+  // letter-spacing: 0.03em;
 }
 
 .btn:focus {
@@ -137,12 +141,12 @@ a.tag:hover {
 
   li > a {
     line-height: 24px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #555;
+    font-size: 13px;
+    // font-weight: bold;
+    color: $brand-black;
 
     &:hover {
-      color: #333;
+      // color: #333;
     }
   }
 }

@@ -1,9 +1,9 @@
 .user-brick {
-  @include box-shadow(rgba(0, 0, 0, 0.08) 0px 1px 4px);
-  @include border-radius(4px);
+  // @include box-shadow(rgba(0, 0, 0, 0.08) 0px 1px 4px);
+  // @include border-radius(4px);
 
   width: 298px;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   background: white;
   margin-bottom: 15px;
   overflow: hidden;

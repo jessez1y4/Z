@@ -1,9 +1,9 @@
 %li
   = link_to 'Everything', posts_path(params.merge(scope: nil))
 %li
-  = link_to 'Random stuff', root_path
+  = link_to 'Random', root_path
 - if user_signed_in?
-  %li.divider
+  / %li.divider
   %li
     = link_to 'Following', posts_path(params.merge(scope: 'Following'))
   %li.divider
