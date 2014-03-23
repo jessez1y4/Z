@@ -5,7 +5,7 @@ body.posts-show {
     width: 432px;
 
     #post-title {
-      margin-top: -24px;
+      // margin-top: -10px;
       margin-bottom: 9px;
       width: 640px;
 
@@ -38,6 +38,22 @@ body.posts-show {
       }
     }
 
+    #post-tags {
+      margin-top: 15px;
+
+      a {
+        display: inline-block;
+        margin: 3px;
+        background-color: #eee;
+
+        &:hover {
+          background-color: $brand-black;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+
     #similar-posts {
       width: 636px;
       margin-top: 20px;
@@ -49,7 +65,7 @@ body.posts-show {
 
       a {
         img {
-          @include border-radius(2px);
+          // @include border-radius(2px);
 
           margin-right: 16px;
         }
@@ -66,10 +82,10 @@ body.posts-show {
 
     .post-main-header {
       text-align: center;
-      border-bottom: 1px solid #777;
+      border-bottom: 1px solid black;
       padding: 3px 0;
-      font-size: 13px;
-      font-weight: bold;
+      // font-size: 13px;
+      // font-weight: bold;
       text-transform: uppercase;
     }
   }
@@ -79,7 +95,7 @@ body.posts-show {
     width: 636px;
 
     img {
-      @include border-radius(2px);
+      // @include border-radius(2px);
       margin-top: 2px;
     }
 
@@ -134,7 +150,7 @@ body.posts-show {
     }
 
     #post-likes {
-      border-top: 1px solid #e3e3e3;
+      // border-top: 1px solid #e3e3e3;
 
       button {
         margin: 0;
@@ -182,8 +198,10 @@ body.posts-show {
     .info-entry {
       margin: 0px 5px;
       padding: 10px 5px 10px 5px;
-      border-bottom: 1px solid #e3e3e3;
-      font-size: 18px;
+      // border-bottom: 1px solid #e3e3e3;
+      // font-size: 18px;
+      text-transform: uppercase;
+      color: $brand-black;
 
       small {
         position: relative;
@@ -195,22 +213,24 @@ body.posts-show {
       .pull-right {
         position: relative;
         top: -2px;
+        font-size: 12px;
       }
     }
 
     .info-list {
       margin: 0px 5px;
       padding: 18px 5px 10px 5px;
-      border-bottom: 1px solid #e3e3e3;
+      // border-bottom: 1px solid #e3e3e3;
       small {
         position: relative;
         bottom: 2px;
       }
 
       .info-header {
-        font-size: 12px;
-        font-weight: bold;
+        // font-size: 12px;
+        // font-weight: bold;
         line-height: 24px;
+        text-transform: uppercase;
       }
     }
 
@@ -230,7 +250,7 @@ body.posts-show {
         top: -24px;
 
         & > div {
-          @include border-radius($border-radius-small);
+          // @include border-radius($border-radius-small);
           @include transition(0.2s);
 
           display: inline-block;
@@ -256,15 +276,15 @@ body.posts-show {
 
     #post-items {
       .item-number {
-        @include border-radius(2px);
+        // @include border-radius(2px);
         @include transition(all 0.25s);
 
         display: inline-block;
         position: relative;
         top: -5px;
-        background-color: #ccc;
+        background-color: $brand-black;
         color: white;
-        font-size: 12px;
+        // font-size: 12px;
         padding: 0px 5px;
         margin-right: 5px;
         cursor: default;
@@ -273,20 +293,22 @@ body.posts-show {
       }
 
       .item-number-hovered {
-        background-color: $brand-primary;
+        background-color: red;
       }
 
       .item-info {
         .item-name {
+          text-transform: uppercase;
+
           a {
-            font-weight: bold;
-            border-bottom: 1px dashed #999;
-            color: #4c4c4c;
+            // font-weight: bold;
+            // border-bottom: 1px dashed red;
+            color: red;
 
             &:hover {
-              color: $brand-primary;
+              color: red;
               text-decoration: none;
-              border-bottom: 1px solid $brand-primary;
+              // border-bottom-style: solid;
             }
           }
 
@@ -296,14 +318,14 @@ body.posts-show {
           display: inline-block;
           max-width: 100px;
           line-height: 18px;
-          font-size: 12px;
-          font-weight: bold;
-          color: #4c4c4c;
+          // font-size: 12px;
+          // font-weight: bold;
+          color: $brand-primary;
         }
 
         .small a {
           position: relative;
-          top: 1px;
+          top: 3px;
           color: #999;
           cursor: pointer;
 
@@ -311,16 +333,6 @@ body.posts-show {
             color: $brand-primary;
           }
         }
-      }
-    }
-
-    #post-tags {
-      .tag {
-        display: inline-block;
-        font-size: 12px;
-        padding: 1px 6px;
-        margin-right: 5px;
-        margin-bottom: 7px;
       }
     }
   }
@@ -332,11 +344,11 @@ body.posts-show {
     margin-left: 20px;
 
     .sidebar-header {
-      border-bottom: 1px solid #777;
+      border-bottom: 1px solid #000;
       padding-bottom: 3px;
       margin-bottom: 17px;
       margin-top: 30px;
-      font-weight: bold;
+      // font-weight: bold;
 
       &:first-child {
         margin-top: 0;
@@ -345,7 +357,7 @@ body.posts-show {
 
     #user-info {
       img {
-        @include border-radius(3px);
+        // @include border-radius(3px);
 
         margin-right: 15px;
       }
@@ -395,7 +407,7 @@ body.posts-show {
       }
 
       img {
-        @include border-radius(2px);
+        // @include border-radius(2px);
 
         margin-right: 13px;
         margin-bottom: 17px;
@@ -417,7 +429,7 @@ body.posts-show {
         }
 
         img {
-          @include border-radius(3px);
+          // @include border-radius(3px);
 
           margin-right: 15px;
         }
@@ -438,7 +450,7 @@ body.posts-show {
   #show-post-img-container {
     position: relative;
     img {
-      @include border-radius(4px);
+      // @include border-radius(4px);
     }
   }
 

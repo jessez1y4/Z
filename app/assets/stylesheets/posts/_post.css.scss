@@ -5,7 +5,7 @@
   width: 220px;
   // border: 1px solid #ccc;
   background: white;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   overflow: hidden;
 
   .masonry-img a {
@@ -22,14 +22,14 @@
     opacity: 0;
 
     button, .fake-btn {
-      @include border-radius(2px);
-      @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
+      // @include border-radius(2px);
+      // @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
 
       min-width: 50px;
       height: 27px;
       font-size: 14px;
       font-weight: bold;
-      opacity: 0.8;
+      // opacity: 0.8;
       border: none;
       outline: none;
       padding: 4px 11px 4px 10px;
@@ -54,18 +54,19 @@
   }
 
   .masonry-like-btn button:hover {
-    opacity: 0.85;
+    // opacity: 0.85;
   }
 
   .masonry-title {
-    font-size: 12px;
-    min-height: 30px;
+    margin-top: 5px;
+    // font-size: 12px;
+    min-height: 22px;
     padding: 5px 10px;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px dashed #e7e7e7;
+    // border-top: 1px solid #e7e7e7;
+    // border-bottom: 1px dashed #e7e7e7;
     word-wrap:break-word;
-    // text-align: center;
-    // text-transform: uppercase;
+    text-align: center;
+    text-transform: uppercase;
 
     &.truncate {
       text-overflow: ellipsis;
@@ -75,9 +76,12 @@
   }
 
   .masonry-author {
-    padding: 7px 10px 7px 10px;
     color: #999;
-    height: 29px;
+    height: 22px;
+    text-align: center;
+    font-size: 10px;
+    text-decoration: underline;
+    text-transform: uppercase;
 
     .post-stats {
       @include transition(all 0.25s);
@@ -107,6 +111,10 @@
       left: 10px;
       opacity: 0;
     }
+  }
+
+  .masonry-heart {
+    text-align: center;
   }
 
   .masonry-tags {
