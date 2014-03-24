@@ -1,4 +1,5 @@
 #user-tabs {
+  text-transform: uppercase;
   padding-left: 1px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -14,7 +15,8 @@
     }
 
     a:hover {
-      color: #555;
+      color: $brand-black;
+      background-color: white;
       text-decoration: none;
     }
 

@@ -115,6 +115,10 @@ body.posts-show {
           margin: 5px 0;
         }
       }
+
+      .user-name {
+        text-transform: uppercase;
+      }
     }
 
     #post-comments-next {
@@ -130,6 +134,7 @@ body.posts-show {
     }
 
     form .col-xs-11 {
+      margin-top: 2px;
       padding-left: 20px;
     }
   }
@@ -306,8 +311,8 @@ body.posts-show {
             color: red;
 
             &:hover {
-              color: red;
               text-decoration: none;
+              color: white;
               // border-bottom-style: solid;
             }
           }
@@ -362,16 +367,25 @@ body.posts-show {
         margin-right: 15px;
       }
 
-      .btn {
-        padding-top: 5px;
-        height: 30px;
+      // .btn {
+      //   padding-top: 5px;
+      //   height: 30px;
+      // }
+      .user-name {
+        margin-top: 2px;
+        font-size: 11px;
+        text-transform: uppercase;
       }
 
-      .icons-location_sm {
-        margin-left: 89px;
-        width: auto;
-        padding-left: 19px;
-        background-position: sprite-position($icons, location_sm, 0, -3px);
+      .user-location {
+        // margin-left: 105px;
+        margin-top: 8px;
+        margin-bottom: 11px;
+        text-transform: uppercase;
+        color: #999;
+        // width: auto;
+        // padding-left: 19px;
+        // background-position: sprite-position($icons, location, 0, -2px)
       }
 
       .small {
@@ -381,15 +395,17 @@ body.posts-show {
     }
 
     #user-stats {
+      padding-top: 10px;
       .col-xs-4 {
         border-right: 1px solid #ddd;
 
         .stat-count {
-          font-size: 16px;
+          font-size: 15px;
         }
 
         .stat-name {
-          font-size: 11px;
+          text-transform: uppercase;
+          font-size: 10px;
           color: #999;
         }
       }
@@ -424,6 +440,24 @@ body.posts-show {
         padding-bottom: 15px;
         border-bottom: 1px solid #e3e3e3;
 
+        .user-name {
+          text-transform: uppercase;
+        }
+
+        .user-stats {
+          text-transform: uppercase;
+
+          padding-top: 8px;
+          padding-bottom: 11px;
+          font-size: 10px;
+          // color: #999;
+
+          .glyphicon-heart {
+            color: red;
+            font-size: 11px;
+          }
+        }
+
         &:last-child {
           border-bottom: none;
         }
@@ -434,15 +468,15 @@ body.posts-show {
           margin-right: 15px;
         }
 
-        .btn {
-          padding-top: 5px;
-          height: 30px;
-        }
+        // .btn {
+        //   padding-top: 5px;
+        //   height: 30px;
+        // }
 
-        .small {
-          margin-top: 5px;
-          margin-bottom: 9px;
-        }
+        // .small {
+        //   margin-top: 5px;
+        //   margin-bottom: 9px;
+        // }
       }
     }
   }

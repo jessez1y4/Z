@@ -3,7 +3,8 @@
     = cl_image_tag comment.user.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
   .col-xs-11
 
-    %strong= link_to comment.user.full_name.titleize, show_user_path(comment.user)
+    .user-name
+      = link_to comment.user.full_name.titleize, show_user_path(comment.user)
 
     = simple_format comment.comment
     %small.text-muted

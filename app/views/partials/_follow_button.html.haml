@@ -1,8 +1,7 @@
 - if !user_signed_in?
   .follow-btn
     %button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-      .icons-rss
-        Follow
+      Follow
 - elsif user == current_user
   = link_to edit_user_path, class: 'btn btn-default edit-profile-btn' do
     Edit profile

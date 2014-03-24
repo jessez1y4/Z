@@ -7,7 +7,7 @@
       %h3
         = @user.full_name.titleize
 
-    .icons-location
+    .user-location
       = @user.city.titleize
 
     = render 'partials/follow_button', user: @user

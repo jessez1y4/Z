@@ -38,18 +38,27 @@
 
     .user-name {
       padding-top: 13px;
+      text-transform: uppercase;
     }
 
     .user-stats {
-      padding-top: 5px;
-      padding-bottom: 9px;
-      font-size: 11px;
-      color: #999;
+      text-transform: uppercase;
+
+      padding-top: 8px;
+      padding-bottom: 11px;
+      font-size: 10px;
+      // color: #999;
+
+      .glyphicon-heart {
+        color: red;
+        font-size: 11px;
+      }
     }
 
     .btn {
-      height: 30px;
-      font-size: 12px;
+      // height: 30px;
+      font-size: 10px;
+      padding: 1px 15px 0px 15px;
 
       .icons-rss {
         background-position: sprite-position($icons, rss, -4px, -3px);

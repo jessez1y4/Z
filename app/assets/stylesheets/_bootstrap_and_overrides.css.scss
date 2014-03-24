@@ -43,6 +43,11 @@ h3 {
   // letter-spacing: 0.03em;
 }
 
+a:hover {
+  background-color: black;
+  color: white;
+}
+
 .btn:focus {
   outline: none !important;
 }
@@ -106,7 +111,18 @@ label.error {
 }
 
 .btn-primary, .tag, .wf-fix, #aToolTip {
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
+}
+
+.btn-primary:hover {
+  background-color: red;
+  border-color: red;
+}
+
+.btn-default:hover {
+  background-color: $brand-black;
+  border-color: $brand-black;
+  color: white;
 }
 
 .wf-fix {
@@ -114,7 +130,7 @@ label.error {
 }
 
 .btn-lg {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .btn {

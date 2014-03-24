@@ -129,7 +129,7 @@
                 = item.number
               %span.item-name{title: item.name.capitalize}
                 - if item.url.present?
-                  %a{href: "#{item.url}"}
+                  %a{href: "http://#{item.url}", target: '_blank'}
                     = item.name.capitalize
                 - else
                   %span= item.name.capitalize
@@ -140,10 +140,11 @@
       #user-info
         .pull-left
           = link_to show_user_path(@user) do
-            = cl_image_tag @user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
-        = link_to show_user_path(@user) do
-          %strong= @user.full_name.titleize
-        .icons-location_sm.small.text-muted
+            = cl_image_tag @user.avatar_cloudinary_id, width: 70, height: 70, crop: 'fill', gravity: 'face'
+        .user-name
+          = link_to show_user_path(@user) do
+            = @user.full_name.titleize
+        .user-location
           = @user.city.titleize
         = render 'partials/follow_button', user: @user
       %br
@@ -181,14 +182,15 @@
           .may-like-user.clearfix
             .pull-left
               = link_to show_user_path(user) do
-                = cl_image_tag user.avatar_cloudinary_id, width: 80, height: 80, crop: 'fill', gravity: 'face'
+                = cl_image_tag user.avatar_cloudinary_id, width: 70, height: 70, crop: 'fill', gravity: 'face'
 
             .user-name
               = link_to show_user_path(user) do
-                %strong= user.full_name.titleize
+                = user.full_name.titleize
 
-            .user-stats.small.text-muted
-              = "#{user.likes_count} Likes · #{user.followers_count} Followers"
+            .user-stats
+              %span.glyphicon.glyphicon-heart
+              = user.likes_count
             = render 'partials/follow_button', user: user
 
 

@@ -4,7 +4,6 @@
 
       %h4
         AVATAR
-      %hr
       #avatar-edit.row
         .col-xs-3
           = cl_image_tag @user.avatar_cloudinary_id, width: 100, height: 100, crop: 'fill', gravity: 'face', quality: 95, id: 'avatar-preview'
@@ -25,7 +24,6 @@
               = submit_tag 'submit'
 
       %h4.tall-h4 PROFILE
-      %hr
 
       = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
         .form-group#personal-url
@@ -69,7 +67,6 @@
             = f.submit 'Update profile', class: 'btn btn-primary btn-lg'
 
       %h4.tall-h4 SIGN IN
-      %hr
       - if current_user.random_password?
         %p.small
           Set a password before removing all your authentications above, so that you can still sign in with email and password.
@@ -80,7 +77,6 @@
 
 
       %h4.tall-h4 PREFERENCE
-      %hr
       = form_for @user, url: '/user', method: :put, html: {class: 'form-horizontal', id: 'edit-profile-form'} do |f|
         .form-group
           %label.col-xs-3.control-label Default tags
