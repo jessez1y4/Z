@@ -1,5 +1,13 @@
 $ ->
   if $('body.posts-show').length
+    # comment button
+    $('#post-comment-input').focus ->
+      $('#post-comment-btn').removeClass 'hidden'
+
+    # focus comment if parameter says so
+    if window.location.href.indexOf('comment=') > -1
+      $('#post-comment-input').focus()
+
     container = $('#show-post-img-container')
 
     $('.item-info').each (index) ->
@@ -40,10 +48,6 @@ $ ->
       ->
         target_id = this.id.replace 'label', 'number'
         $("##{target_id}").removeClass('item-number-hovered')
-
-    # comment button
-    $('#post-comment-input').focus ->
-      $('#post-comment-btn').removeClass 'hidden'
 
     # item name width
     $('#post-items .item-info > p').each ->

@@ -5,7 +5,7 @@
       #post-title
 
         %p
-          %h4{class: ('small' if @post.title.length > 28)}
+          %h4
             = @post.title.titleize
         %small.text-muted
           = time_ago_in_words @post.created_at
@@ -105,12 +105,11 @@
       #post-views.info-entry
         .pull-right
           =@post.views_count
-        .icons-eye_lg
-          Views
+
+        Views
 
       #post-share.info-entry
-        .icons-share
-          Share
+        Share
         .pull-right
           #share-facebook{'data-url' => post_url(@post), 'data-text' => @post.title.titleize}
           #share-google{'data-url' => post_url(@post), 'data-text' => @post.title.titleize}

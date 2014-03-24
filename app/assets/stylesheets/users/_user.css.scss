@@ -30,10 +30,6 @@
   .user-info {
     .pull-left {
       padding: 12px 15px;
-
-      img {
-        @include border-radius(2px);
-      }
     }
 
     .user-name {
@@ -50,8 +46,12 @@
       // color: #999;
 
       .glyphicon-heart {
+        margin-right: 1px;
         color: red;
         font-size: 11px;
+        display: inline-block;
+        position: relative;
+        top: 2px;
       }
     }
 

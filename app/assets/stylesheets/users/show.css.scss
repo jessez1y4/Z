@@ -7,7 +7,7 @@
     text-align: center;
     display: inline-block;
     padding: 20px 15px 5px 15px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 1px solid #ccc;
     min-width: 155px;
 
     a {
@@ -21,16 +21,16 @@
     }
 
     .tab-count {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 
   .active-tab {
-    border-bottom: 2px solid $brand-primary;
+    border-bottom: 1px solid $brand-primary;
   }
 
   #user-rest-tab {
-    font-size: 18px;
+    font-size: 15px;
     min-width: 609px;
   }
 }

@@ -149,9 +149,7 @@ body.posts-show {
     }
 
     #post-views {
-      .icons-eye_lg {
-        padding-left: 25px;
-      }
+
     }
 
     #post-likes {
@@ -246,13 +244,9 @@ body.posts-show {
         cursor: default;
       }
 
-      .icons-share {
-        padding-left: 25px;
-      }
-
       .pull-right {
         position: relative;
-        top: -24px;
+        top: -6px;
 
         & > div {
           // @include border-radius($border-radius-small);

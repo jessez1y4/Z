@@ -24,6 +24,19 @@
       width: 60px;
       text-align: center;
     }
+
+    .glyphicon-plus {
+      position: relative;
+      display: inline-block;
+      top: 0px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      .glyphicon {
+        color: red;
+      }
+    }
   }
 
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
@@ -117,16 +130,16 @@
   padding-right: 0;
 
   form {
-    margin-top: 11px;
+    margin-top: 12px;
     margin-bottom: 2px;
   }
 
   #nav-search-box {
-    height: 25px;
-    padding-top: 3px;
+    height: 23px;
+    padding-top: 6px;
     width: 175px;
-    padding-left: 26px;
-    background-position: sprite-position($icons, search, 3px, -1px);
+    // padding-left: 26px;
+    // background-position: sprite-position($icons, search, 3px, -1px);
   }
 }
 

@@ -34,8 +34,8 @@
     %span.glyphicon.glyphicon-heart
     = post.like_relationships_count
     &nbsp;
-    %span.glyphicon.glyphicon-comment
-    COMMENT
+    &nbsp;
+    = link_to 'COMMENT', post_path(post) + '?comment=1'
 
   / - if show_tag == 1 && post.tags.any?
   /   .masonry-tags

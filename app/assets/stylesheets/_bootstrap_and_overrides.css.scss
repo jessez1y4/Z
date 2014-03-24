@@ -27,6 +27,8 @@ $google: #dc5e44;
 
 $modal-title-padding: 10px;
 
+$dropdown-border: black;
+
 @import 'bootstrap-custom';
 
 body {
@@ -46,6 +48,7 @@ h3 {
 a:hover {
   background-color: black;
   color: white;
+  text-decoration: none;
 }
 
 .btn:focus {
@@ -160,13 +163,17 @@ a.tag:hover {
 
   li > a {
     line-height: 20px;
-    font-size: 11px;
-    // font-weight: bold;
+    text-transform: uppercase;
     color: $brand-black;
 
     &:hover {
       // color: #333;
     }
+  }
+
+  li.divider {
+    background-color: white;
+    margin: 8px 0;
   }
 }
 
