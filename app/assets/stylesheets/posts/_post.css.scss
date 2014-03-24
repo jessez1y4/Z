@@ -26,27 +26,27 @@
       // @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
 
       min-width: 50px;
-      height: 27px;
-      font-size: 14px;
+      height: 25px;
+      font-size: 13px;
       font-weight: bold;
       // opacity: 0.8;
       border: none;
       outline: none;
-      padding: 4px 11px 4px 10px;
+      padding: 4px 13px 4px 10px;
       color: #fff;
       background-color: black;
       -webkit-font-smoothing: antialiased;
 
-      .icons-heart {
+      .icons-hrt_white {
         display: inline-block;
-        background-position: sprite-position($icons, heart, 0, -1px);
+        background-position: sprite-position($icons, hrt_white, 0, -2px);
         width: auto;
         padding-left: 23px;
       }
 
-      .icons-heart_red {
+      .icons-hrt_red {
         display: inline-block;
-        background-position: sprite-position($icons, heart_red, 0, -1px);
+        background-position: sprite-position($icons, hrt_red, 0, -2px);
         width: auto;
         padding-left: 23px;
       }
@@ -88,20 +88,7 @@
 
       font-size: 11px;
 
-      .icons-eye {
-        display: inline-block;
-        background-position: sprite-position($icons, eye, -3px, -2px);
-        width: auto;
-        padding-left: 17px;
-        margin-right: 10px;
-      }
 
-      .icons-heart_sm {
-        display: inline-block;
-        background-position: sprite-position($icons, heart_sm, -4px, -2px);
-        width: auto;
-        padding-left: 17px;
-      }
     }
 
     .user-name {

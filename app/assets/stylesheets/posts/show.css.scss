@@ -148,11 +148,34 @@ body.posts-show {
       margin-top: 28px;
     }
 
+    .info-entry {
+      margin: 10px 5px;
+      padding: 10px 5px 10px 5px;
+      // border-bottom: 1px solid #e3e3e3;
+      // font-size: 18px;
+      text-transform: uppercase;
+      color: $brand-black;
+
+      small {
+        position: relative;
+        bottom: 3px;
+        left: 5px;
+        font-size: 13px;
+      }
+
+      .pull-right {
+        position: relative;
+        top: -4px;
+        font-size: 13px;
+      }
+    }
+
     #post-views {
 
     }
 
     #post-likes {
+      padding-left: 9px;
       // border-top: 1px solid #e3e3e3;
 
       button {
@@ -173,13 +196,16 @@ body.posts-show {
       .icons-heart_lg_red, .icons-heart_lg {
         padding-left: 25px;
         width: auto;
-
       }
 
       &:hover {
         .icons-heart_lg {
           background-position: sprite-position($icons, heart_lg_red);
         }
+      }
+
+      .pull-right {
+        top: 0px;
       }
     }
 
@@ -195,28 +221,6 @@ body.posts-show {
         small {
           color: $brand-black;
         }
-      }
-    }
-
-    .info-entry {
-      margin: 0px 5px;
-      padding: 10px 5px 10px 5px;
-      // border-bottom: 1px solid #e3e3e3;
-      // font-size: 18px;
-      text-transform: uppercase;
-      color: $brand-black;
-
-      small {
-        position: relative;
-        bottom: 3px;
-        left: 5px;
-        font-size: 13px;
-      }
-
-      .pull-right {
-        position: relative;
-        top: -2px;
-        font-size: 12px;
       }
     }
 
@@ -355,7 +359,7 @@ body.posts-show {
     }
 
     #user-info {
-      img {
+      .pull-left {
         // @include border-radius(3px);
 
         margin-right: 15px;

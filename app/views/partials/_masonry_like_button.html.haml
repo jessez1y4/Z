@@ -1,12 +1,8 @@
 - if !user_signed_in?
   %button{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-    .icons-heart
+    .icons-hrt_white
       = post.likes
 
-- elsif post.user == current_user
-  .fake-btn
-    .icons-heart
-      = post.likes
-- else
+- elsif post.user != current_user
   %div{class: "like-btn-#{post.id}"}
     = masonry_like_button(post)
