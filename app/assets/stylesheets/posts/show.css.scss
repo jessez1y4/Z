@@ -262,15 +262,23 @@ body.posts-show {
           margin-left: 5px;
           height: 22px;
           width: 22px;
-
-          &:hover {
-          @include border-radius(0px);
-
-            opacity: 1;
-          }
         }
+      }
 
+      .icons-share-facebook:hover {
+        background-position: sprite-position($icons, share-facebook-hover);
+      }
 
+      .icons-share-twitter:hover {
+        background-position: sprite-position($icons, share-twitter-hover);
+      }
+
+      .icons-share-pinterest:hover {
+        background-position: sprite-position($icons, share-pinterest-hover);
+      }
+
+      .icons-share-google:hover {
+        background-position: sprite-position($icons, share-google-hover);
       }
     }
 
