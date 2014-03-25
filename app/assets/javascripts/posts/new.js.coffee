@@ -7,30 +7,32 @@ $ ->
     form = label = null
 
     add_item_label = (num, x, y) ->
-      container.append $(document.createElement('span'))
-                         .attr('id', "item-label-#{num}")
-                         .data('target-num', num)
-                         .addClass('item-label')
-                         .addClass('item-label-no-anim')
-                         .text(num)
-                         .css('left', x + 'px')
-                         .css('top', y + 'px')
-                         .css('position', 'absolute')
-                         .css('cursor', 'move')
-                         .hover ->
-                           $('.item-form').addClass 'hidden'
-                           form_num = $(this).data('target-num')
-                           $("#item-form-#{form_num}").removeClass 'hidden'
-                         .draggable
-                           containment: image
-                           drag: (event, ui) ->
-                             form.css('left', ui.position.left - 480 + 'px')
-                                 .css('top', ui.position.top + 25 + 'px')
-                           start: ->
-                             form = $("#item-form-#{$(this).data('target-num')}")
-                             form.css 'opacity', 0.8
-                           stop: ->
-                             form.css 'opacity', 1
+      span = $(document.createElement('span'))
+               .attr('id', "item-label-#{num}")
+               .data('target-num', num)
+               .addClass('item-label')
+               .addClass('item-label-no-anim')
+               .text(num)
+               .css('left', x + 'px')
+               .css('top', y + 'px')
+               .css('position', 'absolute')
+               .css('cursor', 'move')
+               .hover ->
+                 $('.item-form').addClass 'hidden'
+                 form_num = $(this).data('target-num')
+                 $("#item-form-#{form_num}").removeClass 'hidden'
+               .draggable
+                 containment: image
+                 drag: (event, ui) ->
+                   form.css('left', ui.position.left - 480 + 'px')
+                       .css('top', ui.position.top + 25 + 'px')
+                 start: ->
+                   form = $("#item-form-#{$(this).data('target-num')}")
+                   form.css 'opacity', 0.8
+                 stop: ->
+                   form.css 'opacity', 1
+
+      container.append span
 
     # set form attributes
     set_item_form = (form, num) ->

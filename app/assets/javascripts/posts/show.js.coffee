@@ -10,26 +10,28 @@ $ ->
 
     container = $('#show-post-img-container')
 
-    $('.item-info').each (index) ->
-      container.append $(document.createElement('span'))
-                        .addClass('item-label')
-                        .text($(this).data('number'))
-                        .attr('id', $(this).data('target'))
-                        .attr('data-target', @id)
-                        .css('left', $(this).data('x') + 'px')
-                        .css('top', $(this).data('y') + 'px')
-                        .css('position', 'absolute')
+    container.imagesLoaded ->
+      $('.item-info').each (index) ->
+        span = $(document.createElement('span'))
+                 .addClass('item-label')
+                 .text($(this).data('number'))
+                 .attr('id', $(this).data('target'))
+                 .attr('data-target', @id)
+                 .css('left', $(this).data('x') + 'px')
+                 .css('top', $(this).data('y') + 'px')
+                 .css('position', 'absolute')
 
+        container.append span
 
-      target = $("##{$(this).data('target')}")
-      $(this).hover \
-        ->
-          target.css('opacity', 0.9)
-          $('.item-number', this).addClass('item-number-hovered')
-        ,
-        ->
-          target.css('opacity', 0)
-          $('.item-number', this).removeClass('item-number-hovered')
+        target = $("##{$(this).data('target')}")
+        $(this).hover \
+          ->
+            target.css('opacity', 0.9)
+            $('.item-number', this).addClass('item-number-hovered')
+          ,
+          ->
+            target.css('opacity', 0)
+            $('.item-number', this).removeClass('item-number-hovered')
 
     if $('#hidden-like-form').length
       $('.post-likes-click').click ->
