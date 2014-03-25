@@ -112,7 +112,7 @@ body.posts-show {
         padding-left: 20px;
 
         p {
-          margin: 5px 0;
+          margin: 8px 0;
         }
       }
 
@@ -124,13 +124,13 @@ body.posts-show {
     #post-comments-next {
       margin: 8px 0 35px 0;
 
-      a {
-        color: $brand-black;
-        height: 28px;
-        font-size: 12px;
-        padding-top: 4px;
-        font-weight: bold;
-      }
+      // a {
+      //   color: $brand-black;
+      //   height: 28px;
+      //   font-size: 12px;
+      //   padding-top: 4px;
+      //   font-weight: bold;
+      // }
     }
 
     form .col-xs-11 {
@@ -201,6 +201,10 @@ body.posts-show {
       &:hover {
         .icons-heart_lg {
           background-position: sprite-position($icons, heart_lg_red);
+        }
+
+        .icons-heart_lg_red {
+          background-position: sprite-position($icons, heart_lg);
         }
       }
 
@@ -293,11 +297,10 @@ body.posts-show {
         background-color: $brand-black;
         color: white;
         // font-size: 12px;
-        padding: 0px 5px;
+        padding: 0px 4px;
         margin-right: 5px;
         cursor: default;
         font-weight: bold;
-        -webkit-font-smoothing: antialiased;
       }
 
       .item-number-hovered {
@@ -308,6 +311,8 @@ body.posts-show {
         text-transform: uppercase;
 
         .item-name {
+          position: relative;
+          top: 1px;
 
           a {
             // font-weight: bold;
@@ -325,7 +330,7 @@ body.posts-show {
           white-space:nowrap;
           overflow: hidden;
           display: inline-block;
-          max-width: 100px;
+          width: 115px;
           line-height: 18px;
           // font-size: 12px;
           // font-weight: bold;
@@ -334,7 +339,8 @@ body.posts-show {
 
         .pull-right a {
           position: relative;
-          top: 2px;
+          right: -10px;
+          top: 3px;
           color: #999;
           cursor: pointer;
 

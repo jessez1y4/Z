@@ -11,7 +11,7 @@
       .col-xs-3.nav-search
         = form_tag search_posts_path, method: :get, class: 'navbar-form navbar-left' do
           #nav-search-group
-            = text_field_tag :search, nil, id: 'nav-search-box', class: 'form-control', placeholder: 'SEARCH...'
+            = text_field_tag :search, nil, id: 'nav-search-box', class: 'form-control', placeholder: 'Search...'
             %span#nav-search-btn.input-group-btn.hidden
               = submit_tag ''
 
@@ -22,7 +22,7 @@
         %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
           &times;
         %h4.modal-title
-          Log in
+          LOG IN
       .modal-body
         .row#sns-login
           .col-xs-5.col-xs-offset-1.fb-login-btn
@@ -40,20 +40,20 @@
           .row
             .col-xs-10.col-xs-offset-1
               .form-group.text-muted
-                Log in with email
+                LOG IN WITH EMAIL
                 .pull-right
-                  = link_to 'Need an account?', new_registration_path('user')
+                  = link_to 'NEED AN ACCOUNT?', new_registration_path('user')
 
               .form-group
                 %label Email
                 = f.text_field :email, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
               .form-group
                 %label
-                  Password&nbsp;
-                  %small.forgot-password
+                  Password&nbsp;&nbsp;
+                  %span.forgot-password
                     = link_to 'Forgot?', new_password_path('user')
                 = f.password_field :password, class: 'form-control', tabindex: 2
           .row
             .col-xs-3.col-xs-offset-1
               .form-group
-                = f.submit 'Sign In', class: 'btn btn-primary btn-lg btn-block'
+                = f.submit 'Sign In', class: 'btn btn-primary btn-lg'
