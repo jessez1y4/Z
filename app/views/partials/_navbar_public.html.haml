@@ -7,7 +7,7 @@
         %a.dropdown-toggle{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal', href: '#'}
           Log in
       %li.dropdown
-        = link_to 'Sign up', new_registration_path('user'), class: 'dropdown-toggle border-right', id: 'sign-up-btn', "data-toggle" => "dropdown"
+        = link_to 'Sign up', new_registration_path('user'), class: 'dropdown-toggle', id: 'sign-up-btn'
       .col-xs-3.nav-search
         = form_tag search_posts_path, method: :get, class: 'navbar-form navbar-left' do
           #nav-search-group
