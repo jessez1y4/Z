@@ -3,14 +3,12 @@
     .pull-right
       = @post.likes
     .icons-heart_lg
-      Likes
 
 - elsif post.user == current_user
   #post-likes.info-entry
     .pull-right
       = @post.likes
     .icons-heart_lg_red
-      Likes
 - else
   %div{id: "like-btn-#{post.id}"}
     = like_button(post)

@@ -305,8 +305,9 @@ body.posts-show {
       }
 
       .item-info {
+        text-transform: uppercase;
+
         .item-name {
-          text-transform: uppercase;
 
           a {
             // font-weight: bold;
@@ -331,14 +332,14 @@ body.posts-show {
           color: $brand-primary;
         }
 
-        .small a {
+        .pull-right a {
           position: relative;
-          top: 3px;
+          top: 2px;
           color: #999;
           cursor: pointer;
 
           &:hover {
-            color: $brand-primary;
+            color: white;
           }
         }
       }
@@ -458,6 +459,9 @@ body.posts-show {
           .glyphicon-heart {
             color: red;
             font-size: 11px;
+            margin-right: 1px;
+            position: relative;
+            top: 2px;
           }
         }
 

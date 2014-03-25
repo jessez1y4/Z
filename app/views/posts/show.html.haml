@@ -122,8 +122,8 @@
         - @post.items.each do |item|
           .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
             %p
-              %span.pull-right.small
-                = link_to item.item_category.name.titleize, item.item_category
+              %span.pull-right
+                = link_to item.item_category.name, item.item_category
               %span.item-number{id: "item-number-#{item.number}"}
                 = item.number
               %span.item-name{title: item.name.capitalize}
