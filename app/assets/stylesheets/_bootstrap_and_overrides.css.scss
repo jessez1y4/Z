@@ -41,6 +41,19 @@ body {
   padding-bottom: 60px;
 }
 
+input {
+  box-shadow: none !important;
+
+  &:focus {
+    border-color: red !important;
+  }
+}
+
+label {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
 .modal p {
   font-size: 11px;
 }
