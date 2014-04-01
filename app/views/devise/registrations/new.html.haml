@@ -6,21 +6,20 @@
       %br
       %br
       .row#sns-login
-        .col-xs-6.fb-login-btn
+        .col-xs-6
           = link_to user_omniauth_authorize_path(:facebook),
-                    class: 'btn btn-default btn-block wf-fix' do
-            .icons-facebook
-              Log in with Facebook
-        .col-xs-6.gg-login-btn
+                    class: 'btn btn-primary btn-block' do
+            Log in with Facebook
+        .col-xs-6
           = link_to user_omniauth_authorize_path(:google),
-                    class: 'btn btn-default btn-block wf-fix' do
-            .icons-google
-              Log in with Google
-      .row
-        %hr.hr-dark
+                    class: 'btn btn-primary btn-block' do
+            Log in with Google
+      %br
+      %br
+
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'sign-up-form' }) do |f|
         .form-group.help-block
-          Or sign up with email.
+          OR SIGN UP WITH EMAIL
         .form-group
           %label Email Address
           = f.email_field :email, autofocus: true, class: 'form-control', 'data-error' => field_err(resource, :email)
@@ -34,15 +33,15 @@
           = f.password_field :password, class: 'form-control', 'data-error' => field_err(resource, :password)
 
         .form-group.help-block
-          Below are optional.
+          THESE ARE OPTIONAL.
 
         .form-group.location-n-college
           .col-xs-6
             %label City
-            = f.text_field :city, class: 'form-control', 'data-error' => field_err(resource, :city), placeholder: 'Where do you live?'
+            = f.text_field :city, class: 'city-complete form-control', 'data-error' => field_err(resource, :city), placeholder: 'Where do you live?'
           .col-xs-6
             %label College
-            = f.text_field :college, class: 'form-control', 'data-error' => field_err(resource, :college)
+            = f.text_field :college, class: 'college-complete form-control', 'data-error' => field_err(resource, :college)
 
         .form-group
           .row

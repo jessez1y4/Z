@@ -5,61 +5,114 @@
         = cl_image_tag_with_crop @post, width: 402, height: 536, crop: :fill
 
     .col-xs-6
-      %h4.step
-        %small
-          Step 2&nbsp;
-        Click on photo to add item labels
+      %h4.lg
+        %strong Click on photo to add item labels.
 
-      %hr.hr-dark
+      / items
+      #items-info
+        - @post.items.each do |item|
+          .item-info
+            %p
+              / %span.pull-right
+              /   = link_to item.item_category.name, item.item_category
+              %span.item-number{id: "item-number-#{item.number}"}
+                = item.number
+              %span.item-name
+                / - if item.url.present?
+                /   %a{href: "http://#{item.url}", target: '_blank'}
+                /     = item.name.capitalize
+                / - else
+                = item.name.capitalize
+              &nbsp;&nbsp;
+              %a{href: '#', 'data-target-num' => item.number} REMOVE
 
-      = form_for @post, html: { class: 'form-horizontal', id: 'new-post-form' } do |f|
+
+      %br
+      %br
+
+      = form_for @post, html: { id: 'new-post-form' } do |f|
         = f.hidden_field :cloudinary_id
         = f.hidden_field :crop_str
 
-        %h4.step
-          %small
-            Step 3&nbsp;
-          Name your style
-        %br
+
 
         .form-group
-          %label.col-xs-2.control-label Title
-          .col-xs-10
-            = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
+          %label Title
+          = f.text_field :title, class: 'form-control', placeholder: 'Name your style...', 'data-error' => field_err(@post, :title)
 
         / .form-group
         /   %label Description
         /   = f.text_area :description, class: 'form-control', placeholder: 'Describe your photo...'
 
-        .form-group
-          %label Tags (separate by comma)
-          = f.text_field :tag_list, class: 'form-control', placeholder: 'tag1, tag2, ...', autocomplete: :off, id: 'tag-list-input'
+        / .form-group
+        /   %label Tags (separate by comma)
+        = f.hidden_field :tag_list, id: 'tag-list-input'
 
-        %hr.hr-dark
-
-        / tags
-        %h4.step
-          %small
-            Step 4&nbsp;
-          Tag your style
         %br
+        %label tags (click to remove)
+        #tags-edit
+          - @post.tags.each do |tag|
+            %span{class: "tag-edit type#{tag.category}"}
+              = tag.name
 
-        %strong Senario
+        %button.btn.btn-default.btn-lg{'data-toggle' => 'modal', 'data-target' => '#add-tags-modal'} add new tags
 
-
-
-        %hr.hr-dark
-
-        %h4.step
-          %small
-            Step 5&nbsp;
-          Share and promote
-        %br
 
         #item-forms
           = f.fields_for :items do |item|
             = render 'item_fields', f: item
+
+
           = link_to_add_association '', f, :items, id: 'add-item-btn', class: 'hide', 'data-association-insertion-method' => 'append'
 
+        %br
+        %br
+        %br
+
         .form-group
-          = f.submit 'Post my style!', class: 'btn btn-primary btn-lg', id: 'new-post-form-submit'
+          = f.submit 'Post my style !', class: 'btn btn-primary btn-lg', id: 'new-post-form-submit'
+
+#add-tags-modal.modal
+  .modal-dialog.modal-dialog-narrow
+    .modal-content
+      .modal-header
+        %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h4.modal-title
+          Add new tags
+      .modal-body
+        %label Scenario
+        .candidate-tags
+          - Tag.scenario.each do |tag|
+            %span.tag-edit
+              = tag.name
+
+        %br
+        %label Style
+        .candidate-tags
+          - Tag.style.each do |tag|
+            %span.tag-edit
+              = tag.name
+
+        %br
+        %label Element
+        .candidate-tags
+          - Tag.element.each do |tag|
+            %span.tag-edit
+              = tag.name
+
+        %br
+        %label City
+        %input#city-tag.city-complete.form-control{type: 'text', value: (current_user.city == 'classified' || @post.persisted? ? '' : current_user.city) }
+
+        %br
+        %label College
+        %input#college-tag.college-complete.form-control{type: 'text', value: (current_user.college == 'classified' || @post.persisted? ? '' : current_user.college)}
+
+        %br
+        %label Add other tags here (separate with comma)
+        %input#custom-tag.form-control{type: 'text'}
+
+        %br
+        %button.btn.btn-primary.btn-lg Done
+

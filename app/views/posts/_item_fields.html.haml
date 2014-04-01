@@ -4,16 +4,16 @@
   = f.hidden_field :y, class: 'item-y'
 
   .form-group
-    %label.small Name
-    = f.text_field :name, class: 'form-control input-sm', required: true
+    %label Name
+    = f.text_field :name, class: 'item-name-input form-control', required: true
   .form-group
-    %label.small Category
+    %label Category
     = f.grouped_collection_select :item_category_id, @item_category_types ||= ItemCategoryType.all, :item_categories, :name, :id, :name, {include_blank: true}, {class: 'form-control icons-sort-light', required: true}
   .form-group
-    %label.small Web link (optional)
-    = f.text_field :url, type: 'cus_url', class: 'form-control input-sm'
+    %label Web link (optional)
+    = f.text_field :url, type: 'cus_url', class: 'form-control'
   .form-group
     .pull-right
-      = link_to_remove_association 'Remove item', f
-    %button.hide-item-form-btn.btn.btn-primary.btn-sm{type: 'button'}
+      = link_to_remove_association 'REMOVE', f
+    %button.hide-item-form-btn.btn.btn-primary.btn-lg{type: 'button'}
       Done

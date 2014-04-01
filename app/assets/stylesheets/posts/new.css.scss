@@ -1,13 +1,19 @@
-.step {
-  font-size: 14px;
+#items-info {
+  margin-top: 10px;
 
-  small {
-    font-size: 12px;
+  .item-name {
+    padding: 0;
+    width: auto;
+    color: red;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }
 
 .item-label{
-  @include transition(all 0.2s);
+  // @include transition(all 0.2s);
   // @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
   // @include border-radius(2px);
 
@@ -39,10 +45,51 @@
   opacity: 0.9;
 }
 
+#tags-edit {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.tag-edit {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1px 3px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+  background-color: #eee;
+  font-size: 11px;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  &.selected {
+    background-color: black;
+    color: white;
+
+    &:hover {
+      background-color: #eee;
+      color: black;
+    }
+  }
+}
+
+#add-tags-modal {
+  label {
+    margin-bottom: 5px;
+  }
+
+  input {
+    text-transform: uppercase;
+  }
+}
+
 .item-form {
-  @include border-radius(3px);
-  @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
-  @include background-clip(padding-box);
+  // @include border-radius(3px);
+  // @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
+  // @include background-clip(padding-box);
 
   position: absolute;
   z-index: 999;
@@ -50,17 +97,12 @@
   width: 220px;
   cursor: move;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
 
   .form-group {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 10px;
-
-    input {
-      height: 25px;
-      padding: 5px 6px;
-    }
 
     select {
       @include box-shadow(none);
@@ -72,29 +114,24 @@
       -khtml-appearance: button;
       -webkit-appearance: button;
       height: 25px;
-      font-size: 12px;
-      padding: 3px 6px 4px 6px;
+      font-size: 11px;
+      padding: 3px 8px 4px 8px;
       width: 188px;
       background-position: sprite-position($icons, sort-light, 165px, -1px)
     }
 
     .hide-item-form-btn {
-      @include border-radius(2px);
-
-      height: 25px;
-      width: 80px;
-      padding: 3px 10px;
       margin-top: 3px;
     }
 
     .pull-right {
-      font-size: 12px;
-      padding-top: 8px;
-      padding-right: 1px;
+      text-decoration: underline;
+      font-size: 10px;
+      padding-top: 9px;
     }
 
     .error {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 }
@@ -103,8 +140,6 @@
   position: relative;
 
   img {
-    @include border-radius(4px);
-
     cursor: pointer;
   }
 }
@@ -117,10 +152,4 @@
 
 #tag-list-input {
   text-transform: uppercase;
-}
-
-.ui-autocomplete {
-  .ui-state-hover {
-    background-color: #444;
-  }
 }

@@ -61,6 +61,14 @@
           %label.col-xs-3.control-label New password
           .col-xs-8
             = f.password_field :password, class: 'form-control', 'data-error' => field_err(@user, :password), placeholder: 'Change your password here...'
+        .form-group
+          %label.col-xs-3.control-label City
+          .col-xs-8
+            = f.text_field :city, class: 'city-complete form-control', 'data-error' => field_err(@user, :city)
+        .form-group
+          %label.col-xs-3.control-label college
+          .col-xs-8
+            = f.text_field :college, class: 'college-complete form-control', 'data-error' => field_err(@user, :college)
 
         .form-group
           .col-xs-8.col-xs-offset-3

@@ -1,10 +1,10 @@
 .container
-  .panel.panel-default
+  .panel
     .panel-body
       #crop-container{'data-orig-width' => params[:orig_width], 'data-orig-height' => params[:orig_height]}
-        %h4
-          %small
-            Step 1&nbsp;
+        %h4.lg
+          %span.text-muted
+            Step 1
           Crop your photo
           %span.pull-right
             = form_tag new_post_path, method: :get do
@@ -13,7 +13,7 @@
               = hidden_field_tag :crop_w
               = hidden_field_tag :crop_h
               = hidden_field_tag :cloudinary_id, @cloudinary_id
-              = submit_tag 'Done', class: 'btn btn-primary'
+              = submit_tag 'Done', class: 'btn btn-primary btn-lg'
 
         #crop-img-container
           = cl_image_tag @cloudinary_id, height: 464, crop: :fill, id: 'crop-img'

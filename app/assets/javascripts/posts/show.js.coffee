@@ -26,30 +26,30 @@ $ ->
         target = $("##{$(this).data('target')}")
         $(this).hover \
           ->
-            target.css('opacity', 0.9)
+            target.css('opacity', 1)
             $('.item-number', this).addClass('item-number-hovered')
           ,
           ->
             target.css('opacity', 0)
             $('.item-number', this).removeClass('item-number-hovered')
 
+      $('.item-label').hover \
+        ->
+          target_id = this.id.replace 'label', 'number'
+          $("##{target_id}").addClass('item-number-hovered')
+        ,
+        ->
+          target_id = this.id.replace 'label', 'number'
+          $("##{target_id}").removeClass('item-number-hovered')
+
     if $('#hidden-like-form').length
       $('.post-likes-click').click ->
         $('#hidden-like-form').submit()
 
     container.hover \
-      -> $('.item-label').css('opacity', 0.9)
+      -> $('.item-label').css('opacity', 1)
       ,
       -> $('.item-label').css('opacity', 0)
-
-    $('.item-label').hover \
-      ->
-        target_id = this.id.replace 'label', 'number'
-        $("##{target_id}").addClass('item-number-hovered')
-      ,
-      ->
-        target_id = this.id.replace 'label', 'number'
-        $("##{target_id}").removeClass('item-number-hovered')
 
     # item name width
     $('#post-items .item-info > p').each ->

@@ -1,8 +1,8 @@
 body.posts-crop {
   .panel {
     margin-left: 165px;
-    margin-top: -5px;
-    padding: 8px 20px 20px 20px;
+    padding: 3px 20px 20px 20px;
+    box-shadow: none;
   }
 
   #crop-container {
@@ -15,10 +15,7 @@ body.posts-crop {
       padding-bottom: 18px;
 
       .btn {
-        width: 90px;
-        margin-top: -9px;
-        font-size: 15px;
-        padding-top: 5px;
+        margin-top: -7px;
       }
     }
   }

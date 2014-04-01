@@ -7,15 +7,15 @@
         %p
           %h4
             = @post.title.titleize
-        %small.text-muted
+        .text-muted
           = time_ago_in_words @post.created_at
           ago
 
           / edit buttons
           - if @user == current_user
             %span#post-edit-btns
-              = link_to 'Edit', edit_post_url(@post)
-              = link_to 'Delete',
+              = link_to 'EDIT', edit_post_url(@post)
+              = link_to 'DELETE',
                         post_url(@post),
                         method: :delete,
                         data: {confirm: 'Do you want to DELETE this Style?'}
@@ -121,17 +121,18 @@
           = @post.items.any?? 'Items' : 'No items'
         - @post.items.each do |item|
           .item-info{id: "item-#{item.number}", 'data-target' => "item-label-#{item.number}", 'data-number' => item.number, 'data-x' => item.x, 'data-y' => item.y}
-            %p
-              %span.pull-right
-                = link_to item.item_category.name, item.item_category
-              %span.item-number{id: "item-number-#{item.number}"}
-                = item.number
-              %span.item-name{title: item.name.capitalize}
-                - if item.url.present?
-                  %a{href: "http://#{item.url}", target: '_blank'}
-                    = item.name.capitalize
-                - else
-                  %span= item.name.capitalize
+
+            %span.item-number{id: "item-number-#{item.number}"}
+              = item.number
+            %span.item-category
+              = link_to item.item_category.name, item.item_category
+            .item-name{title: item.name.capitalize}
+              - if item.url.present?
+                %a{href: "http://#{item.url}", target: '_blank'}
+                  = item.name.capitalize
+              - else
+                %span= item.name.capitalize
+
 
     #user-sidebar.col-xs-3
       .sidebar-header.text-center
@@ -164,14 +165,15 @@
           .stat-name
             Followers
 
-      .sidebar-header.text-center
-        MORE BY
-        = link_to @user.full_name.upcase, show_user_path(@user)
+      - if @more_posts.any?
+        .sidebar-header.text-center
+          MORE BY
+          = link_to @user.full_name.upcase, show_user_path(@user)
 
-      #more-posts
-        - @more_posts.each do |post|
-          = link_to post do
-            = cl_image_tag_with_crop post, width: 111, crop: :fill
+        #more-posts
+          - @more_posts.each do |post|
+            = link_to post do
+              = cl_image_tag_with_crop post, width: 111, crop: :fill
 
       .sidebar-header.text-center
         PEOPLE YOU MAY LIKE
