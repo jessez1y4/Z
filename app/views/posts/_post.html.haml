@@ -9,26 +9,12 @@
 
 
   .masonry-title{class: ('truncate' if show_tag == 0)}
-    / %strong
     = post.title.titleize
 
 
 
   .masonry-author
     = link_to post.user.full_name.titleize, show_user_path(post.user)
-    / %span.post-stats
-    /   .icons-eye
-    /     = post.views_count
-    /   .icons-heart_sm{class: "masonry-title-likes-#{post.id}"}
-    /     = post.like_relationships_count
-
-    / -unless controller_name == 'users'
-    /   %span.user-name
-    /     %span
-    /       %strong= link_to post.user.full_name.titleize, show_user_path(post.user)
-    / .pull-right
-    /   = time_ago_in_words post.created_at
-    /   ago
 
   .masonry-heart
     %span.glyphicon.glyphicon-heart
@@ -36,8 +22,3 @@
     &nbsp;
     &nbsp;
     = link_to 'COMMENT', post_path(post) + '?comment=1'
-
-  / - if show_tag == 1 && post.tags.any?
-  /   .masonry-tags
-  /     - post.tags.each do |tag|
-  /       = link_to tag.name, tag, class: 'tag'

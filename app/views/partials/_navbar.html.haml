@@ -17,6 +17,12 @@
               From web
 
       %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %span.glyphicon.glyphicon-envelope
+          %span.msg-count
+            = current_user.unread_msg_count
+
+      %li.dropdown
         %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
           / .icons-user
           = current_user.full_name.titleize

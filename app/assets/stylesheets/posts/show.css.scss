@@ -131,11 +131,7 @@ body.posts-show {
       }
 
       a {
-        img {
-          // @include border-radius(2px);
-
-          margin-right: 16px;
-        }
+        margin-right: 16px;
 
         &:last-child img {
           margin-right: 0;
@@ -143,6 +139,7 @@ body.posts-show {
 
         &:hover {
           text-decoration: none;
+          background-color: white;
         }
       }
     }
@@ -411,7 +408,7 @@ body.posts-show {
       .col-xs-4 {
 
         .stat-count {
-          font-size: 15px;
+          font-size: 14px;
         }
 
         .stat-name {
@@ -429,11 +426,15 @@ body.posts-show {
         text-decoration: none;
       }
 
-      img {
-        // @include border-radius(2px);
-
+      a {
         margin-right: 13px;
-        margin-bottom: 17px;
+        img {
+          margin-bottom: 17px;
+        }
+
+        &:hover {
+          background-color: white;
+        }
       }
 
       a:nth-child(even) img {
@@ -472,7 +473,7 @@ body.posts-show {
           border-bottom: none;
         }
 
-        img {
+        .pull-left {
           // @include border-radius(3px);
 
           margin-right: 15px;

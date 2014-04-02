@@ -11,6 +11,8 @@
   li.dropdown .dropdown-toggle {
     @include transition(all 0.2s);
 
+    max-height: 50px;
+
     color: $brand-black;
     // border-left: 1px solid #e4e4e4;
 
@@ -25,17 +27,27 @@
       text-align: center;
     }
 
-    .glyphicon-plus {
-      position: relative;
+    .glyphicon {
       display: inline-block;
-      top: 0px;
       font-size: 12px;
+      margin-left: 3px;
+      margin-right: 3px;
     }
+
+
 
     &:hover {
       .glyphicon {
         color: red;
       }
+    }
+
+    .msg-count {
+      color: red;
+      display: inline-block;
+      position: relative;
+      top: -1px;
+      font-size: 11px;
     }
   }
 

@@ -51,11 +51,6 @@ $ ->
       ,
       -> $('.item-label').css('opacity', 0)
 
-    # item name width
-    $('#post-items .item-info > p').each ->
-      width = $(this).width() - $('.small', this).width() - 32
-      $('.item-name', this).css 'max-width', "#{width}px"
-
     # hotkeys
     $(document.body).keydown (event) ->
       return if $('#post-comment-input').is(':focus')
@@ -78,16 +73,6 @@ $ ->
       switch (keyCode)
         when 67
           $('#post-comment-input').focus()
-
-    # post info height
-    if (diff = $('#post-info').outerHeight() - 536) > 0
-      $('#post-tags').css 'border-bottom', 'none'
-      if diff > 47
-        next_section = if $('#similar-posts').length
-          $('#similar-posts')
-        else
-          $('#post-comments')
-        next_section.css 'margin-top', "#{diff - 27}px"
 
     # share buttons
     $('#share-facebook').sharrre
@@ -134,3 +119,6 @@ $ ->
         pinterest:
           media: $('#show-post-img-container img').attr 'src'
           description: $('#share-pinterest').data('text')
+
+
+

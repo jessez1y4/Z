@@ -71,6 +71,8 @@ gem 'cocoon', '~> 1.2.5'
 
 gem 'impressionist', '~> 1.5.1'
 
+gem 'mailboxer'
+
 group :development do
   gem 'letter_opener', '~> 1.1.2'
 end

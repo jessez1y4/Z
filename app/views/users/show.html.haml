@@ -21,3 +21,25 @@
 
   #load-more
     Loading more ...
+
+- if @user != current_user
+  / new message modal
+  #new-message-modal.modal
+    .modal-dialog.modal-dialog-center.modal-dialog-narrow
+      .modal-content
+        .modal-header
+          %button{type: 'button', class: 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+            &times;
+          %h4.modal-title
+            = "Message to #{@user.full_name.titleize}"
+        .modal-body
+          = form_tag messages_path, id: 'new-message-form', method: :post do
+            = hidden_field_tag :user_id, @user.id
+            .form-group
+              %label title
+              = text_field_tag :title, nil, class: 'form-control', autofocus: true
+            .form-group
+              %label message
+              = text_area_tag :body, nil, class: 'form-control', rows: 3
+            = submit_tag 'send', class: 'btn btn-lg btn-primary'
+

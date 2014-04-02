@@ -1,33 +1,32 @@
 .container
-  .panel.panel-default.sign-up-panel
+  .sign-up-panel
     .panel-body
       %h3.text-center
         Welcome back
       %br
       %br
       .row#sns-login
-        .col-xs-6.fb-login-btn
+        .col-xs-6
           = link_to user_omniauth_authorize_path(:facebook),
-                    class: 'btn btn-default btn-block wf-fix' do
-            .icons-facebook
-              Log in with Facebook
-        .col-xs-6.gg-login-btn
+                    class: 'btn btn-primary btn-block btn-lg' do
+            Log in with Facebook
+        .col-xs-6
           = link_to user_omniauth_authorize_path(:google),
-                    class: 'btn btn-default btn-block wf-fix' do
-            .icons-google
-              Log in with google
-      %hr
+                    class: 'btn btn-primary btn-block btn-lg' do
+            Log in with google
+      %br
+      %br
       = form_for(:user, as: @user, url: session_path('user'), html: { class: 'form-horizontal', id: 'sign-in-form' }) do |f|
         .form-group.text-muted
-          Log in with email
+          LOG IN WITH EMAIL
 
         .form-group
           %label Email
           = f.text_field :email, autofocus: true, autocomplete: false, class: 'form-control', tabindex: 1
         .form-group
           %label
-            Password&nbsp;
-            %small.forgot-password
+            Password&nbsp;&nbsp;
+            %span.forgot-password
               = link_to 'Forgot?', new_password_path('user')
           = f.password_field :password, class: 'form-control', tabindex: 2
         .row

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
+
   before_validation :generate_username
   before_update :changed_password_check
   before_update :changed_username_check
@@ -86,6 +88,10 @@ class User < ActiveRecord::Base
 
   def self.exclude(users)
     where.not(id: users)
+  end
+
+  def name
+    full_name
   end
 
   def city
@@ -191,6 +197,10 @@ class User < ActiveRecord::Base
         sum + post.views_count
       end
     end
+  end
+
+  def unread_msg_count
+    @unread_count ||= mailbox.inbox(read: false).count(:id, distinct: true).to_s
   end
 
   def to_param
