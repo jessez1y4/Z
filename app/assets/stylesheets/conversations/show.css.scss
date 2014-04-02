@@ -1,0 +1,33 @@
+body.conversations-show {
+  .row {
+    margin-top: 15px;
+  }
+
+  .col-xs-7 {
+    padding-left: 55px;
+
+    .title {
+      font-size: 11px;
+      border-bottom: 1px solid black;
+      margin-bottom: 25px;
+      padding-bottom: 3px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        margin-bottom: 25px;
+
+        span, a {
+          margin-right: 15px;
+        }
+
+        .message-body {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

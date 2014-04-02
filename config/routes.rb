@@ -52,7 +52,13 @@ StyleMe::Application.routes.draw do
 
   resources :item_categories
 
-  resources :messages
+  resources :conversations do
+    member do
+      post :delete
+      post :undelete
+      post :reply
+    end
+  end
 
   get ':id' => 'users#show', as: 'show_user'
 end

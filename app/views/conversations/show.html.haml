@@ -1,0 +1,38 @@
+.container
+  .row
+    .col-xs-2.col-xs-offset-1
+      %ul.nav.nav-pills.nav-stacked
+        - if has_unread?
+          %li
+            %a{href: '/conversations'}
+              = "UNREAD #{current_user.unread_msg_count}"
+        %li
+          %a{href: '/conversations#Inbox'} INBOX
+        %li
+          %a{href: '/conversations#SentboxContainer'} SENT
+        %li
+          %a{href: '/conversations#TrashContainer'} DELETED
+
+    .col-xs-7
+      .title= @conversation.subject.titleize
+      %ul
+        - @conversation.messages.reverse.each do |message|
+          %li
+            / .pull-left
+            /   = link_to show_user_path(message.sender) do
+            /     = cl_image_tag message.sender.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
+            .sender-name
+              - if message.sender == current_user
+                %span.text-muted
+                  Me
+              - else
+                = link_to message.sender.full_name.upcase, message.sender, class: 'red'
+              %span= message.created_at.strftime("%d %b. %Y")
+            .message-body
+              = simple_format(message.body.capitalize)
+
+      = form_for :message, url: [:reply, @conversation] do |f|
+        .form-group
+          %label reply
+          = f.text_area :body, class: 'form-control'
+        = f.submit 'Send', class: 'btn btn-lg btn-primary'

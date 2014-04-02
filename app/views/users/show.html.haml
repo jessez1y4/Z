@@ -33,7 +33,7 @@
           %h4.modal-title
             = "Message to #{@user.full_name.titleize}"
         .modal-body
-          = form_tag messages_path, id: 'new-message-form', method: :post do
+          = form_tag conversations_path, id: 'new-message-form', method: :post do
             = hidden_field_tag :user_id, @user.id
             .form-group
               %label title

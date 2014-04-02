@@ -1,0 +1,20 @@
+%li.clearfix{class: ('unread' if conversation.is_unread?(current_user))}
+  .pull-left
+    = link_to show_user_path(the_other_person(conversation)) do
+      = cl_image_tag the_other_person(conversation).avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
+  .the-other-person-name
+    = link_to the_other_person(conversation).full_name.upcase, show_user_path(the_other_person(conversation)), class: 'red'
+    %span.text-muted
+      = conversation.last_message.created_at.strftime("%d %b. %Y")
+
+    - if conversation.is_completely_trashed?(current_user)
+      = link_to 'UNDELETE', [:undelete, conversation], method: :post, class: 'red'
+    - else
+      = link_to 'DELETE', [:delete, conversation], method: :post, class: 'red'
+
+  .lg
+    = link_to conversation.subject.titleize, conversation
+
+  .lg
+    = link_to conversation.last_message.body.truncate(80).capitalize, conversation
+

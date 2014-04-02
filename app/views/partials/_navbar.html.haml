@@ -17,10 +17,13 @@
               From web
 
       %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %span.glyphicon.glyphicon-envelope
-          %span.msg-count
-            = current_user.unread_msg_count
+        = link_to conversations_path, class: 'dropdown-toggle' do
+          - if has_unread?
+            %span.glyphicon.glyphicon-envelope.red
+            %span.msg-count
+              = current_user.unread_msg_count
+          - else
+            %span.glyphicon.glyphicon-envelope
 
       %li.dropdown
         %a.dropdown-toggle.border-right{"data-toggle" => "dropdown", href: "#"}
