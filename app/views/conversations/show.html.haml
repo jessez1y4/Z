@@ -23,11 +23,11 @@
             /     = cl_image_tag message.sender.avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
             .sender-name
               - if message.sender == current_user
-                %span.text-muted
+                %span
                   Me
               - else
-                = link_to message.sender.full_name.upcase, message.sender, class: 'red'
-              %span= message.created_at.strftime("%d %b. %Y")
+                = link_to message.sender.full_name.upcase, message.sender
+              %span.text-muted= message.created_at.strftime("%d %b. %Y")
             .message-body
               = simple_format(message.body.capitalize)
 

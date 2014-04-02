@@ -18,10 +18,14 @@ body.conversations-show {
       padding-left: 0;
 
       li {
-        margin-bottom: 25px;
+        margin-bottom: 28px;
 
         span, a {
           margin-right: 15px;
+        }
+
+        .sender-name {
+          padding-bottom: 5px;
         }
 
         .message-body {

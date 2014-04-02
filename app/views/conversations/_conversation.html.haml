@@ -1,9 +1,9 @@
-%li.clearfix{class: ('unread' if conversation.is_unread?(current_user))}
+%li.clearfix
   .pull-left
     = link_to show_user_path(the_other_person(conversation)) do
       = cl_image_tag the_other_person(conversation).avatar_cloudinary_id, width: 45, height: 45, crop: 'fill', gravity: 'face'
   .the-other-person-name
-    = link_to the_other_person(conversation).full_name.upcase, show_user_path(the_other_person(conversation)), class: 'red'
+    = link_to the_other_person(conversation).full_name.upcase, show_user_path(the_other_person(conversation))
     %span.text-muted
       = conversation.last_message.created_at.strftime("%d %b. %Y")
 
@@ -13,8 +13,8 @@
       = link_to 'DELETE', [:delete, conversation], method: :post, class: 'red'
 
   .lg
-    = link_to conversation.subject.titleize, conversation
+    = link_to conversation.subject.titleize, conversation, class: ('red' if conversation.is_unread?(current_user))
 
   .lg
-    = link_to conversation.last_message.body.truncate(80).capitalize, conversation
+    = link_to conversation.last_message.body.truncate(80).capitalize, conversation, class: 'text-muted'
 
