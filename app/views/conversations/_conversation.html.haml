@@ -15,6 +15,6 @@
   .lg
     = link_to conversation.subject.titleize, conversation, class: ('red' if conversation.is_unread?(current_user))
 
-  .lg
-    = link_to conversation.last_message.body.truncate(80).capitalize, conversation, class: 'text-muted'
+  .lg.text-muted
+    = conversation.last_message.body.truncate(80).capitalize
 
