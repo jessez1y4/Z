@@ -6,14 +6,14 @@
         - if @prev_post
           .pull-left
             = link_to @prev_post, id: 'prev-post-link' do
-              &#8592;
+              <
         - else
           .pull-left.invisible
             <
         - if @next_post
           .pull-right
             = link_to @next_post, id: 'next-post-link' do
-              &#8594;
+              >
         - else
           .pull-right.invisible
             >
