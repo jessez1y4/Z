@@ -2,11 +2,23 @@
 
   .row
     #post-main.col-xs-5
-      #post-title
-
-        %p
-          %h4
-            = @post.title.titleize
+      #post-title.text-center
+        - if @prev_post
+          .pull-left
+            = link_to @prev_post, id: 'prev-post-link' do
+              &#10094;
+        - else
+          .pull-left.invisible
+            <
+        - if @next_post
+          .pull-right
+            = link_to @next_post, id: 'next-post-link' do
+              &#10095;
+        - else
+          .pull-right.invisible
+            >
+        %h4
+          = @post.title.titleize
         .text-muted
           = time_ago_in_words @post.created_at
           ago

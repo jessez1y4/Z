@@ -53,8 +53,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:items).find_by_slug!(params[:id])
-    @prev_post = Post.where(["created_at > ?", @post.created_at]).first
-    @next_post = Post.where(["created_at < ?", @post.created_at]).last
+    @prev_post = @post.user.posts.where(["created_at > ?", @post.created_at]).first
+    @next_post = @post.user.posts.where(["created_at < ?", @post.created_at]).last
 
     @user = @post.user
     @more_posts = @user.posts.hottest.exclude(@post).limit(4)
