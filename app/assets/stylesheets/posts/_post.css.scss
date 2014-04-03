@@ -6,7 +6,7 @@
   // border: 1px solid #ccc;
   background: white;
   margin-bottom: 40px;
-  overflow: hidden;
+  // overflow: hidden;
 
   .masonry-img a {
     @include zoom-in-cursor;
@@ -74,12 +74,67 @@
   }
 
   .masonry-author {
-    color: #999;
+    position: relative;
     height: 22px;
     text-align: center;
-    font-size: 10px;
     text-decoration: underline;
     text-transform: uppercase;
+
+    .masonry-author-popup {
+      position: absolute;
+      bottom: 30px;
+      border: 1px solid black;
+      background-color: white;
+      padding: 8px;
+      min-width: 219px;
+      width: auto;
+      text-overflow: ellipsis;
+      white-space:nowrap;
+      overflow: hidden;
+      display: none;
+
+      &.current-popup {
+        display: block;
+      }
+
+      .clearfix {
+        margin-bottom: 8px;
+      }
+
+      .pull-left {
+        margin-right: 8px;
+      }
+
+      .user-name {
+        padding-top: 7px;
+        padding-bottom: 10px;
+      }
+
+      .user-stats {
+        .col {
+          display: inline-block;
+          width: 50px;
+
+          .stat-count {
+            font-size: 11px;
+          }
+
+          .stat-name {
+            color: #999;
+          }
+        }
+      }
+
+      .popup-btns {
+        .follow-btn, & > .btn {
+          display: inline-block;
+        }
+
+        .follow-btn {
+          margin-right: 18px;
+        }
+      }
+    }
   }
 
   .masonry-heart {

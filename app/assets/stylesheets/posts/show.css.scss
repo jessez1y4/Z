@@ -301,14 +301,16 @@ body.posts-show {
         top: -5px;
 
         & > div {
-          @include border-radius(11px);
-
           display: inline-block;
           overflow: hidden;
           cursor: pointer;
-          margin-left: 5px;
+          margin-left: 4px;
           height: 22px;
-          width: 22px;
+          width: 23px;
+        }
+
+        #share-google, #share-pinterest {
+          margin-left: 3px;
         }
       }
 

@@ -12,9 +12,35 @@
     = post.title.titleize
 
 
+  - if controller_name != 'users'
+    - user = post.user
+    .masonry-author
+      = link_to user.full_name.titleize, show_user_path(user)
+      .masonry-author-popup
+        .clearfix
+          .pull-left
+            = link_to show_user_path(user) do
+              = cl_image_tag user.avatar_cloudinary_id, width: 70, height: 70, crop: 'fill', gravity: 'face'
 
-  .masonry-author
-    = link_to post.user.full_name.titleize, show_user_path(post.user)
+          .user-name
+            = post.user.full_name.titleize
+
+          .user-stats
+            .col
+              .stat-count
+                = user.posts_count
+              .stat-name
+                Styles
+            .col
+              .stat-count
+                = user.likes_count
+              .stat-name
+                Likes
+
+        .popup-btns
+          = render 'partials/follow_button', user: user
+          = link_to 'profile', user, class: 'btn btn-sm btn-primary'
+
 
   .masonry-heart
     %span.glyphicon.glyphicon-heart

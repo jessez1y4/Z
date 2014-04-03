@@ -1,10 +1,24 @@
 $ ->
   if $('body').data('controller') != 'users'
-    $('.masonry-brick').hover \
+    timer = null
+
+    $('.masonry-author > a').hover \
       ->
-        $('.user-name', this).css 'opacity', 1
-        $('.post-stats', this).css 'opacity', 0
+        clearTimeout timer
+        $('.current-popup').removeClass('current-popup')
+        $(this).next().addClass('current-popup')
+
+        $('.current-popup').hover \
+          ->
+            clearTimeout timer
+          ,
+          ->
+            timer = setTimeout ->
+              $('.current-popup').removeClass('current-popup')
+            , 500
       ,
       ->
-        $('.user-name', this).css 'opacity', 0
-        $('.post-stats', this).css 'opacity', 1
+        timer = setTimeout ->
+          $('.current-popup').removeClass('current-popup')
+        , 1500
+
