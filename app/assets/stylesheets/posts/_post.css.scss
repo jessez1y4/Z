@@ -13,8 +13,6 @@
   }
 
   .masonry-like-btn {
-    @include transition(all 0.25s);
-
     z-index: 4;
     position: absolute;
     right: 10px;
@@ -82,22 +80,6 @@
     font-size: 10px;
     text-decoration: underline;
     text-transform: uppercase;
-
-    .post-stats {
-      @include transition(all 0.25s);
-
-      font-size: 11px;
-
-
-    }
-
-    .user-name {
-      @include transition(all 0.25s);
-
-      position: absolute;
-      left: 10px;
-      opacity: 0;
-    }
   }
 
   .masonry-heart {

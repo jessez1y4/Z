@@ -13,9 +13,6 @@
 }
 
 .item-label{
-  // @include transition(all 0.2s);
-  // @include box-shadow(rgba(0, 0, 0, 0.55) 0 1px 3px);
-  // @include border-radius(2px);
 
   width: 20px;
   height: 20px;
@@ -36,12 +33,6 @@
 
 .item-label-hover {
   background-color: saturate(lighten($brand-primary, 10%), 5%);
-  opacity: 0.9;
-}
-
-.item-label-no-anim {
-  @include transition(0);
-
   opacity: 0.9;
 }
 

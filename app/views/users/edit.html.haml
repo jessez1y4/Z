@@ -14,9 +14,9 @@
             %p.lg
               Your avatar should be at least 100 x 100 pixels.
           #step-2.hidden
-            %button#save-avatar-btn.btn.btn-default.btn-lg
+            %button#save-avatar-btn.btn.btn-primary.btn-lg
               Save the change
-            = link_to 'Discard', edit_user_path, class: 'btn btn-danger btn-lg'
+            = link_to 'Discard', edit_user_path, class: 'btn btn-default btn-lg'
 
           .hidden
             = form_tag '/user', method: :put, id: 'edit-avatar-form' do

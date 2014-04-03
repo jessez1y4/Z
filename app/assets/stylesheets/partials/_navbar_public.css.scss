@@ -9,8 +9,6 @@
   }
 
   li.dropdown .dropdown-toggle {
-    @include transition(all 0.2s);
-
     max-height: 50px;
 
     color: $brand-black;

@@ -137,7 +137,7 @@ $ ->
                .attr('id', "item-label-#{num}")
                .data('target-num', num)
                .addClass('item-label')
-               .addClass('item-label-no-anim')
+               .css('opacity', '1')
                .text(num)
                .css('left', x + 'px')
                .css('top', y + 'px')

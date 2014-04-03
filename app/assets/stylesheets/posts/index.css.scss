@@ -4,8 +4,6 @@
 }
 
 #load-more {
-  @include transition(all 0.3s);
-
   opacity: 0;
   font-size: 16px;
   margin-top: 25px;

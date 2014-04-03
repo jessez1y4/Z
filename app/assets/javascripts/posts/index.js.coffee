@@ -9,8 +9,7 @@ $ ->
         itemSelector: '.masonry-brick'
         columnWidth: 220
         gutterWidth: 16
-      $('.masonry-brick').animate
-        opacity: 1
+    $('.masonry-brick').css('opacity', '1')
 
   if $('body.posts-index').length or $('#masonry-container').length
     $('#paginate-containter').hide()

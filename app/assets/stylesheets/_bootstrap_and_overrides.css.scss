@@ -181,13 +181,10 @@ label.error {
 }
 
 .btn {
-  @include transition(all 0.25s);
-
   text-transform: uppercase;
 }
 
 .tag {
-  @include transition(all 0.25s);
   // @include border-radius(2px);
 
   color: $brand-black;
@@ -209,46 +206,11 @@ a.tag:hover {
     line-height: 20px;
     text-transform: uppercase;
     color: $brand-black;
-
-    &:hover {
-      // color: #333;
-    }
   }
 
   li.divider {
     background-color: white;
     margin: 8px 0;
-  }
-}
-
-.panel {
-  @include border-radius(3px);
-  @include box-shadow(rgba(0, 0, 0, 0.08) 0 1px 4px);
-}
-
-.btn-facebook {
-  -webkit-font-smoothing: antialiased;
-  background-color: $facebook;
-  color: white;
-  border: 1px solid darken($facebook, 5%);
-
-  &:hover {
-    background-color: darken($facebook, 5%);
-    color: white;
-    border-color: darken($facebook, 12%);
-  }
-}
-
-.btn-google {
-  -webkit-font-smoothing: antialiased;
-  background-color: $google;
-  color: white;
-  border: 1px solid darken($google, 5%);
-
-  &:hover {
-    color: white;
-    background-color: darken($google, 5%);
-    border-color: darken($google, 12%);
   }
 }
 
