@@ -7,7 +7,7 @@ class Site < ActiveRecord::Base
 
   def add_http
     attributes.each_pair do |name, value|
-      unless name == 'user_id' || value.blank? || value =~ /^http:\/\// || value =~ /^https:\/\//
+      unless name == 'user_id' || name == 'id' || value.blank? || value =~ /^http:\/\// || value =~ /^https:\/\//
         self[name] = "http://#{value}"
       end
     end
