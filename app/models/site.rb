@@ -11,6 +11,6 @@ class Site < ActiveRecord::Base
         self[name] = "http://#{value}"
       end
     end
-    binding.pry
+    p self
   end
 end
