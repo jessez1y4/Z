@@ -11,6 +11,5 @@ class Site < ActiveRecord::Base
         self[name] = "http://#{value}"
       end
     end
-    p self
   end
 end

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   before_update :changed_password_check
   before_update :changed_username_check
   after_create :add_college_to_default_tags
+  after_create :create_site
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -215,6 +216,10 @@ class User < ActiveRecord::Base
       tag = Tag.where(name: college.upcase.strip).first_or_create
       default_taggings.create(user_id: id, tag_id: tag.id)
     end
+  end
+
+  def create_site
+    Site.create(user_id: id)
   end
 
   def generate_username

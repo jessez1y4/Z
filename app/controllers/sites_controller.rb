@@ -3,7 +3,6 @@ class SitesController < ApplicationController
 
   def update
     @user = current_user
-    p site_params
     if @user.site.update_attributes site_params
       redirect_to @user, notice: 'Personal pages updated.'
     else
