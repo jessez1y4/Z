@@ -3,9 +3,20 @@
     .pull-left
       = cl_image_tag @user.avatar_cloudinary_id, width: 90, height: 90, crop: 'fill', gravity: 'face'
 
-    %p
-      %h3
-        = @user.full_name.titleize
+    .user-name
+      %span= @user.full_name.titleize
+      - site = @user.site
+      %span#user-sites
+        - if site.facebook.present?
+          %a.icons-share-facebook{href: @user.site.facebook, title: 'Facebook'}
+        - if site.twitter.present?
+          %a.icons-share-twitter{href: @user.site.twitter, title: 'Twitter'}
+        - if site.google.present?
+          %a.icons-share-google{href: @user.site.google, title: 'Google+'}
+        - if site.weibo.present?
+          %a.icons-share-weibo{href: @user.site.weibo, title: 'Sina Weibo'}
+        - if site.blog.present?
+          %a.icons-blog{href: @user.site.blog, title: 'Blog'}
 
     .user-location
       = @user.city.titleize
@@ -17,6 +28,9 @@
         %button.btn.btn-primary.btn-sm{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'} Message
       - elsif @user != current_user
         %button.btn.btn-primary.btn-sm{'data-toggle' => 'modal', 'data-target' => '#new-message-modal'} Message
+
+
+
 
   #user-stats.col-xs-5
     .row.text-center

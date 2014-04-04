@@ -221,3 +221,28 @@ a.tag:hover {
 a.red:hover {
   color: white;
 }
+
+// social icons hover
+.icons-share-facebook:hover {
+  background-position: sprite-position($icons, share-facebook-hover);
+}
+
+.icons-share-twitter:hover {
+  background-position: sprite-position($icons, share-twitter-hover);
+}
+
+.icons-share-pinterest:hover {
+  background-position: sprite-position($icons, share-pinterest-hover);
+}
+
+.icons-share-google:hover {
+  background-position: sprite-position($icons, share-google-hover);
+}
+
+.icons-share-weibo:hover {
+  background-position: sprite-position($icons, share-weibo-hover);
+}
+
+.icons-blog:hover {
+  background-position: sprite-position($icons, blog-hover);
+}

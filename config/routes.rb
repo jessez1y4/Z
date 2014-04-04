@@ -22,6 +22,8 @@ StyleMe::Application.routes.draw do
   # current_user
   resource :user
 
+  resource :site, only: :update
+
   resources :sign_in_authentications, only: [:destroy]
 
   resources :follow_relationships, only: [:create, :destroy]

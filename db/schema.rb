@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402001340) do
+ActiveRecord::Schema.define(version: 20140404023351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,9 +197,12 @@ ActiveRecord::Schema.define(version: 20140402001340) do
   add_index "sign_in_authentications", ["user_id"], name: "index_sign_in_authentications_on_user_id", using: :btree
 
   create_table "sites", force: true do |t|
-    t.integer "user_id", null: false
-    t.string  "name",    null: false
-    t.string  "link",    null: false
+    t.integer "user_id"
+    t.string  "facebook"
+    t.string  "twitter"
+    t.string  "google"
+    t.string  "weibo"
+    t.string  "blog"
   end
 
   add_index "sites", ["user_id"], name: "index_sites_on_user_id", using: :btree

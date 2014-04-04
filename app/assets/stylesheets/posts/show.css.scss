@@ -313,22 +313,6 @@ body.posts-show {
           margin-left: 3px;
         }
       }
-
-      .icons-share-facebook:hover {
-        background-position: sprite-position($icons, share-facebook-hover);
-      }
-
-      .icons-share-twitter:hover {
-        background-position: sprite-position($icons, share-twitter-hover);
-      }
-
-      .icons-share-pinterest:hover {
-        background-position: sprite-position($icons, share-pinterest-hover);
-      }
-
-      .icons-share-google:hover {
-        background-position: sprite-position($icons, share-google-hover);
-      }
     }
   }
 

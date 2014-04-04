@@ -74,6 +74,33 @@
           .col-xs-8.col-xs-offset-3
             = f.submit 'Update profile', class: 'btn btn-primary btn-lg'
 
+      %h4.tall-h4 MY PAGES
+      = form_for Site.find_or_create_by_user_id(@user.id), url: '/site', method: :put, html: {class: 'form-horizontal', id: 'update-sites-form'} do |f|
+        .form-group
+          %label.col-xs-3.control-label facebook
+          .col-xs-8
+            = f.text_field :facebook, class: 'form-control'
+        .form-group
+          %label.col-xs-3.control-label twitter
+          .col-xs-8
+            = f.text_field :twitter, class: 'form-control'
+        .form-group
+          %label.col-xs-3.control-label google+
+          .col-xs-8
+            = f.text_field :google, class: 'form-control'
+        .form-group
+          %label.col-xs-3.control-label Sina weibo
+          .col-xs-8
+            = f.text_field :weibo, class: 'form-control'
+        .form-group
+          %label.col-xs-3.control-label personal site / blog
+          .col-xs-8
+            = f.text_field :blog, class: 'form-control'
+        .form-group
+          .col-xs-8.col-xs-offset-3
+            = f.submit 'Update', class: 'btn btn-primary btn-lg'
+
+
       %h4.tall-h4 SIGN IN
       - if current_user.random_password?
         %p.lg

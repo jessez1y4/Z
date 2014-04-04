@@ -140,7 +140,7 @@
               = link_to item.item_category.name, item.item_category
             .item-name{title: item.name.capitalize}
               - if item.url.present?
-                %a{href: "http://#{item.url}", target: '_blank'}
+                %a{href: item.url, target: '_blank'}
                   = item.name.capitalize
               - else
                 %span= item.name.capitalize

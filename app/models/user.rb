@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
          :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google]
 
+  has_one :site
+
   has_many :posts, dependent: :destroy
   has_many :items, through: :posts
 
@@ -23,7 +25,6 @@ class User < ActiveRecord::Base
            -> { exhibit },
            class_name: 'Post'
 
-  has_many :sites
   has_many :comments, as: :commentable
 
   has_many :like_relationships, dependent: :destroy
