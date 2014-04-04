@@ -75,7 +75,7 @@
             = f.submit 'Update profile', class: 'btn btn-primary btn-lg'
 
       %h4.tall-h4 MY PAGES
-      = form_for Site.find_or_create_by_user_id(@user.id), url: '/site', method: :put, html: {class: 'form-horizontal', id: 'update-sites-form'} do |f|
+      = form_for @user.site, url: '/site', method: :put, html: {class: 'form-horizontal', id: 'update-sites-form'} do |f|
         .form-group
           %label.col-xs-3.control-label facebook
           .col-xs-8
