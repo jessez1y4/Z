@@ -160,10 +160,14 @@ label.error {
   border-color: red;
 }
 
-.btn-default:hover {
-  background-color: $brand-black;
+.btn-default {
   border-color: $brand-black;
-  color: white;
+
+  &:hover {
+    background-color: $brand-black;
+    border-color: $brand-black;
+    color: white;
+  }
 }
 
 .wf-fix {
