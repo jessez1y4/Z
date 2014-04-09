@@ -1,16 +1,16 @@
 #go-top-btn {
-  @include border-radius(0px);
-  @include box-shadow(0 0 3px rgba(0, 0, 0, 0.06));
+  // @include border-radius(0px);
+  // @include box-shadow(0 0 3px rgba(0, 0, 0, 0.06));
 
   position: fixed;
   bottom: 4%;
   right: 2%;
   opacity: 0;
   padding: 4px 7px;
-  border-color: #ccc;
-  background-color: white;
+  // border-color: #ccc;
+  // background-color: white;
 
-  &:hover {
-    background-color: #ebebeb;
-  }
+  // &:hover {
+  //   background-color: #ebebeb;
+  // }
 }

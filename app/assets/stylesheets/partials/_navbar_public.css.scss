@@ -20,11 +20,6 @@
       // border-right: 1px solid #e4e4e4;
     }
 
-    &.dropdown-fw {
-      width: 60px;
-      text-align: center;
-    }
-
     .glyphicon {
       display: inline-block;
       font-size: 12px;
@@ -52,6 +47,51 @@
   li.dropdown .dropdown-toggle:hover, li.dropdown .dropdown-toggle:focus {
     color: $brand-primary;
     background-color: #f1f1f1;
+  }
+
+  .dropdown-header {
+    font-size: 11px;
+  }
+
+  #nav-menu {
+    min-width: 215px;
+
+    #sort-btns {
+      font-size: 10px;
+
+      span {
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        margin-right: 10px;
+      }
+
+      .btn, a {
+        display: inline-block;
+      }
+
+      div.btn {
+        cursor: default;
+
+        &:hover {
+          background-color: black;
+          border-color: black;
+        }
+      }
+
+      a {
+        padding: 0 15px;
+        height: 17px;
+        position: relative;
+        top: 1px;
+        line-height: 17px;
+
+        &:hover {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
   }
 
   .navbar-right {

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update]
 
+  def index
+    @users = User.star.page(params[:page]).per(15)
+  end
+
   def show
     params[:sort] ||= 'New'
     @user = User.find_by!("username ILIKE ?", params[:id])

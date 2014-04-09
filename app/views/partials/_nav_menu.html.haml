@@ -1,3 +1,21 @@
+- if params[:sort]
+  %li#sort-btns.dropdown-header
+    %span
+      SORT BY
+    - if params[:sort] == 'Hot'
+      .btn.btn-primary.btn-sm HOT
+      = link_to 'New', params.merge(sort: 'New')
+    - elsif params[:sort] == 'New'
+      = link_to 'Hot', params.merge(sort: 'Hot')
+      .btn.btn-primary.btn-sm New
+
+  %li.divider
+
+%li
+  = link_to 'home', root_path
+
+%li.divider
+
 %li
   = link_to 'Everything', posts_path(params.merge(scope: nil))
 %li

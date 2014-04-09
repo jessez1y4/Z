@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
             length: { minimum: 4, maximum: 30, allow_nil: true },
             format: { with: /\A\w+\z/, message: 'only accepts letters, numbers, and underscore', allow_nil: true }
 
-  scope :star, -> { order('likes_count DESC') }
+  scope :star, -> { order('likes_count DESC, posts_count DESC') }
 
   # def self.find_first_by_auth_conditions(warden_conditions)
   #   conditions = warden_conditions.dup

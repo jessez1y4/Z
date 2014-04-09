@@ -1,4 +1,4 @@
-$("#follow-btn-<%= @user.id %>").html "<%= escape_javascript(render('users/unfollow', user: @user)) %>"
+$(".follow-btn-<%= @user.id %>").html "<%= escape_javascript(render('users/unfollow', user: @user)) %>"
 
 $(".followers-count").html "<%= @user.followers_count %>"
 

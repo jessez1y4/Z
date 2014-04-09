@@ -1,2 +1,2 @@
 = form_for current_user.bookmarkings.find_by(tag_id: tag.id), html: { method: :delete }, remote: true do |f|
-  = f.submit 'Remove from Feed', class: 'btn btn-default', id: 'unbookmark-btn'
+  = f.submit 'Remove from Feed', class: 'btn btn-default btn-lg', id: 'unbookmark-btn'

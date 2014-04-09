@@ -6,8 +6,7 @@ $(new_posts).css('opacity', 0)
 
 $('#masonry-container').imagesLoaded ->
   $('#masonry-container').masonry 'reload'
-  $(new_posts).animate
-    opacity: 1
+  $(new_posts).css('opacity', 1)
 
 <% if @posts.next_page %>
 

@@ -4,13 +4,12 @@
       = bookmark_button @tag
     - else
       %button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#sign-in-modal'}
-        .icons-bookmark
-          Add to Feed
+        Add to Feed
   %h4
     %small
       = @tag.posts_count
-      styles with tag&nbsp;
-    %span.tag
+      STYLES WITH TAG&nbsp;
+    %span
       = @tag.name
 
   %hr.hr-dark

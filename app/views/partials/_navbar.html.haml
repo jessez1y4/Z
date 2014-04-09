@@ -31,11 +31,11 @@
           = current_user.full_name.titleize
         %ul.dropdown-menu
           %li
-            = link_to 'My Styles', show_user_path(current_user)
+            = link_to 'Me', show_user_path(current_user)
           %li
-            = link_to 'My Likes', user_liked_posts_path(current_user)
+            = link_to 'Likes', user_liked_posts_path(current_user)
           %li
-            = link_to 'Settings', edit_user_path
+            = link_to 'Setting', edit_user_path
           %li.divider
 
           %li

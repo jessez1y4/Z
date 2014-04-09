@@ -7,5 +7,5 @@
     = link_to edit_user_path, class: 'btn btn-default edit-profile-btn' do
       Edit profile
 - else
-  .follow-btn{id: "follow-btn-#{user.id}"}
+  .follow-btn{class: "follow-btn-#{user.id}"}
     = follow_button user

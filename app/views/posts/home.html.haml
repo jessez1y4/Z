@@ -36,7 +36,11 @@
           You are not following anyone yet...
 
         %p.text-muted
-          Look around to discover amazing styles and people.
+          Look around to discover amazing
+          = link_to 'styles', posts_path
+          and
+          = link_to 'people', users_path
+          \.
 
   #hot-carousel.carousel.slide
     .post-row-header
@@ -74,7 +78,7 @@
     .post-row-header
       STARS
       %span.more
-        = link_to 'MORE', posts_path(params.merge(sort: 'New'))
+        = link_to 'MORE', users_path
       %ol.carousel-indicators
         %li.active{'data-target' => '#star-carousel', 'data-slide-to' => '0'}
         %li{'data-target' => '#star-carousel', 'data-slide-to' => '1'}

@@ -54,4 +54,18 @@ $ ->
 
     edit_profile_validator.showErrors errors
 
-    $('#sign-in-edit a').aToolTip()
+    # sign in auth
+    sign_in_checkbox_handler = (e, provider) ->
+      if $(e).is(':checked')
+        window.location.href = '/users/auth/' + provider
+      else
+        $.ajax
+          url: '/sign_in_authentications/' + $(e).data('id')
+          type: 'DELETE'
+
+
+    $('#fb-login-check').click ->
+      sign_in_checkbox_handler(this, 'facebook')
+    $('#gg-login-check').click ->
+      sign_in_checkbox_handler(this, 'google')
+

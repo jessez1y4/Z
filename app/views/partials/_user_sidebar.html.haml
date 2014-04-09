@@ -6,17 +6,28 @@
     .user-name
       %span= @user.full_name.titleize
       - site = @user.site
+      - is_self = (@user == current_user)
       %span#user-sites
         - if site.facebook.present?
           %a.icons-share-facebook{href: @user.site.facebook, title: 'Facebook'}
+        - elsif is_self
+          %a.icons-share-facebook.gray-icon{href: '/user/edit#edit-profile-submit', title: 'Add your Facebook page'}
         - if site.twitter.present?
           %a.icons-share-twitter{href: @user.site.twitter, title: 'Twitter'}
+        - elsif is_self
+          %a.icons-share-twitter.gray-icon{href: '/user/edit#edit-profile-submit', title: 'Add your Twitter page'}
         - if site.google.present?
           %a.icons-share-google{href: @user.site.google, title: 'Google+'}
+        - elsif is_self
+          %a.icons-share-google.gray-icon{href: '/user/edit#edit-profile-submit', title: 'Add your Google Plus page'}
         - if site.weibo.present?
           %a.icons-share-weibo{href: @user.site.weibo, title: 'Sina Weibo'}
+        - elsif is_self
+          %a.icons-share-weibo.gray-icon{href: '/user/edit#edit-profile-submit', title: 'Add your Sina Weibo page'}
         - if site.blog.present?
           %a.icons-blog{href: @user.site.blog, title: 'Blog'}
+        - elsif is_self
+          %a.icons-blog.gray-icon{href: '/user/edit#edit-profile-submit', title: 'Add your blog or personal page'}
 
     .user-location
       = @user.city.titleize
